@@ -1,13 +1,24 @@
+# virtual environments
 .venv/
+venv/
+
+# python cache
 __pycache__/
 *.pyc
 
-.vscode/
-.DS_Store
-Thumbs.db
-
-data/
-storage/
-
+# environment files
 .env
 .env.*
+
+# editor files
+.vscode/
+
+# all project data
+data/
+
+# vector indexes
+storage/faiss_index/
+storage/faiss_index_v2_structured/
+
+# logs
+*.log
