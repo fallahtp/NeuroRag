@@ -1,195 +1,205 @@
 # NeuroRag
 
-**NeuroRag** is a **local Retrieval-Augmented Generation (RAG) assistant** designed for **neuroscience research and computational modeling** (Python / NEURON).
+**NeuroRag** is a **local Retrieval-Augmented Generation (RAG) assistant** for **neuroscience research and computational modeling**.
 
-It allows you to **index your private scientific literature** (PDF papers, notes, documentation) and **query it using a local LLM** via **Ollama**, while keeping all data **fully local and private**.
+It is designed for researchers who want to search and query their own scientific literature, notes, and technical documents **locally**, without sending files to external APIs.
 
-The system retrieves relevant text from your personal research corpus and provides **grounded answers with source references**.
+The project currently contains two pipelines:
 
----
-
-# Why NeuroRag?
-
-Scientific research involves large amounts of literature, documentation, and code examples.
-
-NeuroRag helps researchers:
-
-* Quickly search and retrieve information from scientific papers
-* Ask natural language questions about their research corpus
-* Retrieve relevant code examples and modeling documentation
-* Build a **personal AI research assistant** that runs locally
-
+- **v1 baseline:** a simple local PDF-to-FAISS RAG pipeline
+- **v2 structured pipeline:** a more advanced workflow using **GROBID**, **structured JSON**, **section-aware retrieval**, and **hybrid search**
 
 ---
 
-# Key Features
+## Why NeuroRag?
 
-* **Local-first architecture**
-  All data and models run locally. No external APIs required.
+Scientific work often involves:
 
-* **Private knowledge base**
-  Your papers and research files remain on your machine.
+- many PDFs and review papers
+- method sections scattered across papers
+- domain-specific terminology
+- modeling details that are hard to re-find later
+- code and documentation that need grounded retrieval
 
-* **Scientific document ingestion**
-  Converts PDFs to structured text for indexing.
+NeuroRag is intended to become a **personal AI research assistant** that helps with:
 
-* **Semantic search using vector embeddings**
-
-* **Local LLM integration via Ollama**
-
-* **Source-grounded answers**
+- literature lookup
+- section-aware scientific QA
+- neuroscience and ion channel questions
+- computational modeling and NEURON-related workflows
+- grounded answers from private local documents
 
 ---
 
-# RAG Pipeline Architecture
+## Project Status
 
-The system follows a standard Retrieval-Augmented Generation pipeline:
+NeuroRag has evolved from a **minimal but complete local RAG baseline** into a **structured document retrieval prototype**.
 
-```
+### Current state
+
+#### v1 baseline
+- PDF text extraction using `pypdf`
+- metadata CSV generation
+- loading documents into LangChain `Document` objects
+- semantic chunking
+- FAISS vector index
+- retrieval smoke test
+- local CLI chat with Ollama
+
+#### v2 structured pipeline
+- dual GROBID parsing:
+  - header TEI
+  - fulltext TEI
+- TEI → structured JSON conversion
+- section-aware and abstract-aware document loading
+- structured FAISS index
+- hybrid retrieval:
+  - dense retrieval (FAISS)
+  - lexical retrieval (BM25)
+  - fusion-based ranking
+- section-aware CLI chat with grounded source display
+
+### Current limitations
+- metadata extraction is still imperfect for some older PDFs
+- year extraction can still be noisy in some cases
+- some section titles remain messy depending on the source PDF
+- answer quality is already better than v1, but still needs further evaluation and refinement
+- no web UI yet
+- no formal benchmark/evaluation set yet
+
+---
+
+## Key Features
+
+- **Local-first architecture**  
+  All parsing, indexing, retrieval, and generation run locally.
+
+- **Private research corpus**  
+  Your PDFs, extracted text, parsed XML, JSON, and indexes stay on your machine.
+
+- **Two-level architecture**
+  - baseline flat RAG
+  - structured scientific-document RAG
+
+- **Scientific document parsing**  
+  Uses GROBID to extract structured content from papers.
+
+- **Section-aware retrieval**  
+  Retrieval is no longer limited to flat chunks; v2 works with abstracts and structured sections.
+
+- **Hybrid retrieval**  
+  Combines semantic retrieval and lexical retrieval.
+
+- **Local LLM integration via Ollama**
+
+- **Grounded answers with source IDs**
+
+---
+
+## Pipeline Overview
+
+### v1 baseline pipeline
+
+```text
 Scientific PDFs
       │
       ▼
 PDF Text Extraction
       │
       ▼
-Text Chunking
+Metadata CSV
       │
       ▼
-Embedding Model
-(HuggingFace Sentence Transformers)
+Document Loading
       │
       ▼
-Vector Database
-(FAISS)
+Chunking
+      │
+      ▼
+Embeddings
+      │
+      ▼
+FAISS
       │
       ▼
 Retriever
       │
       ▼
-Local LLM (Ollama)
+Ollama
       │
       ▼
 Answer with sources
 ```
 
----
+### v2 structured pipeline
 
-# What the current version does
-
-The current implementation provides a **minimal but complete local RAG pipeline**.
-
-### 1. PDF Extraction
-
-```
-src/extract_pdfs.py
-```
-
-* Reads PDFs from `data/raw/`
-* Extracts text using `pypdf`
-* Saves `.txt` files to `data/processed/`
-
----
-
-### 2. Metadata Generation
-
-```
-src/create_metadata.py
-```
-
-Creates a metadata table:
-
-```
-data/interim/paper_metadata.csv
-```
-
-Fields include:
-
-* filename
-* relative path
-* year
-* first author
-* category
-
-
-This metadata can later be used for **advanced filtering and retrieval**.
-
----
-
-### 3. Document Loading
-
-```
-src/load_documents.py
-```
-
-Loads processed text files and metadata into **LangChain `Document` objects**.
-
----
-
-### 4. Vector Index Creation
-
-```
-src/build_index.py
-```
-
-Steps:
-
-1. Split documents into chunks
-2. Generate embeddings using:
-
-```
-sentence-transformers/all-MiniLM-L6-v2
-```
-
-3. Store embeddings in a **FAISS vector database**
-
-The index is saved locally:
-
-```
-storage/faiss_index/
+```text
+Scientific PDFs
+      │
+      ▼
+GROBID parsing
+(header TEI + fulltext TEI)
+      │
+      ▼
+Structured JSON per paper
+      │
+      ▼
+Abstract/section-aware document loading
+      │
+      ▼
+Chunking
+      │
+      ▼
+Dense index (FAISS) + lexical retrieval (BM25)
+      │
+      ▼
+Hybrid retrieval / fusion
+      │
+      ▼
+Ollama
+      │
+      ▼
+Grounded answer with section-aware sources
 ```
 
 ---
 
-### 5. Retrieval Test
+## Repository Structure
 
-```
-src/test_retrieval.py
-```
-
-Runs a simple similarity search to verify that the vector index works.
-
----
-
-### 6. Local Chat Interface
-
-```
-src/chat_ollama.py
-```
-
-Provides a command-line chat interface.
-
-Workflow:
-
-1. User asks a question
-2. FAISS retrieves top-k relevant chunks
-3. Context is sent to a local Ollama model
-4. Model generates an answer grounded in the retrieved text
-5. Sources are printed alongside the answer
-
----
-
-# Repository Structure
-
-```
+```text
 NeuroRag/
 │
 ├── src/
-│   ├── extract_pdfs.py        # PDF → TXT conversion
-│   ├── create_metadata.py     # Generate metadata table
-│   ├── load_documents.py      # Load documents with metadata
-│   ├── build_index.py         # Build FAISS vector index
-│   ├── test_retrieval.py      # Retrieval smoke test
-│   └── chat_ollama.py         # CLI chat interface
+│   ├── extract_pdfs.py
+│   ├── create_metadata.py
+│   ├── load_documents.py
+│   ├── build_index.py
+│   ├── test_retrieval.py
+│   ├── chat_ollama.py
+│   │
+│   ├── parsing/
+│   │   ├── run_grobid.py
+│   │   ├── run_grobid_dual.py
+│   │   └── tei_to_json.py
+│   │
+│   └── v2/
+│       ├── load_structured_documents.py
+│       ├── build_structured_index.py
+│       ├── test_structured_retrieval.py
+│       ├── test_hybrid_retrieval.py
+│       └── chat_structured_ollama.py
+│
+├── data/                  # ignored by git
+│   ├── raw/
+│   ├── processed/
+│   └── interim/
+│       ├── tei_xml/
+│       ├── header_tei_xml/
+│       └── structured_json/
+│
+├── storage/               # ignored by git
+│   ├── faiss_index/
+│   └── faiss_index_v2_structured/
 │
 ├── requirements.txt
 ├── .gitignore
@@ -198,146 +208,365 @@ NeuroRag/
 
 ---
 
-# Data and Privacy
+## v1 Baseline Components
 
-This repository **does NOT include**:
+### 1. PDF extraction
 
-* research papers
-* PDFs
-* extracted text
-* vector indexes
+`src/extract_pdfs.py`
 
-The following folders are **ignored by Git**:
+- reads PDFs from `data/raw/`
+- extracts page text using `pypdf`
+- writes `.txt` files into `data/processed/`
 
-```
-data/
-storage/
-.venv/
-```
+### 2. Metadata generation
 
-This ensures:
+`src/create_metadata.py`
 
-* your research library remains **private**
-* the repository stays **lightweight**
+Creates:
+
+- `data/interim/paper_metadata.csv`
+
+Baseline fields:
+
+- filename
+- relative path
+- year
+- first author
+- category
+
+### 3. Flat document loading
+
+`src/load_documents.py`
+
+Loads processed text plus metadata into LangChain documents.
+
+### 4. Baseline index
+
+`src/build_index.py`
+
+- chunking with `RecursiveCharacterTextSplitter`
+- embeddings with `sentence-transformers/all-MiniLM-L6-v2`
+- FAISS storage in `storage/faiss_index/`
+
+### 5. Retrieval smoke test
+
+`src/test_retrieval.py`
+
+### 6. Baseline chat
+
+`src/chat_ollama.py`
+
+Simple local CLI RAG over the v1 index.
 
 ---
 
-# Installation
+## v2 Structured Pipeline Components
+
+### 1. GROBID parsing
+
+- `src/parsing/run_grobid.py`
+- `src/parsing/run_grobid_dual.py`
+
+The structured pipeline uses GROBID to produce:
+
+- fulltext TEI XML
+- header TEI XML
+
+Outputs are stored under:
+
+- `data/interim/tei_xml/`
+- `data/interim/header_tei_xml/`
+
+### 2. TEI → JSON conversion
+
+`src/parsing/tei_to_json.py`
+
+Builds one structured JSON record per paper in:
+
+- `data/interim/structured_json/`
+
+Each paper JSON contains:
+
+- paper-level metadata
+- abstract
+- section-aware body content
+- source paths
+
+### 3. Structured document loading
+
+`src/v2/load_structured_documents.py`
+
+Creates LangChain documents from:
+
+- abstract
+- section-level text
+
+while preserving metadata such as:
+
+- paper ID
+- title
+- year
+- DOI
+- keywords
+- section title
+- section type
+
+### 4. Structured index
+
+`src/v2/build_structured_index.py`
+
+Builds a separate FAISS index:
+
+- `storage/faiss_index_v2_structured/`
+
+### 5. Structured retrieval inspection
+
+- `src/v2/test_structured_retrieval.py`
+- `src/v2/test_hybrid_retrieval.py`
+
+Used to inspect:
+
+- dense retrieval
+- hybrid retrieval
+- section-aware evidence quality
+
+### 6. Structured chat
+
+`src/v2/chat_structured_ollama.py`
+
+Uses:
+
+- FAISS dense retrieval
+- BM25 lexical retrieval
+- fusion-based ranking
+- section-aware source display
+- local Ollama generation
+
+---
+
+## Installation
 
 Clone the repository:
 
-```
+```bash
 git clone https://github.com/fallahtp/NeuroRag.git
 cd NeuroRag
 ```
 
 Create a virtual environment:
 
-```
+```bash
 python -m venv .venv
 ```
 
-Activate it:
+Activate it on Windows:
 
-Windows:
-
-```
+```bash
 .venv\Scripts\activate
 ```
 
 Install dependencies:
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
 ---
 
-# Running the Pipeline
+## External Requirements
 
-### 1. Extract PDFs
+### Ollama
 
-Place your papers inside:
+NeuroRag uses a local Ollama model for answer generation.
 
+Make sure Ollama is installed and running.
+
+Example model used in the project:
+
+```text
+phi3:mini
 ```
+
+### Docker + GROBID
+
+The structured v2 pipeline uses GROBID through Docker.
+
+Typical workflow:
+
+- install Docker Desktop
+- run a local GROBID container
+- send PDFs to the local GROBID API from Python
+
+---
+
+## Running the v1 Pipeline
+
+### 1. Put PDFs in
+
+```text
 data/raw/
 ```
 
-Then run:
+### 2. Extract text
 
-```
+```bash
 python src/extract_pdfs.py
 ```
 
----
+### 3. Create metadata
 
-### 2. Create metadata
-
-```
+```bash
 python src/create_metadata.py
 ```
 
----
+### 4. Build the baseline index
 
-### 3. Build vector index
-
-```
+```bash
 python src/build_index.py
 ```
 
----
+### 5. Test retrieval
 
-### 4. Test retrieval
-
-```
+```bash
 python src/test_retrieval.py
 ```
 
----
+### 6. Start baseline chat
 
-### 5. Start the chat assistant
-
-Make sure **Ollama is installed and running**, then run:
-
-```
+```bash
 python src/chat_ollama.py
 ```
 
 ---
 
-# Future Improvements
+## Running the v2 Structured Pipeline
 
-Planned improvements for the project:
+### 1. Start GROBID
 
-* Better metadata-aware retrieval
-* Hybrid search (vector + keyword)
-* Improved prompt engineering
-* Web interface
-* Integration with NEURON modeling documentation
-* Research paper summarization
-* Code retrieval for computational neuroscience
+Run GROBID locally through Docker.
+
+### 2. Parse PDFs with GROBID
+
+```bash
+python src/parsing/run_grobid_dual.py
+```
+
+### 3. Convert TEI to structured JSON
+
+```bash
+python src/parsing/tei_to_json.py
+```
+
+### 4. Load structured documents
+
+```bash
+python src/v2/load_structured_documents.py
+```
+
+### 5. Build structured index
+
+```bash
+python src/v2/build_structured_index.py
+```
+
+### 6. Test structured retrieval
+
+```bash
+python src/v2/test_structured_retrieval.py
+python src/v2/test_hybrid_retrieval.py
+```
+
+### 7. Start structured chat
+
+```bash
+python src/v2/chat_structured_ollama.py
+```
 
 ---
 
-# Tech Stack
+## Data and Privacy
 
-* Python
-* LangChain
-* FAISS
-* HuggingFace embeddings
-* Ollama (local LLM)
-* PyPDF
+This repository does not include:
+
+- private PDFs
+- extracted text files
+- TEI XML outputs
+- structured JSON outputs
+- FAISS vector indexes
+- local virtual environments
+
+These remain local and are excluded via `.gitignore`.
+
+This keeps the repository:
+
+- private
+- lightweight
+- easier to share publicly as a portfolio project
 
 ---
 
-# Author
+## Why this project matters
 
-Mahdi Fallahtaherpazir
-PhD Researcher —  Neuroscience
+NeuroRag is not meant to be just a generic “chat with PDFs” demo.
+
+The goal is to build a domain-specific local research assistant for:
+
+- neuroscience literature
+- ion channel questions
+- spiral ganglion neuron research
+- computational modeling
+- NEURON / Python-related workflows
+
+The most important direction is not flashy UI, but:
+
+- better retrieval quality
+- better grounding
+- better trustworthiness
+- better domain specialization
+
+---
+
+## Roadmap
+
+### Near-term
+- metadata cleanup
+- better retrieval ranking
+- evaluation set for neuroscience questions
+- cleaner structured source display
+- improved README and project presentation
+
+### Next phase
+- reranking
+- better scientific table/caption extraction
+- web interface
+- richer metadata-aware filtering
+- benchmarking and retrieval metrics
+- domain-specific prompt modes for neuroscience / NEURON workflows
+
+---
+
+## Tech Stack
+
+- Python
+- LangChain
+- FAISS
+- HuggingFace sentence-transformer embeddings
+- BM25 / lexical retrieval
+- Ollama
+- PyPDF
+- GROBID
+- Docker
+
+---
+
+## Author
+
+**Mahdi Fallahtaherpazir**  
+PhD Researcher — Neuroscience  
 Medical University of Innsbruck
 
 ---
 
-# License
+## License
 
 MIT License
