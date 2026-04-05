@@ -4,7 +4,7 @@ import ollama
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parents[3]
 INDEX_DIR = BASE_DIR / "storage" / "faiss_index"
 
 OLLAMA_MODEL = "phi3:mini"

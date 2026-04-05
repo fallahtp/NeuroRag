@@ -6,7 +6,7 @@ import json
 import re
 import xml.etree.ElementTree as ET
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parents[4]
 FULLTEXT_TEI_DIR = BASE_DIR / "data" / "interim" / "tei_xml"
 HEADER_TEI_DIR = BASE_DIR / "data" / "interim" / "header_tei_xml"
 JSON_DIR = BASE_DIR / "data" / "interim" / "structured_json"

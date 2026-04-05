@@ -9,7 +9,7 @@ except ImportError:
 
 from load_documents import load_papers
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parents[3]
 INDEX_DIR = BASE_DIR / "storage" / "faiss_index"
 
 

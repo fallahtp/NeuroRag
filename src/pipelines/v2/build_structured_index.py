@@ -12,7 +12,7 @@ except ImportError:
 
 from load_structured_documents import load_structured_documents
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parents[3]
 INDEX_DIR = BASE_DIR / "storage" / "faiss_index_v2_structured"
 
 CHUNK_SIZE = 900

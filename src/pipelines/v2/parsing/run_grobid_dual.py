@@ -4,7 +4,7 @@ from pathlib import Path
 import argparse
 import requests
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parents[4]
 RAW_DIR = BASE_DIR / "data" / "raw"
 FULLTEXT_TEI_DIR = BASE_DIR / "data" / "interim" / "tei_xml"
 HEADER_TEI_DIR = BASE_DIR / "data" / "interim" / "header_tei_xml"

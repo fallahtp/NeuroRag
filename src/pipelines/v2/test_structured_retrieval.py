@@ -12,7 +12,7 @@ except ImportError:
     from langchain_community.embeddings import HuggingFaceEmbeddings
 
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parents[3]
 INDEX_DIR = BASE_DIR / "storage" / "faiss_index_v2_structured"
 
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
