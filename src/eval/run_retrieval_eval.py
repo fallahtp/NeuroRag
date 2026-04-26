@@ -17,11 +17,16 @@ except ImportError:
     from langchain_community.embeddings import HuggingFaceEmbeddings
 
 
+# ---------------------------------------------------------------------
+# Project paths
+# ---------------------------------------------------------------------
+
 BASE_DIR = Path(__file__).resolve().parents[2]
 SRC_DIR = BASE_DIR / "src"
-V2_DIR = SRC_DIR / "v2"
+V1_DIR = SRC_DIR / "pipelines" / "v1"
+V2_DIR = SRC_DIR / "pipelines" / "v2"
 
-for path in (SRC_DIR, V2_DIR):
+for path in (SRC_DIR, V1_DIR, V2_DIR):
     path_str = str(path)
     if path_str not in sys.path:
         sys.path.insert(0, path_str)
@@ -29,6 +34,10 @@ for path in (SRC_DIR, V2_DIR):
 from load_structured_documents import load_structured_documents  # noqa: E402
 from build_structured_index import split_documents  # noqa: E402
 
+
+# ---------------------------------------------------------------------
+# Configuration
+# ---------------------------------------------------------------------
 
 BENCHMARK_PATH = BASE_DIR / "benchmarks" / "retrieval_eval_questions.jsonl"
 RESULTS_DIR = BASE_DIR / "results"
@@ -44,6 +53,10 @@ RRF_K = 60
 MAX_CHUNKS_PER_PAPER = 2
 
 
+# ---------------------------------------------------------------------
+# Data structures
+# ---------------------------------------------------------------------
+
 @dataclass
 class EvalQuestion:
     id: str
@@ -56,9 +69,20 @@ class EvalQuestion:
         return bool(self.expected_section_keywords)
 
 
+# ---------------------------------------------------------------------
+# Utility functions
+# ---------------------------------------------------------------------
+
 def normalize_space(text: str) -> str:
     text = text.replace("\x00", " ")
     return re.sub(r"\s+", " ", text).strip()
+
+
+def normalize_for_match(text: str) -> str:
+    text = normalize_space(text).lower()
+    text = text.replace("–", "-")
+    text = text.replace("—", "-")
+    return text
 
 
 def create_embeddings():
@@ -105,38 +129,61 @@ def doc_to_row(rank: int, doc) -> dict:
     }
 
 
+# ---------------------------------------------------------------------
+# Benchmark loading
+# ---------------------------------------------------------------------
+
 def load_questions(path: Path) -> list[EvalQuestion]:
     if not path.exists():
         raise FileNotFoundError(f"Benchmark file not found: {path}")
 
     questions: list[EvalQuestion] = []
 
-    with path.open("r", encoding="utf-8") as f:
-        for line_no, raw_line in enumerate(f, start=1):
-            line = raw_line.strip()
-            if not line:
-                continue
+    if path.suffix.lower() == ".json":
+        raw_items = json.loads(path.read_text(encoding="utf-8"))
+        if not isinstance(raw_items, list):
+            raise ValueError(f"Expected JSON array in benchmark file: {path}")
+    else:
+        raw_items = []
+        with path.open("r", encoding="utf-8") as f:
+            for line_no, raw_line in enumerate(f, start=1):
+                line = raw_line.strip()
+                if not line:
+                    continue
+                try:
+                    raw_items.append(json.loads(line))
+                except json.JSONDecodeError as exc:
+                    raise ValueError(f"Invalid JSONL at {path}:{line_no}: {exc}") from exc
 
-            data = json.loads(line)
+    for index, data in enumerate(raw_items, start=1):
+        expected_paper_ids = data.get("expected_paper_ids", data.get("expected_doc_ids", []))
+        expected_section_keywords = data.get(
+            "expected_section_keywords",
+            data.get("expected_section_titles", []),
+        )
 
-            question = EvalQuestion(
-                id=data["id"],
-                question=data["question"],
-                expected_paper_ids=data["expected_paper_ids"],
-                expected_section_keywords=data.get("expected_section_keywords", []),
-                notes=data.get("notes", ""),
-            )
+        question = EvalQuestion(
+            id=data["id"],
+            question=data["question"],
+            expected_paper_ids=expected_paper_ids,
+            expected_section_keywords=expected_section_keywords,
+            notes=data.get("notes", ""),
+        )
 
-            if not question.expected_paper_ids:
-                raise ValueError(f"{path}:{line_no} has no expected_paper_ids")
+        if not question.expected_paper_ids:
+            raise ValueError(f"{path}: item {index} has no expected_paper_ids")
 
-            questions.append(question)
+        questions.append(question)
 
     if not questions:
         raise ValueError(f"No benchmark questions found in: {path}")
 
     return questions
 
+
+# ---------------------------------------------------------------------
+# Retriever loading
+# ---------------------------------------------------------------------
 
 def load_faiss_db(index_dir: Path):
     if not index_dir.exists():
@@ -156,6 +203,10 @@ def build_v2_bm25_retriever():
     retriever.k = DEFAULT_FETCH_K
     return retriever
 
+
+# ---------------------------------------------------------------------
+# Retrieval functions
+# ---------------------------------------------------------------------
 
 def v1_dense_retrieve(db, query: str, top_k: int, fetch_k: int) -> list[dict]:
     docs = db.similarity_search(query, k=max(top_k, fetch_k))
@@ -185,6 +236,7 @@ def fuse_rrf(dense_docs: list, bm25_docs: list) -> list:
 
     fused = [(doc_map[key], score) for key, score in score_map.items()]
     fused.sort(key=lambda x: x[1], reverse=True)
+
     return [doc for doc, _ in fused]
 
 
@@ -201,6 +253,7 @@ def select_diverse_docs(docs: list, top_k: int) -> list:
 
         paper_id = doc.metadata.get("paper_id", "unknown")
         count = per_paper_counts.get(paper_id, 0)
+
         if count >= MAX_CHUNKS_PER_PAPER:
             continue
 
@@ -213,7 +266,13 @@ def select_diverse_docs(docs: list, top_k: int) -> list:
     return selected
 
 
-def v2_hybrid_retrieve(dense_db, bm25_retriever, query: str, top_k: int, fetch_k: int) -> list[dict]:
+def v2_hybrid_retrieve(
+    dense_db,
+    bm25_retriever,
+    query: str,
+    top_k: int,
+    fetch_k: int,
+) -> list[dict]:
     dense_docs = dense_db.similarity_search(query, k=max(top_k, fetch_k))
     bm25_docs = bm25_retriever.invoke(query)[: max(top_k, fetch_k)]
 
@@ -223,9 +282,14 @@ def v2_hybrid_retrieve(dense_db, bm25_retriever, query: str, top_k: int, fetch_k
     return [doc_to_row(i, doc) for i, doc in enumerate(final_docs, start=1)]
 
 
+# ---------------------------------------------------------------------
+# Matching logic
+# ---------------------------------------------------------------------
+
 def paper_match(row: dict, question: EvalQuestion) -> bool:
-    expected = {pid.lower() for pid in question.expected_paper_ids}
-    return row["paper_id"].lower() in expected
+    expected = {normalize_for_match(pid) for pid in question.expected_paper_ids}
+    actual = normalize_for_match(row["paper_id"])
+    return actual in expected
 
 
 def section_match(row: dict, question: EvalQuestion) -> bool:
@@ -235,8 +299,14 @@ def section_match(row: dict, question: EvalQuestion) -> bool:
     if not paper_match(row, question):
         return False
 
-    searchable = f"{row.get('section_title', '')} {row.get('preview', '')}".lower()
-    return any(keyword.lower() in searchable for keyword in question.expected_section_keywords)
+    searchable = normalize_for_match(
+        f"{row.get('section_title', '')} {row.get('preview', '')}"
+    )
+
+    return any(
+        normalize_for_match(keyword) in searchable
+        for keyword in question.expected_section_keywords
+    )
 
 
 def first_matching_rank(rows: list[dict], matcher: Callable[[dict], bool]) -> int | None:
@@ -250,7 +320,17 @@ def reciprocal_rank(rank: int | None) -> float:
     return 0.0 if rank is None else 1.0 / rank
 
 
-def evaluate_pipeline(name: str, retrieve_fn: Callable[[str, int, int], list[dict]], questions: list[EvalQuestion], top_k: int, fetch_k: int) -> tuple[dict, list[dict]]:
+# ---------------------------------------------------------------------
+# Evaluation
+# ---------------------------------------------------------------------
+
+def evaluate_pipeline(
+    name: str,
+    retrieve_fn: Callable[[str, int, int], list[dict]],
+    questions: list[EvalQuestion],
+    top_k: int,
+    fetch_k: int,
+) -> tuple[dict, list[dict]]:
     per_question = []
 
     for question in questions:
@@ -277,10 +357,26 @@ def evaluate_pipeline(name: str, retrieve_fn: Callable[[str, int, int], list[dic
     summary = {
         "pipeline": name,
         "questions": total,
-        "paper_hit_at_1": sum(1 for item in per_question if item["paper_rank"] is not None and item["paper_rank"] <= 1) / total,
-        "paper_hit_at_3": sum(1 for item in per_question if item["paper_rank"] is not None and item["paper_rank"] <= 3) / total,
-        "paper_hit_at_5": sum(1 for item in per_question if item["paper_rank"] is not None and item["paper_rank"] <= 5) / total,
-        "paper_mrr": sum(reciprocal_rank(item["paper_rank"]) for item in per_question) / total,
+        "paper_hit_at_1": sum(
+            1
+            for item in per_question
+            if item["paper_rank"] is not None and item["paper_rank"] <= 1
+        )
+        / total,
+        "paper_hit_at_3": sum(
+            1
+            for item in per_question
+            if item["paper_rank"] is not None and item["paper_rank"] <= 3
+        )
+        / total,
+        "paper_hit_at_5": sum(
+            1
+            for item in per_question
+            if item["paper_rank"] is not None and item["paper_rank"] <= 5
+        )
+        / total,
+        "paper_mrr": sum(reciprocal_rank(item["paper_rank"]) for item in per_question)
+        / total,
         "section_questions": len(section_subset),
         "section_hit_at_3": None,
         "section_hit_at_5": None,
@@ -288,14 +384,23 @@ def evaluate_pipeline(name: str, retrieve_fn: Callable[[str, int, int], list[dic
 
     if section_subset:
         summary["section_hit_at_3"] = sum(
-            1 for item in section_subset if item["section_rank"] is not None and item["section_rank"] <= 3
+            1
+            for item in section_subset
+            if item["section_rank"] is not None and item["section_rank"] <= 3
         ) / len(section_subset)
+
         summary["section_hit_at_5"] = sum(
-            1 for item in section_subset if item["section_rank"] is not None and item["section_rank"] <= 5
+            1
+            for item in section_subset
+            if item["section_rank"] is not None and item["section_rank"] <= 5
         ) / len(section_subset)
 
     return summary, per_question
 
+
+# ---------------------------------------------------------------------
+# Reporting
+# ---------------------------------------------------------------------
 
 def pct(value: float | None) -> str:
     if value is None:
@@ -330,8 +435,13 @@ def print_summary(summary_by_pipeline: dict[str, dict]) -> None:
         )
 
 
-def build_markdown_report(benchmark_path: Path, summary_by_pipeline: dict[str, dict], per_query_by_pipeline: dict[str, list[dict]]) -> str:
+def build_markdown_report(
+    benchmark_path: Path,
+    summary_by_pipeline: dict[str, dict],
+    per_query_by_pipeline: dict[str, list[dict]],
+) -> str:
     pipelines = list(summary_by_pipeline.keys())
+
     lines = [
         "# NeuroRag Retrieval Evaluation",
         "",
@@ -346,10 +456,14 @@ def build_markdown_report(benchmark_path: Path, summary_by_pipeline: dict[str, d
     for pipeline_name in pipelines:
         summary = summary_by_pipeline[pipeline_name]
         lines.append(
-            f"| {pipeline_name} | {summary['questions']} | {pct(summary['paper_hit_at_1'])} | "
-            f"{pct(summary['paper_hit_at_3'])} | {pct(summary['paper_hit_at_5'])} | "
-            f"{score(summary['paper_mrr'])} | {summary['section_questions']} | "
-            f"{pct(summary['section_hit_at_3'])} | {pct(summary['section_hit_at_5'])} |"
+            f"| {pipeline_name} | {summary['questions']} | "
+            f"{pct(summary['paper_hit_at_1'])} | "
+            f"{pct(summary['paper_hit_at_3'])} | "
+            f"{pct(summary['paper_hit_at_5'])} | "
+            f"{score(summary['paper_mrr'])} | "
+            f"{summary['section_questions']} | "
+            f"{pct(summary['section_hit_at_3'])} | "
+            f"{pct(summary['section_hit_at_5'])} |"
         )
 
     lines.extend(
@@ -371,14 +485,20 @@ def build_markdown_report(benchmark_path: Path, summary_by_pipeline: dict[str, d
     for item in first_pipeline_items:
         qid = item["id"]
         question_text = item["question"].replace("|", "\\|")
+
         ranks = []
         for pipeline in pipelines:
             rank = per_pipeline_maps[pipeline][qid]["paper_rank"]
             ranks.append(str(rank) if rank is not None else "miss")
+
         lines.append(f"| {qid} | {question_text} | " + " | ".join(ranks) + " |")
 
     return "\n".join(lines) + "\n"
 
+
+# ---------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------
 
 def main():
     parser = argparse.ArgumentParser()
@@ -401,7 +521,12 @@ def main():
     else:
         summary, per_query = evaluate_pipeline(
             "v1_dense",
-            lambda query, top_k, fetch_k: v1_dense_retrieve(v1_db, query, top_k, fetch_k),
+            lambda query, top_k, fetch_k: v1_dense_retrieve(
+                v1_db,
+                query,
+                top_k,
+                fetch_k,
+            ),
             questions,
             args.top_k,
             args.fetch_k,
@@ -414,7 +539,12 @@ def main():
     else:
         summary, per_query = evaluate_pipeline(
             "v2_dense",
-            lambda query, top_k, fetch_k: v2_dense_retrieve(v2_db, query, top_k, fetch_k),
+            lambda query, top_k, fetch_k: v2_dense_retrieve(
+                v2_db,
+                query,
+                top_k,
+                fetch_k,
+            ),
             questions,
             args.top_k,
             args.fetch_k,
@@ -429,7 +559,13 @@ def main():
         else:
             summary, per_query = evaluate_pipeline(
                 "v2_hybrid",
-                lambda query, top_k, fetch_k: v2_hybrid_retrieve(v2_db, bm25_retriever, query, top_k, fetch_k),
+                lambda query, top_k, fetch_k: v2_hybrid_retrieve(
+                    v2_db,
+                    bm25_retriever,
+                    query,
+                    top_k,
+                    fetch_k,
+                ),
                 questions,
                 args.top_k,
                 args.fetch_k,
@@ -451,9 +587,17 @@ def main():
         "per_query_by_pipeline": per_query_by_pipeline,
     }
 
-    json_path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+    json_path.write_text(
+        json.dumps(payload, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+
     md_path.write_text(
-        build_markdown_report(benchmark_path, summary_by_pipeline, per_query_by_pipeline),
+        build_markdown_report(
+            benchmark_path,
+            summary_by_pipeline,
+            per_query_by_pipeline,
+        ),
         encoding="utf-8",
     )
 
