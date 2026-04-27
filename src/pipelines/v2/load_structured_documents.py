@@ -6,7 +6,7 @@ import re
 
 from langchain_core.documents import Document
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parents[3]
 JSON_DIR = BASE_DIR / "data" / "interim" / "structured_json"
 
 SKIP_SECTION_TYPES = {

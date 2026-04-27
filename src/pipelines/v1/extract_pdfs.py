@@ -1,7 +1,7 @@
 from pathlib import Path
 from pypdf import PdfReader
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parents[3]
 RAW_DIR = BASE_DIR / "data" / "raw"
 OUT_DIR = BASE_DIR / "data" / "processed"
 

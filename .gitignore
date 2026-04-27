@@ -22,3 +22,5 @@ storage/faiss_index_v2_structured/
 
 # logs
 *.log
+# generated evaluation detail files
+results/*.json

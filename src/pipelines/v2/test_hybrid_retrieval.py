@@ -15,7 +15,7 @@ except ImportError:
 from load_structured_documents import load_structured_documents
 from build_structured_index import split_documents
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+BASE_DIR = Path(__file__).resolve().parents[3]
 INDEX_DIR = BASE_DIR / "storage" / "faiss_index_v2_structured"
 
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
