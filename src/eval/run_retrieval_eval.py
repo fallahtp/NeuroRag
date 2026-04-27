@@ -442,6 +442,51 @@ def build_markdown_report(
 ) -> str:
     pipelines = list(summary_by_pipeline.keys())
 
+    def md_escape(value: object) -> str:
+        text = "" if value is None else str(value)
+        return text.replace("|", "\\|").replace("\n", "<br>")
+
+    def rank_text(rank: int | None) -> str:
+        return "miss" if rank is None else str(rank)
+
+    def format_list(values: list[str]) -> str:
+        if not values:
+            return "n/a"
+        return "<br>".join(md_escape(value) for value in values)
+
+    def top_results_brief(item: dict, max_rows: int = 5) -> str:
+        rows = item.get("top_results", [])[:max_rows]
+        if not rows:
+            return "n/a"
+
+        parts = []
+        for row in rows:
+            rank = row.get("rank", "")
+            paper_id = md_escape(row.get("paper_id", ""))
+            section_title = md_escape(row.get("section_title", "")) or "(no section)"
+            parts.append(f"{rank}. `{paper_id}` - {section_title}")
+
+        return "<br>".join(parts)
+
+    def likely_issue(item: dict) -> str:
+        paper_rank = item.get("paper_rank")
+        section_rank = item.get("section_rank")
+        has_section_target = bool(item.get("expected_section_keywords"))
+
+        if paper_rank is None:
+            return "Expected paper was not retrieved in top-k."
+
+        if paper_rank > 3:
+            return "Expected paper was retrieved, but ranked below top 3."
+
+        if has_section_target and section_rank is None:
+            return "Expected paper was retrieved, but expected section/keyword was not found in top-k."
+
+        if has_section_target and section_rank > 3:
+            return "Expected section was found, but ranked below top 3."
+
+        return "OK."
+
     lines = [
         "# NeuroRag Retrieval Evaluation",
         "",
@@ -466,6 +511,12 @@ def build_markdown_report(
             f"{pct(summary['section_hit_at_5'])} |"
         )
 
+    first_pipeline_items = per_query_by_pipeline[pipelines[0]]
+    per_pipeline_maps = {
+        pipeline: {item["id"]: item for item in items}
+        for pipeline, items in per_query_by_pipeline.items()
+    }
+
     lines.extend(
         [
             "",
@@ -476,22 +527,131 @@ def build_markdown_report(
         ]
     )
 
-    first_pipeline_items = per_query_by_pipeline[pipelines[0]]
-    per_pipeline_maps = {
-        pipeline: {item["id"]: item for item in items}
-        for pipeline, items in per_query_by_pipeline.items()
-    }
-
     for item in first_pipeline_items:
         qid = item["id"]
-        question_text = item["question"].replace("|", "\\|")
+        question_text = md_escape(item["question"])
 
         ranks = []
         for pipeline in pipelines:
             rank = per_pipeline_maps[pipeline][qid]["paper_rank"]
-            ranks.append(str(rank) if rank is not None else "miss")
+            ranks.append(rank_text(rank))
 
         lines.append(f"| {qid} | {question_text} | " + " | ".join(ranks) + " |")
+
+    lines.extend(
+        [
+            "",
+            "## Per-Question Section Match Rank",
+            "",
+            "Section rank is calculated only for benchmark items with `expected_section_keywords`.",
+            "",
+            "| Question ID | Question | " + " | ".join(pipelines) + " |",
+            "|---|---|" + "|".join("---:" for _ in pipelines) + "|",
+        ]
+    )
+
+    for item in first_pipeline_items:
+        qid = item["id"]
+        question_text = md_escape(item["question"])
+
+        ranks = []
+        for pipeline in pipelines:
+            pipeline_item = per_pipeline_maps[pipeline][qid]
+            if not pipeline_item["expected_section_keywords"]:
+                ranks.append("n/a")
+            else:
+                ranks.append(rank_text(pipeline_item["section_rank"]))
+
+        lines.append(f"| {qid} | {question_text} | " + " | ".join(ranks) + " |")
+
+    lines.extend(
+        [
+            "",
+            "## Weak Case Analysis",
+            "",
+            "A weak case means the expected paper or section was not found in the top 3 results. Some weak cases may still count as Hit@5.",
+        ]
+    )
+
+    for pipeline in pipelines:
+        items = per_query_by_pipeline[pipeline]
+
+        paper_weak = [
+            item for item in items
+            if item["paper_rank"] is None or item["paper_rank"] > 3
+        ]
+
+        section_weak = [
+            item for item in items
+            if item["expected_section_keywords"]
+            and (item["section_rank"] is None or item["section_rank"] > 3)
+        ]
+
+        lines.extend(
+            [
+                "",
+                f"### {pipeline}",
+                "",
+            ]
+        )
+
+        if not paper_weak and not section_weak:
+            lines.append("No weak cases at Hit@3.")
+            continue
+
+        lines.extend(
+            [
+                "#### Paper-level weak cases",
+                "",
+            ]
+        )
+
+        if not paper_weak:
+            lines.append("No paper-level weak cases at Hit@3.")
+        else:
+            lines.extend(
+                [
+                    "| Question ID | Paper Rank | Expected Paper | Likely Issue | Top Retrieved Results |",
+                    "|---|---:|---|---|---|",
+                ]
+            )
+
+            for item in paper_weak:
+                lines.append(
+                    f"| {item['id']} | "
+                    f"{rank_text(item['paper_rank'])} | "
+                    f"{format_list(item['expected_paper_ids'])} | "
+                    f"{md_escape(likely_issue(item))} | "
+                    f"{top_results_brief(item)} |"
+                )
+
+        lines.extend(
+            [
+                "",
+                "#### Section-level weak cases",
+                "",
+            ]
+        )
+
+        if not section_weak:
+            lines.append("No section-level weak cases at Hit@3.")
+        else:
+            lines.extend(
+                [
+                    "| Question ID | Paper Rank | Section Rank | Expected Section Keywords | Likely Issue | Top Retrieved Results |",
+                    "|---|---:|---:|---|---|---|",
+                ]
+            )
+
+            for item in section_weak:
+                lines.append(
+                    f"| {item['id']} | "
+                    f"{rank_text(item['paper_rank'])} | "
+                    f"{rank_text(item['section_rank'])} | "
+                    f"{format_list(item['expected_section_keywords'])} | "
+                    f"{md_escape(likely_issue(item))} | "
+                    f"{top_results_brief(item)} |"
+                )
 
     return "\n".join(lines) + "\n"
 
