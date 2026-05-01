@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parents[3]
 INDEX_DIR = BASE_DIR / "storage" / "faiss_index_v2_structured"
 
 EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-OLLAMA_MODEL = "phi3:mini"
+OLLAMA_MODEL = "qwen2.5:7b-instruct"
 
 TOP_K_FETCH = 12
 TOP_K_FINAL = 6
