@@ -25,8 +25,9 @@ BASE_DIR = Path(__file__).resolve().parents[2]
 SRC_DIR = BASE_DIR / "src"
 V1_DIR = SRC_DIR / "pipelines" / "v1"
 V2_DIR = SRC_DIR / "pipelines" / "v2"
+V3_DIR = SRC_DIR / "pipelines" / "v3"
 
-for path in (SRC_DIR, V1_DIR, V2_DIR):
+for path in (SRC_DIR, V1_DIR, V2_DIR, V3_DIR):
     path_str = str(path)
     if path_str not in sys.path:
         sys.path.insert(0, path_str)
@@ -51,6 +52,11 @@ DEFAULT_TOP_K = 5
 DEFAULT_FETCH_K = 12
 RRF_K = 60
 MAX_CHUNKS_PER_PAPER = 2
+
+# Pool size passed to the cross-encoder before final selection. Larger pool
+# = more chances to find the right doc, slightly slower. 16 is a balanced
+# default given our corpus size.
+RERANK_POOL_SIZE = 16
 
 
 # ---------------------------------------------------------------------
@@ -282,6 +288,43 @@ def v2_hybrid_retrieve(
     return [doc_to_row(i, doc) for i, doc in enumerate(final_docs, start=1)]
 
 
+def v3_reranked_retrieve(
+    dense_db,
+    bm25_retriever,
+    rerank_fn: Callable,
+    query: str,
+    top_k: int,
+    fetch_k: int,
+) -> list[dict]:
+    """
+    v3 = v2 hybrid retrieval + cross-encoder reranking.
+
+    Pipeline:
+      1. Dense (FAISS) and lexical (BM25) retrieve fetch_k candidates each.
+      2. RRF fusion merges them into a ranked candidate pool.
+      3. Cross-encoder reranks the top RERANK_POOL_SIZE candidates by
+         scoring (query, doc) pairs directly.
+      4. Per-paper diversity cap selects the final top_k.
+
+    Diversity filtering happens AFTER reranking so the cross-encoder sees
+    every candidate from a given paper (otherwise we might filter out the
+    chunk it would have ranked highest).
+    """
+    dense_docs = dense_db.similarity_search(query, k=max(top_k, fetch_k))
+    bm25_docs = bm25_retriever.invoke(query)[: max(top_k, fetch_k)]
+
+    fused_docs = fuse_rrf(dense_docs, bm25_docs)
+
+    # Pass the top-N fused candidates to the cross-encoder.
+    pool = fused_docs[:RERANK_POOL_SIZE]
+    reranked = rerank_fn(query, pool, len(pool))
+    reranked_docs = [doc for doc, _score in reranked]
+
+    final_docs = select_diverse_docs(reranked_docs, top_k)
+
+    return [doc_to_row(i, doc) for i, doc in enumerate(final_docs, start=1)]
+
+
 # ---------------------------------------------------------------------
 # Matching logic
 # ---------------------------------------------------------------------
@@ -418,13 +461,13 @@ def print_summary(summary_by_pipeline: dict[str, dict]) -> None:
     print("\nSummary")
     print("-" * 92)
     print(
-        f"{'pipeline':<12} {'q':>3} {'hit@1':>8} {'hit@3':>8} {'hit@5':>8} "
+        f"{'pipeline':<14} {'q':>3} {'hit@1':>8} {'hit@3':>8} {'hit@5':>8} "
         f"{'mrr':>8} {'sec@3':>8} {'sec@5':>8}"
     )
 
     for pipeline_name, summary in summary_by_pipeline.items():
         print(
-            f"{pipeline_name:<12} "
+            f"{pipeline_name:<14} "
             f"{summary['questions']:>3} "
             f"{pct(summary['paper_hit_at_1']):>8} "
             f"{pct(summary['paper_hit_at_3']):>8} "
@@ -665,6 +708,11 @@ def main():
     parser.add_argument("--benchmark", type=str, default=str(BENCHMARK_PATH))
     parser.add_argument("--top-k", type=int, default=DEFAULT_TOP_K)
     parser.add_argument("--fetch-k", type=int, default=DEFAULT_FETCH_K)
+    parser.add_argument(
+        "--skip-v3",
+        action="store_true",
+        help="Skip v3_reranked (e.g. if sentence-transformers is unavailable)",
+    )
     args = parser.parse_args()
 
     benchmark_path = Path(args.benchmark)
@@ -694,8 +742,10 @@ def main():
         summary_by_pipeline["v1_dense"] = summary
         per_query_by_pipeline["v1_dense"] = per_query
 
+    bm25_retriever = None
+
     if v2_db is None:
-        print(f"[WARN] Skipping v2_dense and v2_hybrid because index is missing: {V2_INDEX_DIR}")
+        print(f"[WARN] Skipping v2_dense, v2_hybrid, v3_reranked because index is missing: {V2_INDEX_DIR}")
     else:
         summary, per_query = evaluate_pipeline(
             "v2_dense",
@@ -715,7 +765,7 @@ def main():
         try:
             bm25_retriever = build_v2_bm25_retriever()
         except Exception as exc:
-            print(f"[WARN] Skipping v2_hybrid because BM25 setup failed: {exc}")
+            print(f"[WARN] Skipping v2_hybrid and v3_reranked because BM25 setup failed: {exc}")
         else:
             summary, per_query = evaluate_pipeline(
                 "v2_hybrid",
@@ -732,6 +782,34 @@ def main():
             )
             summary_by_pipeline["v2_hybrid"] = summary
             per_query_by_pipeline["v2_hybrid"] = per_query
+
+            if not args.skip_v3:
+                try:
+                    from rerank import rerank_documents
+
+                    # Warm the singleton up front so loading time isn't
+                    # billed against the first query.
+                    from rerank import get_reranker
+                    get_reranker()
+
+                    summary, per_query = evaluate_pipeline(
+                        "v3_reranked",
+                        lambda query, top_k, fetch_k: v3_reranked_retrieve(
+                            v2_db,
+                            bm25_retriever,
+                            rerank_documents,
+                            query,
+                            top_k,
+                            fetch_k,
+                        ),
+                        questions,
+                        args.top_k,
+                        args.fetch_k,
+                    )
+                    summary_by_pipeline["v3_reranked"] = summary
+                    per_query_by_pipeline["v3_reranked"] = per_query
+                except Exception as exc:
+                    print(f"[WARN] Skipping v3_reranked because reranker setup failed: {exc}")
 
     if not summary_by_pipeline:
         raise RuntimeError("No pipelines were evaluated. Build at least one index first.")
