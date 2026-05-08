@@ -15,7 +15,7 @@
 - **Cross-encoder reranking** — v3 adds a learned `(query, document)` relevance model on top of hybrid retrieval
 - **Section-aware retrieval** — v2 and v3 work at the level of abstract, results, methods, and discussion sections, not just flat chunks
 - **Grounded answers** — responses cite source IDs from retrieved context; the LLM is instructed not to fabricate
-- **Evaluated** — a 63-question domain benchmark across 15 papers tracks paper-level and section-level retrieval quality across all pipelines
+- **Two evaluation harnesses** — a 63-question retrieval benchmark (paper- and section-level Hit@K and MRR) and a 63-question answer-quality benchmark (fact recall, citation grounding, numeric hallucination)
 
 ---
 
@@ -40,6 +40,34 @@ This means the cross-encoder reranker isn't merely additive on top of hybrid ret
 
 ---
 
+## Answer-Quality Benchmark Results
+
+A separate evaluation harness measures the **generation step** of the v2 hybrid pipeline on the same 63-question benchmark. For each question, the harness runs the full retrieval → prompt → LLM stack and scores the answer on:
+
+- **Fact recall** — whether expected gold-standard tokens appear in the answer (strict substring match)
+- **Citation validity** — whether the bracket IDs `[N]` cited by the model are actually in range
+- **Citation grounding** — whether the cited evidence chunk contains the expected gold-standard token
+- **Numeric hallucination** — whether number-with-unit values in the answer are absent from the retrieved evidence (the most safety-relevant metric for scientific QA)
+
+Two local LLMs were compared as the generation model:
+
+| Metric | phi3:mini (3.8B) | qwen2.5:7b-instruct (7B) |
+|---|---:|---:|
+| Mean fact recall (strict) | 24.1% | 23.9% |
+| Mean citation validity | 97.6% | **100.0%** |
+| Mean citation grounding | 33.4% | **39.7%** |
+| Answers with at least one citation | 62/63 | **63/63** |
+| Answers without numeric hallucination | 59/63 | **63/63** |
+| Total fabricated numeric values | 7 | **0** |
+
+**`qwen2.5:7b-instruct` is the default generation model.** It eliminated numeric hallucinations entirely (0 vs 7 across 63 answers), produced no invalid citations, and improved citation grounding by 6 points — without regressing on fact recall.
+
+> Strict-substring fact recall (~24%) is a noisy floor, not a ceiling: 40+ correct answers per model score 0% because they paraphrase ("picoamperes" instead of `pA`, "timing variability" instead of `jitter`). Both models paraphrase at similar rates, so the comparison is undistorted, but the absolute number understates real correctness substantially. The roadmap proposes replacing this with an LLM-as-judge metric using a different model family (e.g. Google Gemini 2.5 Flash) to avoid self-judgment bias.
+
+The full writeup, including per-question failure modes and limitations, is in [`results/model_comparison.md`](results/model_comparison.md).
+
+---
+
 ## Architecture Overview
 
 ### v1 — Flat Baseline Pipeline
@@ -47,7 +75,7 @@ This means the cross-encoder reranker isn't merely additive on top of hybrid ret
 ```
 PDFs → pypdf extraction → metadata CSV → LangChain Documents
      → RecursiveCharacterTextSplitter → sentence-transformer embeddings
-     → FAISS index → similarity search → Ollama (phi3:mini) → answer
+     → FAISS index → similarity search → Ollama (qwen2.5:7b-instruct) → answer
 ```
 
 ### v2 — Structured Pipeline
@@ -57,7 +85,7 @@ PDFs → GROBID (header + fulltext TEI XML) → structured JSON per paper
      → abstract + section-aware document loading
      → metadata-enriched chunking → FAISS dense index
      → hybrid retrieval: FAISS + BM25 + RRF fusion
-     → evidence sentence selection → Ollama (phi3:mini) → grounded answer
+     → evidence sentence selection → Ollama (qwen2.5:7b-instruct) → grounded answer
 ```
 
 ### v3 — Reranked Pipeline
@@ -99,13 +127,18 @@ NeuroRag/
 │   │       └── rerank.py
 │   │
 │   └── eval/
-│       └── run_retrieval_eval.py      # Evaluation harness (all pipelines)
+│       ├── run_retrieval_eval.py      # Retrieval benchmark harness
+│       └── run_answer_eval.py         # Answer-quality benchmark harness
 │
 ├── benchmarks/
-│   └── retrieval_eval_questions.jsonl # 63-question domain benchmark
+│   ├── retrieval_eval_questions.jsonl # 63-question retrieval benchmark
+│   └── answer_eval_questions.jsonl    # 63-question answer-quality benchmark
 │
 ├── results/
-│   └── retrieval_eval_summary.md      # Latest benchmark results
+│   ├── retrieval_eval_summary.md      # Latest retrieval benchmark results
+│   ├── answer_eval_summary_qwen2.5_7b_n63.md
+│   ├── answer_eval_summary_phi3_mini_n63.md
+│   └── model_comparison.md            # Side-by-side answer-quality comparison
 │
 ├── data/                              # gitignored — stays local
 ├── storage/                           # gitignored — stays local
@@ -128,7 +161,13 @@ pip install -r requirements.txt
 
 ### External Requirements
 
-**Ollama** — local LLM inference. Install from [ollama.com](https://ollama.com) and pull a model:
+**Ollama** — local LLM inference. Install from [ollama.com](https://ollama.com) and pull the default generation model:
+
+```bash
+ollama pull qwen2.5:7b-instruct
+```
+
+To reproduce the model comparison, also pull `phi3:mini`:
 
 ```bash
 ollama pull phi3:mini
@@ -171,7 +210,7 @@ python src/pipelines/v2/build_structured_index.py
 python src/pipelines/v2/test_structured_retrieval.py
 python src/pipelines/v2/test_hybrid_retrieval.py
 
-# 6. Interactive CLI chat
+# 6. Interactive CLI chat (uses qwen2.5:7b-instruct by default)
 python src/pipelines/v2/chat_structured_ollama.py
 ```
 
@@ -188,7 +227,9 @@ The first run downloads `cross-encoder/ms-marco-MiniLM-L-6-v2` (~90 MB) from Hug
 
 ---
 
-## Running the Retrieval Evaluation
+## Running the Evaluations
+
+### Retrieval evaluation
 
 ```bash
 python src/eval/run_retrieval_eval.py
@@ -196,7 +237,19 @@ python src/eval/run_retrieval_eval.py
 
 Evaluates all available pipelines (v1 dense, v2 dense, v2 hybrid, v3 reranked) against `benchmarks/retrieval_eval_questions.jsonl` and writes results to `results/retrieval_eval_summary.md`. Runtime is roughly 2–4 minutes on CPU.
 
-The evaluation harness reports paper-level Hit@K and MRR, section-level Hit@K, and an automated weak-case analysis identifying which questions each pipeline failed on.
+### Answer-quality evaluation
+
+```bash
+# Default model (qwen2.5:7b-instruct)
+python src/eval/run_answer_eval.py
+
+# Or specify a different model
+python src/eval/run_answer_eval.py --model phi3:mini
+```
+
+Runs the full v2 hybrid retrieval → prompt → LLM stack on each benchmark question and scores the resulting answer on fact recall, citation validity, citation grounding, and numeric hallucination. Writes results to `results/answer_eval_summary.{json,md}`. Runtime is ~10 min on `phi3:mini` and ~25–40 min on `qwen2.5:7b-instruct` (CPU-bound, depends on hardware).
+
+To reproduce the side-by-side model comparison in `results/model_comparison.md`, run both models and rename the outputs in between (see that file's "Reproducing These Numbers" section).
 
 ---
 
@@ -212,8 +265,10 @@ The evaluation harness reports paper-level Hit@K and MRR, section-level Hit@K, a
 | Lexical retrieval | BM25 (rank-bm25) |
 | Fusion ranking | Reciprocal Rank Fusion (RRF) |
 | Reranker | cross-encoder/ms-marco-MiniLM-L-6-v2 |
-| Local LLM | Ollama (phi3:mini) |
-| Evaluation | Custom harness (run_retrieval_eval.py) |
+| Local LLM (default) | Ollama — `qwen2.5:7b-instruct` |
+| Local LLM (compared) | Ollama — `phi3:mini` |
+| Retrieval evaluation | Custom harness (`run_retrieval_eval.py`) |
+| Answer-quality evaluation | Custom harness (`run_answer_eval.py`) |
 
 ---
 
@@ -234,8 +289,11 @@ These stay on your machine and are excluded via `.gitignore`. This keeps the rep
 
 - [x] Cross-encoder reranker (v3)
 - [x] Expanded retrieval benchmark (63 questions, 15 papers)
+- [x] Automated answer-quality evaluation (fact recall, citations, hallucination)
+- [x] Two-model answer-quality comparison (`phi3:mini` vs `qwen2.5:7b-instruct`)
+- [ ] LLM-as-judge fact recall using a different model family (e.g. Google Gemini 2.5 Flash free tier) to avoid self-judgment bias and replace the strict-substring matcher
+- [ ] Re-run the answer-quality eval on the v3 reranked pipeline (currently runs on v2 hybrid)
 - [ ] v3 chat integration (`chat_reranked_ollama.py`)
-- [ ] Automated answer-quality (faithfulness) evaluation
 - [ ] Web UI (Streamlit)
 - [ ] Richer metadata filtering (year, author, category)
 - [ ] Table and figure caption extraction
