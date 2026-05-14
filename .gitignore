@@ -16,11 +16,11 @@ __pycache__/
 # all project data
 data/
 
-# vector indexes
-storage/faiss_index/
-storage/faiss_index_v2_structured/
+# vector indexes (FAISS and Qdrant backends)
+storage/
 
 # logs
 *.log
 # generated evaluation detail files
 results/*.json
+results/ragas_eval_*

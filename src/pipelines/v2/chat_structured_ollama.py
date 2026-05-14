@@ -6,7 +6,6 @@ from pathlib import Path
 import re
 
 import ollama
-from langchain_community.vectorstores import FAISS
 from langchain_community.retrievers import BM25Retriever
 
 try:
@@ -22,6 +21,8 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # src/
 from load_structured_documents import load_structured_documents
 from build_structured_index import split_documents
 from rerank import rerank_documents
+from vector_store import load_dense_index
+from observability import traced
 from config import settings
 
 
@@ -228,11 +229,7 @@ def select_evidence_sentences(question: str, doc, max_sentences: int = MAX_EVIDE
 
 
 def load_dense_db():
-    return FAISS.load_local(
-        str(INDEX_DIR),
-        create_embeddings(),
-        allow_dangerous_deserialization=True,
-    )
+    return load_dense_index(create_embeddings(), INDEX_DIR)
 
 
 def build_bm25_retriever():
@@ -374,6 +371,7 @@ def build_prompt(question: str, context: str, retrieval_note: str) -> str:
     )
 
 
+@traced
 def ask_ollama(prompt: str) -> str:
     response = ollama.chat(
         model=OLLAMA_MODEL,
@@ -455,6 +453,7 @@ def print_sources(final_results):
         )
 
 
+@traced
 def run_query(question, dense_db, bm25_retriever, pipeline: str = "v2_hybrid") -> dict:
     """Run the structured retrieval + generation pipeline for one question.
 

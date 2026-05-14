@@ -82,6 +82,14 @@ class Settings:
     # the per-paper diversity cap is applied.
     rerank_pool_size: int = _env_int("NEURORAG_RERANK_POOL_SIZE", 16)
 
+    # --- Vector store ------------------------------------------------
+    # "faiss" (default, zero setup) or "qdrant" (optional, recognised in
+    # production stacks; runs as an embedded on-disk store, no server needed).
+    vector_store: str = _env_str("NEURORAG_VECTOR_STORE", "faiss").lower()
+    qdrant_path: Path = _env_path(
+        "NEURORAG_QDRANT_PATH", BASE_DIR / "storage" / "qdrant"
+    )
+
     # --- GROBID ------------------------------------------------------
     grobid_url: str = _env_str("GROBID_URL", "http://localhost:8070").rstrip("/")
 

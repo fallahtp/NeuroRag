@@ -7,6 +7,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # src/
 from config import settings
+from observability import traced
 
 INDEX_DIR = settings.v1_index_dir
 OLLAMA_MODEL = settings.v1_ollama_model
@@ -65,6 +66,7 @@ def build_prompt(question: str, context: str) -> str:
     )
 
 
+@traced
 def ask_ollama(prompt: str) -> str:
     r = ollama.chat(
         model=OLLAMA_MODEL,
@@ -73,6 +75,7 @@ def ask_ollama(prompt: str) -> str:
     return r["message"]["content"]
 
 
+@traced
 def run_query(question: str, db) -> dict:
     """Run the v1 baseline retrieval + generation pipeline for one question.
 

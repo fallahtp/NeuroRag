@@ -1,0 +1,22 @@
+# Optional integrations. None of these are needed to run the core pipelines
+# or the default (FAISS, local) setup — install them only for the feature
+# you want:
+#
+#   RAGAS evaluation        -> src/eval/run_ragas_eval.py
+#   Qdrant vector backend   -> NEURORAG_VECTOR_STORE=qdrant
+#   LangSmith tracing       -> LANGSMITH_TRACING=true (see src/observability.py)
+#
+# Install with:  pip install -r requirements-optional.txt
+
+-r requirements.txt
+
+# RAGAS evaluation (uses the local Ollama model as the judge)
+ragas==0.4.3
+langchain-ollama==1.1.0
+
+# Qdrant vector-store backend (embedded on-disk mode, no server needed)
+langchain-qdrant==1.1.0
+qdrant-client==1.18.0
+
+# LangSmith tracing
+langsmith==0.7.11
