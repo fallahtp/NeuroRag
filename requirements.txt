@@ -26,5 +26,8 @@ google-genai==2.0.1
 # GROBID communication
 requests==2.32.5
 
+# Demo UI
+streamlit==1.57.0
+
 # Utilities
 tqdm==4.67.3

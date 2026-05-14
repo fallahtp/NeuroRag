@@ -14,12 +14,14 @@ try:
 except ImportError:
     from langchain_community.embeddings import HuggingFaceEmbeddings
 
-# Make the v2 package directory and src/ importable regardless of the current
-# working directory.
+# Make the v2 package directory, the v3 directory and src/ importable
+# regardless of the current working directory.
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "v3"))
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # src/
 from load_structured_documents import load_structured_documents
 from build_structured_index import split_documents
+from rerank import rerank_documents
 from config import settings
 
 
@@ -32,6 +34,9 @@ TOP_K_FETCH = settings.top_k_fetch
 TOP_K_FINAL = settings.top_k_final
 MAX_CHUNKS_PER_PAPER = settings.max_chunks_per_paper
 RRF_K = settings.rrf_k
+RERANK_POOL_SIZE = settings.rerank_pool_size
+
+SUPPORTED_PIPELINES = ("v2_hybrid", "v3_reranked")
 
 MAX_SNIPPET_CHARS = 1200
 MAX_EVIDENCE_SENTENCES_PER_CHUNK = 3
@@ -450,6 +455,64 @@ def print_sources(final_results):
         )
 
 
+def run_query(question, dense_db, bm25_retriever, pipeline: str = "v2_hybrid") -> dict:
+    """Run the structured retrieval + generation pipeline for one question.
+
+    Pipelines:
+        v2_hybrid:   dense + BM25 -> RRF fusion -> per-paper diversity cap
+        v3_reranked: as above, but the top ``RERANK_POOL_SIZE`` fused
+                     candidates are rescored by the cross-encoder before
+                     the diversity cap is applied.
+
+    Returns a dict with the normalized ``answer``, the ``final_results``
+    retrieved chunks, the ``context`` block, the ``prompt`` and the
+    ``raw_answer`` model output. ``final_results`` is empty when nothing
+    was retrieved.
+    """
+    if pipeline not in SUPPORTED_PIPELINES:
+        raise ValueError(
+            f"Unknown pipeline: {pipeline!r}. Expected one of {SUPPORTED_PIPELINES}."
+        )
+
+    dense_results = dense_search(dense_db, question)
+    bm25_docs = bm25_search(bm25_retriever, question)
+    fused = fuse_results(dense_results, bm25_docs)
+
+    if pipeline == "v3_reranked":
+        pool = fused[:RERANK_POOL_SIZE]
+        candidate_docs = [item["doc"] for item in pool]
+        reranked_pairs = rerank_documents(question, candidate_docs, top_k=len(candidate_docs))
+        ranked_items = [{"doc": doc, "rerank_score": score} for doc, score in reranked_pairs]
+        final_results = select_final_results(ranked_items)
+    else:  # v2_hybrid
+        final_results = select_final_results(fused)
+
+    if not final_results:
+        return {
+            "pipeline": pipeline,
+            "final_results": [],
+            "context": "",
+            "prompt": "",
+            "raw_answer": "",
+            "answer": "",
+        }
+
+    context = build_context(question, final_results)
+    retrieval_note = build_retrieval_note(question, final_results)
+    prompt = build_prompt(question, context, retrieval_note)
+    raw_answer = ask_ollama(prompt)
+    answer = normalize_answer_output(raw_answer, len(final_results))
+
+    return {
+        "pipeline": pipeline,
+        "final_results": final_results,
+        "context": context,
+        "prompt": prompt,
+        "raw_answer": raw_answer,
+        "answer": answer,
+    }
+
+
 if __name__ == "__main__":
     dense_db = load_dense_db()
     bm25_retriever = build_bm25_retriever()
@@ -459,21 +522,11 @@ if __name__ == "__main__":
         if not question or question.lower() in {"exit", "quit"}:
             break
 
-        dense_results = dense_search(dense_db, question)
-        bm25_docs = bm25_search(bm25_retriever, question)
-        fused_results = fuse_results(dense_results, bm25_docs)
-        final_results = select_final_results(fused_results)
+        result = run_query(question, dense_db, bm25_retriever, pipeline="v2_hybrid")
 
-        if not final_results:
+        if not result["final_results"]:
             print("\nNo documents were retrieved from the index.")
             continue
 
-        context = build_context(question, final_results)
-        retrieval_note = build_retrieval_note(question, final_results)
-        prompt = build_prompt(question, context, retrieval_note)
-
-        raw_answer = ask_ollama(prompt)
-        final_answer = normalize_answer_output(raw_answer, len(final_results))
-
-        print("\n" + final_answer)
-        print_sources(final_results)
+        print("\n" + result["answer"])
+        print_sources(result["final_results"])

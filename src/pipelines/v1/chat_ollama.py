@@ -73,6 +73,18 @@ def ask_ollama(prompt: str) -> str:
     return r["message"]["content"]
 
 
+def run_query(question: str, db) -> dict:
+    """Run the v1 baseline retrieval + generation pipeline for one question.
+
+    Returns a dict with the generated ``answer`` and the retrieved ``docs``.
+    """
+    docs = db.similarity_search(question, k=TOP_K)
+    context = build_context(docs)
+    prompt = build_prompt(question, context)
+    answer = ask_ollama(prompt)
+    return {"pipeline": "v1", "answer": answer, "docs": docs}
+
+
 if __name__ == "__main__":
     check_ollama()
     db = load_db()
@@ -82,13 +94,10 @@ if __name__ == "__main__":
         if not question or question.lower() in {"exit", "quit"}:
             break
 
-        docs = db.similarity_search(question, k=TOP_K)
-        context = build_context(docs)
-        prompt = build_prompt(question, context)
-        answer = ask_ollama(prompt)
+        result = run_query(question, db)
 
-        print("\n" + answer)
+        print("\n" + result["answer"])
         print("\nSOURCES METADATA:")
-        for i, d in enumerate(docs, start=1):
+        for i, d in enumerate(result["docs"], start=1):
             m = d.metadata
             print(f"[{i}] {m.get('paper_id')} | {m.get('year')} | {m.get('category')} | {m.get('filename')}")

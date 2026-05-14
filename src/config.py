@@ -78,6 +78,9 @@ class Settings:
     top_k_final: int = _env_int("NEURORAG_TOP_K_FINAL", 6)
     max_chunks_per_paper: int = _env_int("NEURORAG_MAX_CHUNKS_PER_PAPER", 2)
     rrf_k: int = _env_int("NEURORAG_RRF_K", 60)
+    # Number of top fused candidates the v3 cross-encoder rescores before
+    # the per-paper diversity cap is applied.
+    rerank_pool_size: int = _env_int("NEURORAG_RERANK_POOL_SIZE", 16)
 
     # --- GROBID ------------------------------------------------------
     grobid_url: str = _env_str("GROBID_URL", "http://localhost:8070").rstrip("/")
