@@ -2,8 +2,11 @@ from __future__ import annotations
 
 from pathlib import Path
 import argparse
-import os
+import sys
 import requests
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))  # src/
+from config import settings
 
 BASE_DIR = Path(__file__).resolve().parents[4]
 RAW_DIR = BASE_DIR / "data" / "raw"
@@ -12,8 +15,8 @@ HEADER_TEI_DIR = BASE_DIR / "data" / "interim" / "header_tei_xml"
 ERROR_DIR = BASE_DIR / "data" / "interim" / "grobid_errors"
 
 # GROBID host is configurable so the parser can target a container on another
-# host/port without editing the source. Defaults to the local Docker setup.
-GROBID_URL = os.environ.get("GROBID_URL", "http://localhost:8070").rstrip("/")
+# host/port without editing the source. Override with the GROBID_URL env var.
+GROBID_URL = settings.grobid_url
 FULLTEXT_URL = f"{GROBID_URL}/api/processFulltextDocument"
 HEADER_URL = f"{GROBID_URL}/api/processHeaderDocument"
 

@@ -8,6 +8,11 @@ PROCESSED_DIR = BASE_DIR / "data" / "processed"
 
 
 def load_metadata(metadata_file: Path) -> pd.DataFrame:
+    if not metadata_file.exists():
+        raise SystemExit(
+            f"Metadata file not found: {metadata_file}\n"
+            "Run create_metadata.py first to generate it."
+        )
     return pd.read_csv(metadata_file)
 
 

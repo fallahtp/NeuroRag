@@ -1,18 +1,31 @@
+import sys
 from pathlib import Path
 import re
 import ollama
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 
-BASE_DIR = Path(__file__).resolve().parents[3]
-INDEX_DIR = BASE_DIR / "storage" / "faiss_index"
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # src/
+from config import settings
 
-OLLAMA_MODEL = "phi3:mini"
-TOP_K = 6
+INDEX_DIR = settings.v1_index_dir
+OLLAMA_MODEL = settings.v1_ollama_model
+TOP_K = settings.top_k_final
 
 
 def embeddings():
-    return HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    return HuggingFaceEmbeddings(model_name=settings.embedding_model)
+
+
+def check_ollama() -> None:
+    """Fail early with a clear message if the Ollama service is unreachable."""
+    try:
+        ollama.list()
+    except Exception as e:
+        raise SystemExit(
+            f"Could not reach Ollama ({e}). Is the Ollama service running? "
+            f"Start it, then pull a model with: ollama pull {OLLAMA_MODEL}"
+        )
 
 
 def clean_text(s: str) -> str:
@@ -61,6 +74,7 @@ def ask_ollama(prompt: str) -> str:
 
 
 if __name__ == "__main__":
+    check_ollama()
     db = load_db()
 
     while True:

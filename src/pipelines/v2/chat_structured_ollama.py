@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import sys
 from collections import Counter
 from pathlib import Path
 import re
@@ -13,20 +14,24 @@ try:
 except ImportError:
     from langchain_community.embeddings import HuggingFaceEmbeddings
 
+# Make the v2 package directory and src/ importable regardless of the current
+# working directory.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # src/
 from load_structured_documents import load_structured_documents
 from build_structured_index import split_documents
+from config import settings
 
 
-BASE_DIR = Path(__file__).resolve().parents[3]
-INDEX_DIR = BASE_DIR / "storage" / "faiss_index_v2_structured"
+INDEX_DIR = settings.v2_index_dir
 
-EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
-OLLAMA_MODEL = "qwen2.5:7b-instruct"
+EMBEDDING_MODEL = settings.embedding_model
+OLLAMA_MODEL = settings.v2_ollama_model
 
-TOP_K_FETCH = 12
-TOP_K_FINAL = 6
-MAX_CHUNKS_PER_PAPER = 2
-RRF_K = 60
+TOP_K_FETCH = settings.top_k_fetch
+TOP_K_FINAL = settings.top_k_final
+MAX_CHUNKS_PER_PAPER = settings.max_chunks_per_paper
+RRF_K = settings.rrf_k
 
 MAX_SNIPPET_CHARS = 1200
 MAX_EVIDENCE_SENTENCES_PER_CHUNK = 3
