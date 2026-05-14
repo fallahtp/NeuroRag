@@ -1,4 +1,6 @@
+import sys
 from pathlib import Path
+
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 
@@ -7,6 +9,9 @@ try:
 except ImportError:
     from langchain_community.embeddings import HuggingFaceEmbeddings
 
+# Make the v1 package directory importable regardless of the current working
+# directory, so this script runs from the project root as well as from v1/.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 from load_documents import load_papers
 
 BASE_DIR = Path(__file__).resolve().parents[3]

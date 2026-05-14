@@ -1,4 +1,5 @@
 from pathlib import Path
+import re
 import pandas as pd
 
 BASE_DIR = Path(__file__).resolve().parents[3]
@@ -14,10 +15,15 @@ for pdf in RAW_DIR.rglob("*.pdf"):
 
     folder = pdf.parent.name
 
-    parts = pdf.stem.split("_")
+    stem = pdf.stem
 
-    year = parts[0] if parts[0].isdigit() else ""
-    first_author = parts[1] if len(parts) > 1 else ""
+    # Find a 4-digit year anywhere in the filename, not just the first token,
+    # so both "2020_Smith_..." and "Smith_2020_..." are handled.
+    year_match = re.search(r"(?:19|20)\d{2}", stem)
+    year = year_match.group(0) if year_match else ""
+
+    parts = [p for p in stem.split("_") if p and p != year]
+    first_author = parts[0] if parts else ""
 
     records.append({
         "filename": filename,
