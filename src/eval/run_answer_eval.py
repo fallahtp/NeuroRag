@@ -2,17 +2,24 @@
 NeuroRag answer-quality evaluation harness.
 
 For each benchmark question, this script:
-  1. Runs the full v2 hybrid retrieval + generation pipeline end-to-end.
+  1. Runs a retrieval + generation pipeline end-to-end. Two pipelines
+     are supported:
+       - v2_hybrid    (default): FAISS dense + BM25 lexical, RRF fusion
+       - v3_reranked: v2_hybrid candidates rescored by a cross-encoder
+                      before per-paper diversity capping
   2. Scores the generated answer on four axes:
        - fact recall      (did the answer use the key facts?)
        - citation validity (are cited [n] IDs in range?)
        - citation grounding (do cited chunks actually contain the facts?)
        - numeric hallucination (did the model fabricate numbers not in context?)
   3. Writes a per-question JSON detail file and a markdown summary.
+     The output filename is auto-generated from model + pipeline + N
+     so reruns don't clobber each other.
 
 Run from the project root:
     python src/eval/run_answer_eval.py
-    python src/eval/run_answer_eval.py --model llama3.1:8b
+    python src/eval/run_answer_eval.py --pipeline v3_reranked
+    python src/eval/run_answer_eval.py --model phi3:mini
     python src/eval/run_answer_eval.py --benchmark benchmarks/answer_eval_questions.jsonl
 """
 
@@ -33,8 +40,9 @@ from typing import Callable
 BASE_DIR = Path(__file__).resolve().parents[2]
 SRC_DIR = BASE_DIR / "src"
 V2_DIR = SRC_DIR / "pipelines" / "v2"
+V3_DIR = SRC_DIR / "pipelines" / "v3"
 
-for path in (SRC_DIR, V2_DIR):
+for path in (SRC_DIR, V2_DIR, V3_DIR):
     path_str = str(path)
     if path_str not in sys.path:
         sys.path.insert(0, path_str)
@@ -53,6 +61,10 @@ except ImportError:
 
 from load_structured_documents import load_structured_documents  # noqa: E402
 from build_structured_index import split_documents  # noqa: E402
+
+# v3 pipeline: cross-encoder reranker. Imported here so it's loaded once
+# (with its lazy-singleton CrossEncoder) when this module is imported.
+from rerank import rerank_documents  # noqa: E402
 
 # We import everything we need from the chat pipeline, so we evaluate
 # the *exact* production prompt and evidence selection.
@@ -79,6 +91,16 @@ from chat_structured_ollama import (  # noqa: E402
 
 BENCHMARK_PATH = BASE_DIR / "benchmarks" / "answer_eval_questions.jsonl"
 RESULTS_DIR = BASE_DIR / "results"
+
+# Supported retrieval pipelines. Default mirrors what the answer eval has
+# always done; v3_reranked adds a cross-encoder on top.
+SUPPORTED_PIPELINES = ("v2_hybrid", "v3_reranked")
+DEFAULT_PIPELINE = "v2_hybrid"
+
+# Number of fused candidates fed to the cross-encoder. Matches
+# run_retrieval_eval.py so the v3 retrieval behaviour is identical
+# across the two harnesses.
+RERANK_POOL_SIZE = 16
 
 # A number is "hallucinated" only if it carries a unit and doesn't
 # appear in the retrieved context. Units we care about for neuroscience.
@@ -205,16 +227,57 @@ def build_bm25_retriever():
     return retriever
 
 
-def run_pipeline(question: str, dense_db, bm25_retriever, model_name: str) -> dict:
+def run_pipeline(
+    question: str,
+    dense_db,
+    bm25_retriever,
+    model_name: str,
+    pipeline: str = DEFAULT_PIPELINE,
+) -> dict:
     """
-    Runs the full production pipeline for one question and returns
-    everything we need for scoring: the final answer, the retrieved
-    chunks, the prompt, and the raw model output.
+    Runs the full retrieval + generation pipeline for one question and
+    returns everything we need for scoring: the final answer, the
+    retrieved chunks, the prompt, and the raw model output.
+
+    Pipelines:
+        v2_hybrid:    fuse_results -> select_final_results
+        v3_reranked:  fuse_results -> rerank_documents -> select_final_results
+
+    For v3_reranked, the cross-encoder sees the top RERANK_POOL_SIZE fused
+    candidates *before* per-paper diversity capping. This way the
+    reranker can reorder duplicate chunks from the same paper, and the
+    diversity cap then picks the best K from the reranked order.
     """
+    if pipeline not in SUPPORTED_PIPELINES:
+        raise ValueError(
+            f"Unknown pipeline: {pipeline!r}. "
+            f"Expected one of {SUPPORTED_PIPELINES}."
+        )
+
     dense_results = dense_search(dense_db, question)
     bm25_docs = bm25_search(bm25_retriever, question)
     fused = fuse_results(dense_results, bm25_docs)
-    final_results = select_final_results(fused)
+
+    if pipeline == "v3_reranked":
+        # Take the top fused candidates and rescore them with the
+        # cross-encoder. We pass top_k=len(pool) to get the full pool
+        # back in rerank order; select_final_results then handles the
+        # per-paper diversity cap.
+        pool = fused[:RERANK_POOL_SIZE]
+        candidate_docs = [item["doc"] for item in pool]
+        reranked_pairs = rerank_documents(
+            question, candidate_docs, top_k=len(candidate_docs)
+        )
+        # Re-wrap into the dict shape select_final_results expects.
+        # Preserving rerank_score lets us surface it in the per-question
+        # JSON for transparency/debugging.
+        ranked_items = [
+            {"doc": doc, "rerank_score": score}
+            for doc, score in reranked_pairs
+        ]
+        final_results = select_final_results(ranked_items)
+    else:  # v2_hybrid
+        final_results = select_final_results(fused)
 
     if not final_results:
         return {
@@ -383,6 +446,25 @@ def score_question(item: EvalQuestion, run_result: dict) -> dict:
     cite_ground = score_citation_grounding(answer, final_results, item.expected_facts)
     halluc = score_numeric_hallucination(answer, context)
 
+    # Persist the actual retrieved chunks (truncated) so downstream
+    # graders — including an LLM judge for grounding — can score this
+    # run without re-doing retrieval. Each item is a dict because v2 and
+    # v3 produce dict-shaped final_results with different score keys
+    # (fused_score for v2_hybrid, rerank_score for v3_reranked).
+    retrieved_chunks = []
+    for i, r in enumerate(final_results, start=1):
+        doc = r["doc"]
+        meta = doc.metadata
+        retrieved_chunks.append({
+            "rank": i,
+            "paper_id": meta.get("paper_id", ""),
+            "section_title": meta.get("section_title", ""),
+            "section_type": meta.get("section_type", ""),
+            "preview": doc.page_content[:1000],
+            "fused_score": r.get("fused_score"),
+            "rerank_score": r.get("rerank_score"),
+        })
+
     return {
         "id": item.id,
         "question": item.question,
@@ -392,6 +474,7 @@ def score_question(item: EvalQuestion, run_result: dict) -> dict:
         "retrieved_paper_ids": [
             r["doc"].metadata.get("paper_id", "") for r in final_results
         ],
+        "retrieved_chunks": retrieved_chunks,
         "fact_recall": fact_recall,
         "citation_validity": cite_valid,
         "citation_grounding": cite_ground,
@@ -410,10 +493,10 @@ def mean(values: list[float]) -> float:
     return sum(valid) / len(valid)
 
 
-def aggregate(results: list[dict], model_name: str) -> dict:
+def aggregate(results: list[dict], model_name: str, pipeline: str) -> dict:
     n = len(results)
     if n == 0:
-        return {"model": model_name, "questions": 0}
+        return {"model": model_name, "pipeline": pipeline, "questions": 0}
 
     fact_recall_scores = [r["fact_recall"]["score"] for r in results]
     cite_valid_scores = [r["citation_validity"]["score"] for r in results]
@@ -428,6 +511,7 @@ def aggregate(results: list[dict], model_name: str) -> dict:
 
     return {
         "model": model_name,
+        "pipeline": pipeline,
         "questions": n,
         "mean_fact_recall": mean(fact_recall_scores),
         "mean_citation_validity": mean(cite_valid_scores),
@@ -456,6 +540,7 @@ def build_markdown_report(
         "",
         f"Benchmark file: `{benchmark_path.as_posix()}`",
         f"Model: `{summary['model']}`",
+        f"Pipeline: `{summary.get('pipeline', 'unknown')}`",
         "",
         "## Summary",
         "",
@@ -530,6 +615,30 @@ def build_markdown_report(
 # Main
 # ---------------------------------------------------------------------
 
+def _slugify(text: str) -> str:
+    """
+    Map a model identifier to a filesystem-safe slug.
+    'qwen2.5:7b-instruct' -> 'qwen2_5_7b_instruct'
+    'phi3:mini'           -> 'phi3_mini'
+    """
+    slug = re.sub(r"[^a-zA-Z0-9]+", "_", text).strip("_").lower()
+    return slug or "model"
+
+
+def _pipeline_slug(pipeline: str) -> str:
+    """Compact form for filenames: 'v3_reranked' -> 'v3reranked'."""
+    return pipeline.replace("_", "")
+
+
+def derive_output_basename(model_name: str, pipeline: str, n_questions: int) -> str:
+    return (
+        f"answer_eval_summary_"
+        f"{_slugify(model_name)}_"
+        f"{_pipeline_slug(pipeline)}_"
+        f"n{n_questions}"
+    )
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--benchmark", type=str, default=str(BENCHMARK_PATH))
@@ -540,10 +649,26 @@ def main():
         help="Ollama model name. Default uses what chat_structured_ollama.py uses.",
     )
     parser.add_argument(
+        "--pipeline",
+        type=str,
+        default=DEFAULT_PIPELINE,
+        choices=SUPPORTED_PIPELINES,
+        help="Retrieval pipeline. v2_hybrid is dense+BM25+RRF; "
+             "v3_reranked adds a cross-encoder rerank stage.",
+    )
+    parser.add_argument(
         "--limit",
         type=int,
         default=0,
         help="Limit to first N questions (for quick smoke tests). 0 = all.",
+    )
+    parser.add_argument(
+        "--output-basename",
+        type=str,
+        default="",
+        help="Override the auto-generated output filename stem "
+             "(without extension). Default is derived from --model + "
+             "--pipeline + question count.",
     )
     args = parser.parse_args()
 
@@ -554,7 +679,8 @@ def main():
         questions = questions[: args.limit]
 
     print(f"Loaded {len(questions)} questions from {benchmark_path}")
-    print(f"Model: {args.model}")
+    print(f"Model:    {args.model}")
+    print(f"Pipeline: {args.pipeline}")
     print("Building retrievers...")
 
     dense_db = load_dense_db()
@@ -567,7 +693,11 @@ def main():
         print(f"[{i}/{len(questions)}] {item.id}")
         try:
             run_result = run_pipeline(
-                item.question, dense_db, bm25_retriever, args.model
+                item.question,
+                dense_db,
+                bm25_retriever,
+                args.model,
+                pipeline=args.pipeline,
             )
             scored = score_question(item, run_result)
         except Exception as exc:
@@ -583,6 +713,7 @@ def main():
                 "answer": "",
                 "num_retrieved": 0,
                 "retrieved_paper_ids": [],
+                "retrieved_chunks": [],
                 "expected_facts": item.expected_facts,
             }
 
@@ -592,11 +723,14 @@ def main():
         sn = scored["numeric_hallucination"]["count"]
         print(f"  fact_recall={pct(fr)}  suspicious_nums={sn}")
 
-    summary = aggregate(per_question, args.model)
+    summary = aggregate(per_question, args.model, args.pipeline)
 
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    json_path = RESULTS_DIR / "answer_eval_summary.json"
-    md_path = RESULTS_DIR / "answer_eval_summary.md"
+    basename = args.output_basename or derive_output_basename(
+        args.model, args.pipeline, len(questions)
+    )
+    json_path = RESULTS_DIR / f"{basename}.json"
+    md_path = RESULTS_DIR / f"{basename}.md"
 
     json_path.write_text(
         json.dumps(
@@ -613,6 +747,7 @@ def main():
     )
 
     print("\n=== Summary ===")
+    print(f"Pipeline:                {summary['pipeline']}")
     print(f"Mean fact recall:        {pct(summary['mean_fact_recall'])}")
     print(f"Mean citation validity:  {pct(summary['mean_citation_validity'])}")
     print(f"Mean citation grounding: {pct(summary['mean_citation_grounding'])}")
