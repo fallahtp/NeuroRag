@@ -31,7 +31,6 @@ import re
 import sys
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Callable
 
 # ---------------------------------------------------------------------
 # Project paths and import bootstrap (mirrors run_retrieval_eval.py)
@@ -73,7 +72,6 @@ from chat_structured_ollama import (  # noqa: E402
     EMBEDDING_MODEL,
     OLLAMA_MODEL,
     TOP_K_FETCH,
-    TOP_K_FINAL,
     bm25_search,
     build_context,
     build_prompt,
@@ -594,7 +592,7 @@ def build_markdown_report(
                 "",
                 f"**Question:** {r['question']}",
                 "",
-                f"**Answer:**",
+                "**Answer:**",
                 "",
                 "```",
                 r["answer"],
