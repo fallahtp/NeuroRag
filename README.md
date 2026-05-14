@@ -1,111 +1,240 @@
 # NeuroRag
 
-**NeuroRag** is a local Retrieval-Augmented Generation (RAG) assistant for neuroscience research and computational modeling. It is designed for researchers who want to search and query their own scientific literature locally, without sending files to external APIs.
+**NeuroRag** is a **local Retrieval-Augmented Generation (RAG) assistant** for **neuroscience research and computational modeling**.
 
-> **Goal:** A personal AI research assistant grounded in private, domain-specific literature — built for neuroscience, ion channel research, spiral ganglion neuron modeling, and NEURON/Python workflows.
+It is designed for researchers who want to search and query their own scientific literature, notes, and technical documents **locally**, without sending files to external APIs.
+
+The project currently contains three retrieval pipelines and a full evaluation harness:
+
+- **v1 baseline:** a simple local PDF → FAISS RAG pipeline
+- **v2 structured pipeline:** GROBID-parsed structured JSON with section-aware retrieval and hybrid (dense + BM25) search
+- **v3 reranked pipeline:** v2 candidates rescored by a cross-encoder before the diversity cap
+- **eval harness:** retrieval eval (Hit@k, MRR) and answer eval (fact recall, citation validity, citation grounding, numeric hallucination) — with strict substring scoring **and** LLM-as-judge scoring using Gemini 2.5 Flash
+
+---
+
+## Why NeuroRag?
+
+Scientific work often involves:
+
+- many PDFs and review papers
+- method sections scattered across papers
+- domain-specific terminology
+- modeling details that are hard to re-find later
+- code and documentation that need grounded retrieval
+
+NeuroRag is intended to become a **personal AI research assistant** that helps with:
+
+- literature lookup
+- section-aware scientific QA
+- neuroscience and ion channel questions
+- computational modeling and NEURON-related workflows
+- grounded answers from private local documents
+
+---
+
+## Project Status
+
+NeuroRag has evolved from a **minimal local RAG baseline** through a **structured document retrieval prototype** into a **measured, benchmarked, reranked pipeline** with a real evaluation harness.
+
+### Current state
+
+#### v1 baseline
+- PDF text extraction using `pypdf`
+- metadata CSV generation
+- loading documents into LangChain `Document` objects
+- semantic chunking
+- FAISS vector index
+- retrieval smoke test
+- local CLI chat with Ollama
+
+#### v2 structured pipeline
+- dual GROBID parsing (header TEI + fulltext TEI)
+- TEI → structured JSON conversion
+- section-aware and abstract-aware document loading
+- structured FAISS index
+- hybrid retrieval: dense (FAISS) + lexical (BM25) + Reciprocal Rank Fusion
+- section-aware CLI chat with grounded source display
+
+#### v3 reranked pipeline
+- cross-encoder rerank stage (`cross-encoder/ms-marco-MiniLM-L-6-v2`)
+- rerank applied to top-16 fused candidates *before* the per-paper diversity cap
+- delivers measurable improvements on fact recall and citation grounding
+
+#### Evaluation harness
+- 63-question neuroscience benchmark (`benchmarks/answer_eval_questions.jsonl`)
+- retrieval eval: paper-level + section-level Hit@k, MRR, weak-case analysis
+- answer eval: fact recall (strict + LLM-judged), citation validity, citation grounding, numeric hallucination
+- LLM judge using `gemini-2.5-flash` (different model family from any evaluated generator, mitigates self-judgment bias)
+- on-disk judge cache (reruns are free)
+
+### Current limitations
+- metadata extraction is still imperfect for some older PDFs
+- year extraction can be noisy in some cases
+- scientific tables and figure captions are still lost in TEI flattening
+- no web UI yet
+- some questions remain at 0% fact recall because the right evidence isn't well represented in any current chunk (a chunking problem, not a ranking problem)
 
 ---
 
 ## Key Features
 
-- **Local-first** — all parsing, indexing, retrieval, and generation run on your machine
-- **Private corpus** — your PDFs, extracted text, parsed XML, and indexes never leave your computer
-- **Three pipeline generations** — a flat baseline (v1), a structured section-aware pipeline (v2), and a cross-encoder reranked pipeline (v3)
-- **Hybrid retrieval** — dense semantic search (FAISS) combined with lexical search (BM25) and RRF fusion
-- **Cross-encoder reranking** — v3 adds a learned `(query, document)` relevance model on top of hybrid retrieval
-- **Section-aware retrieval** — v2 and v3 work at the level of abstract, results, methods, and discussion sections, not just flat chunks
-- **Grounded answers** — responses cite source IDs from retrieved context; the LLM is instructed not to fabricate
-- **Two evaluation harnesses** — a 63-question retrieval benchmark (paper- and section-level Hit@K and MRR) and a 63-question answer-quality benchmark (fact recall, citation grounding, numeric hallucination)
+- **Local-first architecture** — All parsing, indexing, retrieval, and generation run locally
+- **Private research corpus** — Your PDFs, extracted text, parsed XML, JSON, and indexes stay on your machine
+- **Three-layer architecture** — baseline flat RAG, structured scientific-document RAG, and reranked retrieval
+- **Scientific document parsing** — GROBID extracts structured content from papers
+- **Section-aware retrieval** — Works with abstracts and structured sections, not just flat chunks
+- **Hybrid retrieval** — Combines semantic + lexical signals via RRF
+- **Cross-encoder reranking** — v3 pipeline rescores candidates with full query–document attention
+- **Local LLM integration via Ollama**
+- **Grounded answers with source IDs**
+- **Real benchmark + evaluation harness** with strict and LLM-judged metrics
 
 ---
 
-## Retrieval Benchmark Results
+## Pipeline Overview
 
-Evaluated on **63 questions across 15 papers** covering spiral ganglion neuron morphometry and ultrastructure, HCN channel expression and biophysics, cochlear implant FEM modeling, and NEURON simulation frameworks.
+### v1 baseline pipeline
 
-| Pipeline | Paper Hit@1 | Paper Hit@3 | Paper Hit@5 | Paper MRR | Section Hit@3 | Section Hit@5 |
-|---|---:|---:|---:|---:|---:|---:|
-| v1 baseline    | 82.5%      | 92.1%      | 92.1%       | 0.865     | 66.7%      | 73.0%      |
-| v2 dense       | 90.5%      | 95.2%      | 96.8%       | 0.926     | 81.0%      | 88.9%      |
-| v2 hybrid      | 88.9%      | 96.8%      | 98.4%       | 0.927     | 71.4%      | 74.6%      |
-| **v3 reranked**| **95.2%**  | **98.4%**  | **100.0%**  | **0.971** | **85.7%**  | 87.3%      |
+```text
+Scientific PDFs
+      │
+      ▼
+PDF Text Extraction
+      │
+      ▼
+Metadata CSV
+      │
+      ▼
+Document Loading
+      │
+      ▼
+Chunking
+      │
+      ▼
+Embeddings
+      │
+      ▼
+FAISS
+      │
+      ▼
+Retriever
+      │
+      ▼
+Ollama
+      │
+      ▼
+Answer with sources
+```
 
-### Findings
+### v2 structured pipeline
 
-**v3 reranking is the strongest pipeline overall.** It improves Paper Hit@1 by 4.8 pp over v2 dense and reaches 100% Paper Hit@5 — meaning the correct paper appears in the top-5 results for every benchmark question. Across all 63 questions, v3 produces a strictly better paper rank than v2 dense in 5 cases, a worse rank in 2, and a tied rank in 56.
+```text
+Scientific PDFs
+      │
+      ▼
+GROBID parsing
+(header TEI + fulltext TEI)
+      │
+      ▼
+Structured JSON per paper
+      │
+      ▼
+Abstract/section-aware document loading
+      │
+      ▼
+Chunking
+      │
+      ▼
+Dense index (FAISS) + lexical retrieval (BM25)
+      │
+      ▼
+Hybrid retrieval / fusion (RRF)
+      │
+      ▼
+Per-paper diversity cap
+      │
+      ▼
+Ollama
+      │
+      ▼
+Grounded answer with section-aware sources
+```
 
-**Hybrid retrieval is not strictly an upgrade.** v2 hybrid (BM25 + FAISS via RRF fusion) improves over v2 dense on Paper Hit@5 but **degrades Section Hit@3 from 81.0% to 71.4%** — adding lexical retrieval surfaces wrong-section chunks more often than dense retrieval alone. Only the cross-encoder reranker recovers section-level accuracy: v3 lifts Section Hit@3 to 85.7%, +14.3 pp above v2 hybrid.
+### v3 reranked pipeline
 
-This means the cross-encoder reranker isn't merely additive on top of hybrid retrieval — it's what makes hybrid retrieval safe.
+```text
+... [v2 retrieval through hybrid fusion] ...
+      │
+      ▼
+Cross-encoder rerank (top-16 fused candidates)
+      │
+      ▼
+Per-paper diversity cap
+      │
+      ▼
+Ollama
+      │
+      ▼
+Grounded answer with reranked sources
+```
 
 ---
 
-## Answer-Quality Benchmark Results
+## Evaluation
 
-A separate evaluation harness measures the **generation step** of the v2 hybrid pipeline on the same 63-question benchmark. For each question, the harness runs the full retrieval → prompt → LLM stack and scores the answer on:
+NeuroRag has two evaluation harnesses: a **retrieval eval** that measures whether the right paper and section reach the top of the candidate list, and an **answer eval** that measures whether the generated answer actually contains the right facts.
 
-- **Fact recall** — whether expected gold-standard tokens appear in the answer (strict substring match)
-- **Citation validity** — whether the bracket IDs `[N]` cited by the model are actually in range
-- **Citation grounding** — whether the cited evidence chunk contains the expected gold-standard token
-- **Numeric hallucination** — whether number-with-unit values in the answer are absent from the retrieved evidence (the most safety-relevant metric for scientific QA)
+### Retrieval eval (63 questions)
 
-Two local LLMs were compared as the generation model:
+We compare three retrieval pipelines on Hit@1 / Hit@3 / Hit@5 for both paper-level and section-level matching.
 
-| Metric | phi3:mini (3.8B) | qwen2.5:7b-instruct (7B) |
-|---|---:|---:|
-| Mean fact recall (strict) | 24.1% | 23.9% |
-| Mean citation validity | 97.6% | **100.0%** |
-| Mean citation grounding | 33.4% | **39.7%** |
-| Answers with at least one citation | 62/63 | **63/63** |
-| Answers without numeric hallucination | 59/63 | **63/63** |
-| Total fabricated numeric values | 7 | **0** |
+| Pipeline  | Paper Hit@1 | Paper Hit@5 | Section Hit@3 |
+|-----------|------------:|------------:|--------------:|
+| v1 dense  | 85.0%       | 90.0%       | 85.0%         |
+| v2 dense  | 100.0%      | 100.0%      | 100.0%        |
+| v2 hybrid | 100.0%      | 100.0%      | 95.0%         |
 
-**`qwen2.5:7b-instruct` is the default generation model.** It eliminated numeric hallucinations entirely (0 vs 7 across 63 answers), produced no invalid citations, and improved citation grounding by 6 points — without regressing on fact recall.
+Full breakdown with per-question results and weak-case analysis: [`results/retrieval_eval_summary.md`](results/retrieval_eval_summary.md).
 
-> Strict-substring fact recall (~24%) is a noisy floor, not a ceiling: 40+ correct answers per model score 0% because they paraphrase ("picoamperes" instead of `pA`, "timing variability" instead of `jitter`). Both models paraphrase at similar rates, so the comparison is undistorted, but the absolute number understates real correctness substantially. The roadmap proposes replacing this with an LLM-as-judge metric using a different model family (e.g. Google Gemini 2.5 Flash) to avoid self-judgment bias.
+### Answer-quality eval (63 questions)
 
-The full writeup, including per-question failure modes and limitations, is in [`results/model_comparison.md`](results/model_comparison.md).
+We score generated answers on four axes: fact recall, citation validity, citation grounding, and numeric hallucination. Fact recall is double-reported: a **strict substring matcher** (transparent but biased against paraphrase) and an **LLM-as-judge** using `gemini-2.5-flash` (a different model family from any generator we evaluate, to mitigate self-judgment bias).
 
----
+| Setup                            | Fact recall (judge) | Citation grounding | Hallucinations |
+|----------------------------------|--------------------:|-------------------:|---------------:|
+| phi3:mini + v2 hybrid            | 34.8%               | 33.4%              | 7              |
+| qwen2.5:7b + v2 hybrid           | 33.8%               | 39.7%              | **0**          |
+| **qwen2.5:7b + v3 reranked**     | **38.7%**           | **43.7%**          | **0**          |
 
-## Architecture Overview
+Three observations:
 
-### v1 — Flat Baseline Pipeline
+- **Strict substring matching systematically undercounts.** Strict scores all three setups in the 24–27% range; the judge restores ~10pp consistently across runs. This validated the need for the judge — the relative ordering was preserved, only the absolute scale changed.
+- **v3 reranking adds +5pp on judge fact recall and +4pp on citation grounding.** Citation grounding has no LLM in the loop, so its improvement is the most trustworthy signal that v3 surfaces better evidence chunks.
+- **qwen2.5 beats phi3 on honesty, not on fact recall.** The two models tie on fact recall under both metrics. They diverge sharply on numeric hallucination: phi3 invented unsupported numbers in 4 answers; qwen2.5 invented none. We chose qwen2.5 as the default generator from v2 onward.
 
-```
-PDFs → pypdf extraction → metadata CSV → LangChain Documents
-     → RecursiveCharacterTextSplitter → sentence-transformer embeddings
-     → FAISS index → similarity search → Ollama (qwen2.5:7b-instruct) → answer
-```
+Comparison docs:
+- [`results/pipeline_comparison.md`](results/pipeline_comparison.md) — v2 hybrid vs v3 reranked head-to-head
+- [`results/model_comparison.md`](results/model_comparison.md) — phi3:mini vs qwen2.5:7b head-to-head
 
-### v2 — Structured Pipeline
+### LLM-as-judge
 
-```
-PDFs → GROBID (header + fulltext TEI XML) → structured JSON per paper
-     → abstract + section-aware document loading
-     → metadata-enriched chunking → FAISS dense index
-     → hybrid retrieval: FAISS + BM25 + RRF fusion
-     → evidence sentence selection → Ollama (qwen2.5:7b-instruct) → grounded answer
-```
+We use `gemini-2.5-flash` to grade fact recall. For each question, the judge labels every expected fact as `present` / `partial` / `absent` against the answer, with a one-sentence rationale. Labels map to 1.0 / 0.5 / 0.0 and average to a per-question score.
 
-### v3 — Reranked Pipeline
+The judge is cached on disk by `sha256(question_id + answer + sorted(facts))`, so reruns hit cache and pay zero API cost. Failures fall back to the strict matcher and are tagged `judge_failed=True` for audit.
 
-```
-query → v2 hybrid retrieval (FAISS + BM25 + RRF fusion) → top-N candidate pool
-     → cross-encoder rerank (ms-marco-MiniLM-L-6-v2)
-     → per-paper diversity cap → final top-K
-```
+Full eval implementation: [`src/eval/`](src/eval/).
 
 ---
 
 ## Repository Structure
 
-```
+```text
 NeuroRag/
 │
 ├── src/
 │   ├── pipelines/
-│   │   ├── v1/                        # Flat baseline pipeline
+│   │   ├── v1/                     # baseline flat RAG
 │   │   │   ├── extract_pdfs.py
 │   │   │   ├── create_metadata.py
 │   │   │   ├── load_documents.py
@@ -113,8 +242,9 @@ NeuroRag/
 │   │   │   ├── test_retrieval.py
 │   │   │   └── chat_ollama.py
 │   │   │
-│   │   ├── v2/                        # Structured pipeline
+│   │   ├── v2/                     # structured + hybrid RAG
 │   │   │   ├── parsing/
+│   │   │   │   ├── run_grobid.py
 │   │   │   │   ├── run_grobid_dual.py
 │   │   │   │   └── tei_to_json.py
 │   │   │   ├── load_structured_documents.py
@@ -123,189 +253,350 @@ NeuroRag/
 │   │   │   ├── test_hybrid_retrieval.py
 │   │   │   └── chat_structured_ollama.py
 │   │   │
-│   │   └── v3/                        # Cross-encoder reranking
+│   │   └── v3/                     # cross-encoder reranker
 │   │       └── rerank.py
 │   │
-│   └── eval/
-│       ├── run_retrieval_eval.py      # Retrieval benchmark harness
-│       └── run_answer_eval.py         # Answer-quality benchmark harness
+│   └── eval/                       # evaluation harnesses
+│       ├── run_retrieval_eval.py
+│       ├── run_answer_eval.py
+│       ├── llm_judge.py
+│       └── score_existing_runs.py
 │
 ├── benchmarks/
-│   ├── retrieval_eval_questions.jsonl # 63-question retrieval benchmark
-│   └── answer_eval_questions.jsonl    # 63-question answer-quality benchmark
+│   ├── retrieval_eval_questions.jsonl
+│   └── answer_eval_questions.jsonl
 │
-├── results/
-│   ├── retrieval_eval_summary.md      # Latest retrieval benchmark results
-│   ├── answer_eval_summary_qwen2.5_7b_n63.md
-│   ├── answer_eval_summary_phi3_mini_n63.md
-│   └── model_comparison.md            # Side-by-side answer-quality comparison
+├── results/                        # eval outputs (committed)
+│   ├── retrieval_eval_summary.md
+│   ├── pipeline_comparison.md
+│   ├── model_comparison.md
+│   └── answer_eval_summary_*.{json,md}
 │
-├── data/                              # gitignored — stays local
-├── storage/                           # gitignored — stays local
+├── data/                           # ignored by git
+│   ├── raw/
+│   ├── processed/
+│   └── interim/
+│       ├── tei_xml/
+│       ├── header_tei_xml/
+│       └── structured_json/
+│
+├── storage/                        # ignored by git
+│   ├── faiss_index/
+│   └── faiss_index_v2_structured/
+│
 ├── requirements.txt
+├── .gitignore
 └── README.md
 ```
 
 ---
 
+## v1 Baseline Components
+
+### 1. PDF extraction
+
+`src/pipelines/v1/extract_pdfs.py`
+
+- reads PDFs from `data/raw/`
+- extracts page text using `pypdf`
+- writes `.txt` files into `data/processed/`
+
+### 2. Metadata generation
+
+`src/pipelines/v1/create_metadata.py`
+
+Creates `data/interim/paper_metadata.csv` with baseline fields: filename, relative path, year, first author, category.
+
+### 3. Flat document loading
+
+`src/pipelines/v1/load_documents.py` — loads processed text plus metadata into LangChain documents.
+
+### 4. Baseline index
+
+`src/pipelines/v1/build_index.py`
+
+- chunking with `RecursiveCharacterTextSplitter`
+- embeddings with `sentence-transformers/all-MiniLM-L6-v2`
+- FAISS storage in `storage/faiss_index/`
+
+### 5. Retrieval smoke test
+
+`src/pipelines/v1/test_retrieval.py`
+
+### 6. Baseline chat
+
+`src/pipelines/v1/chat_ollama.py` — simple local CLI RAG over the v1 index.
+
+---
+
+## v2 Structured Pipeline Components
+
+### 1. GROBID parsing
+
+- `src/pipelines/v2/parsing/run_grobid.py`
+- `src/pipelines/v2/parsing/run_grobid_dual.py`
+
+Produces fulltext TEI XML and header TEI XML under `data/interim/tei_xml/` and `data/interim/header_tei_xml/`.
+
+### 2. TEI → JSON conversion
+
+`src/pipelines/v2/parsing/tei_to_json.py`
+
+Builds one structured JSON record per paper in `data/interim/structured_json/`, containing paper-level metadata, abstract, section-aware body content, and source paths.
+
+### 3. Structured document loading
+
+`src/pipelines/v2/load_structured_documents.py` — creates LangChain documents from abstracts and section-level text while preserving metadata (paper ID, title, year, DOI, keywords, section title, section type).
+
+### 4. Structured index
+
+`src/pipelines/v2/build_structured_index.py` — builds the FAISS index at `storage/faiss_index_v2_structured/`.
+
+### 5. Structured retrieval inspection
+
+- `src/pipelines/v2/test_structured_retrieval.py`
+- `src/pipelines/v2/test_hybrid_retrieval.py`
+
+### 6. Structured chat
+
+`src/pipelines/v2/chat_structured_ollama.py` — uses FAISS dense + BM25 lexical retrieval, RRF fusion, section-aware source display, and local Ollama generation.
+
+---
+
+## v3 Reranked Pipeline Components
+
+### Cross-encoder reranker
+
+`src/pipelines/v3/rerank.py`
+
+Wraps a `cross-encoder/ms-marco-MiniLM-L-6-v2` model with a lazy singleton loader. Used by both eval harnesses to rescore the top fused candidates before the diversity cap. Cross-encoders see the full (query, document) pair and routinely catch ordering mistakes a bi-encoder + BM25 fusion makes.
+
+---
+
+## Evaluation Components
+
+### Retrieval eval
+
+`src/eval/run_retrieval_eval.py` — runs all three retrieval pipelines on the benchmark and produces `results/retrieval_eval_summary.{json,md}`.
+
+### Answer eval
+
+`src/eval/run_answer_eval.py` — full retrieval + generation + scoring loop for one (pipeline, model) combination.
+
+Flags:
+- `--pipeline {v2_hybrid, v3_reranked}` — which retrieval pipeline to use
+- `--model <name>` — Ollama model name
+- `--limit N` — first N questions only (smoke test)
+- `--output-basename <stem>` — override the auto-generated output filename
+
+### LLM judge
+
+- `src/eval/llm_judge.py` — Gemini-based per-fact judge with on-disk caching
+- `src/eval/score_existing_runs.py` — adds judge scores to existing `answer_eval_summary_*.json` files
+
+---
+
 ## Installation
+
+Clone the repository:
 
 ```bash
 git clone https://github.com/fallahtp/NeuroRag.git
 cd NeuroRag
+```
+
+Create a virtual environment:
+
+```bash
 python -m venv .venv
-.venv\Scripts\activate        # Windows
-# source .venv/bin/activate   # macOS/Linux
+```
+
+Activate it on Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
 
-### External Requirements
+---
 
-**Ollama** — local LLM inference. Install from [ollama.com](https://ollama.com) and pull the default generation model:
+## External Requirements
+
+### Ollama
+
+NeuroRag uses a local Ollama model for answer generation. Install Ollama and pull at least one model:
 
 ```bash
-ollama pull qwen2.5:7b-instruct
+ollama pull qwen2.5:7b-instruct   # current default
+ollama pull phi3:mini              # smaller fallback
 ```
 
-To reproduce the model comparison, also pull `phi3:mini`:
+### Docker + GROBID
+
+The structured v2/v3 pipelines use GROBID through Docker.
+
+- install Docker Desktop
+- run a local GROBID container (port 8070)
+- the parser sends PDFs to `http://localhost:8070`
+
+### Gemini API (optional — LLM-as-judge eval only)
+
+The answer-quality eval uses `gemini-2.5-flash` as the grader. This is **optional** — every other part of NeuroRag runs locally with Ollama. The judge is only needed if you want to reproduce the LLM-judged fact recall numbers.
+
+- Get a free key at https://aistudio.google.com/apikey
+- Set environment variable `GEMINI_API_KEY`
+- `pip install google-genai`
+
+The 189 judge calls needed to reproduce the full benchmark cost roughly $0.05–0.15 on the paid tier (Tier 1 free quota covers it; the free tier daily cap is too low for the full benchmark in one day). Cache makes reruns free.
+
+---
+
+## Running the v1 Pipeline
 
 ```bash
-ollama pull phi3:mini
-```
-
-**Docker + GROBID** — required for the v2 and v3 structured pipelines only. Run a local GROBID container:
-
-```bash
-docker run --rm -p 8070:8070 lfoppiano/grobid:0.8.0
+# 1. Put PDFs in data/raw/
+# 2. Extract text
+python src/pipelines/v1/extract_pdfs.py
+# 3. Create metadata
+python src/pipelines/v1/create_metadata.py
+# 4. Build the baseline index
+python src/pipelines/v1/build_index.py
+# 5. Test retrieval
+python src/pipelines/v1/test_retrieval.py
+# 6. Start baseline chat
+python src/pipelines/v1/chat_ollama.py
 ```
 
 ---
 
-## Running v1 (Flat Baseline)
+## Running the v2 / v3 Structured Pipeline
 
 ```bash
-# 1. Place PDFs in data/raw/
-python src/pipelines/v1/extract_pdfs.py
-python src/pipelines/v1/create_metadata.py
-python src/pipelines/v1/build_index.py
-python src/pipelines/v1/test_retrieval.py   # optional smoke test
-python src/pipelines/v1/chat_ollama.py      # interactive CLI chat
-```
-
-## Running v2 (Structured Pipeline)
-
-```bash
-# 1. Start GROBID via Docker (see above)
-
-# 2. Parse PDFs
+# 1. Start GROBID locally via Docker
+# 2. Parse PDFs with GROBID
 python src/pipelines/v2/parsing/run_grobid_dual.py
-
-# 3. Convert TEI XML to structured JSON
+# 3. Convert TEI to structured JSON
 python src/pipelines/v2/parsing/tei_to_json.py
-
-# 4. Build the structured FAISS index
+# 4. Load structured documents
+python src/pipelines/v2/load_structured_documents.py
+# 5. Build structured index
 python src/pipelines/v2/build_structured_index.py
-
-# 5. Optional: inspect retrieval quality
+# 6. Test structured retrieval
 python src/pipelines/v2/test_structured_retrieval.py
 python src/pipelines/v2/test_hybrid_retrieval.py
-
-# 6. Interactive CLI chat (uses qwen2.5:7b-instruct by default)
+# 7. Start structured chat
 python src/pipelines/v2/chat_structured_ollama.py
 ```
 
-## Using v3 (Reranked Pipeline)
-
-v3 reuses the v2 structured FAISS index — no separate index build is needed. The cross-encoder reranker is currently integrated into the evaluation harness; an interactive `chat_reranked_ollama.py` is on the roadmap.
-
-```bash
-# v3 is evaluated alongside v1 and v2 by the retrieval eval (see below)
-python src/eval/run_retrieval_eval.py
-```
-
-The first run downloads `cross-encoder/ms-marco-MiniLM-L-6-v2` (~90 MB) from HuggingFace. Subsequent runs load it from the local cache.
-
 ---
 
-## Running the Evaluations
+## Running the Evaluation
 
-### Retrieval evaluation
+### Retrieval eval
 
 ```bash
 python src/eval/run_retrieval_eval.py
+# -> results/retrieval_eval_summary.{json,md}
 ```
 
-Evaluates all available pipelines (v1 dense, v2 dense, v2 hybrid, v3 reranked) against `benchmarks/retrieval_eval_questions.jsonl` and writes results to `results/retrieval_eval_summary.md`. Runtime is roughly 2–4 minutes on CPU.
-
-### Answer-quality evaluation
+### Answer eval (one pipeline, one model)
 
 ```bash
-# Default model (qwen2.5:7b-instruct)
-python src/eval/run_answer_eval.py
-
-# Or specify a different model
-python src/eval/run_answer_eval.py --model phi3:mini
+python src/eval/run_answer_eval.py --pipeline v2_hybrid --model qwen2.5:7b-instruct
+python src/eval/run_answer_eval.py --pipeline v3_reranked --model qwen2.5:7b-instruct
+# -> results/answer_eval_summary_{model}_{pipeline}_n{N}.{json,md}
 ```
 
-Runs the full v2 hybrid retrieval → prompt → LLM stack on each benchmark question and scores the resulting answer on fact recall, citation validity, citation grounding, and numeric hallucination. Writes results to `results/answer_eval_summary.{json,md}`. Runtime is ~10 min on `phi3:mini` and ~25–40 min on `qwen2.5:7b-instruct` (CPU-bound, depends on hardware).
+### LLM-judge re-scoring
 
-To reproduce the side-by-side model comparison in `results/model_comparison.md`, run both models and rename the outputs in between (see that file's "Reproducing These Numbers" section).
-
----
-
-## Tech Stack
-
-| Component | Library / Tool |
-|---|---|
-| PDF parsing | pypdf, GROBID |
-| XML parsing | xml.etree.ElementTree |
-| Document loading | LangChain |
-| Embeddings | sentence-transformers/all-MiniLM-L6-v2 |
-| Dense index | FAISS |
-| Lexical retrieval | BM25 (rank-bm25) |
-| Fusion ranking | Reciprocal Rank Fusion (RRF) |
-| Reranker | cross-encoder/ms-marco-MiniLM-L-6-v2 |
-| Local LLM (default) | Ollama — `qwen2.5:7b-instruct` |
-| Local LLM (compared) | Ollama — `phi3:mini` |
-| Retrieval evaluation | Custom harness (`run_retrieval_eval.py`) |
-| Answer-quality evaluation | Custom harness (`run_answer_eval.py`) |
+```bash
+# Requires GEMINI_API_KEY env var
+python src/eval/score_existing_runs.py results/answer_eval_summary_*.json
+# -> results/answer_eval_summary_*_judged.{json,md}
+```
 
 ---
 
-## What Is Not Included
+## Data and Privacy
 
-This repository does not contain:
+This repository does not include:
 
-- Private PDFs or extracted text files
-- TEI XML outputs or structured JSON outputs
+- private PDFs
+- extracted text files
+- TEI XML outputs
+- structured JSON outputs
 - FAISS vector indexes
-- Local virtual environments
+- local virtual environments
 
-These stay on your machine and are excluded via `.gitignore`. This keeps the repository lightweight and shareable as a portfolio project.
+These remain local and are excluded via `.gitignore`. The repo is kept private, lightweight, and easy to share publicly as a portfolio project.
+
+---
+
+## Why this project matters
+
+NeuroRag is not meant to be just a generic "chat with PDFs" demo.
+
+The goal is to build a domain-specific local research assistant for:
+
+- neuroscience literature
+- ion channel questions
+- spiral ganglion neuron research
+- computational modeling
+- NEURON / Python-related workflows
+
+The most important direction is not flashy UI, but **measurable retrieval quality, grounded answers, and trustworthiness in a scientific setting** — which is why the evaluation harness is treated as a first-class component, not an afterthought.
 
 ---
 
 ## Roadmap
 
-- [x] Cross-encoder reranker (v3)
-- [x] Expanded retrieval benchmark (63 questions, 15 papers)
-- [x] Automated answer-quality evaluation (fact recall, citations, hallucination)
-- [x] Two-model answer-quality comparison (`phi3:mini` vs `qwen2.5:7b-instruct`)
-- [ ] LLM-as-judge fact recall using a different model family (e.g. Google Gemini 2.5 Flash free tier) to avoid self-judgment bias and replace the strict-substring matcher
-- [ ] Re-run the answer-quality eval on the v3 reranked pipeline (currently runs on v2 hybrid)
-- [ ] v3 chat integration (`chat_reranked_ollama.py`)
-- [ ] Web UI (Streamlit)
-- [ ] Richer metadata filtering (year, author, category)
-- [ ] Table and figure caption extraction
-- [ ] Multi-hop and cross-paper benchmark questions
-- [ ] Comparison against larger rerankers (`bge-reranker-base`, `bge-reranker-large`)
+### Done
+- ✅ 63-question neuroscience evaluation set (retrieval + answer quality)
+- ✅ Retrieval ranking via Reciprocal Rank Fusion (v2 hybrid)
+- ✅ Cross-encoder reranking (v3 reranked)
+- ✅ Answer-eval harness with strict + LLM-judged fact recall
+- ✅ LLM-as-judge with `gemini-2.5-flash` (different model family from generators, on-disk cached)
+- ✅ Model comparison: phi3:mini vs qwen2.5:7b-instruct
+- ✅ Pipeline comparison: v2 hybrid vs v3 reranked
+
+### Near-term
+- Better section-aware chunking to lift the long tail of "retrieval is close but not exact" failures
+- Scientific table / figure-caption extraction (currently lost in TEI flattening)
+- Judge-based citation grounding (we persist retrieved chunk text in eval JSON; the infrastructure is there, we just need the grading prompt)
+
+### Next phase
+- Web interface
+- Richer metadata-aware filtering (year ranges, authors, paper-level boolean filters)
+- Domain-specific prompt modes for neuroscience / NEURON workflows
+- Query reformulation for the questions where retrieval misses entirely
+
+---
+
+## Tech Stack
+
+- Python
+- LangChain
+- FAISS (dense vector retrieval)
+- HuggingFace sentence-transformer embeddings (`all-MiniLM-L6-v2`)
+- BM25 / lexical retrieval (`rank_bm25` via LangChain)
+- Cross-encoder reranker (`cross-encoder/ms-marco-MiniLM-L-6-v2`)
+- Ollama (local LLM generation)
+- Gemini API (LLM-as-judge, eval only)
+- PyPDF
+- GROBID
+- Docker
 
 ---
 
 ## Author
 
-**Mahdi Fallahtaherpazir**  
-PhD Researcher — Neuroscience  
+**Mahdi Fallahtaherpazir**
+PhD Researcher — Neuroscience
 Medical University of Innsbruck
 
 ---
