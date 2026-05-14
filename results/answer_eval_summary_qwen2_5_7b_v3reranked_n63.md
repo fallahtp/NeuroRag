@@ -1,0 +1,1082 @@
+# NeuroRag Answer Evaluation
+
+Benchmark file: `D:/Projects/NeuroRag/benchmarks/answer_eval_questions.jsonl`
+Model: `qwen2.5:7b-instruct`
+Pipeline: `v3_reranked`
+
+## Summary
+
+| Metric | Value |
+|---|---:|
+| Questions | 63 |
+| Mean fact recall | 27.0% |
+| Mean citation validity | 99.2% |
+| Mean citation grounding | 43.7% |
+| Answers with citations | 63/63 (100.0%) |
+| Answers without numeric hallucination | 63/63 (100.0%) |
+| Total suspicious numbers across all answers | 0 |
+
+## Per-Question Detail
+
+| ID | Fact Recall | Cite Valid | Cite Ground | Susp. Nums | Missed Facts |
+|---|---:|---:|---:|---:|---|
+| q001_rattay_sgn_signal_transduction_phases | 25.0% | 100.0% | 50.0% | 0 | peripheral process, presomatic delay, central process |
+| q002_rattay_sgn_lengths_human_cat | 100.0% | 100.0% | 100.0% | 0 | - |
+| q003_rattay_type_i_process_diameters | 50.0% | 100.0% | 100.0% | 0 | 2.65, 1.02, 1.81 |
+| q004_rattay_soma_myelination_cat_human | 60.0% | 100.0% | 100.0% | 0 | 95.54, 3.65 |
+| q005_rattay_ribbon_synapse_currents_jitter | 75.0% | 100.0% | 100.0% | 0 | 400 |
+| q006_luque_hcn1_localization_type_i_sgn | 66.7% | 100.0% | 100.0% | 0 | perisomatic |
+| q007_luque_hcn3_prestin_ohc | 100.0% | 100.0% | 100.0% | 0 | - |
+| q008_luque_hcn2_hcn4_postnatal_development | 66.7% | 100.0% | 100.0% | 0 | hearing onset |
+| q009_luque_hcn_aging_thresholds | 33.3% | 100.0% | 100.0% | 0 | no direct, CBA |
+| q010_luque_hcn2_hcn4_coexpression | 100.0% | 100.0% | 100.0% | 0 | - |
+| q011_accili_hcn_isoform_kinetics | 100.0% | 100.0% | 100.0% | 0 | - |
+| q012_accili_hcn_ionic_properties | 100.0% | 100.0% | 100.0% | 0 | - |
+| q013_neymotin_model_methods_neuron_rxd | 33.3% | 100.0% | 50.0% | 0 | RxD, NMODL |
+| q014_neymotin_free_calcium_persistent_activity | 66.7% | 100.0% | 100.0% | 0 | extrusion |
+| q015_potrusil_two_step_modeling_framework | 100.0% | 100.0% | 100.0% | 0 | - |
+| q016_potrusil_low_frequency_tonotopic_order | 100.0% | 100.0% | 100.0% | 0 | - |
+| q017_croner_degeneration_absolute_threshold | 100.0% | 100.0% | 100.0% | 0 | - |
+| q018_croner_pitch_degenerative_state | 100.0% | 100.0% | 100.0% | 0 | - |
+| q019_recugnat_hcn_klt_spike_rate_adaptation | 100.0% | 100.0% | 100.0% | 0 | - |
+| q020_smith_node_geometry_spike_timing | 100.0% | 100.0% | 100.0% | 0 | - |
+| q021_glueckert_sgn_turn_distances | 0.0% | 100.0% | 0.0% | 0 | 1.3 mm in the basal turn, 1.2 mm in the second turn, 0.8–1 mm in the apex, RC... |
+| q022_glueckert_osl_microstructure_measurements | 0.0% | 100.0% | 0.0% | 0 | central axon pores 10–50 µm in diameter, adjacent columns 200–400 µm apart in... |
+| q023_glueckert_longterm_deaf_sgn_survival | 16.7% | 100.0% | 100.0% | 0 | acoustic trauma in World War II, basal turn mean diameter 24.6 µm, SD 1.74, n... |
+| q024_smith_pn_cn_node_maturation | 28.6% | 100.0% | 50.0% | 0 | 59% of PN nodal assemblies were early clusters, 86% of CN nodal assemblies we... |
+| q025_smith_perisomatic_nodes_after_hearing_onset | 0.0% | 100.0% | 0.0% | 0 | AnkG first detected as thin linear structures around P4, by P8 AnkG largely r... |
+| q026_smith_spike_generator_migration | 0.0% | 100.0% | 100.0% | 0 | P4, AnkG early clusters, AnkG-Caspr heminodes, Caspr-AnkG-Caspr arrangement, ... |
+| q027_smith_location_specific_node_geometry_p20 | 0.0% | 100.0% | 0.0% | 0 | PN mean length 1.35 ± 0.06 µm, PN mean diameter 1.08 ± 0.05 µm, pre-somatic m... |
+| q028_smith_node_geometry_model_conduction_speed | 14.3% | 100.0% | 0.0% | 0 | P10 nodes were longer and narrower than P20 nodes, 4.2% decrease in conductio... |
+| q029_liu_human_cochlea_methods | 0.0% | 100.0% | 0.0% | 0 | seven cochleae from seven adult patients, two male and five female patients, ... |
+| q030_liu_nmsc_laminin_collagen_expression | 0.0% | 100.0% | 0.0% | 0 | NMSCs were MBP-negative, NMSCs showed rich intracellular laminin-b2 expressio... |
+| q031_liu_habenula_basement_membrane | 0.0% | 100.0% | 0.0% | 0 | basement membrane surrounded neurons from the spiral ganglion to the habenula... |
+| q032_liu_nihl_monopolar_sgns | 0.0% | 100.0% | 0.0% | 0 | typical 4-kHz noise-induced hearing loss, chronic noise exposure for 40 years... |
+| q033_liu_discussion_spike_generation_ci | 0.0% | 100.0% | 0.0% | 0 | human type I SGN soma and proximal segments lack compact myelin, Nav1.6 chann... |
+| q034_liu_cx43_human_specimen_methods | 0.0% | 100.0% | 0.0% | 0 | 5 human cochleae, 2 male and 3 female patients, ages 45–56 years, 4% para-for... |
+| q035_liu_cx43_guinea_pig_comparison | 0.0% | 100.0% | 0.0% | 0 | six Dunkin Hartley guinea pigs, female, 1–2 months, trigeminal SGCs expressed... |
+| q036_liu_cx43_human_sgc_gap_junctions | 0.0% | 100.0% | 0.0% | 0 | Cx43 appeared as small dots, Cx43 was along the peripheral border of neuronal... |
+| q037_liu_tem_gap_junction_dimensions | 0.0% | 100.0% | 0.0% | 0 | GJs were present between human SGCs, GJ length 4–500 nm, intercellular distan... |
+| q038_liu_deafness_monopolar_sgn_survival | 0.0% | 100.0% | 0.0% | 0 | female aged 52 at death, mumps at age 2 and deaf thereafter, 12,000 mono-pola... |
+| q039_tylstedt_tem_human_cochlea_methods | 0.0% | 100.0% | 0.0% | 0 | four freshly fixed cochleas, all subjects had subjectively normal hearing, pe... |
+| q040_tylstedt_middle_turn_cell_counts | 0.0% | 100.0% | 0.0% | 0 | Type I ganglion cells n = 96, 97% Type I ganglion cells, Schwann cell gaps n ... |
+| q041_tylstedt_physical_interaction_results | 0.0% | 100.0% | 100.0% | 0 | middle turn ganglion cells lay close to each other, HSG cells were frequently... |
+| q042_tylstedt_membrane_specializations | 0.0% | 100.0% | 0.0% | 0 | symmetric or asymmetric thickenings of opposing cell membranes, thin line par... |
+| q043_tylstedt_discussion_myelination_units | 0.0% | 100.0% | 0.0% | 0 | human vestibular and acoustic ganglia mostly surrounded by a simple Schwann c... |
+| q044_ota_human_sgn_specimen_methods | 0.0% | 100.0% | 50.0% | 0 | 17 bones from 12 individuals, ages 9 months to 92 years, post mortem times 1-... |
+| q045_ota_large_small_neuron_population | 16.7% | 100.0% | 100.0% | 0 | 971 human spiral ganglion cells studied, large perikarya were 22 to 34 µm in ... |
+| q046_ota_large_neuron_process_myelination | 0.0% | 100.0% | 100.0% | 0 | axon hillocks were large and often long, axonal processes became myelinated 4... |
+| q047_ota_age_related_myelinated_large_neurons | 0.0% | 100.0% | 0.0% | 0 | highest count was 11 out of 39 or 28% in a 75-year-old specimen, no myelinate... |
+| q048_ota_discussion_fiber_distribution_function | 0.0% | 100.0% | 0.0% | 0 | majority of animal spiral ganglion cells are myelinated, human neurons lack m... |
+| q049_bai_psychophysical_measurement_protocol | 0.0% | 100.0% | 0.0% | 0 | 10 study participants, 14 implanted ears, 12-channel MED-EL electrode arrays,... |
+| q050_bai_microct_fem_sgn_modeling | 0.0% | 100.0% | 0.0% | 0 | eight human temporal bones, postmortem time within 12 h, 15 µm isotropic voxe... |
+| q051_bai_dt_mcl_results_variability | 0.0% | 100.0% | 0.0% | 0 | DT mean −12.47 dB, DT pooled variance 4.32 dB², MCL mean −6.84 dB, MCL pooled... |
+| q052_bai_jaccard_neural_excitation_profiles | 0.0% | 100.0% | 0.0% | 0 | LI vs LD mean J = 0.15 at 1% excitation, SI vs SD mean J = 0.25 at 1% excitat... |
+| q053_bai_dt_mcl_excitation_level_mapping | 0.0% | 100.0% | 0.0% | 0 | LI DT range 0.2%–1.4%, SI DT range 0.8%–4.2%, SD DT range 0.2%–5.8%, LD had n... |
+| q054_recugnat_single_node_adaptation_channels | 0.0% | 50.0% | 0.0% | 0 | five computational models, single-compartment modelled as a node of Ranvier, ... |
+| q055_recugnat_multicompartment_sgn_geometry | 0.0% | 100.0% | 100.0% | 0 | bipolar neuron morphology, seven peripheral nodes P0 to P6, 15 central nodes ... |
+| q056_recugnat_stimulation_electrode_positions | 0.0% | 100.0% | 50.0% | 0 | 300 ms trains of cathodic-first biphasic pulses, pulse rates of 200, 2000, an... |
+| q057_recugnat_single_compartment_adaptation_results | 0.0% | 100.0% | 0.0% | 0 | 12 of 18 PSTHs had R² values above 0.90, NSRD values ranged from 0 to 0.95, H... |
+| q058_recugnat_thresholds_recovery_multicompartment | 0.0% | 100.0% | 0.0% | 0 | HHROT,MULTI cathodic thresholds were 77.5, 438.4, and 548.5 µA at 200, 500, a... |
+| q059_fellner_comsol_framework_physics | 50.0% | 100.0% | 100.0% | 0 | AC/DC module, Electric Currents interfaces, Boundary ODEs and DAEs interface |
+| q060_fellner_meshing_dof_strategy | 0.0% | 100.0% | 0.0% | 0 | DOF ≈ 1.4 * #elements * #unknowns, linear discretization reduces DOF by appro... |
+| q061_fellner_membrane_coupling_signs | 0.0% | 100.0% | 0.0% | 0 | Vm = Vi − Ve, ic = cm d(Vm,t), cm ≈ 1 µF cm^-2, iM = iIon + iC, Ve boundary c... |
+| q062_fellner_honeycomb_whole_fem_results | 0.0% | 100.0% | 0.0% | 0 | honeycomb electrode produces a vertically directed electric field, non-symmet... |
+| q063_fellner_cochlear_electrode_mrg_examples | 0.0% | 100.0% | 0.0% | 0 | MED-EL electrode array, 3D scan of the cochlea imported from SolidWorks, elec... |
+
+## Failure Cases
+
+### q001_rattay_sgn_signal_transduction_phases
+
+**Question:** What four phases characterize spike transduction along spiral ganglion neurons?
+
+**Answer:**
+
+```
+Answer:
+Spike transduction along spiral ganglion neurons can be divided into four characteristic phases. These include the initiation of spike at the peripheral terminal, a delay in excitation onset (postsynaptic delay t1), and a subsequent significant delay due to the large soma capacitance that needs to be loaded via axial current flow.
+
+Evidence summary:
+The context directly states that spike transduction along spiral ganglion neurons is characterized by four phases: initiation of spike at the peripheral terminal, followed by a postsynaptic delay, and then a delay due to soma capacitance loading [2].
+
+Source IDs:
+[2], [1]
+```
+
+- Fact recall: 25.0% (missed: peripheral process, presomatic delay, central process)
+- Citation validity: 100.0%
+- Citation grounding: 50.0%
+- Suspicious numbers: none
+
+### q009_luque_hcn_aging_thresholds
+
+**Question:** Did age-related changes in HCN channel expression correlate directly with hearing thresholds in CBA/J and C57Bl/6N mice?
+
+**Answer:**
+
+```
+Answer:
+HCN channel expression levels, specifically HCN2, correlated with hearing performance during aging in C57Bl/6N mice, as staining intensities increased after 4 months of age, which coincided with an increase in hearing thresholds.
+
+Evidence summary:
+The evidence indicates that HCN2 expression levels increased in older C57Bl/6N mice and this correlated with their increased hearing thresholds.
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 33.3% (missed: no direct, CBA)
+- Citation validity: 100.0%
+- Citation grounding: 100.0%
+- Suspicious numbers: none
+
+### q013_neymotin_model_methods_neuron_rxd
+
+**Question:** What simulation environment and multiscale modeling components were used in the Neymotin calcium-HCN neocortex model?
+
+**Answer:**
+
+```
+Answer:
+The simulation was performed using NEURON, and the model included components for calcium regulation of HCN channels to support persistent activity.
+
+Evidence summary:
+The context mentions that the model implemented ion channels in NEURON [1], but it does not explicitly state which simulation environment or multiscale modeling components were used. The focus is on the implementation of calcium regulation of HCN channels within a single pyramidal neuron [2].
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 33.3% (missed: RxD, NMODL)
+- Citation validity: 100.0%
+- Citation grounding: 50.0%
+- Suspicious numbers: none
+
+### q021_glueckert_sgn_turn_distances
+
+**Question:** In the Results section on organization of the human spiral ganglion and electrode positioning, what distances did the authors report between spiral ganglion cell bodies and inner hair cells in the basal turn, second turn, and apex, and where does Rosenthal's canal terminate?
+
+**Answer:**
+
+```
+Answer:
+I do not have enough evidence in the retrieved context to answer confidently.
+
+Evidence summary:
+The provided context does not contain specific distance measurements between spiral ganglion cell bodies and inner hair cells for different turns of the cochlea, nor does it provide information on where Rosenthal's canal terminates.
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 0.0% (missed: 1.3 mm in the basal turn, 1.2 mm in the second turn, 0.8–1 mm in the apex, RC terminates in a bulge at the level of the middle turn, densely clustered ganglion cells in the apical region)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q022_glueckert_osl_microstructure_measurements
+
+**Question:** In the Microstructures of the Perilymphatic Space and Rosenthal's canal section, what quantitative dimensions did the authors report for central axon pores, spacing of adjacent bony columns, and the distance between the bony sheets of the osseous spiral lamina in basal versus apical regions?
+
+**Answer:**
+
+```
+Answer:
+I do not have enough evidence in the retrieved context to answer confidently.
+
+Evidence summary:
+The provided context does not contain specific quantitative dimensions for central axon pores, spacing of adjacent bony columns, or the distance between the bony sheets of the osseous spiral lamina in basal versus apical regions.
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 0.0% (missed: central axon pores 10–50 µm in diameter, adjacent columns 200–400 µm apart in the basal turn, OSL bony-sheet distance 72 µm in the basal turn, basal SD 14.7, min 58 µm, max 112 µm, n = 23, OSL bony-sheet distance 36 µm in the apex, apex SD 4.6, min 28 µm, max 42 µm, n = 13)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q023_glueckert_longterm_deaf_sgn_survival
+
+**Question:** In the section describing the temporal bone from a person deaf for over 50 years, what survival pattern and neuron diameter measurements did the authors report across cochlear turns?
+
+**Answer:**
+
+```
+Answer:
+I do not have enough evidence in the retrieved context to answer confidently.
+
+Evidence summary:
+The provided context does not contain specific information about survival patterns or neuron diameter measurements across cochlear turns for a person who was deaf for over 50 years.
+
+Source IDs:
+[1]
+```
+
+- Fact recall: 16.7% (missed: acoustic trauma in World War II, basal turn mean diameter 24.6 µm, SD 1.74, n = 16, middle turn mean diameter 28.9 µm, SD 3.13, n = 7, apex mean diameter 28.9 µm, SD 3.53, n = 12, peripheral axons were almost completely absent in all turns)
+- Citation validity: 100.0%
+- Citation grounding: 100.0%
+- Suspicious numbers: none
+
+### q024_smith_pn_cn_node_maturation
+
+**Question:** In the Results section on spatiotemporal patterning in SGN node of Ranvier assembly, how did maturation of peripheral neurite and central neurite nodes differ between P4 and P10?
+
+**Answer:**
+
+```
+Answer:
+I do not have enough evidence in the retrieved context to answer confidently.
+
+Evidence summary:
+The provided context does not contain specific information about how maturation of peripheral neurite and central neurite nodes differed between P4 and P10 in SGN node of Ranvier assembly.
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 28.6% (missed: 59% of PN nodal assemblies were early clusters, 86% of CN nodal assemblies were early clusters, approximately 80% mature in PNs, approximately 46% mature in CNs, p = 7.3 × 10^-6)
+- Citation validity: 100.0%
+- Citation grounding: 50.0%
+- Suspicious numbers: none
+
+### q025_smith_perisomatic_nodes_after_hearing_onset
+
+**Question:** In the section on peri-somatic nodes of Ranvier, what evidence shows that pre-somatic and post-somatic nodes mature more slowly than peripheral neurite nodes around hearing onset?
+
+**Answer:**
+
+```
+Answer:
+The evidence shows that pre-somatic and post-somatic nodes mature more slowly than peripheral neurite nodes around hearing onset. At P10, only 30% of nodal assemblies showed a mature Caspr-AnkG-Caspr organization in the post-somatic nodes (Figure 2H), whereas pre-somatic nodes had delayed maturation compared to post-somatic nodes (chi-squared test, p = 0.019) and peripheral neurite nodes (p = 3.4 × 10^-14 for pre-somatic nodes and p = 1.2 × 10^-7 for post-somatic nodes).
+
+Evidence summary:
+The percentage of mature pre-somatic and post-somatic nodes was lower than that in peripheral neurite nodes at P10, indicating delayed maturation.
+
+Source IDs:
+[1]
+```
+
+- Fact recall: 0.0% (missed: AnkG first detected as thin linear structures around P4, by P8 AnkG largely restricted to clusters, pre-somatic and post-somatic nodes differed at P10 with p = 0.019, pre-somatic and post-somatic nodes differed at P12 with p = 3.4 × 10^-4, pre-somatic versus PN at P10 p = 3.4 × 10^-14, pre-somatic versus PN at P12 p = 2.2 × 10^-10)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q026_smith_spike_generator_migration
+
+**Question:** In the section on immature assemblies contributing to formation of SGN spike generators, what developmental changes did the authors observe in spike generator organization between P4 and P14?
+
+**Answer:**
+
+```
+Answer:
+By P14, approaching clusters/heminodes were rarely observed among spike generator assemblies, suggesting a different formation mechanism compared to earlier stages. Complex organizations of AnkG and Caspr were observed as most spike generators had reached a mature position close to the habenula perforata.
+
+Evidence summary:
+The authors noted that by postnatal day 14 (P14), the presence of approaching clusters/heminodes among spike generator assemblies was rare, indicating a shift in their formation mechanism. Additionally, complex organizations of AnkG and Caspr were observed as most spike generators had matured to near their final position.
+
+Source IDs:
+[1]
+```
+
+- Fact recall: 0.0% (missed: P4, AnkG early clusters, AnkG-Caspr heminodes, Caspr-AnkG-Caspr arrangement, greater than 95% by P12, only 5/398 approaching assemblies between P4 and P14, P14 spike generators reached a mature position close to the habenula perforata)
+- Citation validity: 100.0%
+- Citation grounding: 100.0%
+- Suspicious numbers: none
+
+### q027_smith_location_specific_node_geometry_p20
+
+**Question:** In the section on location-specific geometries of nodes of Ranvier along SGNs, what P20 node length and diameter values were reported for PN, pre-somatic, post-somatic, and CN nodes?
+
+**Answer:**
+
+```
+Answer:
+PN nodes have an average diameter of 1.08 ± 0.05 mm, CN nodes have a larger mean diameter of 1.32 ± 0.02 mm, pre-somatic nodes have the smallest average diameter of 0.79 ± 0.03 mm. The length values for these nodes are not explicitly provided in the context.
+
+Evidence summary:
+The context provides diameter measurements for PN, CN, and pre-somatic nodes at P20 but does not specify lengths for each node type.
+
+Source IDs:
+[1]
+```
+
+- Fact recall: 0.0% (missed: PN mean length 1.35 ± 0.06 µm, PN mean diameter 1.08 ± 0.05 µm, pre-somatic mean length 1.90 ± 0.1 µm, pre-somatic mean diameter 0.79 ± 0.03 µm, post-somatic mean length 1.99 ± 0.09 µm, post-somatic mean diameter 1.52 ± 0.04 µm, CN mean length 1.30 ± 0.03 µm, CN mean diameter 1.32 ± 0.02 µm)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q028_smith_node_geometry_model_conduction_speed
+
+**Question:** In the computational modeling results, what effect did replacing mature P20 centrally directed node dimensions with P10 dimensions have on conduction speed, and how many extra myelin wraps were needed to compensate?
+
+**Answer:**
+
+```
+Answer:
+Replacing mature P20 centrally directed node dimensions with P10 dimensions decreased conduction speed by 4.2% (from 6.33 ms⁻¹ to 6.06 ms⁻¹), as the simulations predicted a 22% increase in diameter and 33% decrease in length between P10 and P20 led to a >4% increase in conduction speed. To compensate for this, an extra 4 myelin wraps were needed.
+
+Evidence summary:
+The context indicates that using P10 node dimensions instead of mature P20 node dimensions reduced the conduction speed by 4.2%, necessitating four additional myelin wraps to maintain proper function.
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 14.3% (missed: P10 nodes were longer and narrower than P20 nodes, 4.2% decrease in conduction speed with constant channel density, 6.33 m s^-1 to 6.06 m s^-1, 4.1% decrease with constant channel number, 12.7 µs peak delay with constant channel density, 14.1 µs peak delay with constant channel number)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q029_liu_human_cochlea_methods
+
+**Question:** In the Experimental Procedures section, what human cochlear specimens and preparation steps were used for immunohistochemistry of type I spiral ganglion neurons?
+
+**Answer:**
+
+```
+Answer:
+I do not have enough evidence in the retrieved context to answer confidently.
+
+Evidence summary:
+The retrieved context does not provide specific details about the human cochlear specimens or preparation steps used for immunohistochemistry of type I spiral ganglion neurons.
+
+Source IDs:
+[1], [2], [3]
+```
+
+- Fact recall: 0.0% (missed: seven cochleae from seven adult patients, two male and five female patients, ages 40–65 years, 4% paraformaldehyde, 24-h fixation, 8–10 µm frozen sections)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q030_liu_nmsc_laminin_collagen_expression
+
+**Question:** In the Results section, how did the authors distinguish non-myelinated Schwann cells from satellite glial cells around human type I SGNs?
+
+**Answer:**
+
+```
+Answer:
+The authors did not explicitly distinguish non-myelinated Schwann cells from satellite glial cells around human type I SGNs in the provided context. However, they described that each unmyelinated type I cell body is encapsulated by at least one cellular layer of a satellite glial cell [2], and MBP-positive myelin sheaths were observed surrounding the peripheral axons or dendrites but not the pre-and postsomatic segments [4].
+
+Evidence summary:
+The context discusses the presence of myelinating Schwann cells around type I SGNs but does not provide specific details on distinguishing non-myelinated Schwann cells from satellite glial cells.
+
+Source IDs:
+[2], [4]
+```
+
+- Fact recall: 0.0% (missed: NMSCs were MBP-negative, NMSCs showed rich intracellular laminin-b2 expression, NMSCs showed collagen IV expression, satellite glial cells showed no intracellular laminin expression, non-myelinated zones could be up to 50 microns)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q031_liu_habenula_basement_membrane
+
+**Question:** In the Results section describing the habenula perforata, what did the authors report about basement membrane continuity and loss of myelin in peripheral SGN processes?
+
+**Answer:**
+
+```
+Answer:
+The authors did not report on basement membrane continuity or loss of myelin in peripheral SGN processes in the habenula perforata specifically.
+
+Evidence summary:
+The provided context does not contain specific information regarding basement membrane continuity or loss of myelin in peripheral SGN processes at the habenula perforata. The closest related content discusses myelination patterns and degeneration effects, but these are not directly tied to the habenula perforata in the given sections.
+
+Source IDs:
+[1], [2], [5]
+```
+
+- Fact recall: 0.0% (missed: basement membrane surrounded neurons from the spiral ganglion to the habenula perforata, basement membrane stained positive for laminin-b2 and collagen IV, BM lined the habenular canal, BM coalesced with the sensory epithelium BM, peripheral axons lost their myelin sheath beneath the inferior canal opening)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q032_liu_nihl_monopolar_sgns
+
+**Question:** In the light microscopy 3D-reconstruction and TEM analysis of the noise-induced hearing loss lesion, what quantitative evidence showed many type I SGNs had become monopolar?
+
+**Answer:**
+
+```
+Answer:
+In the light microscopy 3D-reconstruction and TEM analysis of the noise-induced hearing loss lesion, many type I SGNs had become monopolar as evidenced by a majority of SGNs lacking dendrites in the 10-13-mm region.
+
+Evidence summary:
+The study analyzed SGNs using 3D-reconstructions from serial sections and found that most cells lacked dendrites in the specified lesion area.
+
+Source IDs:
+[2]
+```
+
+- Fact recall: 0.0% (missed: typical 4-kHz noise-induced hearing loss, chronic noise exposure for 40 years, 45% loss of myelinated nerve fibers at the osseous spiral lamina, 68.5% monopolar type I SGNs, 249 reconstructed SGNs, 88 consecutive 1.5-µm sections)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q033_liu_discussion_spike_generation_ci
+
+**Question:** In the Discussion, what functional hypothesis did the authors propose for the axonal initial segment domain surrounded by specialized NMSCs in human type I SGNs?
+
+**Answer:**
+
+```
+Answer:
+The authors proposed that the axonal initial segment (AIS) domain surrounded by specialized NMSCs may constitute an important site for neural excitation.
+
+Evidence summary:
+In the Discussion section, the authors speculated that the AIS domain surrounded by NMSCs could be a significant location for initiating electrical excitation [2].
+
+Source IDs:
+[2]
+```
+
+- Fact recall: 0.0% (missed: human type I SGN soma and proximal segments lack compact myelin, Nav1.6 channels are essential for action potential generation, electric excitation may arise at the SG cell body, first central axon segment, or Ranvier node, AIS domain surrounded by specialized NMSCs may be important for neural excitation, amputated SGNs may remain electrically excitable after many years)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q034_liu_cx43_human_specimen_methods
+
+**Question:** In the Materials and methods section, what human cochlear material was used for immunohistochemistry, and how were the cochleae fixed, decalcified, and sectioned?
+
+**Answer:**
+
+```
+Answer:
+Human cochlear material was used for immunohistochemistry, where the cochleae were fixed in 4% paraformaldehyde (PFA) in phosphate-buffered saline (PBS). The decalcification and sectioning details mentioned are from another study, indicating that after 4 weeks of decalcification, the cochleae were embedded, frozen, and sectioned at 8-10 μm for immunohistochemistry.
+
+Evidence summary:
+The context states that human cochleae were quickly dissected out and perfused with 4% paraformaldehyde (PFA) in PBS. Another study provides details on decalcification and sectioning, but these steps are not explicitly mentioned in the provided context.
+
+Source IDs:
+[1], [6]
+```
+
+- Fact recall: 0.0% (missed: 5 human cochleae, 2 male and 3 female patients, ages 45–56 years, 4% para-formaldehyde, 24 h fixation, 8–10 μm cryostat sections)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q035_liu_cx43_guinea_pig_comparison
+
+**Question:** In the Results section on guinea pig tissue, how did Cx43 expression differ between trigeminal ganglion satellite glial cells and spiral ganglion cells?
+
+**Answer:**
+
+```
+Answer:
+I do not have enough evidence in the retrieved context to answer confidently.
+
+Evidence summary:
+The provided context does not specifically address Cx43 expression differences between trigeminal ganglion satellite glial cells and spiral ganglion cells in guinea pig tissue.
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 0.0% (missed: six Dunkin Hartley guinea pigs, female, 1–2 months, trigeminal SGCs expressed Cx43, Cx43 reaction product appeared as dots, guinea pig spiral ganglion cells showed no Cx43 expression)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q036_liu_cx43_human_sgc_gap_junctions
+
+**Question:** In the Human results section, where was Cx43 detected around human type I spiral ganglion neurons, and what did the authors infer about the identity of these Cx43-positive structures?
+
+**Answer:**
+
+```
+Answer:
+Cx43 was detected around human type I spiral ganglion neurons in the form of GJ plaques between surrounding SGCs [1], [2]. The authors inferred that these Cx43-positive structures were gap junction intercellular channels (GJCs) involved in communication between satellite glial cells surrounding the same Type I neuron [1].
+
+Evidence summary:
+Cx43 expression was found in GJ plaques between satellite glial cells (SGCs) surrounding human type I spiral ganglion neurons, as reported in the comparative study with clinical implications [1], [2].
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 0.0% (missed: Cx43 appeared as small dots, Cx43 was along the peripheral border of neuronal soma, gap junction plaques between surrounding SGCs, found between SGCs enveloping the same SGN body, found amid different neuronal bodies, axon hillock approximately 50 μm long often lacked MBP expression)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q037_liu_tem_gap_junction_dimensions
+
+**Question:** In the TEM comparison of human and guinea pig spiral ganglion, what ultrastructural dimensions and species differences did the authors report for gap junctions around type I neurons?
+
+**Answer:**
+
+```
+Answer:
+I do not have enough evidence in the retrieved context to answer confidently.
+
+Evidence summary:
+The provided context does not contain specific ultrastructural dimensions or detailed species differences reported for gap junctions around type I neurons in a TEM comparison between human and guinea pig spiral ganglion. The context mentions the presence of gap junctions (GJs) between satellite glial cells (SGCs) surrounding Type I neurons but does not provide comparative measurements or described differences.
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 0.0% (missed: GJs were present between human SGCs, GJ length 4–500 nm, intercellular distance approximately 4 nm, GJs occurred between SGCs around the same Type I neuron, typical GJ-like structures were missing in guinea pig SGNs, guinea pig Schwann cells formed several tight myelin layers)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q038_liu_deafness_monopolar_sgn_survival
+
+**Question:** In the Discussion and the deafness example, what evidence did the authors cite that human SGNs can survive as mono-polar cells after long-term deafness, and how was this linked to cochlear implant function?
+
+**Answer:**
+
+```
+Answer:
+In profoundly deaf patients, human spiral ganglion neurons (SGNs) can survive as mono-polar cells even after long-term neural inactivity. This survival is linked to the cochlear implant function because mono-polar neurons remain electrically excitable and can transmit action potentials to the central nervous system, ensuring that pertinence cochlear implant results can be achieved [1], [3].
+
+Evidence summary:
+The authors cited studies by Nadol (1997) and others indicating that SGNs can persist as mono-polar or "amputated" cells even after many years of deafness. This survival is crucial for cochlear implants to function effectively, as these neurons can still transmit signals despite their lack of peripheral connections [1], [3].
+
+Source IDs:
+[1], [3]
+```
+
+- Fact recall: 0.0% (missed: female aged 52 at death, mumps at age 2 and deaf thereafter, 12,000 mono-polar ganglion cells, 89-year-old patient with total hearing loss since birth, 19,458 surviving ganglion cells, cochlear implant performance is not influenced by dendrite loss)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q039_tylstedt_tem_human_cochlea_methods
+
+**Question:** In the Materials and Methods section, what human cochlear material and fixation protocol were used to study neural interaction in the human spiral ganglion by TEM?
+
+**Answer:**
+
+```
+Answer:
+The human cochlear material was obtained from nine different patients, with none of the patients having any known history of hearing impairment except for one temporal bone from a deaf person. The fixation protocol involved embedding the material for TEM study.
+
+Evidence summary:
+Nine human temporal bones were used in the study without any history of hearing impairment apart from one patient who was deaf, and these materials were prepared for TEM analysis.
+
+Source IDs:
+[2]
+```
+
+- Fact recall: 0.0% (missed: four freshly fixed cochleas, all subjects had subjectively normal hearing, petro-clival meningiomas, dissection varied between 20 and 30 min, 2.5% glutaraldehyde and 1% formaldehyde, 0.1 M Na-EDTA-containing fixative)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q040_tylstedt_middle_turn_cell_counts
+
+**Question:** In the graphically reconstructed middle-turn TEM montage, what quantitative composition of spiral ganglion cells and fibers was reported, including the fraction of type I cells with Schwann cell gaps?
+
+**Answer:**
+
+```
+Answer:
+In the upper basal and middle turn of the human spiral ganglion, type I cells were frequently surrounded by common Schwann cells forming 'structural units'. Up to 20% of these type I cells could face another cell without an intervening Schwann cell layer.
+
+Evidence summary:
+The context indicates that up to 20% of type I cells in the upper basal and middle turn regions are adjacent to other cells without a Schwann cell layer between them, suggesting physical interactions where "gaps" may be present.
+
+Source IDs:
+[1], [6]
+```
+
+- Fact recall: 0.0% (missed: Type I ganglion cells n = 96, 97% Type I ganglion cells, Schwann cell gaps n = 19, 20% with Schwann cell gaps, Type II ganglion cells n = 3, 3% Type II ganglion cells, myelinated fibers n = 879)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q041_tylstedt_physical_interaction_results
+
+**Question:** In the Results section, what evidence did the authors report that human spiral ganglion neurons physically interact through incomplete Schwann cell sheaths?
+
+**Answer:**
+
+```
+Answer:
+The results showed that human spiral ganglion cells (HSG cells) are frequently incompletely isolated from each other by Schwann cells and may interact physically through direct apposition to adjacent HSG cell membranes. [2]
+
+Evidence summary:
+The study reported that HSG cells in humans often lack a complete myelin coating but are surrounded by a thin rim of Schwann cell cytoplasm, leading to "gaps" where the SCs are incomplete, allowing the cell membranes of adjacent ganglion cells to be in direct apposition. [2]
+
+Source IDs:
+[2]
+```
+
+- Fact recall: 0.0% (missed: middle turn ganglion cells lay close to each other, HSG cells were frequently ensheathed by the same Schwann cell, Schwann cell sheath was sometimes incompletely developed, plasma membranes lay directly against each other, as many as 20% of type I cells could face another cell without intervening Schwann cell layer, sometimes as many as four nerve cells appeared to be surrounded by the same Schwann cell)
+- Citation validity: 100.0%
+- Citation grounding: 100.0%
+- Suspicious numbers: none
+
+### q042_tylstedt_membrane_specializations
+
+**Question:** In the Results section, what ultrastructural membrane specializations were observed at Schwann cell gaps between adjacent human spiral ganglion cells?
+
+**Answer:**
+
+```
+Answer:
+Membrane specializations were observed at Schwann cell gaps between adjacent human spiral ganglion cells.
+
+Evidence summary:
+The context indicates that membrane specializations occurred between individual human spiral ganglion (HSG) cells at the "gaps" in the Schwann cell, though their precise function is unknown [2].
+
+Source IDs:
+[2], [1]
+```
+
+- Fact recall: 0.0% (missed: symmetric or asymmetric thickenings of opposing cell membranes, thin line parallel to the thickened cell membrane, reduced intercellular distance, complexes of membrane specializations, alternating polarity of densification, no synaptic bars, ribbons, vesicular activity, or filaments)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q043_tylstedt_discussion_myelination_units
+
+**Question:** In the Discussion, how did the authors compare human spiral ganglion myelination with other species, and what functional interpretation did they propose for neurons sharing Schwann cells?
+
+**Answer:**
+
+```
+Answer:
+In the Discussion, the authors compared human spiral ganglion myelination with other species and suggested that in humans, unmyelinated ganglion cells do not represent immature cells receiving myelination at a later time. They proposed that electric nerve transmission in the spiral ganglion could be fundamentally different in humans compared to other vertebrates [5].
+
+Evidence summary:
+The authors noted that up to 2% of ganglion cells in elderly persons show myelination, and they speculated that this difference might indicate a unique form of neural interaction in humans as compared to other species studied.
+
+Source IDs:
+[5]
+```
+
+- Fact recall: 0.0% (missed: human vestibular and acoustic ganglia mostly surrounded by a simple Schwann cell sheath, Kimura and Ota reported only 3–5% of HSG cells with compact myelin, Arnold reported myelination up to 2% in elderly persons, present study observed approximately 2% myelinated cells in the 60-year-old individual, several adjacent neurons were ensheathed by the same Schwann cell, human cochlear neurons may form structural or metabolic units)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q044_ota_human_sgn_specimen_methods
+
+**Question:** In the Materials and Methods section, what human temporal bone material and preparation approach were used for the electron microscopic study of the spiral ganglion?
+
+**Answer:**
+
+```
+Answer:
+Nine human temporal bones were obtained from nine different patients and prepared for SEM, TEM, methacrylate or celloidin embedding. The modiolar part containing the spiral ganglion was separated from the organ of Corti at the osseous spiral lamina, and the bone surrounding the neuronal masses was eliminated.
+
+Evidence summary:
+The context describes the human temporal bones used in the study and the preparation approach for electron microscopic examination of the spiral ganglion, including separation of the modiolar part from the organ of Corti.
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 0.0% (missed: 17 bones from 12 individuals, ages 9 months to 92 years, post mortem times 1-1/2 to 6 hours, 1% phosphate buffered osmium, bones were not decalcified, two specimens were serially or semiserially sectioned)
+- Citation validity: 100.0%
+- Citation grounding: 50.0%
+- Suspicious numbers: none
+
+### q045_ota_large_small_neuron_population
+
+**Question:** In the Findings section, what proportions and size ranges did Ota and Kimura report for large and small human spiral ganglion neurons?
+
+**Answer:**
+
+```
+Answer:
+Ota and Kimura reported that large neurons formed 94% of the population, while small neurons constituted the remaining 6%. The context does not provide specific size ranges for these neurons.
+
+Evidence summary:
+The findings indicate that large human spiral ganglion neurons were much more prevalent than smaller ones, comprising 94% of the total cell population, according to Ota and Kimura's study [1].
+
+Source IDs:
+[1]
+```
+
+- Fact recall: 16.7% (missed: 971 human spiral ganglion cells studied, large perikarya were 22 to 34 µm in diameter, large perikarya were 22 to 64 µm in length, small neurons were 8 to 14 µm in diameter, small neurons were 15 to 21 µm in length)
+- Citation validity: 100.0%
+- Citation grounding: 100.0%
+- Suspicious numbers: none
+
+### q046_ota_large_neuron_process_myelination
+
+**Question:** In the Findings section describing large unmyelinated neurons, at what distances from the perikaryon did the axonal and dendritic processes become myelinated, and how did dendritic diameter compare with axonal diameter?
+
+**Answer:**
+
+```
+Answer:
+The axonal processes became myelinated at a distance of about 4 to 38 μm from the perikarya, while the dendritic process became myelinated at a distance of 5 to 26 μm from the perikaryon. The diameter of the dendritic process near the perikaryon was approximately one-fourth to three-fourths the size of the axon.
+
+Evidence summary:
+The distances for myelination initiation in both axonal and dendritic processes are provided, along with a comparison of their respective diameters as stated in the findings section [1] and [2].
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 0.0% (missed: axon hillocks were large and often long, axonal processes became myelinated 4 to 38 µm from the perikarya, dendritic process became myelinated 5 to 26 µm from the perikaryon, myelination at the border of the perikaryon was not observed, dendritic process diameter was about one-fourth to three-fourths the size of the axon)
+- Citation validity: 100.0%
+- Citation grounding: 100.0%
+- Suspicious numbers: none
+
+### q047_ota_age_related_myelinated_large_neurons
+
+**Question:** In the Findings section on large myelinated neurons, what age-related pattern of myelination did the authors report, including the highest count and young-versus-old averages?
+
+**Answer:**
+
+```
+Answer:
+The authors reported a slight increase in the population of myelinated neurons with age. The highest count was 28% in a specimen from an individual 75 years old. Between the ages of 9 months and 42 years, the average percentage of myelinated neurons was only 1%. However, between the ages of 65 and 92, this average increased to 19%, excluding one Meniere's case. Including this case brought the average down to 5.8%.
+
+Evidence summary:
+The study found that the percentage of myelinated neurons increased slightly with age, reaching a maximum of 28% in an older individual.
+
+Source IDs:
+[3]
+```
+
+- Fact recall: 0.0% (missed: highest count was 11 out of 39 or 28% in a 75-year-old specimen, no myelinated neurons among 94 neurons in the 9-month-old individual, average was 1% myelinated neurons between 9 months and 42 years, average increased to 19% between 65 and 92 years excluding the Meniere's specimen, including the 59-year-old Meniere's case reduced the average to 5.8%, myelin layers varied from 4 to 17)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q048_ota_discussion_fiber_distribution_function
+
+**Question:** In the Discussion, what did the authors conclude about possible functional implications of the mostly unmyelinated human spiral ganglion neurons and the distribution of nerve fibers to inner versus outer hair cell regions?
+
+**Answer:**
+
+```
+Answer:
+The authors concluded that small unmyelinated neurons likely innervate outer hair cells, whereas the majority of large myelinated neurons are associated with inner hair cells [2].
+
+Evidence summary:
+In their discussion, the authors referred to previous suggestions by Spoendlin (1971, 1972) and Ross (1973), indicating that small unmyelinated neurons might be responsible for innervating outer hair cells.
+
+Source IDs:
+[2]
+```
+
+- Fact recall: 0.0% (missed: majority of animal spiral ganglion cells are myelinated, human neurons lack myelin sheaths, conduction rate in humans may be slower, 78 to 85% of nerve fibers went to the inner hair cell area, 15 to 22% of fibers went toward the outer hair cells, termination of dendritic processes remains to be determined in the human)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q049_bai_psychophysical_measurement_protocol
+
+**Question:** In the Psychophysical Measurements section, what CI-user cohort and stimulus protocol were used to measure detection thresholds and maximum comfortable levels?
+
+**Answer:**
+
+```
+Answer:
+The CI-user cohort and stimulus protocol used to measure detection thresholds and maximum comfortable levels involved a single biphasic pulse as stimuli, which was common for research purposes due to their brief administration and the absence of temporal integration and adaptation [2]. The measurements were likely performed in psychophysical tasks where DT represents the minimum electrical stimulus intensity that elicits auditory perception, and MCL denotes the highest intensity that remains comfortable for the CI user.
+
+Evidence summary:
+The context mentions the use of a single biphasic pulse as stimuli for research purposes to measure detection thresholds (DT) and maximum comfortable levels (MCL) in psychophysical tasks [2].
+
+Source IDs:
+[2]
+```
+
+- Fact recall: 0.0% (missed: 10 study participants, 14 implanted ears, 12-channel MED-EL electrode arrays, at least two years of CI experience, 45 µs phase duration, 2.1 µs inter-phase gap)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q050_bai_microct_fem_sgn_modeling
+
+**Question:** In the Computational Simulations section, how were the high-resolution human cochlea models and SGN trajectories constructed for neural excitation simulations?
+
+**Answer:**
+
+```
+Answer:
+The high-resolution human cochlea models were constructed from eight sets of highresolution X-ray microtomography (µCT) scans, while 500 spiral ganglion neuron (SGN) trajectories were generated for each model. These trajectories were implemented with a cable model to simulate neural excitation [2].
+
+Evidence summary:
+The models were created using µCT scans and detailed SGN trajectories were simulated within these anatomically accurate cochlea models.
+
+Source IDs:
+[2], [1]
+```
+
+- Fact recall: 0.0% (missed: eight human temporal bones, postmortem time within 12 h, 15 µm isotropic voxel size, 500 SGN trajectories per FE model, Greenwood parameter k modified from 0.88 to 0.53, lower frequency limit of 80 Hz)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q051_bai_dt_mcl_results_variability
+
+**Question:** In the DT and MCL Analysis results, what mean threshold values and variability components were reported for psychophysical detection thresholds and maximum comfortable levels?
+
+**Answer:**
+
+```
+Answer:
+I do not have enough evidence in the retrieved context to answer confidently.
+
+Evidence summary:
+The provided context does not explicitly mention mean threshold values or variability components for psychophysical detection thresholds (DT) and maximum comfortable levels (MCL). The context discusses related concepts but does not provide the specific details requested.
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 0.0% (missed: DT mean −12.47 dB, DT pooled variance 4.32 dB², MCL mean −6.84 dB, MCL pooled variance 9.23 dB², electrode-position random-effect variance 0.044 dB², inter-subject residual variance 7.16 dB²)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q052_bai_jaccard_neural_excitation_profiles
+
+**Question:** In the Neural Excitation Profile Analysis section, what Jaccard similarity results showed how intact versus degenerated peripheral axons affected which neurons were excited?
+
+**Answer:**
+
+```
+Answer:
+The Jaccard similarity scores [1] showed that when peripheral axons of neurons were intact (LI & SI), CI electrodes could achieve relatively focal activation of neurons at a low excitation level, with mean similarity scores of 0.05 and 0.06 for LI & SI respectively. In contrast, degenerated peripheral axons resulted in higher overlap in activated neurons between two neighboring stimulating electrodes even at low excitation levels.
+
+Evidence summary:
+Jaccard similarity scores demonstrated that intact versus degenerated peripheral axons led to different neuron activation patterns and overlaps.
+
+Source IDs:
+[1]
+```
+
+- Fact recall: 0.0% (missed: LI vs LD mean J = 0.15 at 1% excitation, SI vs SD mean J = 0.25 at 1% excitation, LI vs LD mean J = 0.64 at 20% excitation, SI vs SD mean J = 0.84 at 20% excitation, LD vs SD mean J = 0.07 at 1% excitation, LD vs SD mean J = 0.56 at 20% excitation)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q053_bai_dt_mcl_excitation_level_mapping
+
+**Question:** In the simulation-to-psychophysics comparison, what excitation-level ranges were found comparable to measured DT and MCL for the different SGN degeneration models?
+
+**Answer:**
+
+```
+Answer:
+The excitation-level ranges found comparable to measured DT for the different SGN degeneration models are as follows:
+
+- Long Degenerated (LD): No range was found comparable to DT.
+- Short Intact (SI): [0.8%, 4.2%] excitation levels.
+- Short Degenerated (SD): [0.2%, 5.8%] excitation levels.
+
+Evidence summary:
+The context indicates that for the degeneration models, the ranges of excitation levels comparable to DT were narrower for SI and wider for SD compared to LI, which had the smallest range.
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 0.0% (missed: LI DT range 0.2%–1.4%, SI DT range 0.8%–4.2%, SD DT range 0.2%–5.8%, LD had no DT-comparable range, LD MCL range 12.4%–19.8%, SD MCL range 23.6%–30.0%)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q054_recugnat_single_node_adaptation_channels
+
+**Question:** In the Methods section on ionic currents and channel distribution, what single-compartment models were used to test whether HCN and KLT channels induce spike-rate adaptation?
+
+**Answer:**
+
+```
+Answer:
+We used a single-compartment model that included Na and KHT ionic channels, as well as KLT and HCN channels.
+
+Evidence summary:
+The context mentions using specific conductances for Na and KHT channels from [5], and those for KLT and HCN channels from [10] in a single-compartment model to test spike-rate adaptation.
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 0.0% (missed: five computational models, single-compartment modelled as a node of Ranvier, 2.5 µm length, 1 µm diameter, HHROT,SINGLE used Na and KHT channels, HH+HCN+KLTROT,SINGLE included KLT, HCN, Na, and KHT channels)
+- Citation validity: 50.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q055_recugnat_multicompartment_sgn_geometry
+
+**Question:** In the Compartment Model section and Fig. 1, what human SGN morphology did the authors implement for the multi-compartment model?
+
+**Answer:**
+
+```
+Answer:
+The authors implemented a morphology of human SGNs as a bipolar neuron, with nodes numbered from peripheral to central, reflecting the morphology of human SGNs' peripheral and central processes connected by the cell body. Each node of Ranvier, internode, and soma was represented by a compartment.
+
+Evidence summary:
+The context describes the implementation of a multi-compartment model for human-shaped spiral ganglion neurons (SGNs), with specific details on the morphology including nodes from peripheral to central process.
+
+Source IDs:
+[2]
+```
+
+- Fact recall: 0.0% (missed: bipolar neuron morphology, seven peripheral nodes P0 to P6, 15 central nodes C0 to C14, soma diameter 30 µm, 23-compartment model, each compartment subdivided into 11 spatially separated segments)
+- Citation validity: 100.0%
+- Citation grounding: 100.0%
+- Suspicious numbers: none
+
+### q056_recugnat_stimulation_electrode_positions
+
+**Question:** In the Stimulation and Electrode Positions methods sections, what pulse-train and electrode-position parameters were used for the multi-compartment extracellular stimulation simulations?
+
+**Answer:**
+
+```
+Answer:
+I do not have enough evidence in the retrieved context to answer confidently.
+
+Evidence summary:
+The retrieved context does not provide specific details about the pulse-train parameters or electrode-position for the multi-compartment extracellular stimulation simulations.
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 0.0% (missed: 300 ms trains of cathodic-first biphasic pulses, pulse rates of 200, 2000, and 5000 pps, electrode sphere diameter 480 µm, high position 200 µm below P0, mid position 500 µm below P0, low position 800 µm below P0, fixed x-axis distance 720 µm from the soma)
+- Citation validity: 100.0%
+- Citation grounding: 50.0%
+- Suspicious numbers: none
+
+### q057_recugnat_single_compartment_adaptation_results
+
+**Question:** In the Single Compartment Model—Spike-Rate Adaptation results, how did adding HCN and KLT channels affect NSRD and adaptation time constants?
+
+**Answer:**
+
+```
+Answer:
+Adding HCN and KLT channels to the single-compartment model increased spike-rate adaptation (NSRD) and shortened adaptation time constants.
+
+Evidence summary:
+The inclusion of HCN and KLT channels in the HH+HCN+KLT model resulted in greater spike-rate adaptation compared to models without these channels [2].
+
+Source IDs:
+[2], [1]
+```
+
+- Fact recall: 0.0% (missed: 12 of 18 PSTHs had R² values above 0.90, NSRD values ranged from 0 to 0.95, HH+HCN+KLTROT,SINGLE had systematically higher NSRD than HHROT,SINGLE, at 5000 pps NSRD was between 0.7 and 0.95, τadapt,1 mean values were 0 ms, τadapt,2 means were 22.80 ms at 200 pps, 3.94 ms at 2000 pps, and 3.17 ms at 5000 pps)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q058_recugnat_thresholds_recovery_multicompartment
+
+**Question:** In the multi-compartment results, what thresholds and recovery-time differences were reported between the unadapted and HCN/KLT-adapted human SGN models?
+
+**Answer:**
+
+```
+Answer:
+I do not have enough evidence in the retrieved context to answer confidently.
+
+Evidence summary:
+The provided context does not explicitly mention thresholds or recovery-time differences between unadapted and HCN/KLT-adapted human SGN models in multi-compartment results.
+
+Source IDs:
+[1], [2]
+```
+
+- Fact recall: 0.0% (missed: HHROT,MULTI cathodic thresholds were 77.5, 438.4, and 548.5 µA at 200, 500, and 800 µm, HHROT,MULTI anodic thresholds were 144.9, 734.5, and 869.0 µA at 200, 500, and 800 µm, dynamic range was 0.8 to 1.8 dB, HHROT,MULTI recovery times were 2.72 to 7.53 ms, HH+HCN+KLTROT,MULTI recovery times were 89.25 to 106.07 ms, additional HCN and KLT channels dramatically increased recovery time)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q060_fellner_meshing_dof_strategy
+
+**Question:** In the Meshing section, what degree-of-freedom estimate and meshing strategies did the authors describe to control computational cost in 3D FEM neural stimulation models?
+
+**Answer:**
+
+```
+Answer:
+The authors described using individual meshes for different domains combined with swept meshes as strategies to control computational cost, and that these strategies influence the degree of freedom (DOF).
+
+Evidence summary:
+[1] mentions that individual meshes for different domains combined with swept meshes give better control over computational costs by influencing the degree of freedom.
+
+Source IDs:
+[1]
+```
+
+- Fact recall: 0.0% (missed: DOF ≈ 1.4 * #elements * #unknowns, linear discretization reduces DOF by approximately seven compared to quadratic, extracellular field decreases more or less with the square of distance, fibers can use swept mesh, triangular prisms swept along the fiber)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q061_fellner_membrane_coupling_signs
+
+**Question:** In the Cell membrane model and Coupling of physics sections, how did the authors define membrane voltage and couple transmembrane current density between intracellular and extracellular domains?
+
+**Answer:**
+
+```
+Answer:
+The authors defined the membrane voltage as the difference between the intra- and extracellular potentials (V m = V i - V e ) [2]. To couple transmembrane current density between the intracellular and extracellular domains, they used Normal Current Density boundary conditions (-n • J = J n ) to induce the calculated transmembrane current density into both physics interfaces [1].
+
+Evidence summary:
+The membrane voltage is defined as the difference between intra- and extracellular potentials. The transmembrane current density is coupled by using specific boundary conditions.
+
+Source IDs:
+[2], [1]
+```
+
+- Fact recall: 0.0% (missed: Vm = Vi − Ve, ic = cm d(Vm,t), cm ≈ 1 µF cm^-2, iM = iIon + iC, Ve boundary condition Jn = im, Vi boundary condition Jn = -im)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q062_fellner_honeycomb_whole_fem_results
+
+**Question:** In the Results section on the honeycomb electrode example, what stimulation effects did the whole-FEM model reveal that simplified or hybrid approaches could miss?
+
+**Answer:**
+
+```
+Answer:
+The whole-FEM model revealed stimulation effects on a model cell with HH membrane dynamics that simplified or hybrid approaches could miss, particularly in handling nonsymmetric electric fields generated by specific electrode geometries. These models were unable to closely approximate the reference solution provided by the 'whole FEM' model [2].
+
+Evidence summary:
+The Results section highlighted that simplified or hybrid approaches struggled to accurately represent the effects of nonsymmetric electric fields produced by honeycomb electrodes, whereas the whole-FEM model could provide a more realistic solution.
+
+Source IDs:
+[2]
+```
+
+- Fact recall: 0.0% (missed: honeycomb electrode produces a vertically directed electric field, non-symmetric soma polarization, triple stimulus amplitude led to blocking condition, sodium current reversal, upper threshold phenomenon, anodal surround block)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
+### q063_fellner_cochlear_electrode_mrg_examples
+
+**Question:** In the Results sections on the cochlear implant and MRG model examples, how did the authors implement complex electrode and myelinated-fiber geometries in FEM?
+
+**Answer:**
+
+```
+Answer:
+In the Results sections on the cochlear implant and MRG model examples, the authors implemented complex electrode and myelinated-fiber geometries in FEM by reconstructing the FE cochlea model from a set of µCT scans of a human cadaveric temporal bone [3]. The complete FE model was then imported into COMSOL Multiphysics for calculating the electric potential V in a volume conduction model.
+
+Evidence summary:
+The context describes how the authors used finite element modeling to accurately represent complex cochlear geometries and myelinated-fiber pathways, ensuring realistic solutions for nerve stimulation studies.
+
+Source IDs:
+[3], [1], [2]
+```
+
+- Fact recall: 0.0% (missed: MED-EL electrode array, 3D scan of the cochlea imported from SolidWorks, electrode created by extruding a circular surface along a spline, extracellular potential exported to a table of coordinates plus electric potential, periaxonal space is 2–4 nm, Electric Currents in Layered Shells interface)
+- Citation validity: 100.0%
+- Citation grounding: 0.0%
+- Suspicious numbers: none
+
