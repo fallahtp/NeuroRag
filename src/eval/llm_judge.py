@@ -34,25 +34,29 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import sys
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Literal
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # src/
+from config import settings
 
 
 # ---------------------------------------------------------------------
 # Configuration
 # ---------------------------------------------------------------------
 
-JUDGE_MODEL = "gemini-2.5-flash"
+JUDGE_MODEL = settings.judge_model
 
 # Free tier is 10 RPM. 7s between calls = ~8.5 RPM, leaves margin for
 # slow responses or transient retries without hitting 429.
 SECONDS_BETWEEN_CALLS = 7.0
 
 # Where cached judgments live. One file per question hash. Cheap to
-# inspect/diff; easy to invalidate by deleting individual files.
-DEFAULT_CACHE_DIR = Path.home() / ".cache" / "neurorag_judge"
+# inspect/diff; easy to invalidate by deleting individual files. Override
+# with the NEURORAG_JUDGE_CACHE_DIR environment variable.
+DEFAULT_CACHE_DIR = settings.judge_cache_dir
 
 # How long to wait on a single Gemini call before giving up.
 REQUEST_TIMEOUT_SECONDS = 60

@@ -1,18 +1,32 @@
+import sys
 from pathlib import Path
 import re
 import ollama
 from langchain_community.vectorstores import FAISS
 from langchain_huggingface import HuggingFaceEmbeddings
 
-BASE_DIR = Path(__file__).resolve().parents[3]
-INDEX_DIR = BASE_DIR / "storage" / "faiss_index"
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # src/
+from config import settings
+from observability import traced
 
-OLLAMA_MODEL = "phi3:mini"
-TOP_K = 6
+INDEX_DIR = settings.v1_index_dir
+OLLAMA_MODEL = settings.v1_ollama_model
+TOP_K = settings.top_k_final
 
 
 def embeddings():
-    return HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    return HuggingFaceEmbeddings(model_name=settings.embedding_model)
+
+
+def check_ollama() -> None:
+    """Fail early with a clear message if the Ollama service is unreachable."""
+    try:
+        ollama.list()
+    except Exception as e:
+        raise SystemExit(
+            f"Could not reach Ollama ({e}). Is the Ollama service running? "
+            f"Start it, then pull a model with: ollama pull {OLLAMA_MODEL}"
+        )
 
 
 def clean_text(s: str) -> str:
@@ -52,6 +66,7 @@ def build_prompt(question: str, context: str) -> str:
     )
 
 
+@traced
 def ask_ollama(prompt: str) -> str:
     r = ollama.chat(
         model=OLLAMA_MODEL,
@@ -60,7 +75,21 @@ def ask_ollama(prompt: str) -> str:
     return r["message"]["content"]
 
 
+@traced
+def run_query(question: str, db) -> dict:
+    """Run the v1 baseline retrieval + generation pipeline for one question.
+
+    Returns a dict with the generated ``answer`` and the retrieved ``docs``.
+    """
+    docs = db.similarity_search(question, k=TOP_K)
+    context = build_context(docs)
+    prompt = build_prompt(question, context)
+    answer = ask_ollama(prompt)
+    return {"pipeline": "v1", "answer": answer, "docs": docs}
+
+
 if __name__ == "__main__":
+    check_ollama()
     db = load_db()
 
     while True:
@@ -68,13 +97,10 @@ if __name__ == "__main__":
         if not question or question.lower() in {"exit", "quit"}:
             break
 
-        docs = db.similarity_search(question, k=TOP_K)
-        context = build_context(docs)
-        prompt = build_prompt(question, context)
-        answer = ask_ollama(prompt)
+        result = run_query(question, db)
 
-        print("\n" + answer)
+        print("\n" + result["answer"])
         print("\nSOURCES METADATA:")
-        for i, d in enumerate(docs, start=1):
+        for i, d in enumerate(result["docs"], start=1):
             m = d.metadata
             print(f"[{i}] {m.get('paper_id')} | {m.get('year')} | {m.get('category')} | {m.get('filename')}")

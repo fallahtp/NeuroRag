@@ -2,7 +2,11 @@ from __future__ import annotations
 
 from pathlib import Path
 import argparse
+import sys
 import requests
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))  # src/
+from config import settings
 
 BASE_DIR = Path(__file__).resolve().parents[4]
 RAW_DIR = BASE_DIR / "data" / "raw"
@@ -10,8 +14,11 @@ FULLTEXT_TEI_DIR = BASE_DIR / "data" / "interim" / "tei_xml"
 HEADER_TEI_DIR = BASE_DIR / "data" / "interim" / "header_tei_xml"
 ERROR_DIR = BASE_DIR / "data" / "interim" / "grobid_errors"
 
-FULLTEXT_URL = "http://localhost:8070/api/processFulltextDocument"
-HEADER_URL = "http://localhost:8070/api/processHeaderDocument"
+# GROBID host is configurable so the parser can target a container on another
+# host/port without editing the source. Override with the GROBID_URL env var.
+GROBID_URL = settings.grobid_url
+FULLTEXT_URL = f"{GROBID_URL}/api/processFulltextDocument"
+HEADER_URL = f"{GROBID_URL}/api/processHeaderDocument"
 
 
 def output_path_for(pdf_path: Path, base_dir: Path, suffix: str) -> Path:
@@ -45,15 +52,22 @@ def post_pdf_to_grobid(
     if not pdf_path.exists():
         raise FileNotFoundError(f"PDF not found: {pdf_path}")
 
-    with pdf_path.open("rb") as f:
-        files = {"input": (pdf_path.name, f, "application/pdf")}
-        response = requests.post(
-            url,
-            files=files,
-            data=data or {},
-            headers={"Accept": "application/xml"},
-            timeout=600,
-        )
+    try:
+        with pdf_path.open("rb") as f:
+            files = {"input": (pdf_path.name, f, "application/pdf")}
+            response = requests.post(
+                url,
+                files=files,
+                data=data or {},
+                headers={"Accept": "application/xml"},
+                timeout=600,
+            )
+    except (requests.ConnectionError, requests.Timeout) as e:
+        raise RuntimeError(
+            f"Could not reach GROBID at {url} ({e.__class__.__name__}). "
+            "Is the GROBID container running? Set the GROBID_URL environment "
+            "variable to point at a different host."
+        ) from e
 
     text = response.text
     content_type = response.headers.get("Content-Type", "")
@@ -149,7 +163,10 @@ def main():
             pdf_path = BASE_DIR / pdf_path
 
         print(f"Processing one PDF: {pdf_path}")
-        fulltext_out, header_out = process_one_pdf(pdf_path, overwrite=args.overwrite)
+        try:
+            fulltext_out, header_out = process_one_pdf(pdf_path, overwrite=args.overwrite)
+        except Exception as e:
+            raise SystemExit(f"[FAIL] {pdf_path} -> {e}")
         print(f"Saved fulltext TEI: {fulltext_out}")
         print(f"Saved header TEI:   {header_out}")
         return

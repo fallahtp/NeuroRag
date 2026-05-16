@@ -1,4 +1,6 @@
+import sys
 from pathlib import Path
+
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
 
@@ -7,23 +9,27 @@ try:
 except ImportError:
     from langchain_community.embeddings import HuggingFaceEmbeddings
 
+# Make the v1 package directory and src/ importable regardless of the current
+# working directory, so this script runs from the project root as well as v1/.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # src/
 from load_documents import load_papers
+from config import settings
 
-BASE_DIR = Path(__file__).resolve().parents[3]
-INDEX_DIR = BASE_DIR / "storage" / "faiss_index"
+INDEX_DIR = settings.v1_index_dir
 
 
 def split_papers(papers):
     splitter = RecursiveCharacterTextSplitter(
-        chunk_size=1000,
-        chunk_overlap=200,
+        chunk_size=settings.chunk_size,
+        chunk_overlap=settings.chunk_overlap,
         separators=["\n\n", "\n", ". ", " ", ""],
     )
     return splitter.split_documents(papers)
 
 
 def create_embeddings():
-    return HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    return HuggingFaceEmbeddings(model_name=settings.embedding_model)
 
 
 def build_faiss_index(chunks):

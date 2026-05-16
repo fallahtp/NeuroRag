@@ -1,8 +1,8 @@
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 
-from langchain_community.vectorstores import FAISS
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 
 try:
@@ -10,7 +10,12 @@ try:
 except ImportError:
     from langchain_community.embeddings import HuggingFaceEmbeddings
 
+# Make the v2 package directory and src/ importable regardless of the current
+# working directory.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # src/
 from load_structured_documents import load_structured_documents
+from vector_store import build_dense_index
 
 BASE_DIR = Path(__file__).resolve().parents[3]
 INDEX_DIR = BASE_DIR / "storage" / "faiss_index_v2_structured"
@@ -69,12 +74,13 @@ def split_documents(docs):
     return chunks
 
 
-def build_faiss_index(chunks):
+def build_index(chunks):
+    """Build the structured dense index with the configured backend.
+
+    FAISS by default; Qdrant when NEURORAG_VECTOR_STORE=qdrant is set.
+    """
     embeddings = create_embeddings()
-    db = FAISS.from_documents(chunks, embeddings)
-    INDEX_DIR.mkdir(parents=True, exist_ok=True)
-    db.save_local(str(INDEX_DIR))
-    return db
+    return build_dense_index(chunks, embeddings, INDEX_DIR)
 
 
 if __name__ == "__main__":
@@ -95,5 +101,8 @@ if __name__ == "__main__":
         print("\nSample chunk preview:")
         print(chunks[0].page_content[:700])
 
-    build_faiss_index(chunks)
-    print(f"\nSaved structured index to: {INDEX_DIR}")
+    from config import settings
+
+    build_index(chunks)
+    location = settings.qdrant_path if settings.vector_store == "qdrant" else INDEX_DIR
+    print(f"\nSaved structured index ({settings.vector_store}) to: {location}")

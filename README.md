@@ -1,5 +1,8 @@
 # NeuroRag
 
+[![CI](https://github.com/fallahtp/NeuroRag/actions/workflows/ci.yml/badge.svg)](https://github.com/fallahtp/NeuroRag/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 **NeuroRag** is a **local Retrieval-Augmented Generation (RAG) assistant** for **neuroscience research and computational modeling**.
 
 It is designed for researchers who want to search and query their own scientific literature, notes, and technical documents **locally**, without sending files to external APIs.
@@ -10,6 +13,44 @@ The project currently contains three retrieval pipelines and a full evaluation h
 - **v2 structured pipeline:** GROBID-parsed structured JSON with section-aware retrieval and hybrid (dense + BM25) search
 - **v3 reranked pipeline:** v2 candidates rescored by a cross-encoder before the diversity cap
 - **eval harness:** retrieval eval (Hit@k, MRR) and answer eval (fact recall, citation validity, citation grounding, numeric hallucination) — with strict substring scoring **and** LLM-as-judge scoring using Gemini 2.5 Flash
+
+### Measured results (63-question benchmark)
+
+| Setup                        | Fact recall (judge) | Citation grounding | Hallucinations |
+|------------------------------|--------------------:|-------------------:|---------------:|
+| phi3:mini + v2 hybrid        | 34.8%               | 33.4%              | 7              |
+| qwen2.5:7b + v2 hybrid       | 33.8%               | 39.7%              | **0**          |
+| **qwen2.5:7b + v3 reranked** | **38.7%**           | **43.7%**          | **0**          |
+
+v3 cross-encoder reranking adds +5pp judge fact recall and +4pp citation grounding over v2.
+
+---
+
+## Quick Start
+
+```bash
+# 1. Clone and set up the environment
+git clone https://github.com/fallahtp/NeuroRag.git
+cd NeuroRag
+python -m venv .venv
+.venv\Scripts\activate          # Windows  (use: source .venv/bin/activate on macOS/Linux)
+pip install -r requirements.txt
+
+# 2. Install and start Ollama, then pull a model
+ollama pull qwen2.5:7b-instruct
+
+# 3. Add your PDFs to data/raw/, then build the v1 baseline index
+python src/pipelines/v1/extract_pdfs.py
+python src/pipelines/v1/create_metadata.py
+python src/pipelines/v1/build_index.py
+
+# 4. Launch the demo UI
+streamlit run app.py
+```
+
+The v2/v3 structured pipelines additionally need a local GROBID container — see
+[Running the v2 / v3 Structured Pipeline](#running-the-v2--v3-structured-pipeline)
+and [Troubleshooting](#troubleshooting).
 
 ---
 
@@ -232,7 +273,13 @@ Full eval implementation: [`src/eval/`](src/eval/).
 ```text
 NeuroRag/
 │
+├── app.py                          # Streamlit demo UI
+│
 ├── src/
+│   ├── config.py                   # central config (NEURORAG_* env overrides)
+│   ├── observability.py            # optional LangSmith tracing (no-op by default)
+│   ├── vector_store.py             # FAISS / Qdrant backend switch
+│   │
 │   ├── pipelines/
 │   │   ├── v1/                     # baseline flat RAG
 │   │   │   ├── extract_pdfs.py
@@ -259,32 +306,33 @@ NeuroRag/
 │   └── eval/                       # evaluation harnesses
 │       ├── run_retrieval_eval.py
 │       ├── run_answer_eval.py
+│       ├── run_ragas_eval.py       # optional RAGAS metrics
 │       ├── llm_judge.py
 │       └── score_existing_runs.py
+│
+├── tests/                          # pytest suite (pure-logic unit tests)
+├── conftest.py
+├── .github/workflows/ci.yml        # ruff + pytest on every push / PR
 │
 ├── benchmarks/
 │   ├── retrieval_eval_questions.jsonl
 │   └── answer_eval_questions.jsonl
 │
-├── results/                        # eval outputs (committed)
+├── results/                        # curated eval summaries (committed)
 │   ├── retrieval_eval_summary.md
 │   ├── pipeline_comparison.md
-│   ├── model_comparison.md
-│   └── answer_eval_summary_*.{json,md}
+│   └── model_comparison.md
 │
 ├── data/                           # ignored by git
-│   ├── raw/
-│   ├── processed/
-│   └── interim/
-│       ├── tei_xml/
-│       ├── header_tei_xml/
-│       └── structured_json/
+│   └── raw/ processed/ interim/
 │
-├── storage/                        # ignored by git
-│   ├── faiss_index/
-│   └── faiss_index_v2_structured/
+├── storage/                        # ignored by git (FAISS / Qdrant indexes)
 │
-├── requirements.txt
+├── pyproject.toml                  # ruff + pytest config
+├── requirements.txt                # core runtime dependencies
+├── requirements-dev.txt            # + pytest, ruff
+├── requirements-optional.txt       # + RAGAS, Qdrant, LangSmith
+├── LICENSE
 ├── .gitignore
 └── README.md
 ```
@@ -420,8 +468,26 @@ Activate it on Windows:
 Install dependencies:
 
 ```bash
-pip install -r requirements.txt
+pip install -r requirements.txt              # core runtime
+pip install -r requirements-dev.txt          # + pytest and ruff (for development)
+pip install -r requirements-optional.txt     # + RAGAS, Qdrant, LangSmith (optional integrations)
 ```
+
+---
+
+## Demo UI
+
+A Streamlit chat interface is provided for interactive exploration:
+
+```bash
+streamlit run app.py
+```
+
+Pick a pipeline (v1 baseline / v2 hybrid / v3 reranked) in the sidebar, ask a
+question, and the UI shows the grounded answer alongside the retrieved source
+chunks and their ranking signals — so the quality progression across pipeline
+versions is visible live. The UI needs the indexes built and a local Ollama
+service running (see Quick Start).
 
 ---
 
@@ -522,6 +588,87 @@ python src/eval/score_existing_runs.py results/answer_eval_summary_*.json
 
 ---
 
+## Configuration
+
+Every tunable knob lives in [`src/config.py`](src/config.py) as a single
+`Settings` dataclass — models, chunk sizes, retrieval `top-k` values, the
+GROBID host, the vector-store backend and so on. Each can be overridden per-run
+via a `NEURORAG_*` environment variable without editing source. Examples:
+
+```bash
+NEURORAG_V2_OLLAMA_MODEL=llama3.1:8b   python src/pipelines/v2/chat_structured_ollama.py
+NEURORAG_TOP_K_FINAL=8                 python src/eval/run_answer_eval.py
+GROBID_URL=http://192.168.1.50:8070    python src/pipelines/v2/parsing/run_grobid_dual.py
+```
+
+---
+
+## Optional integrations
+
+NeuroRag runs **fully locally with no hosted dependencies by default**. Three
+optional integrations are available behind config/env flags for teams that use
+them — install them first with `pip install -r requirements-optional.txt`.
+
+### RAGAS evaluation
+
+A second-opinion eval using the widely recognised RAGAS metrics (faithfulness,
+answer relevancy, context precision/recall). It re-scores an existing
+answer-eval run and — to stay local-first — uses the local Ollama model as the
+judge and the local sentence-transformer for embeddings:
+
+```bash
+python src/eval/run_ragas_eval.py --limit 5     # quick smoke test
+python src/eval/run_ragas_eval.py               # full run
+```
+
+### Qdrant vector-store backend
+
+The structured (v2/v3) index can be backed by Qdrant — a vector database
+recognised across production RAG stacks — instead of FAISS. It runs as an
+embedded on-disk store, so it stays local with no server or container:
+
+```bash
+NEURORAG_VECTOR_STORE=qdrant python src/pipelines/v2/build_structured_index.py
+NEURORAG_VECTOR_STORE=qdrant streamlit run app.py
+```
+
+FAISS remains the default; existing setups are unaffected.
+
+### LangSmith tracing
+
+Set `LANGSMITH_TRACING=true` and `LANGSMITH_API_KEY` to emit request traces
+(per-stage latency, inputs/outputs) for the `run_query` / `ask_ollama` paths.
+When the flag is unset the tracing decorator is a zero-overhead no-op — see
+[`src/observability.py`](src/observability.py).
+
+---
+
+## Development & testing
+
+```bash
+pip install -r requirements-dev.txt
+pytest          # unit tests for the pure retrieval / parsing / config logic
+ruff check .    # lint
+```
+
+CI runs `ruff` and `pytest` on every push and pull request via
+[`.github/workflows/ci.yml`](.github/workflows/ci.yml).
+
+---
+
+## Troubleshooting
+
+| Symptom | Fix |
+|---------|-----|
+| `pip install` produces garbled output | Ensure you are on the current `requirements.txt` (UTF-8). |
+| `Could not reach Ollama` | Start the Ollama service and `ollama pull` the configured model. |
+| `Could not reach GROBID at ...` | Start the GROBID Docker container, or set `GROBID_URL` to the right host. |
+| `Index not found` in the UI / chat | Build the indexes first (see Quick Start / Running the pipelines). |
+| v1 scripts fail to import `load_documents` | Run them with the current code — imports now resolve from any working directory. |
+| Qdrant `already accessed by another instance` | The embedded store allows one process at a time; stop other processes using it. |
+
+---
+
 ## Data and Privacy
 
 This repository does not include:
@@ -563,6 +710,10 @@ The most important direction is not flashy UI, but **measurable retrieval qualit
 - ✅ LLM-as-judge with `gemini-2.5-flash` (different model family from generators, on-disk cached)
 - ✅ Model comparison: phi3:mini vs qwen2.5:7b-instruct
 - ✅ Pipeline comparison: v2 hybrid vs v3 reranked
+- ✅ Streamlit demo UI with live pipeline comparison
+- ✅ Central configuration module with environment-variable overrides
+- ✅ Unit-test suite and CI (ruff + pytest)
+- ✅ Optional integrations: RAGAS metrics, Qdrant backend, LangSmith tracing
 
 ### Near-term
 - Better section-aware chunking to lift the long tail of "retrieval is close but not exact" failures
@@ -570,10 +721,10 @@ The most important direction is not flashy UI, but **measurable retrieval qualit
 - Judge-based citation grounding (we persist retrieved chunk text in eval JSON; the infrastructure is there, we just need the grading prompt)
 
 ### Next phase
-- Web interface
 - Richer metadata-aware filtering (year ranges, authors, paper-level boolean filters)
 - Domain-specific prompt modes for neuroscience / NEURON workflows
 - Query reformulation for the questions where retrieval misses entirely
+- A small shareable sample corpus so the demo runs on a fresh clone without sourcing PDFs
 
 ---
 
@@ -581,15 +732,18 @@ The most important direction is not flashy UI, but **measurable retrieval qualit
 
 - Python
 - LangChain
-- FAISS (dense vector retrieval)
+- FAISS (dense vector retrieval) — optional Qdrant backend
 - HuggingFace sentence-transformer embeddings (`all-MiniLM-L6-v2`)
 - BM25 / lexical retrieval (`rank_bm25` via LangChain)
 - Cross-encoder reranker (`cross-encoder/ms-marco-MiniLM-L-6-v2`)
 - Ollama (local LLM generation)
 - Gemini API (LLM-as-judge, eval only)
+- Streamlit (demo UI)
+- pytest + ruff + GitHub Actions (tests, lint, CI)
 - PyPDF
 - GROBID
 - Docker
+- Optional integrations: RAGAS (eval metrics), Qdrant (vector DB), LangSmith (tracing)
 
 ---
 

@@ -1,0 +1,5 @@
+# Development and CI dependencies (not needed to run the pipelines).
+-r requirements.txt
+
+pytest==8.3.4
+ruff==0.9.2
