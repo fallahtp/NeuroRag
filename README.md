@@ -680,7 +680,7 @@ This repository does not include:
 - FAISS vector indexes
 - local virtual environments
 
-These remain local and are excluded via `.gitignore`. The repo is kept private, lightweight, and easy to share publicly as a portfolio project.
+These remain local and are excluded via `.gitignore`, so the repo itself stays lightweight and contains no copyrighted PDFs or private data.
 
 ---
 
