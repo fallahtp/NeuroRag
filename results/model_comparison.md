@@ -33,7 +33,7 @@ phi3 invented numbers in 4 out of 63 answers — confident-sounding measurements
 
 qwen2.5 went the other way. When it didn't have the answer, it said so. The system prompt instructs both models to write "I do not have enough evidence in the retrieved context to answer confidently" rather than guess; qwen2.5 actually follows that instruction. phi3 sometimes hedges with a number that sounds plausible.
 
-For a portfolio of question types where the cost of confident-wrong is higher than the cost of "I don't know" (which is what most research-assistant use cases look like), qwen2.5 is the clear pick.
+Across a mix of question types where the cost of confident-wrong is higher than the cost of "I don't know" (which is what most research-assistant use cases look like), qwen2.5 is the clear pick.
 
 ## Strict vs judge
 
