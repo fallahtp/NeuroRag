@@ -26,6 +26,21 @@ v3 cross-encoder reranking adds +5pp judge fact recall and +4pp citation groundi
 
 ---
 
+## Demo
+
+The Streamlit UI lets you pick a pipeline (v1 / v2 hybrid / v3 reranked), ask a
+question, and see the grounded answer alongside the retrieved source chunks and
+their ranking signals.
+
+![NeuroRag answer with grounded citations](docs/screenshots/ui-answer.png)
+
+Retrieved sources are section-aware and show paper title, year, section title
+and section type, so it is always clear *where* the answer is coming from:
+
+![Retrieved sources panel](docs/screenshots/ui-sources.png)
+
+---
+
 ## Quick Start
 
 ```bash
