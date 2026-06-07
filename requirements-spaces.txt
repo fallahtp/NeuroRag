@@ -1,0 +1,32 @@
+# Slim dependency set for the public Hugging Face Spaces demo.
+# No Ollama server, no GROBID, no Qdrant — generation runs on a hosted API
+# (set NEURORAG_LLM_BACKEND=gemini and add GEMINI_API_KEY as a Space secret).
+# The `ollama` client below is imported by the pipelines at module load but
+# never calls a server when the Gemini backend is active.
+
+# Demo UI
+streamlit==1.57.0
+
+# LangChain
+langchain==1.2.10
+langchain-community==0.4.1
+langchain-core==1.2.17
+langchain-text-splitters==1.1.1
+langchain-huggingface==1.2.1
+
+# Embeddings + vector store + lexical retrieval
+sentence-transformers==5.2.3
+faiss-cpu==1.13.2
+rank-bm25==0.2.2
+
+# Hosted generation backend (Gemini)
+google-genai==2.0.1
+
+# Imported by the pipelines at module load (client only; no server needed
+# when NEURORAG_LLM_BACKEND=gemini)
+ollama==0.6.1
+
+# Support libs
+numpy==2.2.6
+pandas==2.3.3
+tqdm==4.67.3

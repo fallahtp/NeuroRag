@@ -373,11 +373,12 @@ def build_prompt(question: str, context: str, retrieval_note: str) -> str:
 
 @traced
 def ask_ollama(prompt: str) -> str:
-    response = ollama.chat(
-        model=OLLAMA_MODEL,
-        messages=[{"role": "user", "content": prompt}],
-    )
-    return response["message"]["content"]
+    # Generation is routed through the pluggable backend so the same pipeline
+    # can run locally on Ollama or, for the public demo, on a hosted API
+    # (NEURORAG_LLM_BACKEND=gemini). Default stays Ollama with OLLAMA_MODEL.
+    from llm_backend import generate
+
+    return generate(prompt, ollama_model=OLLAMA_MODEL)
 
 
 def extract_valid_source_ids(text: str, max_id: int) -> list[int]:

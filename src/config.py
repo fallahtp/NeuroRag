@@ -69,6 +69,13 @@ class Settings:
     )
     judge_model: str = _env_str("NEURORAG_JUDGE_MODEL", "gemini-2.5-flash")
 
+    # --- Generation backend ------------------------------------------
+    # "ollama" (default, fully local) or "gemini" (hosted — used for the
+    # public demo). When "gemini", set GEMINI_API_KEY; the generation model
+    # is NEURORAG_GEMINI_GEN_MODEL (defaults to gemini-2.5-flash).
+    llm_backend: str = _env_str("NEURORAG_LLM_BACKEND", "ollama").lower()
+    gemini_gen_model: str = _env_str("NEURORAG_GEMINI_GEN_MODEL", "gemini-2.5-flash")
+
     # --- Chunking ----------------------------------------------------
     chunk_size: int = _env_int("NEURORAG_CHUNK_SIZE", 1000)
     chunk_overlap: int = _env_int("NEURORAG_CHUNK_OVERLAP", 200)

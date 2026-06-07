@@ -7,6 +7,8 @@
 
 It is designed for researchers who want to search and query their own scientific literature, notes, and technical documents **locally**, without sending files to external APIs.
 
+> 📄 **[Read the case study →](CASE_STUDY.md)** — the problem, the approach, and the measured results.
+
 The project currently contains three retrieval pipelines and a full evaluation harness:
 
 - **v1 baseline:** a simple local PDF → FAISS RAG pipeline

@@ -68,11 +68,12 @@ def build_prompt(question: str, context: str) -> str:
 
 @traced
 def ask_ollama(prompt: str) -> str:
-    r = ollama.chat(
-        model=OLLAMA_MODEL,
-        messages=[{"role": "user", "content": prompt}],
-    )
-    return r["message"]["content"]
+    # Routed through the pluggable backend (Ollama by default, or a hosted
+    # API such as Gemini when NEURORAG_LLM_BACKEND=gemini) so the same code
+    # serves both local use and the public demo.
+    from llm_backend import generate
+
+    return generate(prompt, ollama_model=OLLAMA_MODEL)
 
 
 @traced

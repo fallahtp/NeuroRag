@@ -41,9 +41,13 @@ free hosted option:
   Generous free tier, fast.
 - **Hugging Face Inference API** — native to Spaces, free tier for small models.
 
-Local behaviour is unchanged when the env var is unset (defaults to Ollama). *This is
-the one code change I'll implement for you once you pick the backend — it touches the
-generation function in `chat_structured_ollama.py`.*
+Local behaviour is unchanged when the env var is unset (defaults to Ollama).
+
+**✅ Implemented.** `src/llm_backend.py` now provides `generate(prompt)`, and both
+chat pipelines (v1 and v2/v3) route through it. To use Gemini, set
+`NEURORAG_LLM_BACKEND=gemini` and `GEMINI_API_KEY`; the model is
+`NEURORAG_GEMINI_GEN_MODEL` (defaults to `gemini-2.5-flash`). A
+`requirements-spaces.txt` and a Spaces `README_HF.md` are committed too.
 
 ### 3. Add the Spaces config
 

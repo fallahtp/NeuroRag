@@ -141,8 +141,12 @@ with st.sidebar:
 
     st.divider()
     st.subheader("Active configuration")
-    model = settings.v1_ollama_model if pipeline == "v1" else settings.v2_ollama_model
-    st.text(f"LLM:        {model}")
+    if settings.llm_backend == "gemini":
+        llm_label = f"{settings.gemini_gen_model} (gemini)"
+    else:
+        ollama_model = settings.v1_ollama_model if pipeline == "v1" else settings.v2_ollama_model
+        llm_label = f"{ollama_model} (ollama)"
+    st.text(f"LLM:        {llm_label}")
     st.text(f"Embeddings: {settings.embedding_model.split('/')[-1]}")
     if pipeline == "v3_reranked":
         st.text(f"Reranker:   {settings.reranker_model.split('/')[-1]}")
