@@ -6,11 +6,18 @@ import json
 import re
 import xml.etree.ElementTree as ET
 
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[3]))  # src/
+from config import settings
+
 BASE_DIR = Path(__file__).resolve().parents[4]
-FULLTEXT_TEI_DIR = BASE_DIR / "data" / "interim" / "tei_xml"
-HEADER_TEI_DIR = BASE_DIR / "data" / "interim" / "header_tei_xml"
-JSON_DIR = BASE_DIR / "data" / "interim" / "structured_json"
-RAW_DIR = BASE_DIR / "data" / "raw"
+# Paths come from config so a separate sample corpus can be processed via
+# NEURORAG_INTERIM_DIR / NEURORAG_RAW_DIR.
+FULLTEXT_TEI_DIR = settings.interim_dir / "tei_xml"
+HEADER_TEI_DIR = settings.interim_dir / "header_tei_xml"
+JSON_DIR = settings.interim_dir / "structured_json"
+RAW_DIR = settings.raw_dir
 
 NS = {"tei": "http://www.tei-c.org/ns/1.0"}
 

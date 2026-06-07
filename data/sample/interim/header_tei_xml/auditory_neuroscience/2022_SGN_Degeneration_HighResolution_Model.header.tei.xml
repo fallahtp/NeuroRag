@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Effects of Degrees of Degeneration on the Electrical Excitation of Human Spiral Ganglion Neurons Based on a High-Resolution Computer Model</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2022-07-06">06 July 2022</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct status="extracted">
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Albert</forename><forename type="middle">M</forename><surname>Croner</surname></persName>
+							<email>albert.croner@tum.de</email>
+							<affiliation key="aff3">
+								<note type="raw_affiliation"><label>1</label> Department of Electrical and Computer Engineering , Technical University of Munich , Munich , Germany,</note>
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">Technical University of Munich</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff4">
+								<note type="raw_affiliation"><label>2</label> Munich Institute of Biomedical Engineering , Technical University of Munich , Garching , Germany,</note>
+								<orgName type="institution" key="instit1">Munich Institute of Biomedical Engineering</orgName>
+								<orgName type="institution" key="instit2">Technical University of Munich</orgName>
+								<address>
+									<settlement>Garching</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Amirreza</forename><surname>Heshmat</surname></persName>
+							<affiliation key="aff5">
+								<note type="raw_affiliation"><label>3</label> Laboratory for Inner Ear Biology , Medical University of Innsbruck , Innsbruck , Austria</note>
+								<orgName type="laboratory">Laboratory for Inner Ear Biology</orgName>
+								<orgName type="institution">Medical University of Innsbruck</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Anneliese</forename><surname>Schrott-Fischer</surname></persName>
+							<affiliation key="aff5">
+								<note type="raw_affiliation"><label>3</label> Laboratory for Inner Ear Biology , Medical University of Innsbruck , Innsbruck , Austria</note>
+								<orgName type="laboratory">Laboratory for Inner Ear Biology</orgName>
+								<orgName type="institution">Medical University of Innsbruck</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Rudolf</forename><surname>Glueckert</surname></persName>
+							<affiliation key="aff5">
+								<note type="raw_affiliation"><label>3</label> Laboratory for Inner Ear Biology , Medical University of Innsbruck , Innsbruck , Austria</note>
+								<orgName type="laboratory">Laboratory for Inner Ear Biology</orgName>
+								<orgName type="institution">Medical University of Innsbruck</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Werner</forename><surname>Hemmert</surname></persName>
+							<affiliation key="aff3">
+								<note type="raw_affiliation"><label>1</label> Department of Electrical and Computer Engineering , Technical University of Munich , Munich , Germany,</note>
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">Technical University of Munich</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff4">
+								<note type="raw_affiliation"><label>2</label> Munich Institute of Biomedical Engineering , Technical University of Munich , Garching , Germany,</note>
+								<orgName type="institution" key="instit1">Munich Institute of Biomedical Engineering</orgName>
+								<orgName type="institution" key="instit2">Technical University of Munich</orgName>
+								<address>
+									<settlement>Garching</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Siwei</forename><surname>Bai</surname></persName>
+							<affiliation key="aff3">
+								<note type="raw_affiliation"><label>1</label> Department of Electrical and Computer Engineering , Technical University of Munich , Munich , Germany,</note>
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">Technical University of Munich</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff4">
+								<note type="raw_affiliation"><label>2</label> Munich Institute of Biomedical Engineering , Technical University of Munich , Garching , Germany,</note>
+								<orgName type="institution" key="instit1">Munich Institute of Biomedical Engineering</orgName>
+								<orgName type="institution" key="instit2">Technical University of Munich</orgName>
+								<address>
+									<settlement>Garching</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<note type="raw_affiliation">Shanghai Jiao Tong University , China</note>
+								<orgName type="institution">Shanghai Jiao Tong University</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<note type="raw_affiliation">Shanghai Jiao Tong University , China Paul Avan ,</note>
+								<orgName type="department">Paul Avan</orgName>
+								<orgName type="institution">Shanghai Jiao Tong University</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<note type="raw_affiliation">Institut de l&apos;Audition , Institut Pasteur , France</note>
+								<orgName type="department">Institut de l&apos;Audition</orgName>
+								<orgName type="institution">Institut Pasteur</orgName>
+								<address>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Effects of Degrees of Degeneration on the Electrical Excitation of Human Spiral Ganglion Neurons Based on a High-Resolution Computer Model</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2022-07-06">06 July 2022</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">E4316B39783D8933EEE4A335DC5853D2</idno>
+					<idno type="DOI">10.3389/fnins.2022.914876</idno>
+					<note type="submission">This article was submitted to Neural Technology, a section of the journal Frontiers in Neuroscience Received: 07 April 2022 Accepted: 13 June 2022</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.9.0" ident="GROBID" when="2026-06-07T12:16+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">0.9.0</label>
+					<label type="parameters">startPage=0, endPage=2, consolidateCitations=0, consolidateHeader=0, consolidateFunders=0, includeRawAffiliations=true, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=null, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>cochlear implant</term>
+					<term>computational model</term>
+					<term>human</term>
+					<term>spiral ganglion neurons</term>
+					<term>neural degeneration</term>
+					<term>ectopic activation</term>
+					<term>personalized model</term>
+					<term>deep insertion</term>
+				</keywords>
+			</textClass>
+			<abstract/>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+	</text>
+</TEI>

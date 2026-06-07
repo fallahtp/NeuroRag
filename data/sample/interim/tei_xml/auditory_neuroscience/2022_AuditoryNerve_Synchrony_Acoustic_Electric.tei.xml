@@ -1,0 +1,2083 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Computational Modeling of Synchrony in the Auditory Nerve in Response to Acoustic and Electric Stimulation</title>
+				<funder ref="#_VXPvdcA">
+					<orgName type="full">National Institutes of Health</orgName>
+				</funder>
+				<funder>
+					<orgName type="full">National Institute on Deafness and Other Communication Disorders</orgName>
+					<orgName type="abbreviated">NIDCD</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2022-06-17">17 June 2022</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct status="extracted">
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Raymond</forename><forename type="middle">L</forename><surname>Goldsworthy</surname></persName>
+							<email>raymond.goldsworthy@med.usc.edu</email>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<note type="raw_affiliation">University Hospital Frankfurt , Germany</note>
+								<orgName type="institution">University Hospital</orgName>
+								<address>
+									<settlement>Frankfurt</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<note type="raw_affiliation">Boston University , United States Yoojin Chung, Decibel Therapeutics, Inc. , United States Auditory Research Center ,</note>
+								<orgName type="department">Yoojin Chung, Decibel Therapeutics, Inc</orgName>
+								<orgName type="laboratory">Auditory Research Center</orgName>
+								<orgName type="institution">Boston University</orgName>
+								<address>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<note type="raw_affiliation">Caruso Department of Otolaryngology , Keck School of Medicine , University of Southern California , Los Angeles , CA , United States</note>
+								<orgName type="department" key="dep1">Caruso Department of Otolaryngology</orgName>
+								<orgName type="department" key="dep2">Keck School of Medicine</orgName>
+								<orgName type="institution">University of Southern California</orgName>
+								<address>
+									<settlement>Los Angeles</settlement>
+									<region>CA</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Computational Modeling of Synchrony in the Auditory Nerve in Response to Acoustic and Electric Stimulation</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2022-06-17">17 June 2022</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">9FF17D95D97993371B200F10C60E5C98</idno>
+					<idno type="DOI">10.3389/fncom.2022.889992</idno>
+					<note type="submission">Received: 04 March 2022 Accepted: 25 May 2022</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.9.0" ident="GROBID" when="2026-06-07T12:16+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">0.9.0</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=0, consolidateFunders=0, includeRawAffiliations=true, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>auditory neuroscience</term>
+					<term>cochlear implants</term>
+					<term>pitch perception</term>
+					<term>synchrony</term>
+					<term>auditory nerve</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Cochlear implants are medical devices that provide hearing to nearly one million people around the world. Outcomes are impressive with most recipients learning to understand speech through this new way of hearing. Music perception and speech reception in noise, however, are notably poor. These aspects of hearing critically depend on sensitivity to pitch, whether the musical pitch of an instrument or the vocal pitch of speech. The present article examines cues for pitch perception in the auditory nerve based on computational models. Modeled neural synchrony for pure and complex tones is examined for three different electric stimulation strategies including Continuous Interleaved Sampling (CIS), High-Fidelity CIS (HDCIS), and Peak-Derived Timing (PDT). Computational modeling of current spread and neuronal response are used to predict neural activity to electric and acoustic stimulation. It is shown that CIS does not provide neural synchrony to the frequency of pure tones nor to the fundamental component of complex tones. The newer HDCIS and PDT strategies restore synchrony to both the frequency of pure tones and to the fundamental component of complex tones. Current spread reduces spatial specificity of excitation as well as the temporal fidelity of neural synchrony, but modeled neural excitation restores precision of these cues. Overall, modeled neural excitation to electric stimulation that incorporates temporal fine structure (e.g., HDCIS and PDT) indicates neural synchrony comparable to that provided by acoustic stimulation. Discussion considers the importance of stimulation rate and long-term rehabilitation to provide temporal cues for pitch perception.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>INTRODUCTION</head><p>Hearing is remarkable. People with the best sensitivity to musical pitch can discriminate tones that are less than a tenth of a percent apart. Those with the best sensitivity can hear sounds move in the environment by less than a degree. This precision requires perception of timing differences across ears on the order of tens of microseconds <ref type="bibr" target="#b67">(Tillein et al., 2011;</ref><ref type="bibr" target="#b2">Brughera et al., 2013)</ref>. Timing is essential to the auditory system. Special physiological mechanisms have evolved to encode timing of sounds with high fidelity <ref type="bibr" target="#b27">(Joris et al., 2004;</ref><ref type="bibr" target="#b26">Joris and Yin, 2007;</ref><ref type="bibr" target="#b16">Golding and Oertel, 2012;</ref><ref type="bibr" target="#b0">Bahmer and Gupta, 2018)</ref>. Auditory nerve fibers respond synchronously to incoming sounds for frequencies up to two thousand cycles per second, arguably with useful timing cues up to ten thousand cycles per second <ref type="bibr" target="#b74">(Verschooten et al., 2019)</ref>. Despite the many evolutionary developments required for precise coding of timing in the auditory system, and despite strong arguments for the importance of temporal fine structure for music and speech perception <ref type="bibr" target="#b41">(Lorenzi et al., 2006)</ref>, timing cues are largely discarded by sound processing for cochlear implants. This article describes results from computational modeling of cochlear implant stimulation followed by current spread and neuronal excitation. Results inform how neural synchrony is discarded by common stimulation strategies, and how synchrony can be restored by strategies that encode temporal fine structure of incoming sound into electrical stimulation.</p><p>Cochlear implants are remarkable. People who lose their hearing can hear again through an electrode array surgically implanted in their cochlea <ref type="bibr" target="#b65">(Svirsky, 2017)</ref>. Nearly a million people can hear because of cochlear implants. The quality of hearing is impressive with most recipients able to understand spoken speech in quiet without relying on lip-reading or other visual cues <ref type="bibr" target="#b52">(Niparko et al., 2010)</ref>. Music appreciation and speech reception in noise, however, tend to be poor <ref type="bibr" target="#b40">(Looi et al., 2012)</ref>. The fact that hearing with cochlear implants is not as good as normal is not surprising. Cochlear implants are limited in their ability to stimulate different regions of the auditory nerve <ref type="bibr" target="#b48">(Middlebrooks and Snyder, 2007)</ref>. The auditory nerve is comprised of ∼30-40 thousand nerve fibers while cochlear implants use at most 22 stimulating electrodes <ref type="bibr" target="#b39">(Loizou, 1999;</ref><ref type="bibr" target="#b35">Liberman et al., 2016)</ref>. Furthermore, electrical current broadly spreads in the cochlea degrading the spatial specificity of stimulation <ref type="bibr" target="#b34">(Landsberger et al., 2012)</ref>.</p><p>This limit on spatial specificity is in sharp contrast to the capacity of cochlear implants to stimulate with temporal precision. Most cochlear implants control stimulation timing with microsecond precision <ref type="bibr" target="#b63">(Shannon, 1992)</ref>. This exquisite temporal precision, however, is poorly used by conventional sound processing. The most common sound processing for cochlear implants, Advanced Combinatorial Encoders (ACE), used on Cochlear Corporation devices, discards temporal fine structure in favor of encoding slowly varying envelope oscillations up to 300 cycles per second, even though there is clear evidence that timing information is important at least up to 2-4 thousand cycles per second <ref type="bibr" target="#b13">(Dynes and Delgutte, 1992;</ref><ref type="bibr" target="#b53">Oertel et al., 2000;</ref><ref type="bibr" target="#b27">Joris et al., 2004;</ref><ref type="bibr" target="#b74">Verschooten et al., 2019)</ref>.</p><p>There are historical reasons why ACE became commonly used today. Early sound processing for cochlear implants included simultaneous analog stimulation and strategies based on speech feature extraction <ref type="bibr" target="#b39">(Loizou, 1999)</ref>. Simultaneous analog stimulation caused interference between electrodes that was difficult to control and that produced unwanted fluctuations in loudness <ref type="bibr">(Wilson and</ref><ref type="bibr">Dorman, 2008, 2018)</ref>. Strategies built on speech feature extraction suffered from a different problem. Those strategies were limited by challenges of estimating speech features-fundamental and formant frequencies-in noisy environments. Consequently, the forerunner of the ACE strategy, known as Spectral Peak (SPEAK), broke through as a widely successful strategy based on amplitude modulation of pulsatile stimulation. By encoding spectral maxima directly, these stimulation strategies reliably conveyed essential speech information. This approach has consequently been referred to as speech processing rather than sound processing since it is quite effective for speech but less so for music.</p><p>Attempts have been made over recent decades to preserve this effective encoding of speech features provided by strategies like SPEAK and ACE while enhancing temporal information important for perception of pitch and melody in music. Peak-Derived Timing (PDT) triggers pulse timings based on the temporal fine structure of sound <ref type="bibr" target="#b72">(van Hoesel and Tyler, 2003;</ref><ref type="bibr" target="#b71">van Hoesel, 2007;</ref><ref type="bibr" target="#b73">Vandali and van Hoesel, 2011)</ref>. With PDT, sound is separated into overlapping frequency bands as done for ACE, but rather than discarding temporal fine structure, PDT triggers pulse timings based on local peaks in the filtered signal of each processing channel. A similar strategy was developed for MED-EL cochlear implants referred to as Fine Structure Processing (FSP), which schedules pulse timings on zero crossing rather than peaks, but the same principal applies. Further, while PDT applied the stimulus-derived timing for every electrode, FSP originally only applied the fine structure processing to the most apical electrode corresponding to bandpass filtering center frequencies up to 250 Hz <ref type="bibr" target="#b58">(Riss et al., 2014)</ref>. Variations of FSP have since been developed that use higher stimulation rates and present fine structure to the four most apical electrodes corresponding to bandpass filter center frequencies up to 950 Hz (FS4: <ref type="bibr" target="#b58">Riss et al., 2014</ref><ref type="bibr" target="#b57">Riss et al., , 2016))</ref>.</p><p>Results with such temporal encoding strategies have been mixed. Studies of PDT found little to no benefit on either pitch perception or spatial hearing <ref type="bibr" target="#b72">(van Hoesel and Tyler, 2003;</ref><ref type="bibr" target="#b71">van Hoesel, 2007;</ref><ref type="bibr" target="#b73">Vandali and van Hoesel, 2011)</ref>. Early reports for FSP found small but significant benefits on pitch without detriment to speech <ref type="bibr" target="#b58">(Riss et al., 2014</ref><ref type="bibr" target="#b57">(Riss et al., , 2016))</ref>. More promising, recent studies suggest that benefits for pitch perception emerge from experience with the newly encoded information, with continued benefits after extended experience <ref type="bibr" target="#b57">(Riss et al., 2016)</ref>. There are many challenges to determining whether new strategies achieve the desired outcome of better encoding of temporal cues for pitch. Experience may be needed to fully learn to use these cues. Since long-term rehabilitation may be needed to learn how to use these cues, tools are needed to better characterize how well these cues are encoded for different stimulation strategies. Computational models of current spread and neural excitation can explicitly characterize cues available in the auditory nerve in response to cochlear implant stimulation. Careful characterization of these cues clarifies the extent that pitch perception of cochlear implant users is limited by the availability of these cues rather than by the brain's ability to learn to use them.</p><p>This article considers computational neural modeling of spatial and temporal cues in the auditory-nerve response for pitch perception. Cochlear implants can transmit spatial excitation cues with more deeply inserted electrodes evoking lower pitches <ref type="bibr" target="#b62">(Shannon, 1983;</ref><ref type="bibr" target="#b33">Landsberger and Galvin, 2011)</ref>. Cochlear implants also convey temporal cues with higher stimulation or modulation rates providing higher pitches <ref type="bibr" target="#b68">(Tong et al., 1982;</ref><ref type="bibr" target="#b77">Zeng, 2002)</ref>. There is considerable debate regarding optimal use of spatial and temporal cues for pitch perception for both acoustic and electric hearing <ref type="bibr" target="#b14">(Eddington et al., 1978;</ref><ref type="bibr" target="#b37">Loeb, 2005;</ref><ref type="bibr" target="#b8">Cedolin and Delgutte, 2010;</ref><ref type="bibr" target="#b29">Kong and Carlyon, 2010;</ref><ref type="bibr" target="#b55">Oxenham et al., 2011;</ref><ref type="bibr" target="#b50">Miyazono and Moore, 2013;</ref><ref type="bibr" target="#b42">Marimuthu et al., 2016;</ref><ref type="bibr" target="#b74">Verschooten et al., 2019)</ref>.</p><p>While it is unclear to what extent spatial and temporal cues contribute to pitch, the resulting resolution in normal hearing allows listeners to discriminate frequency differences &lt;1% for a wide range of conditions <ref type="bibr" target="#b51">(Moore et al., 2008;</ref><ref type="bibr" target="#b47">Micheyl et al., 2012)</ref>. The best cochlear implant users despite having at most 22 stimulating electrodes, and despite discarding temporal fine structure, can distinguish pure tones based on frequency differences of about 1-5% from 500 to 2,000 Hz depending on frequency allocation of clinical processing <ref type="bibr" target="#b20">(Goldsworthy et al., 2013;</ref><ref type="bibr" target="#b17">Goldsworthy, 2015)</ref>. Pitch perception for complex tones, however, is comparably worse with cochlear implant users typically only able to discriminate differences in fundamental frequency of 5 to 20% in the ecologically essential range of 110-440 Hz <ref type="bibr" target="#b20">(Goldsworthy et al., 2013;</ref><ref type="bibr" target="#b17">Goldsworthy, 2015)</ref>. While it is difficult to characterize contributions of spatial and temporal cues for complex pitch <ref type="bibr" target="#b5">(Carlyon and Deeks, 2002;</ref><ref type="bibr" target="#b54">Oxenham et al., 2004</ref><ref type="bibr" target="#b55">Oxenham et al., , 2011))</ref>, work has clarified the extent that these cues are present and distributed in the auditory-nerve response <ref type="bibr" target="#b3">(Cariani and Delgutte, 1996a;</ref><ref type="bibr" target="#b56">Plack and Oxenham, 2005)</ref>.</p><p>For complex tones with fundamental frequencies in the range of human voices (100 to 300 Hz), cochlear implant filtering does not provide tonotopically resolved harmonic structure <ref type="bibr" target="#b66">(Swanson et al., 2019)</ref>. Consequently, implant users rely on temporal cues for discriminating complex tones in this range. Temporal cues for pitch become less effective with increasing rates with marked deterioration of resolution between 200 and 300 Hz. This leads many cochlear implant users to express frustration with melody recognition above middle C (∼262 Hz) <ref type="bibr" target="#b40">(Looi et al., 2012)</ref>. It has been shown that discrimination improves for fundamental frequencies higher than 300 Hz, likely because of better access to place cues to make up for the impoverished rate cues <ref type="bibr" target="#b17">(Goldsworthy, 2015;</ref><ref type="bibr" target="#b66">Swanson et al., 2019)</ref>.</p><p>In the present article, the spatial and temporal cues associated with the frequency of pure tones and the fundamental frequency of complex tones is characterized in acoustic hearing using a computational model of the auditory periphery. This computational model has been rigorously validated on physiological recordings and behavioral measures <ref type="bibr" target="#b78">(Zhang et al., 2001;</ref><ref type="bibr" target="#b80">Zilany et al., 2009</ref><ref type="bibr" target="#b79">Zilany et al., , 2014))</ref>. The same analyses are then performed to characterize the spatial and temporal cues available in cochlear implant stimulation followed by current spread and a point process model of neural excitation <ref type="bibr" target="#b36">(Litvak et al., 2007;</ref><ref type="bibr" target="#b22">Goldwyn et al., 2012)</ref>. Three cochlear implant stimulation strategies are examined including Continuous Interleaved Sampling (CIS), High-Definition CIS (HDCIS), and Peak-Derived Timing (PDT). These strategies were selected as representative of conventional stimulation that discards temporal fine structure (CIS) and newer strategies that actively encode acoustic temporal fine structure into electrical stimulation (HDCIS and PDT). Finally, an analysis of how stimulation rate affects neural synchrony is conducted to characterize information loss for devices that cannot stimulate with high pulse rates. The results inform the extent that acoustic temporal fine structure of incoming sound is transmitted into neural excitation.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>MATERIALS AND METHODS</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Overview</head><p>Computational models were used to compare neural synchrony for acoustic and electric stimulation. Neural synchrony was quantified as vector strength. For acoustic stimulation, auditorynerve fibers were simulated based on a computational model of the auditory periphery that has been validated with extensive physiological data <ref type="bibr" target="#b79">(Zilany et al., 2014)</ref>. For electric stimulation, cochlear implant stimulation was based on emulations of three stimulation strategies that differ in how temporal features of incoming sounds are encoded. The three strategies were Continuous Interleaved Sampling (CIS), High-Definition CIS (HDCIS), and Peak-Derived Timing (PDT). These strategies were probed using pure and complex tones. Output electrical stimulation patterns were processed through a model of current spread followed by a point process model of neuronal excitation <ref type="bibr" target="#b36">(Litvak et al., 2007;</ref><ref type="bibr" target="#b22">Goldwyn et al., 2012)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Stimuli</head><p>Stimuli were pure and complex tones generated in MATLAB R as 30 ms tones. Pure tones were generated as sinusoids in sine phase. Complex tones were generated by summing sinusoids in sine phase. Integer harmonic components were included from the fundamental to the highest harmonic &lt;10,000 cycles per second (Hz). Harmonic components were summed with spectral attenuation of -6 dB per octave as typically occurs for complex sounds in nature <ref type="bibr" target="#b43">(McDermott and Oxenham, 2008)</ref>. All stimuli were calibrated to an input level of 65 dB sound pressure level (SPL) for the phenomenological auditory-nerve model and to have a peak value of one for cochlear implant processing.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Computational Modeling of Auditory-Nerve Response to Acoustic and Electric Stimulation</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Phenomenological Auditory-Nerve Model</head><p>Auditory-nerve activity was modeled using a phenomenological model of auditory processing that has been developed across multiple institutions <ref type="bibr" target="#b79">(Zilany et al., 2014)</ref>. This computational model includes aspects of the auditory periphery including a middle-ear filter, a feed-forward control-path, adaptive filtering to emulate cochlear mechanics, inner hair-cell transduction kinematics followed by a synapse model and discharge generator. Thus, it models multiple aspects of auditory physiology and has been validated with a wide range of physiological data as well as behavioral data from humans. While the model captures diverse aspects of the auditory periphery, it is referred to here as an auditory-nerve model since the focus is on the auditory-nerve response to acoustic stimuli. In this article, it will be referred to as the phenomenological auditory-nerve model to distinguish it from the point process neuron model used in cochlear implant simulations. The phenomenological auditory-nerve model was implemented with 256 fibers with logarithmically spaced characteristic frequencies from 125 to 8,000 Hz. The input level for all stimuli was specified as 65 dB SPL. The species parameter was set to human, which uses basilar-membrane tuning based on <ref type="bibr" target="#b64">(Shera et al., 2002)</ref>. The inner and outer haircell scaling factor was specified to model normal hearing. All three available fiber types (low, medium, and high levels of spontaneous discharge) were examined but significant differences were not observed related to neural synchrony between fiber types.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Cochlear Implant Processing</head><p>Cochlear implant stimulation was generated using emulations of CIS, HDCIS, and PDT. The first stage of processing for all emulations was to process stimuli through a bank of twenty-two filters with logarithmically spaced center frequencies from 125 to 8,000 Hz. Filters were second order with infinite impulse response with 3-dB crossover points geometrically positioned between center frequencies. For CIS, filter outputs were converted to temporal envelopes using Hilbert transforms. Temporal envelopes were then used to modulate 90 kHz pulsatile stimulation (∼4,091 pulses per second per channel). For HDCIS, filter outputs were half-wave rectified and these rectified signals were used as high-definition temporal envelopes. These temporal envelopes were then used to modulate 90 kHz pulsatile stimulation. For PDT, a peak-detection algorithm was used to find local maxima in filtered outputs and a single pulse was scheduled for the corresponding electrode at that instance. All electrical pulses were modeled as biphasic with 25 µs phase durations and an 8-µs interphase gap.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Current Spread</head><p>A model was used to characterize the extent that current spread degrades temporal cues for pitch perception. It is wellknown that the spatial cues for pitch are degraded by current spread, but it is poorly understood to what extent interactions of nearby electrodes leads to smearing of temporal cues. If nearby electrodes encode distinct temporal cues, and if current spreads from these electrodes to the same neural region, then the synchrony of neural response would be degraded. Current spread was modeled using an inverse law and assuming the electrode array was linear and parallel to modeled nerve fibers. Stimulation was designed for 22 electrodes with electrodes spaced 0.75 millimeters apart. The distance between electrodes to the closest neuron was 1 millimeter. The voltage at a neuron was calculated as the sum of 22 voltage sources modified based on the inverse law for voltage attenuation. Rationale for using simple models of electrode geometry and summation of electric fields have been described elsewhere <ref type="bibr" target="#b36">(Litvak et al., 2007)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Neural Excitation</head><p>The modeled voltage source after current spread was used to drive a point process model of neuronal excitation as developed and described by <ref type="bibr" target="#b22">Goldwyn et al. (2012)</ref>. This point process model of individual neurons provides a compact and accurate description of neuronal responses to electric stimulation. The model consists of a cascade of linear and non-linear stages associated with biophysical mechanisms of neuronal dynamics.</p><p>The details of the model are described in <ref type="bibr" target="#b22">Goldwyn et al. (2012)</ref>; but briefly, each processing stage is associated with biophysical mechanisms of neuronal dynamics. A semi-analytical procedure determines parameters based on statistics of single fiber responses to electrical stimulation, including threshold, relative spread, jitter, and chronaxie. Refractory and summation effects are accounted for that influence the responses of auditory nerve fibers to high-rate pulsatile stimulation. For the present study, the electrical current after current spread was normalized to an input level of 1 milliampere. For each neural location, neurons were modeled having thresholds from 0.1 to 0.8 milliamperes with increments of 0.05 milliamperes. All other model parameters for the point process model were as described by <ref type="bibr" target="#b22">Goldwyn et al. (2012)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Synchrony Quantified as Vector Strength</head><p>The study objective was to characterize synchrony to frequency and fundamental frequency in the auditory nerve for acoustic and electric stimulation. For modeled auditory-nerve response, computed using either the phenomenological or point-process models, vector strength was calculated based on spike timings <ref type="bibr" target="#b15">(Goldberg and Brown, 1968;</ref><ref type="bibr" target="#b70">van Hemmen, 2013)</ref>:</p><formula xml:id="formula_0">VS AN = 1 N N i=1 e j2πft i</formula><p>Where N is the number of action potentials, f is the frequency (or fundamental frequency) of interest, and t i is the time of event.</p><p>In the present study, a corresponding vector strength for cochlear implant stimulation was needed to compare synchrony at the level of the auditory nerve with synchrony in electrical stimulation patterns (both before and after current spread). Electrical stimulation is conveyed by cochlear implants with biphasic pulses with cathodic phase durations typically 25 µs in duration followed by symmetric anodic phases to balance charge. The total charge per phase was used to control the probability of neural spiking in the auditory nerve. As such, a modified version of vector strength was used to account for the probability of spiking based on charge delivered:</p><formula xml:id="formula_1">VS CI = N i=1 q i * e j2πft i N i=1 q i</formula><p>Where q i is the normalized charge per phase of each biphasic pulse. This metric of vector strength falls between 0 and 1 and corresponds to the original definition but with events weighted by the probability of spiking approximated by the charge per phase delivered for each stimulating pulse.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Analysis of Interspike Intervals</head><p>As has been described in the literature, electric stimulation produces a high degree of synchronous firing of auditorynerve fibers <ref type="bibr" target="#b24">(Hong and Rubinstein, 2006;</ref><ref type="bibr" target="#b25">Hughes et al., 2013)</ref>. Pulse trains with abrupt stimulus onsets can produce hypersynchronization to the first pulse followed by refractoriness and potentially hyper-synchronization not to the next pulse in a sequence but to alternating pulses in the sequence. This putative response to pulse trains with abrupt onsets has been shown in computational models as well as measures of the electrically evoked compound action potential. Hyper-synchronization to alternating pulses would not be detected by vector strength since only the relative phase of the stimulus cycle is considered. Consequently, interspike intervals were analyzed. Interspike interval distributions were calculated based on 100 iterations of a 500 Hz input tone that was 100 ms in duration. Current level per pulse was chosen so that the stimuli evoked ∼100 spikes per second.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Vector Strength Across Frequencies and Across Fundamental Frequencies</head><p>Analyses were conducted to compare vector strength of modeled auditory-nerve activity for acoustic and electric stimulation for pure tones for semitone-spaced frequencies from 125 to 8,000 Hz and for complex tones for semitone-spaced fundamental frequencies from 55 to 1,760 Hz (corresponding to musical notes from A1 to A6). Response properties were characterized for a representative frequency or fundamental frequency, and vector strength was calculated for all frequencies and fundamental frequencies. Interpretation of results focus on information present in electric stimulation and how synchrony is affected by current spread and neural response.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Effect of Stimulation Rate on Neural Response</head><p>The analyses described in the previous sections were conducted with modeled stimulation rate of 90,000 pulses per second (pps), which is possible with state-of-the-art cochlear implants. However, the most common implants in use today only support stimulation rates of 14,400 pps, which must be distributed across electrodes. Typically, electrode selection is used to distribute stimulation across 6-8 electrodes per stimulation cycle dividing to 1,800 pps per electrode. Further, there are many legacy implants that only support slower stimulation. The N22 implant from Cochlear Corporation can only stimulate at ∼3,500 pps (the exact rate depends on the stimulus configuration).</p><p>Even with an aggressive selection of only five electrodes per stimulation cycle, the resulting electrode stimulation rate would only be 700 pps per electrode. To conclude this article, the effects of reduced stimulation rate on modeled neural response is examined. Front-end spectral filtering was implemented using the same bank of 22 band-pass filters described in previous sections. Temporal envelopes including temporal fine structure were derived as used for HDCIS, but channel selection was implemented using an emulation of Advanced Combinatorial Encoders (ACE). This combination of high-definition temporal envelopes with electrode selection is referred to here as highdefinition ACE (HD-ACE). Channel selection was specified to be increasingly aggressive to counteract decreases in stimulation rate. Eight active electrodes were used for the 90,000 pps stimulation rate, six for the 14,400 pps stimulation rate, and four for the 3,500 pps stimulation rate. Current spread was modeled as in previous sections. Neural response was modeled for neurons having fiber locations from 0 to 30 millimeters in 0.1-millimeter increments with the electrode array parallel and 1 millimeter away. The most basal electrode was modeled as perpendicular to the 0-millimeter neural location. As in previous sections, neuron thresholds between 0.1 and 0.8 millivolts in 0.1-millivolt increments were modeled.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>RESULTS</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Modeled Neural Response to Acoustic Stimulation</head><p>Figure <ref type="figure" target="#fig_0">1</ref> shows auditory-nerve activity when driven by acoustic stimulation as modeled by the phenomenological model of auditory processing <ref type="bibr" target="#b79">(Zilany et al., 2014)</ref>. The upper subpanels of Figure <ref type="figure" target="#fig_0">1</ref> show auditory-nerve activity and response metrics for a 500 Hz pure tone. It has been shown in the literature that the auditory nerve responds with well-defined tonotopy and with synchronous phase-locked spiking to acoustic frequency for frequencies at least as high as 2 to 4 kHz <ref type="bibr" target="#b13">(Dynes and Delgutte, 1992)</ref>, though noting arguments and evidence for phase-locked firing as high as 10 kHz <ref type="bibr" target="#b74">(Verschooten et al., 2019)</ref>. The modeled activity accounts for tonotopy and synchrony with a clearly defined tonotopic response centered on the characteristic frequency of the tone. The response exhibits a high degree of synchronous excitation periodically every 2 ms. The periodic excitation travels from base to apex capturing the established behavior of the cochlear traveling wave. The calculated metric of synchrony shows that vector strength to the 500 Hz frequency is high with a maximum of 0.88.</p><p>The lower subpanels of Figure <ref type="figure" target="#fig_0">1</ref> show modeled auditorynerve activity and response metrics for a complex tone with a fundamental frequency of 220 Hz. In terms of spatial excitation cues, there are well-defined spatially resolved peaks in the excitation pattern for the fundamental and roughly for the first 8-10 harmonics. Above the tenth harmonic, the excitation peaks are not well-defined in terms of tonotopic response. Importantly, the synchrony of the response is also well-defined with spatially resolved peaks in the patterning of vector strength. Synchrony near the fundamental is high reaching a maximum of 0.90 near the fundamental. At that point, synchrony fluctuates in between harmonic components. For fibers having a characteristic frequency near a harmonic, the fiber response is not synchronous to the fundamental; instead, response phase-locks to the temporal fine structure of the dominant harmonic <ref type="bibr" target="#b12">(Delgutte and Kiang, 1984;</ref><ref type="bibr" target="#b60">Sachs et al., 2002;</ref><ref type="bibr" target="#b32">Kumaresan et al., 2013)</ref>. In between harmonic components, two or more components interact to produce strong oscillations at the fundamental frequency. This alternating pattern of synchrony to the fundamental has been referred to as a fluctuation profile and has been hypothesized as important for pitch <ref type="bibr" target="#b7">(Carney et al., 2015;</ref><ref type="bibr" target="#b6">Carney, 2018)</ref>. For fibers with characteristic frequencies above 2 kHz, as filters broaden allowing more harmonic components to interact, the periodicity of the fundamental dominates the temporal response, and the vector strength increases with a maximum of 0.97 in this region. </p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Modeled Neural Response to Electric Stimulation</head><p>Figure <ref type="figure">2</ref> shows modeled neural activity for three cycles of a 500 Hz pure tone for the CIS, HDCIS, and PDT stimulation strategies implemented with a stimulating pulse rate of 90,000 pps. This figure clarifies how different stimulation strategies encode temporal cues of pure tones into electric stimulation and how neural excitation is predicted to respond. For this figure, only a single electrode was modeled for stimulation. The driving stimulus is represented in the upper subpanels as a sinusoid. For CIS, a relatively slow temporal envelope is derived using a Hilbert transform then used to modulate constantrate pulsatile stimulation. Importantly, the pulse rate used for CIS is independent of the incoming tonal frequency and thus does not convey temporal cues for pitch associated with the incoming sound. For HDCIS, the envelope that is derived and used to modulate pulsatile stimulation is a half-wave rectified version of the filtered acoustic waveform, which does contain temporal fine structure associated with the frequency of the incoming sound. The electric stimulation represented in the middle subpanels clearly indicates the encoding of this cycleby-cycle amplitude modulation of pulsatile stimulation. The PDT strategy does not derive envelopes but instead schedules pulsatile activity based on peak detection implemented on the filtered acoustic waveform. This approach is like the fine structure processing used on MED-EL devices, but the latter based on zero crossings rather than peak detection. In either case, the electric stimulation clearly conveys the periodicity of the incoming acoustic frequency as a singular electric pulse for each cycle.</p><p>The lower panels of Figure <ref type="figure">2</ref> show the modeled neural response for neurons with thresholds having a range of 0.1-0.8 milliamperes (with 0.1 milliampere increments) for 201 fiber locations. The fiber locations, or neural positions, are given relative to a location of 0 millimeters corresponding to the closest neuron to the stimulating electrode, but with the stimulating electrode 1 millimeter away from that closest neuron. With this range of thresholds and neural locations, the modeled neural activity shows a range of responses. For CIS, the stochastic nature of the point process model, coupled with the range of modeled thresholds, causes spike timings to quickly desynchronize after having a strong onset response. For HDCIS, the range of modeled thresholds and spatial locations provides a clear synchrony of spiking both the pulse rate and acoustic periodicity but noting that no modeled neurons responded to the last stimulating pulse of the stimulus. For PDT, the precise temporal pattern of the electric stimulus produces synchronous behavior in the modeled neural elements.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Interspike Intervals in Response to Electric Stimulation</head><p>Figure <ref type="figure">3</ref> shows first and all-order interspike intervals for modeled auditory-nerve responses described in the previous section. The CIS strategy produces a high-rate pulse train, the rate of which is independent of the frequency of the acoustic input, the neural response does not have interspike FIGURE 2 | Modeled auditory-nerve response to electric stimulation for three cycles of a 500 Hz pure tone as encoded by three different cochlear implant stimulation strategies. For CIS, a relatively slow envelope extraction procedure discards incoming temporal fine structure, and the derived envelope is used to modulate constant-rate pulsatile stimulation. For HDCIS, the envelope is "high-definition" in that it is a rectified version of the filtered input signal and thus retains the temporal fine structure. For PDT, individual electric pulses are triggered based on the temporal maxima of the filtered input signal. The lower subpanels show modeled neural response to stimulation with the neural position indicating the relative position of the modeled neural elements with a value of 0 millimeters indicating a neuron closest to the electrode array, which is modeled as parallel to the nerve fiber and 1 millimeter away.</p><p>intervals representative of the 500 Hz periodicity of the input acoustic tone. Instead, the CIS strategy produces interspike interval distributions qualitatively like high-rate distributions recorded from cat auditory-nerve fibers <ref type="bibr" target="#b49">(Miller et al., 2008)</ref> and as previously modeled by <ref type="bibr" target="#b22">Goldwyn et al. (2012)</ref>. In contrast, both HDCIS and PDT produced interspike intervals with clear histogram periodicities at the desired 2 ms periodicity of the input acoustic tonal frequency. The roll-off of histogram interval counts for the first-order statistics and flattened interval counts for the all-order interval counts agrees with the recordings made in cat auditory nerve fibers by <ref type="bibr" target="#b45">Mckinney and Delgutte (1999)</ref>. These modeling results suggest that HDCIS and PDT convey temporal cues for pitch beyond what is characterized by vector strength. These results are important because cochlear implant stimulation can sometimes introduce unwanted timing distribution of neural events. Specifically, abrupt pulsatile stimulation may lead to hyper-synchronization to an initial pulse with recovery and synchrony to odd pulses. Such artifactual response properties would not diminish vector strength but would affect interspike intervals. The results here suggest that such artifactual hyper-synchronization to alternating stimulation cycles is not occurring and that the interspike intervals produced by HDCIS and FSP strategies is comparable to that observed with acoustic stimulation <ref type="bibr" target="#b45">(Mckinney and Delgutte, 1999)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Comparison of Cochlear Implant Stimulation Strategies for Pure Tones</head><p>Figure <ref type="figure">4</ref> shows cochlear implant stimulation and derived metrics for a representative 500 Hz pure tone. The tonotopic aspect of the stimulus is well-defined with the strongest response seen in the filter channel with center frequency of 500 Hz. The encoding of the acoustic temporal fine structure of the tone-the cycle-by-cycle periodicity-is strikingly different with CIS compared to HDCIS and PDT. Specifically, CIS discards acoustic temporal fine structure and stimulates using constantrate pulsatile stimulation, with the pulse rate independent of the incoming sound. Consequently, synchrony quantified as vector strength between the stimulation pattern and the tone frequency is near zero. This result is not surprising since it is known that CIS discards acoustic temporal fine structure and only encodes envelope modulations <ref type="bibr" target="#b65">(Svirsky, 2017)</ref>. In contrast, HDCIS and PDT have markedly improved synchrony to the input tone frequency, HDCIS has a vector strength of 0.79 at the maximally excited filter, while PDT has a vector strength of 0.98 at its maximally excited filter.</p><p>The derived metrics of spatial and temporal cues illustrate the effects of modeled current spread and neural excitation. Current spread, naturally, spreads the spatial response reducing the relative power of the maximally excited filter. Interestingly, the compressive nature of modeled neural excitation increases FIGURE 3 | First and all-order interspike intervals for modeled auditory-nerve responses to electric stimulation depicted in Figure <ref type="figure">2</ref>. Interspike interval distributions estimated from 10,000 interspike intervals with the pulse rates as indicated. Current level per pulse was chosen so that the stimuli evoked ∼100 spikes per second.</p><p>the relative power of the maximally excited filter. This effect is likely caused by low-level filters not producing sufficient electrical stimulation to reach threshold of modeled neurons. The synchrony of response is also affected by modeled current spread and neural excitation. Since cochlear implant sound processing used here incorporates recursive filtering with phasedelay characteristics comparable to traveling wave mechanics of the cochlea, the energy profile for each cycle peaks first in highfrequency filters with notable elongation near the peak resonant filter (i.e., the spectral maximum). This temporal spreading of fine structure results in peak energy occurring first in highfrequency channels with maximal temporal spreading near the filter with highest spectral output. Consequently, current spread results in temporal fine structure of one filtering channel to diminish the temporal precision of adjacent channels. This is observed in the marked reduction of synchrony following current spread. However, for HDCIS and PDT, vector strength is higher after modeling the neural response using the point process model with variable thresholds. This recovery of synchrony is likely driven by the synchronization of modeled spiking to charge accumulation on a cycle-by-cycle basis with rest sufficient period in between periods of the encoded temporal fine structure.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Comparison of Cochlear Implant Stimulation Strategies for Complex Tones</head><p>Figure <ref type="figure" target="#fig_1">5</ref> presents a representative analysis of the spatial and temporal cues associated with complex tones. For this representative analysis, a harmonic complex with fundamental frequency of 220 Hz is processed through the three stimulation strategies. The spatial response to the harmonic tone is nearly identical for the three strategies, with the response quantified as the proportion of charge delivered to each electrode. Note that proportional charge is normalized here, clinical implementation of PDT will likely require higher charge on low-frequency channels since lower pulse rates require more charge per pulse to obtain audibility thresholds and comfortable listening levels <ref type="bibr" target="#b21">(Goldsworthy and Shannon, 2014;</ref><ref type="bibr" target="#b1">Bissmeyer et al., 2020;</ref><ref type="bibr" target="#b19">Goldsworthy et al., 2021</ref><ref type="bibr" target="#b18">Goldsworthy et al., , 2022))</ref>. For all three stimulation strategies, the fundamental frequency clearly produces a resolved peak in the spatial pattern, which occurs in the stimulation pattern as well as after modeling current spread and neural excitation. Compared to the spatial cues available in acoustic hearing (see Figure <ref type="figure" target="#fig_0">1</ref>), the spatial cues available in electric hearing are poorly represented beyond the fundamental frequency. The modeled neural response to acoustic input of Figure <ref type="figure" target="#fig_0">1</ref> depicts 8-10 harmonics that produce spatially resolved excitation, which is in general agreement with the physiological and psychophysical literature <ref type="bibr" target="#b56">(Plack and Oxenham, 2005)</ref>. In contrast, with only 22 logarithmically spaced filters, only the fundamental and first harmonic produced spatially resolved harmonics, the latter being substantially degraded by current spread but noting that the modeled neural response enhances the response.</p><p>The temporal cues associated with the fundamental frequency of complex tones strikingly differ for CIS compared to HDCIS and PDT. For all three stimulation strategies, temporal cues FIGURE 4 | Cochlear implant stimulation, neural response, and derived metrics of spatial and temporal cues for a 500 Hz pure tone. For the electrodogram representations of the left panels, the electric potential was normalized to a peak of 1 millivolt as indicated by the color bar and only the anodic phase of stimulation is depicted. The neural responses were calculated for neuron thresholds from 0.1 to 0.8 in 0.1 microamperes steps and the current level of the electrical stimulus after current spread was specified to produce ∼100 spikes per second.</p><p>quantified as vector strength of synchrony between the electric stimulus and modeled neural excitation with the incoming acoustic stimulus is particularly high for high-frequency spectral regions where unresolved harmonics dominate and produce strong temporal periodicity. However, the stimulation strategies differ in the temporal response associated with the fundamental. Specifically, temporal cues associated with the fundamental frequency of the stimulus are not available in the low-frequency spectral region for the CIS strategy but are clearly present and markedly high for both HDCIS and PDT.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Synchrony Across Frequencies for Pure and Complex Tones</head><p>Figure <ref type="figure" target="#fig_2">6</ref> shows synchrony quantified as vector strength for modeled auditory nerve fibers for acoustic and electric stimulation. The upper and lower subpanels show synchrony in response to pure and complex tones, respectively. In each subpanel, the acoustic neural response is the vector strength based on the phenomenological auditory-nerve model. The different columns of subpanels show the synchrony of the electric stimulus before and after current spread and neural modeling with the point process model.</p><p>For pure tones, modeled acoustic neural response captures the diminishing of neural synchrony that occurs in normal hearing for frequencies above 2-4 kHz. The CIS stimulation strategy simply does not convey temporal fine structure, which is a known design flaw. The HDCIS and PDT strategies both provide a high level of synchrony in the stimulation pattern, which is degraded by current spread, but mostly restored by the point process model of neural excitation. Neural synchrony does not diminish near 2 kHz for electrical stimulation, which agrees with physiological data suggesting that neural synchrony is higher for electric than for acoustic stimulation since electric stimulation bypasses the sluggish synaptic mechanisms of transduction <ref type="bibr" target="#b13">(Dynes and Delgutte, 1992)</ref>. The vector strength of response for electric stimulation does diminish above 4 kHz, which is driven by the electric pulses not being perfect impulses but having finite durations (i.e., the total pulse width of about 60 µs is a significant portion of the tonal period). The most relevant finding is that the synchrony of modeled neural response to pure tones is comparably high for HDCIS and PDT when compared to synchrony observed in acoustic hearing. The observed synchrony in the modeled neural response is consistently higher than that observed in modeled acoustic hearing for the PDT stimulation strategy.</p><p>The modeled neural response for acoustic stimulation is similar for complex tones as for pure tones. As depicted in Figure <ref type="figure" target="#fig_0">1</ref>, the vector strength for complex tones has two distinct regions with high levels of synchrony: one associated with the fundamental component and one associated with the high-frequency spectral regions of unresolved harmonics. The maximum vector strength across fibers is shown for complex tones as a summary statistic. For the model of auditory-nerve response to acoustic stimulation, synchrony to the fundamental follows the same behavior as a pure tone. Synchrony is relatively high for the three stimulation strategies. For CIS, since synchrony is not provided for the fundamental, the observed synchrony derives from the high-frequency spectral region of unresolved harmonics. As can be seen in Figure <ref type="figure">3</ref>, the temporal periodicity of stimulation in high-frequency channels are in phase and thus are not degraded by current spread. Modeled neural excitation increases vector strength since the point process neurons tend to respond during the same phase of the charge accumulation. Observed synchrony was higher yet for HDCIS and PDT with both being enhanced by modeled neural response. While parameterization of the computational model will affect results, neural excitation to electric stimulation clearly provides temporal cues with comparable neural synchrony in acoustic hearing.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Effect of Stimulation Rate on Neural Response</head><p>Figure <ref type="figure" target="#fig_3">7</ref> shows the modeled neural response for HD-ACE implemented for the three stimulation rates for pure and complex tones. Only the first 20 millimeters of the fiber locations are shown since the modeled 22-electrode array only extends to be perpendicular to the 16-millimeter location. The cycle-bycycle temporal fine structure for both pure and complex tones are conveyed by the stimulation strategy but with noticeable reduction in the amount of fine-structure detail that is encoded.</p><p>These modeling results clarify the effect of stimulation rate on encoding temporal fine structure into neural activity. While some degree of synchrony is maintained despite the reduction in stimulation rate, there is clearly a loss of detail in the response of the auditory nerve. Psychophysically, a previous study has shown that cochlear implant users are sensitive to small fluctuations in charge density that occur associated with this loss of detail in the temporal fine structure <ref type="bibr" target="#b18">(Goldsworthy et al., 2022)</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>DISCUSSION</head><p>Neural synchrony to incoming stimulation is exceptionally high in the auditory system. The auditory nerve fires with synchrony to incoming sounds for frequencies up to two and arguably as high as 10 thousand cycles per second <ref type="bibr" target="#b13">(Dynes and Delgutte, 1992;</ref><ref type="bibr" target="#b10">Chung et al., 2014</ref><ref type="bibr" target="#b9">Chung et al., , 2019;;</ref><ref type="bibr" target="#b74">Verschooten et al., 2019)</ref>. This remarkable synchrony was examined here by comparing computational models of auditory-nerve response to acoustic and electric stimulation. It was shown that synchrony to sound of the most common stimulation strategies for cochlear implants (ACE and CIS) is completely discarded for pure tones and substantially degraded for complex tones, specifically that the temporal fine structure of the fundamental frequency is discarded. In contrast, modeling results indicate that stimulation strategies that explicitly encode temporal fine structure (HDCIS and PDT) provide comparable levels of neural synchrony to sound as produced in acoustic hearing. Modeled current spread reduced spatial and temporal cues for pitch perception, but the point process model of neuronal response increased both spatial specificity and neural synchrony. Discussion focuses on how computational modeling could be used to yield better encoding of temporal cues for cochlear implants.</p><p>The present article compares modeled neural synchrony for different cochlear implant stimulation strategies with synchrony observed in acoustic hearing. The ACE and CIS strategies are commonly used with cochlear implants, but it is well-known that these strategies discard temporal fine structure of sound. The extent, however, that computational modeling indicates that HDCIS and PDT encode temporal fine structure of incoming sound into synchronous neural activity is enticing. Of course, aspects of modeling such as the extent of current spread and the distribution of neural parameters will affect modeling results, and this flexible capacity will allow models to be tuned to physiological data collected in the future. Since HDCIS encodes aspects of temporal fine structure into stimulation, and does not explicitly remove that information using smoothed envelopes, some extent of neural synchrony will be transmitted. Similarly, stimulation strategies that trigger stimulation pulses based on temporal fine structure such as PDT, FSP, and FS4 will produce varying degrees of neural synchrony <ref type="bibr" target="#b71">(van Hoesel, 2007;</ref><ref type="bibr" target="#b73">Vandali and van Hoesel, 2011;</ref><ref type="bibr" target="#b58">Riss et al., 2014</ref><ref type="bibr" target="#b57">Riss et al., , 2016))</ref>. The present article does not attempt to exhaustively describe synchrony for all strategies, but to clearly describe synchrony for common stimulation strategies.</p><p>The modeling results presented here incorporate current spread and a point process model or neuronal response. Synchrony was degraded by current spread because the frontend filtering included phase delay like that produced by traveling wave mechanics of the cochlea. If linear phase filtering were instead used for the front-end filtering-as often used for cochlear implant signal processing-then stimulation timing features would be coherent and current spread would cause less smearing of temporal information. However, it is not presently known the extent that modeling traveling wave mechanics is important for conveying temporal fine structure cues <ref type="bibr" target="#b38">(Loeb et al., 1983;</ref><ref type="bibr" target="#b37">Loeb, 2005;</ref><ref type="bibr" target="#b44">McGinley et al., 2012)</ref>. Computational modeling can be used to clarify the tradeoffs between emulating traveling wave mechanics and minimizing the smearing of temporal cues for pitch perception <ref type="bibr" target="#b11">(Cohen, 2009;</ref><ref type="bibr" target="#b28">Karg et al., 2013;</ref><ref type="bibr" target="#b61">Seeber and Bruce, 2016;</ref><ref type="bibr" target="#b69">van Gendt et al., 2016)</ref>.</p><p>There is a rich body of literature associated with temporal cues for pitch perception in the auditory-nerve response with strong arguments for different metrics to quantify the strength of these cues <ref type="bibr" target="#b46">(Meddis and Hewitt, 1992;</ref><ref type="bibr">Cariani and Delgutte, 1996a,b;</ref><ref type="bibr" target="#b8">Cedolin and Delgutte, 2010;</ref><ref type="bibr" target="#b23">Hartmann et al., 2019)</ref>. Vector strength was made the focal point of the present article as a starting point for comparing the temporal response properties of the auditory nerve to acoustic and electric stimulation because it is a straightforward metric of synchrony that has been used in basic studies of physiology <ref type="bibr" target="#b70">(van Hemmen, 2013)</ref>. Further, interval histograms were examined and the periodicity information present in the neural response to electrical stimulation was comparable to that observed for acoustic stimulation <ref type="bibr" target="#b45">(Mckinney and Delgutte, 1999)</ref>. Future work should consider other metrics of synchrony as predictors of behavioral pitch resolution as results are better characterized for different stimulation strategies.</p><p>The extent that encoding synchrony into sound processing for cochlear implants will improve music and speech perception for recipients is unknown. The results of the present study show that synchrony is poorly encoded by conventional ACE and CIS strategies, but that synchrony can be restored using stimulation based on physiology that actively encodes the temporal fine structure of incoming sound. Behavioral results for strategies that attempt to encode temporal fine structure (e.g., HDCIS, FSP, PDT) have yielded promising, but mixed results <ref type="bibr" target="#b72">(van Hoesel and Tyler, 2003;</ref><ref type="bibr" target="#b71">van Hoesel, 2007;</ref><ref type="bibr" target="#b73">Vandali and van Hoesel, 2011)</ref>. The most promising results for such strategies suggest that prolonged rehabilitation is needed to make use of newly encoded timing cues, which suggests long-term recovery and rehabilitation of neural circuits tuned to synchronous activity <ref type="bibr" target="#b31">(Kral and Tillein, 2006;</ref><ref type="bibr" target="#b30">Kral and Lenarz, 2015;</ref><ref type="bibr" target="#b57">Riss et al., 2016)</ref>. Musical sound quality was shown to be better with FSP compared to HDCIS particularly for bass frequency perception <ref type="bibr" target="#b59">(Roy et al., 2015)</ref>. New strategies designed to encode temporal fine structure should be evaluated with prolonged periods of experience. Further, optimization of new strategies could benefit by modeling how synchrony to sound can be restored first at the level of the stimulation pattern but ultimately at the level of the auditory nerve.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>FIGURE 1 |</head><label>1</label><figDesc>FIGURE 1 | Modeled auditory-nerve response to acoustic stimulation for pure and complex tones. Left panels show spectrogram representations of average fiber firing rate for 256 fibers logarithmically spaced between 125 and 8,000 Hz. Middle panels show spatial excitation cues as firing rate averaged across time. Right panels show temporal cues as vector strength to the input tone frequency of fundamental frequency.</figDesc><graphic coords="6,85.14,69.36,425.28,256.32" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>FIGURE 5 |</head><label>5</label><figDesc>FIGURE 5 | As Figure 4 but for complex tones with fundamental frequency of 220 Hz.</figDesc><graphic coords="10,56.64,70.04,481.92,272.64" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>FIGURE 6 |</head><label>6</label><figDesc>FIGURE 6 | Synchrony of neural response to the frequency of pure tones and fundamental frequency of complex tones for acoustic and electric stimulation.</figDesc><graphic coords="11,56.64,69.96,481.92,300.72" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>FIGURE 7 |</head><label>7</label><figDesc>FIGURE 7 | Modeled neural response to electrode stimulation for pure and complex tones for high-definition emulations of the Advanced Combinatorial Encoders stimulation strategy. The images show modeled fiber location vs. time for five cycles of a 500 Hz pure tone (left panels) and five cycles of a 220 Hz complex tone (right panels). The color bar indicates the average firing rate of the neural response. pps, pulses per second.</figDesc><graphic coords="12,85.14,70.07,425.28,249.60" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><graphic coords="7,85.14,69.51,425.28,260.16" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><graphic coords="8,85.14,69.59,425.28,262.08" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><graphic coords="9,56.64,70.08,481.92,273.60" type="bitmap" /></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_0"><p>Frontiers in Computational Neuroscience | www.frontiersin.org</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_1"><p>June 2022 | Volume 16 | Article 889992</p></note>
+		</body>
+		<back>
+
+			<div type="funding">
+<div><head>FUNDING</head><p>This research was supported by a grant from the <rs type="funder">National Institute on Deafness and Other Communication Disorders (NIDCD)</rs> of the <rs type="funder">National Institutes of Health</rs>: <rs type="grantNumber">R01 DC018701</rs>. The funding organization had no role in the design and conduct of the study; in the collection, analysis, and interpretation of the data; or in the decision to submit the article for publication; or in the preparation, review, or approval of the article.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funding" xml:id="_VXPvdcA">
+					<idno type="grant-number">R01 DC018701</idno>
+				</org>
+			</listOrg>
+
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>DATA AVAILABILITY STATEMENT</head><p>The modeling code and results supporting the conclusions of this article will be made available by the authors, without undue reservation.</p></div>
+			</div>
+
+
+			<div type="conflict">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Conflict of Interest:</head><p>The author declares that the research was conducted in the absence of any commercial or financial relationships that could be construed as a potential conflict of interest.</p></div>
+			</div>
+
+
+			<div type="contribution">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>AUTHOR CONTRIBUTIONS</head><p>The author confirms being the sole contributor of this work and has approved it for publication.</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Publisher's Note: All claims expressed in this article are solely those of the authors and do not necessarily represent those of their affiliated organizations, or those of the publisher, the editors and the reviewers. Any product that may be evaluated in this article, or claim that may be made by its manufacturer, is not guaranteed or endorsed by the publisher.</p><p>Copyright © 2022 Goldsworthy. This is an open-access article distributed under the terms of the <ref type="url" target="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License (CC BY)</ref>. The use, distribution or reproduction in other forums is permitted, provided the original author(s) and the copyright owner(s) are credited and that the original publication in this journal is cited, in accordance with accepted academic practice. No use, distribution or reproduction is permitted which does not comply with these terms.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct status="extracted" xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Role of oscillations in auditory temporal processing: a general model for temporal processing of sensory information in the brain?</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bahmer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">S</forename><surname>Gupta</surname></persName>
+		</author>
+		<idno type="DOI">10.3389/fnins.2018.00793</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Front. Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page">793</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Perceptual learning of pitch provided by cochlear implant stimulation rate</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">R S</forename><surname>Bissmeyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Hossain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">L</forename><surname>Goldsworthy</surname></persName>
+		</author>
+		<idno type="DOI">10.1371/journal.pone.0242842</idno>
+	</analytic>
+	<monogr>
+		<title level="j">PLoS ONE</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page">242842</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Human interaural time difference thresholds for sine tones: the high-frequency limit</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Brughera</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Dunai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">M</forename><surname>Hartmann</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.4795778</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">133</biblScope>
+			<biblScope unit="page" from="2839" to="2855" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Neural correlates of the pitch of complex tones. I. Pitch and pitch salience</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A</forename><surname>Cariani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Delgutte</surname></persName>
+		</author>
+		<idno type="DOI">10.1152/jn.1996.76.3.1698</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Neurophysiol</title>
+		<imprint>
+			<biblScope unit="volume">76</biblScope>
+			<biblScope unit="page" from="1698" to="1716" />
+			<date type="published" when="1996">1996a</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Neural correlates of the pitch of complex tones. II. Pitch shift, pitch ambiguity, phase invariance, pitch circularity, rate pitch, and the dominance region for pitch</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A</forename><surname>Cariani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Delgutte</surname></persName>
+		</author>
+		<idno type="DOI">10.1152/jn.1996.76.3.1717</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Neurophysiol</title>
+		<imprint>
+			<biblScope unit="volume">76</biblScope>
+			<biblScope unit="page" from="1717" to="1734" />
+			<date type="published" when="1996">1996b</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Limitations on rate discrimination</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">P</forename><surname>Carlyon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Deeks</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.1496766</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">112</biblScope>
+			<biblScope unit="page" from="1009" to="1025" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Supra-threshold hearing and fluctuation profiles: implications for sensorineural and hidden hearing loss</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">H</forename><surname>Carney</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-018-0669-5</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Assoc. Res. Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page" from="331" to="352" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b7">
+	<monogr>
+		<title level="m" type="main">Speech coding in the brain: representation of vowel formants by midbrain neurons tuned to sound fluctuations</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">H</forename><surname>Carney</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Mcdonough</surname></persName>
+		</author>
+		<idno type="DOI">10.1523/ENEURO.0004-15.2015</idno>
+		<imprint>
+			<date type="published" when="2015">2015</date>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="1" to="12" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Spatiotemporal representation of the pitch of harmonic complex tones in the auditory nerve</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Cedolin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Delgutte</surname></persName>
+		</author>
+		<idno type="DOI">10.1523/JNEUROSCI.6365-09.2010</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="12712" to="12724" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Neural ITD sensitivity and temporal coding with cochlear implants in an animal model of early-onset deafness</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Chung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">D</forename><surname>Buechel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Sunwoo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Wagner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Delgutte</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-018-00708-w</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Assoc. Res. Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="page" from="37" to="56" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Coding of electric pulse trains presented through cochlear implants in the auditory midbrain of awake rabbit: comparison with anesthetized preparations</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Chung</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">E</forename><surname>Hancock</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S.-I</forename><surname>Nam</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Delgutte</surname></persName>
+		</author>
+		<idno type="DOI">10.1523/JNEUROSCI.2084-13.2014</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="218" to="231" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Practical model description of peripheral neural excitation in cochlear implant recipients: 4. Model development at low pulse rates: General model and application to individuals</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">T</forename><surname>Cohen</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2008.11.008</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">248</biblScope>
+			<biblScope unit="page" from="15" to="30" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Speech coding in the auditory nerve: V. vowels in background noise</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Delgutte</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">Y</forename><surname>Kiang</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.390537</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">75</biblScope>
+			<biblScope unit="page" from="908" to="918" />
+			<date type="published" when="1984">1984</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Phase-locking of auditory-nerve discharges to sinusoidal electric stimulation of the cochlea</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">B C</forename><surname>Dynes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Delgutte</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/0378-5955(92)90011-B</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">58</biblScope>
+			<biblScope unit="page" from="79" to="90" />
+			<date type="published" when="1992">1992</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Place and periodicity pitch by stimulation of multiple scala tympani electrodes in deaf volunteers</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">K</forename><surname>Eddington</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">H</forename><surname>Dobelle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">E</forename><surname>Brackmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">G</forename><surname>Mladejovsky</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Parkin</surname></persName>
+		</author>
+		<idno type="DOI">10.1177/00034894780870S602</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Trans. Am. Soc. Artif. Intern. Organs</title>
+		<imprint>
+			<biblScope unit="volume">24</biblScope>
+			<biblScope unit="page" from="1" to="5" />
+			<date type="published" when="1978">1978</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Functional organization of the dog superior olivary complex: an anatomical and electrophysiological study</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Goldberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">B</forename><surname>Brown</surname></persName>
+		</author>
+		<idno type="DOI">10.1152/jn.1968.31.4.639</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Neurophysiol</title>
+		<imprint>
+			<biblScope unit="volume">31</biblScope>
+			<biblScope unit="page" from="639" to="656" />
+			<date type="published" when="1968">1968</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Synaptic integration in dendrites: exceptional need for speed</title>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">L</forename><surname>Golding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Oertel</surname></persName>
+		</author>
+		<idno type="DOI">10.1113/jphysiol.2012.229328</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Physiol</title>
+		<imprint>
+			<biblScope unit="volume">590</biblScope>
+			<biblScope unit="page" from="5563" to="5569" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Correlations between pitch and phoneme perception in cochlear implant users and their normal hearing peers</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">L</forename><surname>Goldsworthy</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-015-0541-9</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Assoc. Res. Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="797" to="809" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Advantages of pulse rate compared to modulation frequency for temporal pitch perception in cochlear implant users</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">L</forename><surname>Goldsworthy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">R S</forename><surname>Bissmeyer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Camarena</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-021-00828-w</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Assoc. Res. Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="page" from="137" to="150" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Pitch perception is more robust to interference and better resolved when provided by pulse rate than by modulation frequency of cochlear implant stimulation</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">L</forename><surname>Goldsworthy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Camarena</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">R S</forename><surname>Bissmeyer</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2021.108319</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">409</biblScope>
+			<biblScope unit="page">108319</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Psychoacoustic and phoneme identification measures in cochlearimplant and normal-hearing listeners</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">L</forename><surname>Goldsworthy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">A</forename><surname>Delhorne</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">D</forename><surname>Braida</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">M</forename><surname>Reed</surname></persName>
+		</author>
+		<idno type="DOI">10.1177/1084713813477244</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Trends Amplif</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="page" from="27" to="44" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Training improves cochlear implant rate discrimination on a psychophysical task</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">L</forename><surname>Goldsworthy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">V</forename><surname>Shannon</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.4835735</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">135</biblScope>
+			<biblScope unit="page" from="334" to="341" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b22">
+	<analytic>
+		<title level="a" type="main">A point process framework for modeling electrical stimulation of the auditory nerve</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H</forename><surname>Goldwyn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">T</forename><surname>Rubinstein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Shea-Brown</surname></persName>
+		</author>
+		<idno type="DOI">10.1152/jn.00095.2012</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Neurophysiol</title>
+		<imprint>
+			<biblScope unit="volume">108</biblScope>
+			<biblScope unit="page" from="1430" to="1452" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Noise edge pitch and models of pitch perception</title>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">M</forename><surname>Hartmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A</forename><surname>Cariani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">S</forename><surname>Colburn</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.5093546</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">145</biblScope>
+			<date type="published" when="1993">2019. 1993-2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Conditioning pulse trains in cochlear implants: effects on loudness growth</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">S</forename><surname>Hong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">T</forename><surname>Rubinstein</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/01.mao.0000187045.73791.db</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Otol. Neurotol</title>
+		<imprint>
+			<biblScope unit="volume">27</biblScope>
+			<biblScope unit="page" from="50" to="56" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Temporal response properties of the auditory nerve: data from human cochlear-implant recipients</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">L</forename><surname>Hughes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">E</forename><surname>Castioni</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">L</forename><surname>Goehring</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">L</forename><surname>Baudhuin</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2012.01.010</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">285</biblScope>
+			<biblScope unit="page" from="46" to="57" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b26">
+	<analytic>
+		<title level="a" type="main">A matter of time: internal delays in binaural processing</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Joris</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">C T</forename><surname>Yin</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.tins.2006.12.004</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Trends Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="70" to="78" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Neural processing of amplitudemodulated sounds</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">X</forename><surname>Joris</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">E</forename><surname>Schreiner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Rees</surname></persName>
+		</author>
+		<idno type="DOI">10.1152/physrev.00029.2003</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Physiol. Rev</title>
+		<imprint>
+			<biblScope unit="volume">84</biblScope>
+			<biblScope unit="page" from="541" to="577" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Temporal interaction in electrical hearing elucidates auditory nerve dynamics in humans</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Karg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Lackner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Hemmert</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2013.01.015</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">299</biblScope>
+			<biblScope unit="page" from="10" to="18" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Temporal pitch perception at high rates in cochlear implants</title>
+		<author>
+			<persName><forename type="first">Y.-Y</forename><surname>Kong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">P</forename><surname>Carlyon</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.3372713</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">127</biblScope>
+			<biblScope unit="page" from="3114" to="3123" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b30">
+	<analytic>
+		<title level="a" type="main">How the brain learns to listen: deafness and the bionic ear</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kral</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lenarz</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s13295-015-0004-0</idno>
+	</analytic>
+	<monogr>
+		<title level="j">E-Neuroforum</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page" from="21" to="28" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Brain plasticity under cochlear implant stimulation</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kral</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Tillein</surname></persName>
+		</author>
+		<idno type="DOI">10.1159/000094647</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Adv. Otorhinolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">64</biblScope>
+			<biblScope unit="page" from="89" to="108" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Synchrony capture filterbank: auditory-inspired signal processing for tracking individual frequency components in speech</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Kumaresan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">K</forename><surname>Peddinti</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Cariani</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.4802653</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">133</biblScope>
+			<biblScope unit="page" from="4290" to="4310" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Discrimination between sequential and simultaneous virtual channels with electrical hearing</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Landsberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Galvin</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.3613938</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">130</biblScope>
+			<biblScope unit="page" from="1559" to="1566" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Reducing current spread using current focusing in cochlear implant users</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Landsberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Padilla</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">G</forename><surname>Srinivasan</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2011.12.009</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">284</biblScope>
+			<biblScope unit="page" from="16" to="24" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Toward a differential diagnosis of hidden hearing loss in humans</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">C</forename><surname>Liberman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Epstein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">S</forename><surname>Cleveland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">F</forename><surname>Maison</surname></persName>
+		</author>
+		<idno type="DOI">10.1371/journal.pone.0162726</idno>
+	</analytic>
+	<monogr>
+		<title level="j">PLoS ONE</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="page">162726</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Loudness growth observed under partially tripolar stimulation: model and data from cochlear implant listeners</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">M</forename><surname>Litvak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Spahr</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Emadi</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.2749414</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">122</biblScope>
+			<biblScope unit="page" from="967" to="981" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b37">
+	<monogr>
+		<title level="m" type="main">Are cochlear implant patients suffering from perceptual dissonance? Ear Hear</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">E</forename><surname>Loeb</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/01.aud.0000179688.87621.48</idno>
+		<imprint>
+			<date type="published" when="2005">2005</date>
+			<biblScope unit="volume">26</biblScope>
+			<biblScope unit="page" from="435" to="450" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Spatial cross-correlation</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">E</forename><surname>Loeb</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">W</forename><surname>White</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">M</forename><surname>Merzenich</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/BF00337005</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Biol. Cybern</title>
+		<imprint>
+			<biblScope unit="volume">47</biblScope>
+			<biblScope unit="page" from="149" to="163" />
+			<date type="published" when="1983">1983</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Introduction to cochlear implants</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">C</forename><surname>Loizou</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/51.740962</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Eng. Med. Biol. Mag</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="32" to="42" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Music appreciation and training for cochlear implant recipients: a review</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Looi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">E</forename><surname>Gfeller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">D</forename><surname>Driscoll</surname></persName>
+		</author>
+		<idno type="DOI">10.1055/s-0032-1329222</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Semin. Hear</title>
+		<imprint>
+			<biblScope unit="volume">33</biblScope>
+			<biblScope unit="page" from="307" to="334" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Speech perception problems of the hearing impaired reflect inability to use temporal fine structure</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Lorenzi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Gilbert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Carn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Garnier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">C J</forename><surname>Moore</surname></persName>
+		</author>
+		<idno type="DOI">10.1073/pnas.0607364103</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Proc. Natl. Acad. Sci. U. S. A</title>
+		<imprint>
+			<biblScope unit="volume">103</biblScope>
+			<biblScope unit="page" from="18866" to="18869" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b42">
+	<monogr>
+		<title level="m" type="main">Cochlear implant rate pitch and melody perception as a function of place and number of electrodes</title>
+		<author>
+			<persName><forename type="first">V</forename><surname>Marimuthu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">A</forename><surname>Swanson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Mannell</surname></persName>
+		</author>
+		<idno type="DOI">10.1177/2331216516643085</idno>
+		<imprint>
+			<date type="published" when="2016">2016</date>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="page" from="1" to="20" />
+		</imprint>
+	</monogr>
+	<note>Trends Hear</note>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Music perception, pitch, and the auditory system</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H</forename><surname>Mcdermott</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Oxenham</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.conb.2008.09.005</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Curr. Opin. Neurobiol</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="452" to="463" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Generating synchrony from the asynchronous: compensation for cochlear traveling wave delays by the dendrites of individual brainstem neurons</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Mcginley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Charles Liberman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">M</forename><surname>Bal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Oertel</surname></persName>
+		</author>
+		<idno type="DOI">10.1523/JNEUROSCI.0272-12.2012</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page" from="9301" to="9311" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b45">
+	<analytic>
+		<title level="a" type="main">A possible neurophysiological basis of the octave enlargement effect</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Mckinney</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Delgutte</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.428098</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">106</biblScope>
+			<biblScope unit="page" from="2679" to="2692" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Modeling the identification of concurrent vowels with different fundamental frequencies</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Meddis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Hewitt</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.402767</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">91</biblScope>
+			<biblScope unit="page" from="233" to="245" />
+			<date type="published" when="1992">1992</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Characterizing the dependence of pure-tone frequency difference limens on frequency, duration, and level</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Micheyl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Xiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Oxenham</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2012.07.004</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">292</biblScope>
+			<biblScope unit="page" from="1" to="13" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Auditory prosthesis with a penetrating nerve array</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">C</forename><surname>Middlebrooks</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">L</forename><surname>Snyder</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-007-0070-2</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Assoc. Res. Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="258" to="279" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Changes across time in the temporal responses of auditory nerve fibers stimulated by electric pulse trains</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">K</forename><surname>Robinson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Abbas</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-007-0108-5</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Assoc. Res. Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="122" to="137" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Implications for pitch mechanisms of perceptual learning of fundamental frequency discrimination: effects of spectral region and phase</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Miyazono</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">C J</forename><surname>Moore</surname></persName>
+		</author>
+		<idno type="DOI">10.1250/ast.34.404</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Acoust. Sci. Technol</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="404" to="412" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Introduction. The perception of speech: from sound to meaning</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">C J</forename><surname>Moore</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">K</forename><surname>Tyler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Marslen-Wilson</surname></persName>
+		</author>
+		<idno type="DOI">10.1098/rstb.2007.2195</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Philos. Trans. R. Soc. Lond. B. Biol. Sci</title>
+		<imprint>
+			<biblScope unit="volume">363</biblScope>
+			<biblScope unit="page" from="917" to="921" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Spoken language development in children following cochlear implantation</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">K</forename><surname>Niparko</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">A</forename><surname>Tobey</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">J</forename><surname>Thal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">S</forename><surname>Eisenberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">Y</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">L</forename><surname>Quittner</surname></persName>
+		</author>
+		<idno type="DOI">10.1001/jama.2010.451</idno>
+	</analytic>
+	<monogr>
+		<title level="j">JAMA</title>
+		<imprint>
+			<biblScope unit="volume">303</biblScope>
+			<biblScope unit="page" from="1498" to="1506" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Detection of synchrony in the activity of auditory nerve fibers by octopus cells of the mammalian cochlear nucleus</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Oertel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Bal</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Gardner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">H</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">X</forename><surname>Joris</surname></persName>
+		</author>
+		<idno type="DOI">10.1073/pnas.97.22.11773</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Proc. Natl. Acad. Sci. U. S. A</title>
+		<imprint>
+			<biblScope unit="volume">97</biblScope>
+			<biblScope unit="page" from="11773" to="11779" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Correct tonotopic representation is necessary for complex pitch perception</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Oxenham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">G W</forename><surname>Bernstein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Penagos</surname></persName>
+		</author>
+		<idno type="DOI">10.1073/pnas.0306958101</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Proc. Natl. Acad. Sci. U. S. A</title>
+		<imprint>
+			<biblScope unit="volume">101</biblScope>
+			<biblScope unit="page" from="1421" to="1425" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Pitch perception beyond the traditional existence region of pitch</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Oxenham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Micheyl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">V</forename><surname>Keebler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Loper</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Santurette</surname></persName>
+		</author>
+		<idno type="DOI">10.1073/pnas.1015291108</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Proc. Natl. Acad. Sci. U. S. A</title>
+		<imprint>
+			<biblScope unit="volume">108</biblScope>
+			<biblScope unit="page" from="7629" to="7634" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Pitch: neural coding and perception</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Plack</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Oxenham</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/0-387-28958-5</idno>
+	</analytic>
+	<monogr>
+		<title level="m">Pitch: Neural Coding and Perception</title>
+		<editor>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename><surname>Plack</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">R</forename><forename type="middle">R</forename><surname>Fay</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Oxenham</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">A</forename><forename type="middle">N</forename><surname>Popper</surname></persName>
+		</editor>
+		<meeting><address><addrLine>New York, NY</addrLine></address></meeting>
+		<imprint>
+			<publisher>Springer-Verlag</publisher>
+			<date type="published" when="2005">2005</date>
+			<biblScope unit="volume">24</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Effects of stimulation rate with the FS4 and HDCIS coding strategies in cochlear implant recipients</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Riss</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename><surname>Hamzavi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Blineder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Flak</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">D</forename><surname>Baumgartner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kaider</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/MAO.0000000000001107</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Otol. Neurotol</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="page" from="882" to="888" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b58">
+	<analytic>
+		<author>
+			<persName><forename type="first">D</forename><surname>Riss</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">S</forename><surname>Hamzavi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Blineder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Honeder</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Ehrenreich</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kaider</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/AUD.0000000000000063</idno>
+	</analytic>
+	<monogr>
+		<title level="m">FS4, FS4-p, and FSP: a 4-month crossover study of 3 fine structure sound-coding strategies</title>
+		<imprint>
+			<date type="published" when="2014">2014</date>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="page" from="272" to="e281" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b59">
+	<analytic>
+		<title level="a" type="main">Musical sound quality in cochlear implant users: a comparison in bass frequency perception between fine structure processing and high-definition continuous interleaved sampling strategies</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">T</forename><surname>Roy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Carver</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Jiradejvong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename><surname>Limb</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/AUD.0000000000000170</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Ear Hear</title>
+		<imprint>
+			<biblScope unit="volume">36</biblScope>
+			<biblScope unit="page" from="582" to="590" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b60">
+	<analytic>
+		<title level="a" type="main">biological basis of hearing-aid design</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">B</forename><surname>Sachs</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">C</forename><surname>Bruce</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">L</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">D</forename><surname>Young</surname></persName>
+		</author>
+		<idno type="DOI">10.1114/1.1458592</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Ann. Biomed. Eng</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="157" to="168" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b61">
+	<analytic>
+		<title level="a" type="main">The history and future of neural modeling for cochlear implants</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">U</forename><surname>Seeber</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">C</forename><surname>Bruce</surname></persName>
+		</author>
+		<idno type="DOI">10.1080/0954898X.2016.1223365</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Network</title>
+		<imprint>
+			<biblScope unit="volume">27</biblScope>
+			<biblScope unit="page" from="53" to="66" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b62">
+	<analytic>
+		<title level="a" type="main">Multichannel electrical stimulation of the auditory nerve in man. I. Basic psychophysics</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">V</forename><surname>Shannon</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/0378-5955(83)90077-1</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">11</biblScope>
+			<biblScope unit="page" from="157" to="189" />
+			<date type="published" when="1983">1983</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b63">
+	<analytic>
+		<title level="a" type="main">Temporal modulation transfer functions in patients with cochlear implants</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">V</forename><surname>Shannon</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.403807</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc.Am</title>
+		<imprint>
+			<biblScope unit="volume">91</biblScope>
+			<biblScope unit="page" from="2156" to="2164" />
+			<date type="published" when="1992">1992</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b64">
+	<analytic>
+		<title level="a" type="main">Revised estimates of human cochlear tuning from otoacoustic and behavioral measurements</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Shera</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Guinan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Oxenham</surname></persName>
+		</author>
+		<idno type="DOI">10.1073/pnas.032675099</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Proc. Natl. Acad. Sci. U. S. A</title>
+		<imprint>
+			<biblScope unit="volume">99</biblScope>
+			<biblScope unit="page" from="3318" to="3323" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b65">
+	<analytic>
+		<title level="a" type="main">Cochlear implants and electronic hearing</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Svirsky</surname></persName>
+		</author>
+		<idno type="DOI">10.1063/PT.3.3661</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Phys. Today</title>
+		<imprint>
+			<biblScope unit="volume">70</biblScope>
+			<biblScope unit="page" from="53" to="58" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b66">
+	<analytic>
+		<title level="a" type="main">Place and temporal cues in cochlear implant pitch and melody perception</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">A</forename><surname>Swanson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">M R</forename><surname>Marimuthu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">H</forename><surname>Mannell</surname></persName>
+		</author>
+		<idno type="DOI">10.3389/fnins.2019.01266</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Front. Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="page" from="1" to="18" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b67">
+	<analytic>
+		<title level="a" type="main">Sensitivity to interaural time differences with binaural implants: is it in the brain?</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Tillein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Hubka</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kral</surname></persName>
+		</author>
+		<idno type="DOI">10.1179/146701011X13001035753344</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Cochlear Implants Int</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page" from="44" to="S50" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+	<note>Suppl. 1</note>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Psychophysical studies for two multiple-channel cochlear implant patients</title>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">C</forename><surname>Tong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">M</forename><surname>Clark</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Blamey</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A</forename><surname>Busby</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">C</forename><surname>Dowell</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.387342</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">71</biblScope>
+			<biblScope unit="page" from="153" to="160" />
+			<date type="published" when="1982">1982</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b69">
+	<analytic>
+		<title level="a" type="main">A fast, stochastic, and adaptive model of auditory nerve responses to cochlear implant stimulation</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Van Gendt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Briaire</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">K</forename><surname>Kalkman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H M</forename><surname>Frijns</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2016.08.011</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">341</biblScope>
+			<biblScope unit="page" from="130" to="143" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b70">
+	<analytic>
+		<title level="a" type="main">Vector strength after Goldberg, Brown, and von Mises: biological and mathematical perspectives</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">L</forename><surname>Van Hemmen</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s00422-013-0561-7</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Biol. Cybern</title>
+		<imprint>
+			<biblScope unit="volume">107</biblScope>
+			<biblScope unit="page" from="385" to="396" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b71">
+	<analytic>
+		<title level="a" type="main">Sensitivity to binaural timing in bilateral cochlear implant users</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J M</forename><surname>Van Hoesel</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.2537300</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">121</biblScope>
+			<biblScope unit="page" from="2192" to="2206" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b72">
+	<analytic>
+		<title level="a" type="main">Speech perception, localization, and lateralization with bilateral cochlear implants</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J M</forename><surname>Van Hoesel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">S</forename><surname>Tyler</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.1539520</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">113</biblScope>
+			<biblScope unit="page" from="1617" to="1630" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b73">
+	<analytic>
+		<title level="a" type="main">Development of a temporal fundamental frequency coding strategy for cochlear implants</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">E</forename><surname>Vandali</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Van Hoesel</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.3573988</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">129</biblScope>
+			<biblScope unit="page" from="4023" to="4036" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b74">
+	<analytic>
+		<title level="a" type="main">The upper frequency limit for the use of phase locking to code temporal fine structure in humans: a compilation of viewpoints</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Verschooten</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Shamma</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Oxenham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">C J</forename><surname>Moore</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">X</forename><surname>Joris</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">G</forename><surname>Heinz</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2019.03.011</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">377</biblScope>
+			<biblScope unit="page" from="109" to="121" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b75">
+	<analytic>
+		<title level="a" type="main">Cochlear implants: a remarkable past and a brilliant future</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">S</forename><surname>Wilson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Dorman</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2008.06.005</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">242</biblScope>
+			<biblScope unit="page" from="3" to="21" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b76">
+	<analytic>
+		<title level="a" type="main">A brief history of the cochlear implant and related treatments</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">S</forename><surname>Wilson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">F</forename><surname>Dorman</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/B978-0-12-805353-9.00099-1</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Neuromodulation</title>
+		<imprint>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b77">
+	<analytic>
+		<title level="a" type="main">Temporal pitch in electric hearing</title>
+		<author>
+			<persName><forename type="first">F.-G</forename><surname>Zeng</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0378-5955(02)00644-5</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hearing Research</title>
+		<imprint>
+			<biblScope unit="volume">174</biblScope>
+			<biblScope unit="issue">1-2</biblScope>
+			<biblScope unit="page" from="101" to="106" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b78">
+	<analytic>
+		<title level="a" type="main">A phenomenological model for the responses of auditory-nerve fibers: I. Nonlinear tuning with compression and suppression</title>
+		<author>
+			<persName><forename type="first">X</forename><surname>Zhang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">G</forename><surname>Heinz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">C</forename><surname>Bruce</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">H</forename><surname>Carney</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.1336503</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">109</biblScope>
+			<biblScope unit="page" from="648" to="670" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b79">
+	<analytic>
+		<title level="a" type="main">Updated parameters and expanded simulation options for a model of the auditory periphery</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">S A</forename><surname>Zilany</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">C</forename><surname>Bruce</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">H</forename><surname>Carney</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.4837815</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">135</biblScope>
+			<biblScope unit="page" from="283" to="286" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b80">
+	<analytic>
+		<title level="a" type="main">A phenomenological model of the synapse between the inner hair cell and auditory nerve: long-term adaptation with power-law dynamics</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">S A</forename><surname>Zilany</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">C</forename><surname>Bruce</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">C</forename><surname>Nelson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">H</forename><surname>Carney</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.3238250</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">126</biblScope>
+			<biblScope unit="page" from="2390" to="2412" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

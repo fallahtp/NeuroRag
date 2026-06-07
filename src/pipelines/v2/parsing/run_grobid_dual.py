@@ -9,10 +9,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[3]))  # src/
 from config import settings
 
 BASE_DIR = Path(__file__).resolve().parents[4]
-RAW_DIR = BASE_DIR / "data" / "raw"
-FULLTEXT_TEI_DIR = BASE_DIR / "data" / "interim" / "tei_xml"
-HEADER_TEI_DIR = BASE_DIR / "data" / "interim" / "header_tei_xml"
-ERROR_DIR = BASE_DIR / "data" / "interim" / "grobid_errors"
+# Paths come from config so a separate sample corpus can be parsed via
+# NEURORAG_RAW_DIR / NEURORAG_INTERIM_DIR without touching a private corpus.
+RAW_DIR = settings.raw_dir
+FULLTEXT_TEI_DIR = settings.interim_dir / "tei_xml"
+HEADER_TEI_DIR = settings.interim_dir / "header_tei_xml"
+ERROR_DIR = settings.interim_dir / "grobid_errors"
 
 # GROBID host is configurable so the parser can target a container on another
 # host/port without editing the source. Override with the GROBID_URL env var.

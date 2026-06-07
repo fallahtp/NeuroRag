@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Dendritic Degeneration of Human Auditory Nerve Fibers and Its Impact on the Spiking Pattern Under Regular Conditions and During Cochlear Implant Stimulation</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2020-11-19">19 November 2020</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct status="extracted">
+					<analytic>
+						<author>
+							<persName><forename type="first">Aritra</forename><surname>Kundu</surname></persName>
+						</author>
+						<author role="corresp">
+							<persName><forename type="first">Natalie</forename><surname>Fischer</surname></persName>
+							<email>natalie.fischer@i-med.ac.at</email>
+							<affiliation key="aff4">
+								<note type="raw_affiliation"><label>2</label> Laboratory for Inner Ear Biology , Department of Otorhinolaryngology , Medical University of Innsbruck , Innsbruck , Austria</note>
+								<orgName type="department">Department of Otorhinolaryngology</orgName>
+								<orgName type="laboratory">Laboratory for Inner Ear Biology</orgName>
+								<orgName type="institution">Medical University of Innsbruck</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Johnson</forename><surname>Chacko</surname></persName>
+							<affiliation key="aff4">
+								<note type="raw_affiliation"><label>2</label> Laboratory for Inner Ear Biology , Department of Otorhinolaryngology , Medical University of Innsbruck , Innsbruck , Austria</note>
+								<orgName type="department">Department of Otorhinolaryngology</orgName>
+								<orgName type="laboratory">Laboratory for Inner Ear Biology</orgName>
+								<orgName type="institution">Medical University of Innsbruck</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Amirreza</forename><surname>Heshmat</surname></persName>
+							<affiliation key="aff3">
+								<note type="raw_affiliation"><label>1</label> Faculty of Mathematics and Geoinformation , Institute for Analysis and Scientific Computing , Vienna University of Technology , Vienna , Austria,</note>
+								<orgName type="department" key="dep1">Faculty of Mathematics and Geoinformation</orgName>
+								<orgName type="department" key="dep2">Institute for Analysis and Scientific Computing</orgName>
+								<orgName type="institution">Vienna University of Technology</orgName>
+								<address>
+									<settlement>Vienna</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff4">
+								<note type="raw_affiliation"><label>2</label> Laboratory for Inner Ear Biology , Department of Otorhinolaryngology , Medical University of Innsbruck , Innsbruck , Austria</note>
+								<orgName type="department">Department of Otorhinolaryngology</orgName>
+								<orgName type="laboratory">Laboratory for Inner Ear Biology</orgName>
+								<orgName type="institution">Medical University of Innsbruck</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Sogand</forename><surname>Sajedi</surname></persName>
+							<affiliation key="aff3">
+								<note type="raw_affiliation"><label>1</label> Faculty of Mathematics and Geoinformation , Institute for Analysis and Scientific Computing , Vienna University of Technology , Vienna , Austria,</note>
+								<orgName type="department" key="dep1">Faculty of Mathematics and Geoinformation</orgName>
+								<orgName type="department" key="dep2">Institute for Analysis and Scientific Computing</orgName>
+								<orgName type="institution">Vienna University of Technology</orgName>
+								<address>
+									<settlement>Vienna</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">†</forename><surname>Lejo</surname></persName>
+						</author>
+						<author>
+							<persName><forename type="first">Anneliese</forename><surname>Schrott-Fischer</surname></persName>
+							<affiliation key="aff4">
+								<note type="raw_affiliation"><label>2</label> Laboratory for Inner Ear Biology , Department of Otorhinolaryngology , Medical University of Innsbruck , Innsbruck , Austria</note>
+								<orgName type="department">Department of Otorhinolaryngology</orgName>
+								<orgName type="laboratory">Laboratory for Inner Ear Biology</orgName>
+								<orgName type="institution">Medical University of Innsbruck</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Frank</forename><surname>Rattay</surname></persName>
+							<affiliation key="aff3">
+								<note type="raw_affiliation"><label>1</label> Faculty of Mathematics and Geoinformation , Institute for Analysis and Scientific Computing , Vienna University of Technology , Vienna , Austria,</note>
+								<orgName type="department" key="dep1">Faculty of Mathematics and Geoinformation</orgName>
+								<orgName type="department" key="dep2">Institute for Analysis and Scientific Computing</orgName>
+								<orgName type="institution">Vienna University of Technology</orgName>
+								<address>
+									<settlement>Vienna</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<note type="raw_affiliation">Uppsala University , Sweden</note>
+								<orgName type="institution">Uppsala University</orgName>
+								<address>
+									<country key="SE">Sweden</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<note type="raw_affiliation">The University of Melbourne , Australia</note>
+								<orgName type="institution">The University of Melbourne</orgName>
+								<address>
+									<country key="AU">Australia</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<note type="raw_affiliation">The University of Texas at Austin , United States Dendritic Degeneration of Human Auditory Nerve Fibers and Its Impact on the Spiking Pattern Under Regular Conditions and During Cochlear Implant Stimulation.</note>
+								<orgName type="laboratory">Dendritic Degeneration of Human Auditory Nerve Fibers and Its Impact on the Spiking Pattern Under Regular Conditions and During Cochlear Implant Stimulation</orgName>
+								<orgName type="institution">The University of Texas</orgName>
+								<address>
+									<settlement>Austin</settlement>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Dendritic Degeneration of Human Auditory Nerve Fibers and Its Impact on the Spiking Pattern Under Regular Conditions and During Cochlear Implant Stimulation</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2020-11-19">19 November 2020</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">F08D14E3EAEC9E38D7239174A428322D</idno>
+					<idno type="DOI">10.3389/fnins.2020.599868</idno>
+					<note type="submission">This article was submitted to Neural Technology, a section of the journal Frontiers in Neuroscience Received: 09 September 2020 Accepted: 22 October 2020</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.9.0" ident="GROBID" when="2026-06-07T12:16+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">0.9.0</label>
+					<label type="parameters">startPage=0, endPage=2, consolidateCitations=0, consolidateHeader=0, consolidateFunders=0, includeRawAffiliations=true, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=null, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>auditory nerve</term>
+					<term>degeneration</term>
+					<term>dendrite</term>
+					<term>cochlear implant</term>
+					<term>computational model</term>
+					<term>electrical stimulation</term>
+					<term>spike conductance</term>
+					<term>G-ratio</term>
+				</keywords>
+			</textClass>
+			<abstract>
+				<p>Heshmat et al. Degenerated Human Auditory Nerve dendrite, and consequently, dendrite degeneration demands an increase in threshold currents. (5) Threshold currents of a TN and co-stimulation of degenerated ANFs in other frequency regions depend on the electrode position, including its distance to the outer wall, the cochlear turn, and the three-dimensional pathway of the TN.</p>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+	</text>
+</TEI>

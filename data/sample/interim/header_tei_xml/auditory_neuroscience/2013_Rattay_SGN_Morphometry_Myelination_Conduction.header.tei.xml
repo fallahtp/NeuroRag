@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Impact of Morphometry, Myelinization and Synaptic Current Strength on Spike Conduction in Human and Cat Spiral Ganglion Neurons</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2013-11-08">November 8, 2013</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct status="extracted">
+					<analytic>
+						<author>
+							<persName><forename type="first">Frank</forename><surname>Rattay</surname></persName>
+							<affiliation key="aff0">
+								<note type="raw_affiliation"><label>1</label> Institute for Analysis and Scientific Computing , Vienna University of Technology , Vienna , Austria,</note>
+								<orgName type="department">Institute for Analysis and Scientific Computing</orgName>
+								<orgName type="institution">Vienna University of Technology</orgName>
+								<address>
+									<settlement>Vienna</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Thomas</forename><surname>Potrusil</surname></persName>
+							<affiliation key="aff1">
+								<note type="raw_affiliation"><label>2</label> Department of Otorhinolaryngology , Innsbruck Medical University , Innsbruck , Austria,</note>
+								<orgName type="department">Department of Otorhinolaryngology</orgName>
+								<orgName type="institution">Innsbruck Medical University</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff2">
+								<note type="raw_affiliation"><label>3</label> Faculty of Informatics , Vienna University of Technology , Vienna , Austria,</note>
+								<orgName type="department">Faculty of Informatics</orgName>
+								<orgName type="institution">Vienna University of Technology</orgName>
+								<address>
+									<settlement>Vienna</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Cornelia</forename><surname>Wenger</surname></persName>
+							<affiliation key="aff3">
+								<note type="raw_affiliation"><label>4</label> Institute of Biophysics and Biomedical Engeneering , Faculty of Science , University of Lisbon , Lisbon , Portugal,</note>
+								<orgName type="department" key="dep1">Institute of Biophysics and Biomedical Engeneering</orgName>
+								<orgName type="department" key="dep2">Faculty of Science</orgName>
+								<orgName type="institution">University of Lisbon</orgName>
+								<address>
+									<settlement>Lisbon</settlement>
+									<country key="PT">Portugal</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Andrew</forename><forename type="middle">K</forename><surname>Wise</surname></persName>
+							<affiliation key="aff4">
+								<note type="raw_affiliation"><label>5</label> The Bionics Institute , East Melbourne , Australia,</note>
+								<orgName type="institution">The Bionics Institute</orgName>
+								<address>
+									<settlement>East Melbourne</settlement>
+									<country key="AU">Australia</country>
+								</address>
+							</affiliation>
+						</author>
+						<author role="corresp">
+							<persName><forename type="first">Rudolf</forename><surname>Glueckert</surname></persName>
+							<email>rudolf.glueckert@i-med.ac.at</email>
+							<affiliation key="aff1">
+								<note type="raw_affiliation"><label>2</label> Department of Otorhinolaryngology , Innsbruck Medical University , Innsbruck , Austria,</note>
+								<orgName type="department">Department of Otorhinolaryngology</orgName>
+								<orgName type="institution">Innsbruck Medical University</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff5">
+								<note type="raw_affiliation"><label>6</label> University Clinics Innsbruck , Tiroler Landeskrankenanstalten , Innsbruck , Austria</note>
+								<orgName type="institution" key="instit1">University Clinics Innsbruck</orgName>
+								<orgName type="institution" key="instit2">Tiroler Landeskrankenanstalten</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Anneliese</forename><surname>Schrott-Fischer</surname></persName>
+							<affiliation key="aff1">
+								<note type="raw_affiliation"><label>2</label> Department of Otorhinolaryngology , Innsbruck Medical University , Innsbruck , Austria,</note>
+								<orgName type="department">Department of Otorhinolaryngology</orgName>
+								<orgName type="institution">Innsbruck Medical University</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff6">
+								<note type="raw_affiliation">Georgia State University , United States of America</note>
+								<orgName type="institution">Georgia State University</orgName>
+								<address>
+									<country key="US">United States of America</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Impact of Morphometry, Myelinization and Synaptic Current Strength on Spike Conduction in Human and Cat Spiral Ganglion Neurons</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2013-11-08">November 8, 2013</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">D7A166221B9D3403EB23D3C9DA74AC96</idno>
+					<idno type="DOI">10.1371/journal.pone.0079256</idno>
+					<note type="submission">Received November 9, 2012; Accepted September 20, 2013;</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.9.0" ident="GROBID" when="2026-06-07T12:15+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">0.9.0</label>
+					<label type="parameters">startPage=0, endPage=2, consolidateCitations=0, consolidateHeader=0, consolidateFunders=0, includeRawAffiliations=true, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=null, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+				<p>Background: Our knowledge about the neural code in the auditory nerve is based to a large extent on experiments on cats. Several anatomical differences between auditory neurons in human and cat are expected to lead to functional differences in speed and safety of spike conduction. Methodology/Principal Findings: Confocal microscopy was used to systematically evaluate peripheral and central process diameters, commonness of myelination and morphology of spiral ganglion neurons (SGNs) along the cochlea of three human and three cats. Based on these morphometric data, model analysis reveales that spike conduction in SGNs is characterized by four phases: a postsynaptic delay, constant velocity in the peripheral process, a presomatic delay and constant velocity in the central process. The majority of SGNs are type I, connecting the inner hair cells with the brainstem. In contrast to those of humans, type I neurons of the cat are entirely myelinated. Biophysical model evaluation showed delayed and weak spikes in the human soma region as a consequence of a lack of myelin. The simulated spike conduction times are in accordance with normal interwave latencies from auditory brainstem response recordings from man and cat. Simulated 400 pA postsynaptic currents from inner hair cell ribbon synapses were 15 times above threshold. They enforced quick and synchronous spiking. Both of these properties were not present in type II cells as they receive fewer and much weaker (, 26 pA) synaptic stimuli. Conclusions/Significance: Wasting synaptic energy boosts spike initiation, which guarantees the rapid transmission of temporal fine structure of auditory signals. However, a lack of myelin in the soma regions of human type I neurons causes a large delay in spike conduction in comparison with cat neurons. The absent myelin, in combination with a longer peripheral process, causes quantitative differences of temporal parameters in the electrically stimulated human cochlea compared to the cat cochlea.</p>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+	</text>
+</TEI>

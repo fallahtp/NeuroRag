@@ -1,0 +1,2199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Insights Into Electrophysiological Metrics of Cochlear Health in Cochlear Implant Users Using a Computational Model</title>
+				<funder>
+					<orgName type="full">ARO</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2024-01-26">26 January 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct status="extracted">
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Marko</forename><surname>Takanen</surname></persName>
+							<email>marko.takanen@medel.com</email>
+							<idno type="ORCID">0000-0002-0420-3580</idno>
+							<affiliation key="aff0">
+								<note type="raw_affiliation"><label>1</label> MED-EL Medical Electronics, Research and Development , Fürstenweg 77a , 6020 Innsbruck , Austria</note>
+								<orgName type="department">MED-EL Medical Electronics, Research and Development</orgName>
+								<address>
+									<addrLine>Fürstenweg 77a</addrLine>
+									<postCode>6020</postCode>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Stefan</forename><surname>Strahl</surname></persName>
+							<idno type="ORCID">0000-0002-7770-6146</idno>
+							<affiliation key="aff0">
+								<note type="raw_affiliation"><label>1</label> MED-EL Medical Electronics, Research and Development , Fürstenweg 77a , 6020 Innsbruck , Austria</note>
+								<orgName type="department">MED-EL Medical Electronics, Research and Development</orgName>
+								<address>
+									<addrLine>Fürstenweg 77a</addrLine>
+									<postCode>6020</postCode>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Konrad</forename><surname>Schwarz</surname></persName>
+							<idno type="ORCID">0000-0001-5814-9519</idno>
+							<affiliation key="aff0">
+								<note type="raw_affiliation"><label>1</label> MED-EL Medical Electronics, Research and Development , Fürstenweg 77a , 6020 Innsbruck , Austria</note>
+								<orgName type="department">MED-EL Medical Electronics, Research and Development</orgName>
+								<address>
+									<addrLine>Fürstenweg 77a</addrLine>
+									<postCode>6020</postCode>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Insights Into Electrophysiological Metrics of Cochlear Health in Cochlear Implant Users Using a Computational Model</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-01-26">26 January 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">AA5620936E6D4101C11DB7EB3B195E2B</idno>
+					<idno type="DOI">10.1007/s10162-023-00924-z</idno>
+					<note type="submission">Received: 16 January 2023 / Accepted: 18 December 2023 /</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.9.0" ident="GROBID" when="2026-06-07T12:16+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">0.9.0</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=0, consolidateFunders=0, includeRawAffiliations=true, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Auditory modeling</term>
+					<term>Cochlear implants</term>
+					<term>eCAP</term>
+					<term>Inter-phase gap</term>
+					<term>Neural survival</term>
+					<term>Electrode position</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Purpose</head><p>The hearing outcomes of cochlear implant users depend on the functional status of the electrode-neuron interface inside the cochlea. This can be assessed by measuring electrically evoked compound action potentials (eCAPs). Variations in cochlear neural health and survival are reflected in eCAP-based metrics. The difficulty in translating promising results from animal studies into clinical use has raised questions about to what degree eCAP-based metrics are influenced by nonneural factors. Here, we addressed these questions using a computational model. Methods A 2-D computational model was designed to simulate how electrical signals from the stimulating electrode reach the auditory nerve fibers distributed along the cochlea, evoking action potentials that can be recorded as compound responses at the recording electrodes. Effects of physiologically relevant variations in neural survival and in electrode-neuron and stimulating-recording electrode distances on eCAP amplitude growth functions (AGFs) were investigated.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Results</head><p>In line with existing literature, the predicted eCAP AGF slopes and the inter-phase gap (IPG) effects depended on the neural survival, but only when the IPG effect was calculated as the difference between the slopes of the two AGFs expressed in linear input-output scale. As expected, shallower eCAP AGF slopes were obtained for increased stimulating-recording electrode distance and larger eCAP thresholds for greater electrode-neuron distance. These non-neural factors had also minor interference on the predicted IPG effect.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Conclusions</head><p>The model predictions demonstrate previously found dependencies of eCAP metrics on neural survival and non-neural aspects. The present findings confirm data from animal studies and provide insights into applying described metrics in clinical practice.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Introduction</head><p>Cochlear implants (CIs) restore hearing for profoundly deaf people by bypassing the degenerated hearing mechanisms and stimulating auditory nerve fibers (ANFs) directly with electrical pulses. Typically, symmetric charge-balanced biphasic pulses are used to excite the neurons to ensure that no potentially harmful charge is built up within the cochlea. The two phases are often separated by a short inter-phase gap (IPG). The duration of this gap is known to influence the stimulus amplitude required to excite neurons <ref type="bibr" target="#b0">[1]</ref><ref type="bibr" target="#b1">[2]</ref><ref type="bibr" target="#b2">[3]</ref>.</p><p>The efficacy of electrical stimulation depends on the status of the electrode-neuron interface inside the cochlea. This is influenced by the distance and orientation of the electrode contacts relative to the neurons, and their impedance values, as well as the survival and functionality of the neural population inside the cochlea. Both durations of deafness and etiology affect the condition of the neural population in CI users, as the peripheral parts of the ANF degenerate, soma and part of the central axon of the ANF demyelinate, and eventually the whole ANF is degenerated <ref type="bibr" target="#b3">[4]</ref><ref type="bibr" target="#b4">[5]</ref><ref type="bibr" target="#b5">[6]</ref><ref type="bibr" target="#b6">[7]</ref><ref type="bibr" target="#b7">[8]</ref>.</p><p>The status of the electrode-neuron interface can be assessed by measuring electrically evoked compound action potentials (eCAPs) using two-way telemetry <ref type="bibr" target="#b8">[9]</ref><ref type="bibr" target="#b9">[10]</ref><ref type="bibr" target="#b10">[11]</ref>. Common approaches are to observe the changes in eCAP thresholds and/or the slopes of the eCAP amplitude-growth function (AGF) as either the leading polarity or the IPG is changed <ref type="bibr" target="#b11">[12]</ref><ref type="bibr" target="#b12">[13]</ref><ref type="bibr" target="#b13">[14]</ref><ref type="bibr" target="#b14">[15]</ref><ref type="bibr" target="#b15">[16]</ref><ref type="bibr" target="#b16">[17]</ref><ref type="bibr" target="#b17">[18]</ref><ref type="bibr" target="#b18">[19]</ref>. eCAP thresholds are expected to decrease and the slopes to become steeper on a linear input-output scale when either the IPG is prolonged or the leading polarity is changed from anodic to cathodic (in most animal models) or from cathodic to anodic (in human CI users; for a review, see <ref type="bibr" target="#b19">[20]</ref>). These are referred to as the "IPG effect" and the "polarity effect," respectively. Both effects are expected to be pronounced for healthy cochleae <ref type="bibr" target="#b2">[3,</ref><ref type="bibr" target="#b11">12,</ref><ref type="bibr" target="#b13">14,</ref><ref type="bibr" target="#b20">21,</ref><ref type="bibr" target="#b21">22]</ref> and the IPG effect has been found to correlate with neural density within the cochlea <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b13">14]</ref>.</p><p>Promising results from animal studies <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b13">14,</ref><ref type="bibr" target="#b18">19]</ref> have motivated investigators to explore the use of metrics such as the IPG effect and the polarity effect as a tool to assess cochlear health. This may in turn facilitate the optimization of CI coding strategies, for example, by using focused stimulation to direct current toward regions with higher densities of healthy neural populations <ref type="bibr" target="#b22">[23,</ref><ref type="bibr" target="#b23">24]</ref>. Although encouraging results have been obtained, benefits from such optimization could not be generalized over the investigated study populations of CI users <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b15">16,</ref><ref type="bibr" target="#b24">25]</ref>. This may be related to the heterogeneity among CI users and their etiologies. The challenge of translating evidence from animal studies into measurable benefits for CI users has also raised questions about how well the eCAP-based metrics reflect aspects of cochlear health, and to what degree these metrics are influenced by non-neural factors such as the electrode-neuron distance <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b15">16,</ref><ref type="bibr" target="#b25">26]</ref>.</p><p>Recently, Brochier et al. <ref type="bibr" target="#b26">[27]</ref> presented a mathematical model and applied it to data from animals <ref type="bibr" target="#b11">[12]</ref> and CI users <ref type="bibr" target="#b24">[25]</ref>. In their analysis, the IPG effect as a measure of neural health was best computed as the offset between the overlapping portions of the eCAP AGFs expressed in logarithmic input-output scale. Other methods of computing the IPG effect were deemed to be biased by non-neural influences, which to some extent questioned the findings from studies using such IPG-effect metrics <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b13">14,</ref><ref type="bibr" target="#b18">19]</ref>.</p><p>The aim of this study was to address some of the questions raised in previous publications <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b25">26,</ref><ref type="bibr" target="#b26">27]</ref> about the contributions of neural survival and non-neural factors on eCAP AGFs. To that end, a phenomenological 2-D model of an implanted cochlea was applied in simulated eCAP AGF measurements, varying IPGs, neural survival, and electrode contact-neuron distances. This computational modeling approach provides insights on dependencies of these factors, and thus helps investigators to apply eCAP-based metrics of cochlear health reliably in their clinical practice.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Methods</head><p>The computational model and all simulations were implemented in Python programming language version 3.8 <ref type="bibr" target="#b27">[28,</ref><ref type="bibr" target="#b28">29]</ref>. The figures were generated using Python <ref type="bibr" target="#b29">[30]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Simplified Model of an Implanted Cochlea</head><p>A simplistic 2-D model was designed to predict the eCAP responses evoked by a given electrical stimulation. To that end, positions of the electrodes along the scala tympani were estimated based upon the computerized tomography (CT) data collected by Yoshimura et al. <ref type="bibr" target="#b30">[31]</ref>. Using the average cochlear length of 33.9 mm <ref type="bibr" target="#b30">[31]</ref> and an inverse of the Greenwood's formula <ref type="bibr" target="#b31">[32]</ref>, the characteristic frequencies of the twelve electrode contacts of a Flex28 electrode array from <ref type="bibr" target="#b30">[31]</ref> were converted into corresponding locations along the tympanic membrane. The inverse of the Greenwood's formula was applied here instead of the revised one by Stakhovskaya et al. <ref type="bibr" target="#b32">[33]</ref> because Yoshimura and colleagues used Greenwood's formula to determine the electrodes' characteristic frequencies based on µCT imaging results before presenting the averaged results in their work <ref type="bibr" target="#b30">[31]</ref>. Each electrode contact of such a lateral wall electrode array was treated as a point source, and the orientation and size of the electrode contacts were not considered.</p><p>In order to estimate the distances between the electrode contacts and the neurons, data from the human temporal bone specimens reported in <ref type="bibr" target="#b33">[34]</ref> were used. To that end, scala tympani height profiles were extracted separately for each of the 15 subjects in the dataset by calculating the average height at the middle of the scala tympani (± 0.2 mm) at the given cochlear angle. Subsequently, 10 and 90% quantiles were calculated across the individual profiles to obtain two profiles that reflect the large degree of natural variation in cochlear height profiles among individuals. Finally, thirdorder polynomial functions were fitted to the distributions as shown in Fig. <ref type="figure" target="#fig_0">1A</ref>. The motivation for two separate fits was to have two electrode-neuron distance options in the simulations (Fig. <ref type="figure" target="#fig_0">1B</ref>). It was assumed that the simulated electrode array lies on the lateral wall and that, in a healthy cochlea, there are 2000 independent, equidistantly distributed ANFs covering the entire cochlea (0 to 33.9 mm from the base, corresponding to an angular range of 0 to 900°). Additionally, we modeled conditions with 500, 1000, or 1500 independent, equidistantly distributed ANFs to simulate effects of poorer neural survival. The ANFs were assumed to share the same set of parameters. Although neural density has been found to vary along the cochlea <ref type="bibr" target="#b34">[35]</ref>, the effects investigated in this study are independent from this density variation. Therefore, the simpler uniform distribution was chosen.</p><p>Upon determining the spatial positions of the electrode contacts and the ANFs, the Euclidean distances between each electrode contact and each ANF neuron were computed and a simplified approach was applied. To simulate the spread of the electrical field, a 2 dB/mm attenuation was applied <ref type="bibr" target="#b35">[36,</ref><ref type="bibr" target="#b36">37]</ref>. The electrical current reaching a given neuron was defined as where I(t) denotes the amplitude of the electrical signal emitted from the stimulating electrode as a function of time and r s is the distance vector between the stimulating elec- trode and the given neuron (see Fig. <ref type="figure" target="#fig_0">1B</ref>). In this study, we did not consider effects related to asymmetric spread of electrical field <ref type="bibr" target="#b37">[38]</ref> and/or cross-turn stimulation through the bony structures <ref type="bibr" target="#b38">[39]</ref>, as such aspects would have increased the model complexity beyond the purpose of this study.</p><p>A phenomenological model <ref type="bibr" target="#b39">[40]</ref> based on the leaky integrate-and-fire principle <ref type="bibr" target="#b40">[41]</ref> was then used to predict the response of each individual ANF to the electrical stimulation. In this model, the ANF is assumed to integrate the incoming electrical current and to release an action potential if the membrane voltage exceeds the neuron's stochastic threshold and if the neuron is not repolarized before it is ready to spike. The model is designed to represent one of the ANF's (peripheral or central) site of excitation that can be excited by either cathodic-or anodic-leading pulses, with the charge-balancing polarity being able to cancel the spiking by repolarizing the neuron before it is ready to spike <ref type="bibr" target="#b39">[40]</ref>. This model is used to estimate the exact time of spiking evoked by the different pulse shapes, as well as refractoriness, accommodation and facilitation phenomena according to cat single-fiber data from literature <ref type="bibr" target="#b39">[40,</ref><ref type="bibr" target="#b42">42]</ref>. The model contains separate threshold values for anodic and cathodic polarities and the threshold values are increased temporarily after spiking to account for refractoriness and</p><formula xml:id="formula_0">Ĩ(t) = I(t) × 10 -2|r s| 20 ,</formula><p>spike-rate adaptation phenomena and decreased temporarily after subthreshold stimulation to account for facilitation. The incremental effects of refractoriness and spike-rate adaptation affect the thresholds for both polarities, while the decremental effects of facilitation are polarity dependent. The exact time of spiking is predicted based on the continuously estimated spiking probability upon threshold crossing.</p><p>Here, the gain coefficients of the leaky integrator (i.e., gain coefficients of the first-order infinite impulse response (IIR) filter in the model) were tripled and the standard deviation of the threshold value in the model was doubled in order to bring the eCAP threshold predictions of the overall 2-D model close to the expected 10.01 ± 3.31 nC range of eCAP thresholds among CI users <ref type="bibr" target="#b43">[43]</ref> and to ensure monotonic behavior of spiking latency as function of stimulus amplitude, respectively. Table <ref type="table" target="#tab_0">1</ref> lists the adjusted parameters of the single-fiber model. Figure <ref type="figure" target="#fig_1">2A</ref> depicts an example of the overall spiking activity of the modeled neurons for a symmetric anodic-leading biphasic pulse (phase duration 40 µs and IPG 2.1 µs) presented at 30 nC charge from electrode #6. The strongest and the earliest spiking activity stems from the neurons at closest proximity to the stimulating electrode. Furthermore, Fig. <ref type="figure" target="#fig_1">2B</ref> shows how the spiking latency decreases and how increasing numbers of neurons are excited as the level of the biphasic pulse is increased incrementally from 0 to 30 nC. It should be noted that no threshold or latency differences were introduced here between anodic and cathodic polarities. Neurophysiological measurements and computational  <ref type="bibr" target="#b33">[34]</ref>. Panel B Euclidean distances were computed between individual electrode contacts <ref type="bibr" target="#b30">[31]</ref> and neurons to model the degree to which the electrical pulse emitted by the electrode contact is attenuated before reaching a given neuron, and conversely to what degree the response of an individual neuron gets attenuated before reaching the recording electrode. Here, r s denotes the Euclidean distance vector between the stimulating electrode (electrode contact #6) and a given neuron and r r denotes the distance vector between the same neuron and the recording electrode (electrode contact #5) model predictions have bolstered the idea that the observed latency and threshold differences between polarities <ref type="bibr" target="#b44">[44]</ref> could be related to degree of myelination and degeneration of the peripheral parts of the nuclei around the stimulating electrode <ref type="bibr" target="#b12">[13,</ref><ref type="bibr" target="#b45">45,</ref><ref type="bibr" target="#b46">46]</ref>. Here, all ANFs were modeled to share the same parameter space of a healthy neuron, as it was deemed unnecessary to specifically adjust the degree of myelination and degeneration of the neurons at each position along the cochlea to reach the aims of this study-the effects investigated in this study are independent from such changes. Moreover, such adjustments would have required detailed etiological data to justify such parameter adjustments.  D shows how the spiking latency of the ANFs along the simulated cochlea changes as a function of stimulus amplitude for a symmetric anodic-leading biphasic pulse (phase duration 40 µs and 2.1 µs IPG). The square and diamond symbol in panel C indicate the N1 and P2 maxima of the eCAP trace searched within the N1 and P2 search windows, respectively</p><p>Finally, the responses of the ANFs were used to predict the electrically evoked compound action potential. To that end, spiking output of a given ANF were convolved with a physiologically realistic unitary response <ref type="bibr" target="#b47">[47,</ref><ref type="bibr" target="#b48">48]</ref> (Fig. <ref type="figure" target="#fig_1">2B</ref>) Here, t denotes time (ranging from -0.6 to 1.1 ms), t 0 = -60 ms, u N = 12 µV, u P = 45 µV, P = 0.15 ms and N = 0.12 ms following <ref type="bibr" target="#b47">[47]</ref>. The eCAP response obtained at a given recording electrode was then obtained by summing up the responses from all neurons while considering with the same 2 dB/mm attenuation <ref type="bibr" target="#b49">[49]</ref> of the neural response at the recording electrode. Here, i denotes the index of the neuron, N is the total number of modeled ANFs, (o i × U)(t) denotes convolution between the output of the neuron ( o i ) and the unitary response, and r r (i) is the distance vector between the given neuron and the recording electrode. Figure <ref type="figure" target="#fig_1">2C</ref> shows the predicted eCAP response as measured at electrode #5 from the spiking activity illustrated in Fig. <ref type="figure" target="#fig_1">2A</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Simulations</head><p>The above model was used to simulate eCAP AGF measurements following the fine-grain stimulation paradigm <ref type="bibr" target="#b50">[50]</ref> using alternating polarity for artifact reduction. Specifically, the stimulus amplitude was increased gradually from 0 to 30 nC with a charge-increase rate of 1.5 nC/s with the pulses being presented at a pulse rate of 80 Hz. At each stimulus amplitude, an anodic-leading and a cathodic-leading symmetric charge-balanced biphasic pulse was presented, and the responses provided by the model for the two pulses were averaged to obtain the eCAP response corresponding to the given stimulus amplitude. A reference measurement with zero amplitude stimulation, a so-called zero-amplitude template, would normally be also subtracted from the obtained eCAP response to reduce recording related artifacts independent of the stimulation, also sometimes called signature of the recording system <ref type="bibr" target="#b51">[51,</ref><ref type="bibr" target="#b52">52]</ref>. As the model did not include any initial state effects of the recording system, zero-template subtraction was omitted. The phase duration was kept fixed at 40 µs while the IPG was varied according to simulated condition. The eCAP recording window was defined to have a fixed length</p><formula xml:id="formula_1">U(t) = ⎧ ⎪ ⎪ ⎨ ⎪ ⎪ ⎩ u N 𝜕 2 N � t -t 0 � e 0.5- (t-t 0 ) 2 2𝜕 2 N , if t &lt; t 0 u P 𝜕 2 P � t -t 0 � e 0.5- (t-t 0 ) 2 2𝜕 2 P , otherwise. V(t) = N ∑ i=1 o i * U (t) × 10 -2|r r (i)| 20 ,</formula><p>of 1.7 ms and to begin after a specific recording delay from the pulse onset:</p><p>Here, i denotes the IPG and 145 µs is the recording delay for IPG of 2.1 µs, given the phase duration of 40 µs. The eCAP amplitude corresponding to the given stimulus amplitude was then extracted by computing the amplitude difference between the positive P2 and the negative N1 peak in the obtained eCAP response (Fig. <ref type="figure" target="#fig_1">2C</ref>), as estimated based on the local extrema within the P2 and N1 search windows. As illustrated in Fig. <ref type="figure" target="#fig_1">2C</ref>, the negative N1 peak was searched within the first 300 µs of the eCAP recording window and the positive P2 peak was searched within a 400-µs range from the N1 peak <ref type="bibr" target="#b53">[53]</ref>.</p><p>To reach the aims of the study, simulations were performed with two IPGs (2.1 µs and 30 µs) and using the two electrodeneuron distance models described above. As mentioned previously, either 500, 1000, 1500, or 2000 ANFs were modeled to be equidistantly distributed along the cochlea to investigate the effects of neural survival on the outcome measures. It should be noted that, although the simulated 25% neural survival in the case of 500 ANFs was arbitrarily chosen to investigate the extent of the effect on the simulation results, the chosen neural survival rates reflect variation observed among CI users <ref type="bibr" target="#b54">[54]</ref>. The electrode contact #6 in the middle of the electrode array was chosen as the stimulating electrode and eCAP recordings were simulated to be performed on all other electrode contacts (1, 2, 3, 4, 5, 7, 8, 9, 10, 11, and 12).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Analysis</head><p>The analysis of the effects of the different parameters (IPGs, electrode-neuron distances, and neural density) on the eCAP AGFs began by fitting of a sigmoidal function on each of the obtained stimulation results using the Levenberg-Marquardt algorithm <ref type="bibr" target="#b55">[55]</ref>. Here, x denotes the stimulus amplitude (in nC), y(x) is the corresponding eCAP ampli- tude (in µV), y 0 is the baseline (the spontaneous activity of the neuron without electrical stimulation in µV), B is the maximum observable eCAP amplitude at a given recording electrode (in µV), C is the stimulus amplitude corre- sponding to the inflection point of a symmetric sigmoidal function, D is the rate of change with respect to stimula- tion unit within the dynamic range of the neuron, and z is a parameter related to the asymmetry of the sigmoid, which are the to-be-fitted parameters <ref type="bibr" target="#b56">[56]</ref>. The asymmetryadjusted inflection point is thus defined as x 0 = C + ln(z)∕D . The fitted values were then used to estimate the eCAP threshold and the eCAP AGF slope as shown in Fig. <ref type="figure">3A</ref>:</p><formula xml:id="formula_2">d R = 145 s + (i -2.1 s). y(x) = y 0 + B 1 + e -D(x-C) z</formula><p>The slope, , of the eCAP AGF at the steepest point of the sigmoid is defined by the value of the first-order derivative at x 0 (i.e., = y�(x 0 ) ) and the stimulation intensity at which the slope intersects with the baseline, was used to denote the eCAP threshold for a given eCAP AGF.</p><p>Subsequently, the IPG effect was computed following three alternative methods suggested in literature:</p><p>• Absolute IPG effect. IPG effect is defined as the difference between the slopes that are calculated in the linear input-output scale <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b18">19]</ref>. Hence, the metric was calculated by simply subtracting the slope estimate obtained for 2.1 µs IPG from the one obtained for 30 µs IPG.</p><p>• Relative IPG effect. IPG effect is defined as the ratio between the slopes that are calculated in the linear inputoutput scale <ref type="bibr" target="#b11">[12]</ref>. The metric was obtained by dividing the slope estimate obtained for 30 µs IPG by the one obtained for 2.1 µs.</p><p>• IPG offset. IPG effect is defined as the average offset (in dB in respect to 1 nC) between the overlapping linear portions of the eCAP AGFs obtained for the two IPGs when the corresponding eCAP AGFs are expressed in a logarithmic input-output scale <ref type="bibr" target="#b26">[27]</ref>. For this approach the instructions given in <ref type="bibr" target="#b26">[27]</ref> were followed: it comprised</p><formula xml:id="formula_3">y�(x) = zBDe -D(x-C) 1 + e -D(x-C) z+1 x=C+ ln(z) D ⇒ BD z z + 1 z+1 x THR = C + 1 D ln(z) - z + 1 z ,</formula><p>representing the eCAP AGFs in logarithmic input-output scale, manual defining the range of the vertical axis (eCAP amplitude [dB re 1 µV]) where the eCAP AGFs of both IPGs increase linearly, and computation of the average offset on the horizontal axis between them within that range. This approach was accomplished with the help of the MATLAB (Mathworks, Natick, MA) tool provided by Brochier et al. <ref type="bibr" target="#b57">[57]</ref>, which is available at <ref type="url" target="https://github.com/tjbrochier/eCAP-AGF-Methods">https:// github. com/ tjbro chier/ eCAP-AGF-Metho ds</ref>.</p><p>All IPG-effect metrics were computed separately for each combination of electrode-neuron distances and neuron densities.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Results</head><p>Figure <ref type="figure" target="#fig_2">4</ref> illustrates the predicted eCAP AGFs in the case of good cochlear health (2000 ANFs) for the two electrodeneuron distances (separated by columns) and the two interphase gap values (separated by rows) as measured at the other eleven recording electrodes (electrode contacts #1, #2, #3, #4, #5, #7, #8, #9, #10, #11, and #12). There does not seem to be any strong dependency on whether a more apical or a more basal recording electrode is used, as the predicted eCAP AGFs are similar, for instance, between recording electrodes #4 and #8 as well as between #5 and #7. Therefore, the predicted eCAP AGFs and the fitted sigmoidal functions for the different neural survival, IPG, and electrode-neuron distance conditions are shown in Fig. <ref type="figure" target="#fig_3">5</ref> only for the more basal recording electrodes #7, #8. #9, #10, #11, and #12.</p><p>Fig. <ref type="figure">3</ref> Panel A illustrates how the eCAP threshold and eCAP AGF slope were derived for each eCAP AGF from the parameters of a sigmoidal function that was fitted to the simulation result. Panel B shows how the range of the vertical axis (denoted here as "applicable eCAP range"), within which both eCAP AGFs grow linearly, was defined for calculation of the IPG offset between the two eCAP AGFs expressed in logarithmic input-output scale. The black arrow in panel B displays the IPG offset between the eCAP AGFs at the given eCAP amplitude</p><p>In accordance with the mathematical model formulated by Brochier et al. <ref type="bibr" target="#b26">[27]</ref>, the predicted eCAP AGFs exhibit in all cochlear health cases a distance effect related to the recording electrode as the largest eCAP amplitudes are recorded at electrode contacts (#5 and #7) that are in the closest proximity to the stimulating electrode #6. To evaluate whether the predicted decrease in maximum eCAP amplitude as a function of stimulating-recording electrode distance is in agreement with electro-physiological data from literature, the maximum eCAP amplitudes were extracted for each AGF and normalized in respect to the largest one, separately for each electrode-neuron distance, neural survival and IPG condition. The median values and the quartile ranges of the normalized values are shown in Fig. <ref type="figure">6</ref> along with data from 39 ears of 35 CI users <ref type="bibr" target="#b58">[58]</ref>. The model is shown to reproduce the decrease of the maximum eCAP amplitude as a function The symmetry of the predicted AGFs for basal and apical recording electrodes was reflected also in the sigmoid-fitbased eCAP threshold and eCAP AGF slope estimates and, therefore, only the values obtained for simulated recordings at the more basal electrode contacts (#7, #8, #9, #10, #11, and #12) are shown in Fig. <ref type="figure" target="#fig_4">7</ref>. The found similarity in eCAP AGFs between an apical and a basal recording electrode is expected due to the quasi symmetric neural activation pattern around the stimulating electrode (Fig. <ref type="figure" target="#fig_1">2A</ref>, <ref type="figure">D</ref>) and the electrode contacts being simulated to be distributed with approximately 2-mm spacing from one another following the CT data <ref type="bibr" target="#b30">[31]</ref>.</p><p>Figure <ref type="figure" target="#fig_4">7</ref> illustrates how the effect of the recording electrode is reflected in the slopes of the eCAP AGF becoming shallower as the distance between the stimulating and recording electrode increases, while the eCAP threshold for the longer and shorter electrode-neuron distance, respectively. Only portions of the fitted functions and only predictions for two recording electrodes for the longer IPG are shown for visualization purposes seems to remain unaffected. Similarly, reducing the number of ANFs in the cochlear model results in shallower eCAP AGF slopes but does not affect the eCAP threshold values (Fig. <ref type="figure" target="#fig_3">5</ref> and Fig. <ref type="figure" target="#fig_4">7</ref>). The opposite trend seems to be present between the two electrode-neuron distances-the eCAP thresholds being smaller for the shorter electrode-neuron distance model (Fig. <ref type="figure" target="#fig_4">7A</ref>), while the slopes seem closely similar between the two electrode-neuron distance models. The increase in the predicted eCAP thresholds between the two electrode-neuron distance models corresponds to an average increase rate of 2.1 dB / mm. Prolonging of the IPG from 2.1 to 30 µs can be seen to result in both decreasing of the eCAP thresholds (Fig. <ref type="figure" target="#fig_4">7A</ref>) and steepening of the eCAP AGF slope (Fig. <ref type="figure" target="#fig_4">7B</ref>). Figures <ref type="figure" target="#fig_4">7C</ref> and <ref type="figure">D</ref> show how the model predictions about the effects of neural survival and of prolonging IPG on the eCAP threshold and eCAP AGF characteristics match with neurophysiological data from literature <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b59">[59]</ref><ref type="bibr" target="#b60">[60]</ref><ref type="bibr" target="#b61">[61]</ref>. For this purpose, the values have been normalized so that the neural survival has been scaled in respect to the maximum value in the corresponding dataset and the given eCAP characteristic has been scaled in respect to the median value of the corresponding dataset.</p><p>The mathematical model proposed by Brochier et al. <ref type="bibr" target="#b26">[27]</ref> predicts that the effects of the non-neural contributors (electrode-neuron distance and stimulating-recording electrode distance) are eliminated from the IPG effect when the eCAP AGFs are expressed in logarithmic input-output scale. In order to test this prediction, the eCAP AGFs recorded at the electrode contact #5 (Fig. <ref type="figure" target="#fig_2">4</ref>) were expressed in different input-output scales shown in Fig. <ref type="figure" target="#fig_5">8</ref>. Following the prediction of the mathematical model <ref type="bibr" target="#b26">[27]</ref>, the eCAP AGFs become parallel, within the eCAP amplitude range from -20 to 20 dB (re 1 µV), when they are expressed in the logarithmic input-output scale (Fig. <ref type="figure" target="#fig_4">7D</ref>). The eCAP AGFs also become parallel when only the stimulus amplitude is expressed in logarithmic scale (Fig. <ref type="figure" target="#fig_5">8B</ref>). It is also noteworthy that representation of the eCAP AGFs on a logarithmic input-output scale pronounces measurement noise, especially for small eCAP amplitudes (Fig. <ref type="figure" target="#fig_5">8</ref>). This hinders accurate determination of the eCAP threshold.</p><p>The IPG effects computed following the different methods proposed in literature are shown in Fig. <ref type="figure" target="#fig_5">8</ref>. Interestingly, the IPG effect depends on the number of ANFs and on the stimulating-recording electrode distance but only when the IPG effect is computed following the absolute IPG effect method as the difference between the eCAP AGF slopes expressed in the linear input-output range (Fig. <ref type="figure">9A</ref>). Predicted IPG effects computed following either the relative IPG effect (Fig. <ref type="figure">9B</ref>) or the IPG offset methods (Fig. <ref type="figure">3B</ref>, <ref type="figure">C</ref>) do not show clear dependency on any of the evaluated factors.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Discussion</head><p>The present study employed a computational model to investigate how the IPG effect-based metrics of cochlear health are affected by neural survival and non-neural aspects of the electrode-neuron interface inside the cochlea. The reported evidence about the IPG effect correlating with cochlear health in non-human mammals <ref type="bibr" target="#b11">[12,</ref><ref type="bibr" target="#b13">14,</ref><ref type="bibr" target="#b18">19]</ref> has been questioned due to the difficulties in translating eCAPbased metrics into clinical practice with CI users <ref type="bibr" target="#b22">[23,</ref><ref type="bibr" target="#b23">24,</ref><ref type="bibr" target="#b62">62]</ref>. Moreover, there is debate about to what extent such non-invasive measurements of cochlear health are influenced by non-neural aspects such as the electrode-neuron distance <ref type="bibr" target="#b14">[15,</ref><ref type="bibr" target="#b15">16,</ref><ref type="bibr" target="#b25">26]</ref>. It has been further questioned how the slope of the eCAP AGF should be estimated <ref type="bibr" target="#b63">[63]</ref> and how the IPG effect should be computed from the eCAP AGFs in order to minimize the effects of non-neural aspects on the results <ref type="bibr" target="#b26">[27,</ref><ref type="bibr" target="#b57">57]</ref>.</p><p>The model presented in this work was designed to simulate how the electrical current spreads in a simplified 2-D model of an implanted cochlea, and how the ANFs distributed along the cochlea respond to the electrical stimulus reaching them, resulting in action potentials that are then recorded at specific electrode contact(s) to measure the evoked eCAP responses. The electrode locations of a lateral wall electrode array were derived from post-operative CT scans <ref type="bibr" target="#b30">[31]</ref>. The ANFs were assumed to be independent and Fig. <ref type="figure">6</ref> Effect of the distance between the stimulating and recording electrode on the maximum eCAP amplitude. The values have been normalized in respect to the largest value among the AGFs, separately for the different electrode-neuron distance, neural survival, and IPG condition. The values are presented along measured eCAP data from 39 ears of 35 CI users <ref type="bibr" target="#b58">[58]</ref>, with the symbols denoting the median values and the error bars representing the inter-quartile ranges equidistantly distributed along the cochlear duct. Scala tympani height data <ref type="bibr" target="#b33">[34]</ref> was used to approximate the distance from the electrode array to the ANFs at different positions along the cochlea. Both the electrical stimulus reaching the individual ANF as well the ANF's response reaching the recording electrode were assumed to be attenuated by 2 dB/ mm <ref type="bibr" target="#b49">[49]</ref> Hence, each ANF received the electrical stimulus attenuated depending on the corresponding Euclidean distance from the stimulating electrode. The ANF responses were obtained by using a phenomenological model <ref type="bibr" target="#b39">[40]</ref> to predict the spiking activity of the given neuron and by convolving the spikes with a unitary-response function <ref type="bibr" target="#b47">[47]</ref>. The eCAP response was then constructed by combining the attenuated responses of the individual neurons, where the attenuation depended on the Euclidean distance from the given neuron to the recording electrode. The total number of ANFs (500, 1000, 1500, and 2000) was varied to evaluate the effects of neural density. Two IPGs (2.1 and 30 µs) and two electrode-neuron distances (i.e., two scala tympani height vectors), as well as eleven recording electrodes, were selected for testing the effects of the parameter combinations on eCAP AGF measurements performed following the finegrain stimulation paradigm <ref type="bibr" target="#b50">[50]</ref> using alternating polarity for artifact reduction.</p><p>The model predictions showed that prolonging of the IPG resulted in both decreased eCAP thresholds and steeper eCAP AGF slopes. Both outcomes are in accordance with existing literature: Neurophysiological measurements with estimates obtained from the simulated eCAP AGFs. The estimates were derived from parameters of a sigmoidal function that was fitted for a given eCAP AGF using the Levenberg-Marquardt <ref type="bibr" target="#b55">[55]</ref> algorithm. Panels C and D show the normalized model predictions for the eCAP threshold and eCAP AGF slope along with the normalized neurophysiological data from literature. The datapoints labeled as "Ramekers" contain data from 154 guinea pigs measured in <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b59">59,</ref><ref type="bibr" target="#b61">61]</ref> and values labeled as "Pfingst" contain data from 56 guinea pigs measured in <ref type="bibr" target="#b60">[60]</ref> biphasic pulses <ref type="bibr" target="#b0">[1]</ref> have demonstrated that the addition of an IPG between the two polarities allows a lower intensity pulse to excite the ANF as the leading polarity has more time to evoke an action potential before the second polarity abolishes the spiking activity. Also, in the case of anodic-sensitive site of excitation being stimulated with cathodic-leading pulse, or vice versa, IPG can be thought to provide the cell membrane with more time to recover from the hyperpolarization caused by the preceding non-excitatory polarity.</p><p>Therefore, the increase of eCAP response amplitude with stimulus amplitude is pronounced in the case of longer IPG because the longer IPG increases the likelihood of ever larger population of neurons being excited at a given stimulus amplitude. The reason why prolonging of the IPG is more pronounced in healthy cochleae <ref type="bibr" target="#b13">[14]</ref> could be related to the critical period <ref type="bibr" target="#b64">[64]</ref>-the time within which the action potential initialization process must be completed before the second polarity abolishes the spiking activity -being shorter the same eCAP AGFs in linear-linear (panel A), log-linear (panel B), linear-log (panel C), and log-log scales (panel D) of the stimulus amplitude and the eCAP amplitude, respectively</p><p>in demyelinated fibers and/or to there being less neurons available to be recruited due to degeneration of the fibers <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b65">65,</ref><ref type="bibr" target="#b66">66]</ref>.</p><p>The number of ANFs in the model affected the eCAP AGF slope but had no effect on the predicted eCAP thresholds. In agreement with this model prediction, no significant effects of neural density on eCAP threshold values or on psychophysical detection thresholds for single pulses of implanted guinea pigs have been found in previous studies <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b18">19,</ref><ref type="bibr" target="#b59">59,</ref><ref type="bibr" target="#b61">61]</ref> (Fig. <ref type="figure" target="#fig_4">7C</ref>).</p><p>Two kinds of distance effects were observed in the model predictions. On one hand, only the eCAP threshold was affected by the electrode-neuron distance-lower threshold being predicted for the shorter electrode-neuron distance. On the other hand, increase in the stimulating-recording electrode distance was found to result in shallower eCAP AGF slopes, while the eCAP threshold remained the same. The observed dependency of the eCAP threshold on the electrode-neuron distance is in agreement with Schwartz-Leyzac et al. <ref type="bibr" target="#b25">[26]</ref>, although the predicted 2.1 dB/mm effect is larger than what that study reported based on eCAP and post-operative CT data of CI users. Here, the effect is related to the manner by which the spread of electrical field was considered in the model. Due to the 2 dB/mm attenuation, a pulse with a given amplitude builds up less membrane potential when the electrode-neuron distance is larger. As Fig. <ref type="figure">9</ref> Estimated IPG effects derived from the eCAP AGFs for 2.1 and 30 µs IPG when computing the effect following either absolute IPG effect (panel A), the relative IPG effect (panel B), or the IPG offset metric (panel C) described in the "Methods" section. Panel D shows the normalized absolute IPG effect predictions along with the normalized neurophysiological data from literature. The data points labeled as "Ramekers" contain data from 154 guinea pigs measured in <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b59">59,</ref><ref type="bibr" target="#b61">61]</ref> the membrane voltage and the threshold potential of the neuron fluctuate over time <ref type="bibr" target="#b67">[67,</ref><ref type="bibr" target="#b68">68]</ref>, the increased electrodeneuron distance reduces the likelihood of a given neuron to release an action potential. Phenomenological models such as the one applied here <ref type="bibr" target="#b39">[40]</ref> capture this by using a cumulative distribution function of a normal distribution to map the electrical current to spiking probability <ref type="bibr" target="#b69">[69]</ref>. Here, the slopes of the eCAP AGF are not strongly affected because the effect is highly similar across different electrode-neuron combinations between the two electrode-neuron distance conditions (Fig. <ref type="figure" target="#fig_0">1B</ref>). In contrast, the stimulating-recording electrode distance affects the slope of the eCAP AGF and the maximum eCAP amplitude but not the eCAP threshold because mostly the neurons in the proximity of the stimulating electrode are excited (Fig. <ref type="figure" target="#fig_1">2B</ref>) and, therefore, the eCAP amplitudes decrease with increased stimulating-recording electrode distance.</p><p>The predicted IPG effect on the eCAP AGF depended not only on the neural survival but also on how the IPG effect was calculated. Only when the absolute IPG effect was calculated as the difference between the slopes on a linear input-output scale, did the IPG effect depend on the neural survival-bigger effects being predicted to be obtained in the case of better ANF survival -as found in neurophysiological studies with non-human mammals <ref type="bibr" target="#b13">[14,</ref><ref type="bibr" target="#b18">19]</ref>. The absolute IPG effect was found to be influenced also by nonneural aspects, as hypothesized by Brochier et al. <ref type="bibr" target="#b26">[27]</ref>, with the predicted effect decreasing when either the stimulatingrecording electrode distance or the electrode-neuron distance was increased. However, eCAPs are for these very reasons nominally measured at recording electrodes in the vicinity of the stimulating electrode (i.e., ± two electrode contacts) and the same recording electrode should be used to measure responses for both IPGs. Within such a range, effects of the non-neural aspects were found to be marginal here compared to the impact of neural survival on the absolute IPG effect. When either the relative IPG effect (ratio between the slopes estimated on linear input-output scale) or the IPG offset <ref type="bibr" target="#b26">[27]</ref> was calculated, influences of non-neural aspects disappeared, following the mathematical model and the reasoning presented by Brochier et al. <ref type="bibr" target="#b26">[27]</ref>. However, the dependency of the IPG effect on the neural survival was also not evident when either the relative IPG effect or the IPG offset was used.</p><p>The finding that computation of the IPG offset also removes the influence of the neural survival rate from the results is in line with the predictions obtained by Brochier et al. <ref type="bibr" target="#b57">[57]</ref> based on their computational model. In <ref type="bibr" target="#b57">[57]</ref>, the authors used the phenomenological model from Joshi et al. <ref type="bibr" target="#b70">[70]</ref> and investigated the dependency of the model's spiking rate for time-invariant pulse trains on stimulus amplitude and number as well as the neural health of the modeled neurons. Their results showed that only the properties of the neuron to affect the predicted IPG offset, based on which Brochier et al. <ref type="bibr" target="#b57">[57]</ref> suggested that the IPG offset could be a measure of the demyelination of the central parts of the ANF, especially when the peripheral parts have been degenerated. For practical applications, the IPG offset suffers from the disadvantage that representation of the eCAP AGFs on a logarithmic input-output scale biases the impact of the noise on the AGF as illustrated in Fig. <ref type="figure" target="#fig_5">8</ref>. However, this could be overcome by restricting measurements to a range where signal-to-noise ratios are high and/or applying a higher weight at larger SNRs.</p><p>The present study did not investigate effects of gradual degeneration of the ANFs. Therefore, this approach does not allow evaluating if either the relative IPG effect or the IPG offset would be more indicative of the gradual degeneration of the neurons than the absolute IPG effect, as hypothesized by Brochier et al. <ref type="bibr" target="#b26">[27]</ref>. The topic of dead regions was also not addressed here, as only the density of the neurons along the cochlea was varied. It is likely that in the effect of stimulating-recording electrode distance would change if the neurons in the proximity of the stimulating electrode would be simulated as being degenerated. As stated before (see Methods), the fidelity of the 2-D model could be refined in several ways, such as by using more natural distribution of the ANFs along the cochlea <ref type="bibr" target="#b34">[35]</ref>, considering the orientation of the electrodes and/or asymmetric spread of the electrical field <ref type="bibr" target="#b37">[38]</ref>, and/or including threshold and latency differences between the polarities <ref type="bibr" target="#b44">[44]</ref>. Although the lack of such fidelity refinements does not affect the validity of the observations in the present study, and some refinements would themselves likely introduce biases, they offer an interesting topic for future work. Another interesting topic for future work would comprise simulating eCAP recordings with different types of electrode arrays and/or stimulation modes, as they could change the contributions of the nonneural aspects on the results <ref type="bibr" target="#b71">[71]</ref>. The present framework enables inclusion of such improvements.</p><p>One of the unanswered questions in the field is which aspect of the cochlear health is of importance considering the hearing outcomes of the CI user. Neurophysiological studies on non-human mammals have shown how aspects of neural health and neural survival are reflected in objective measures. The present study and the works by Brochier et al. <ref type="bibr" target="#b26">[27,</ref><ref type="bibr" target="#b57">57]</ref> have demonstrated how computational models can be used to predict how objective metrics, such as the IPG effect, of cochlear health depend not only on the neural aspects, but as well as on non-neural aspects and how the metric is computed. Increased knowledge of such dependencies may help future clinical applications and investigators to accommodate the heterogeneity among CI users (their etiologies, durations of deafness, age at implantation, etc.) and to develop better correlations between cochlear-health metrics and hearing outcomes.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Fig. 1</head><label>1</label><figDesc>Fig.1Steps taken in modeling the electrode-neuron distance in the 2-D model of an implanted cochlea. Panel A Polynomial equations were fitted to the 10 and 90% quantiles of the scala tympani height data from human temporal bone specimens<ref type="bibr" target="#b33">[34]</ref>. Panel B Euclidean distances were computed between individual electrode contacts<ref type="bibr" target="#b30">[31]</ref> and neurons to model the degree to which the electrical pulse emitted by the electrode contact is attenuated before reaching a given</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Fig. 2</head><label>2</label><figDesc>Fig. 2 Predicted spiking activity of 500 independent ANFs distributed along the cochlear length (panel A) and the resulting eCAP trace (panel C) recorded at electrode contact #5 for a symmetric anodicleading charge-balanced biphasic pulse (phase duration 40 µs and 2.1 µs IPG) presented at 30 nC from stimulating electrode #6. Panel B shows the unitary response function applied in this model. Panel</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Fig. 4</head><label>4</label><figDesc>Fig.<ref type="bibr" target="#b3">4</ref> Predictions for electrically evoked compound action potential (eCAP) amplitude-growth functions (AGFs) obtained by varying the inter-phase gap (IPG) in the symmetric charge-balanced biphasic pulse (phase duration 40 µs) following fine-grain stimulation paradigm<ref type="bibr" target="#b50">[50]</ref>. The predictions for the larger electrode-neuron distance</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Fig. 5</head><label>5</label><figDesc>Fig. 5 Predicted eCAP AGFs and fitted sigmoidal functions for the different conditions, with each row representing a different neural survival condition. Each panel shows the corresponding results for the six more basal electrodes (#7, #8, #9, #10, #11, and #12) and two IPGs (2.1 and 30 µs). The left and right columns display the results</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Fig. 7</head><label>7</label><figDesc>Fig.7eCAP threshold (panel A) and eCAP AGF slope (panel B) estimates obtained from the simulated eCAP AGFs. The estimates were derived from parameters of a sigmoidal function that was fitted for a given eCAP AGF using the Levenberg-Marquardt<ref type="bibr" target="#b55">[55]</ref> algorithm. Panels C and D show the normalized model predictions for</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>Fig. 8</head><label>8</label><figDesc>Fig. 8 Predicted eCAP AGFs measured at electrode contact #7 for the different combinations of IPG and distance model variants in the simulations along with the fitted sigmoidal functions. The panels show</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1</head><label>1</label><figDesc>List of modified parameters of the phenomenological model of an electrically stimulated ANF<ref type="bibr" target="#b39">[40]</ref> as they were used in this study</figDesc><table><row><cell>Parameter</cell><cell>Description</cell><cell>Original value</cell><cell>Modified value</cell></row><row><cell>δ</cell><cell>Standard deviation of the model's threshold</cell><cell>4.6 µV</cell><cell>9.2 µV</cell></row><row><cell>b 0 b 1</cell><cell>Gain coefficients of the leaky integrator (first order IIR filter) of the model</cell><cell>200.9E-6 200.9E-6</cell><cell>602.6E-6 602.6E-6</cell></row></table></figure>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgements</head><p>We thank <rs type="person">Lutz Gärtner</rs>, <rs type="person">Bryan Pfingst</rs>, <rs type="person">Dyan Ramekers</rs>, and <rs type="person">Daniel Schurzig</rs> for providing the data from their studies for this work. We thank visitors of our posters at the 45th and 46th <rs type="funder">ARO</rs> <rs type="person">MidWinter Meeting</rs> for their feedback and creative suggestions on the preliminary results that were presented there. We thank <rs type="person">Patrick Connolly</rs> (<rs type="affiliation">MED-EL Medical Electronics</rs>) for language editing.</p></div>
+			</div>
+			<listOrg type="funding">
+			</listOrg>
+
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Data Availability</head><p>The original MATLAB (MathWorks, Natick, MA) code of the phenomenological single-fiber model used in this study is available at <ref type="url" target="https://doi.org/10.5281/zenodo.4674563">https:// doi. org/ 10. 5281/ zenodo. 46745 63</ref>.</p></div>
+			</div>
+
+
+			<div type="conflict">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Competing Interests</head><p>The authors are employed by MED-EL, which provided support in the form of salaries for all authors. The authors declare no other or actual conflict of interest.</p></div>
+			</div>
+
+
+			<div type="contribution">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Author Contribution</head><p>All authors contributed to the study conception and design. Marko Takanen implemented the computational model and designed and performed the simulations. Konrad Schwarz defined the five-point sigmoidal function and performed the fits on the model predictions on different input-output scales. The first draft of the manuscript was written by Marko Takanen and all authors commented on previous versions of the manuscript. All authors read and approved the final manuscript.</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Declarations</head><p>Publisher's Note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional affiliations.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct status="extracted" xml:id="b0">
+	<analytic>
+		<title level="a" type="main">The response of the myelinated nerve fiber to short duration biphasic stimulating currents</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Van Den Honert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">T</forename><surname>Mortimer</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/BF02363130</idno>
+		<ptr target="https://doi.org/10.1007/BF023" />
+	</analytic>
+	<monogr>
+		<title level="j">Ann Biomed Eng</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="page">63130</biblScope>
+			<date type="published" when="1979">1979</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Electrical stimulation of the auditory nerve: II. Effect of stimulus waveshape on single fibre response properties</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">K</forename><surname>Shepherd</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Javel</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0378-5955(99)00011-8</idno>
+		<ptr target="https://doi.org/10.1016/S0378-5955" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">130</biblScope>
+			<biblScope unit="issue">1-2</biblScope>
+			<biblScope unit="page" from="11" to="18" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Auditory nerve responses to monophasic and biphasic electric stimuli</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">K</forename><surname>Robinson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">T</forename><surname>Rubinstein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Abbas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">L</forename><surname>Runge-Samuelson</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0300-2977(00)00082-6</idno>
+		<ptr target="https://doi.org/10.1016/S0300-2977(00" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">151</biblScope>
+			<biblScope unit="page" from="82" to="86" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Degeneration of cochlear neurons as seen in the spiral ganglion of man</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Nadol</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/0378-5955(90)90101-t</idno>
+		<ptr target="https://doi.org/10.1016/0378-5955" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">49</biblScope>
+			<biblScope unit="page">90101</biblScope>
+			<date type="published" when="1990">1990</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Patterns of neural degeneration in the human cochlea and auditory nerve: Implications for cochlear implantation</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Nadol</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/s0194-5998(97)70178-5</idno>
+		<ptr target="https://doi.org/10.1016/s0194-5998" />
+	</analytic>
+	<monogr>
+		<title level="j">Otolaryngol Head Neck Surg</title>
+		<imprint>
+			<biblScope unit="volume">117</biblScope>
+			<biblScope unit="page" from="70178" to="70183" />
+			<date type="published" when="1997">1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Sensorineural hearing loss during development: morphological and physiological response of the cochlea and auditory brainstem</title>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">A</forename><surname>Hardie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">K</forename><surname>Shepherd</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0378-5955(98)00209-3</idno>
+		<ptr target="https://doi.org/10.1016/S0378-5955" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">128</biblScope>
+			<biblScope unit="page" from="209" to="212" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Simultaneous rather than retrograde spiral ganglion cell degeneration following ototoxically induced hair cell loss in the guinea pig cochlea</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ramekers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sfl</forename><surname>Klis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Versnel</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2020.107928</idno>
+		<ptr target="https://doi.org/10.1016/j.heares.2020.107928" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">390</biblScope>
+			<biblScope unit="page">107928</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Survival of spiral ganglion cells in profound sensorineural hearing loss: implications for cochlear implantation</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Nadol</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">S</forename><surname>Young</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">J</forename><surname>Glynn</surname></persName>
+		</author>
+		<idno type="DOI">10.1177/000348948909800602</idno>
+		<idno>1177/ 00034 89489 09800 602</idno>
+		<ptr target="https://doi.org/10" />
+	</analytic>
+	<monogr>
+		<title level="j">Ann Otol Rhinol Laryngol</title>
+		<imprint>
+			<biblScope unit="volume">98</biblScope>
+			<biblScope unit="page" from="411" to="416" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Physiological properties of the electrically stimulated auditory nerve. I. Compound action potential recordings</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">H</forename><surname>Stypulkowski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Van Den Honert</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/0378-5955(84)90051-0</idno>
+		<ptr target="https://doi.org/10.1016/0378-5955" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page" from="90051" to="90051" />
+			<date type="published" when="1984">1984</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Electrically evoked wholenerve action potentials: data from human cochlear implant users</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename><surname>Brown</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Abbas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Gantz</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.399716</idno>
+		<ptr target="https://doi.org/10.1121/1.399716" />
+	</analytic>
+	<monogr>
+		<title level="j">J Acoust Soc Am</title>
+		<imprint>
+			<biblScope unit="volume">88</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="1385" to="1391" />
+			<date type="published" when="1990">1990</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Electrical stimulation of the auditory nerve. I. Correlation of physiological responses with cochlear status</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">K</forename><surname>Shepherd</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Javel</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0378-5955(97)00046-4</idno>
+		<ptr target="https://doi.org/10.1016/S0378-5955" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">108</biblScope>
+			<biblScope unit="issue">1-2</biblScope>
+			<biblScope unit="page" from="46" to="50" />
+			<date type="published" when="1997">1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Effect of interphase gap and pulse duration on electrically evoked potentials is correlated with auditory nerve survival</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Prado-Guitierrez</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">M</forename><surname>Fewster</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Heasman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">M</forename><surname>Mckay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">K</forename><surname>Shepherd</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2006.03.006</idno>
+		<ptr target="https://doi.org/10.1016/j.heares.2006.03.006" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">215</biblScope>
+			<biblScope unit="page" from="47" to="55" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Higher sensitivity of human auditory nerve fibers to positive electrical currents</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Macherey</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">P</forename><surname>Carlyon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Van Wieringen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Deeks</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wouters</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-008-0112-4</idno>
+		<idno>1007/ s10162-008-0112-4</idno>
+		<ptr target="https://doi.org/10" />
+	</analytic>
+	<monogr>
+		<title level="j">J Assoc Res Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="241" to="251" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Auditory-nerve responses to varied interphase gap and phase duration of the electric pulse stimulus as predictors for neuronal degeneration</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ramekers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Versnel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">B</forename><surname>Strahl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">M</forename><surname>Smeets</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sfl</forename><surname>Klis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Grolman</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-013-0440-x</idno>
+		<ptr target="https://doi.org/10.1007/s10162-013-0440-x" />
+	</analytic>
+	<monogr>
+		<title level="j">J Assoc Res Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="187" to="202" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Across-site patterns of electrically evoked compound action potential amplitudegrowth functions in multichannel cochlear implant recipients and the effects of the interphase gap</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">C</forename><surname>Schvartz-Leyzac</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">E</forename><surname>Pfingst</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2016.08.002</idno>
+		<ptr target="https://doi.org/10.1016/j.heares.2016.08.002" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">341</biblScope>
+			<biblScope unit="page" from="50" to="65" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Effect of stimulus polarity on detection thresholds in cochlear implant users: relationships with average threshold, gap detection, and rate discrimination</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">P</forename><surname>Carlyon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Cosentino</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Deeks</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Parkinson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Arenberg</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-018-0677-5</idno>
+		<idno>1007/ s10162-018-0677-5</idno>
+		<ptr target="https://doi.org/10" />
+	</analytic>
+	<monogr>
+		<title level="j">J Assoc Res Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page" from="559" to="567" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b16">
+	<analytic>
+		<title level="a" type="main">What can stimulus polarity and interphase gap tell us about auditory nerve function in cochlear-implant recipients?</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">L</forename><surname>Hughes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Choi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Glickman</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2017.12.015</idno>
+		<ptr target="https://doi.org/10.1016/j.heares.2017.12.015" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">359</biblScope>
+			<biblScope unit="page" from="50" to="63" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Prediction of the functional status of the cochlear nerve in individual cochlear implant users using machine learning and electrophysiological measures</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Skidmore</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Chao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">J</forename><surname>Riggs</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Pellittieri</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Vaughan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">X</forename><surname>Ning</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Wang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Luo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>He</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/AUD.0000000000000916</idno>
+		<ptr target="https://doi.org/" />
+	</analytic>
+	<monogr>
+		<title level="j">Ear Hear</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="180" to="192" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Relationships between intrascalar tissue, neuron survival, and cochlear implant function</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">L</forename><surname>Swiderski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">J</forename><surname>Colesa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">P</forename><surname>Hughes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Raphael</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">E</forename><surname>Pfingst</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-020-00761-4</idno>
+		<idno>1007/ s10162-020-00761-4</idno>
+		<ptr target="https://doi.org/10" />
+	</analytic>
+	<monogr>
+		<title level="j">J Assoc Res Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="page" from="337" to="352" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b19">
+	<analytic>
+		<title level="a" type="main">Comparison of response properties of the electrically stimulated auditory nerve reported in human listeners and in animal models</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Skidmore</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ramekers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">C</forename><surname>Bruce</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>He</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2022.108643</idno>
+		<ptr target="https://doi.org/10.1016/j.heares.2022.108643" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">426</biblScope>
+			<biblScope unit="page">108643</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b20">
+	<analytic>
+		<title level="a" type="main">A model of the electrically excited human cochlear neuron. I. Contribution of neural substructures to the generation and propagation of spikes</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Lutter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Felix</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0378-5955(00)00256-2</idno>
+		<idno>1016/ S0378-5955(00) 00256-2</idno>
+		<ptr target="https://doi.org/10" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">153</biblScope>
+			<biblScope unit="issue">1-2</biblScope>
+			<biblScope unit="page" from="43" to="63" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Cochlear health and cochlear-implant function</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">C</forename><surname>Schvartz-Leyzac</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">J</forename><surname>Colesa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">L</forename><surname>Swiderski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Raphael</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">E</forename><surname>Pfingst</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-022-00882-y</idno>
+		<ptr target="https://doi.org/10.1007/s10162-022-00882-y" />
+	</analytic>
+	<monogr>
+		<title level="j">J Assoc Res Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">24</biblScope>
+			<biblScope unit="page" from="5" to="29" />
+			<date type="published" when="2023">2023</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Probing the electrode-neuron interface with focused cochlear implant stimulation</title>
+		<author>
+			<persName><forename type="first">Arenberg</forename><surname>Bierer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename></persName>
+		</author>
+		<idno type="DOI">10.1177/1084713810375249</idno>
+		<ptr target="https://doi.org/10.1177/10847" />
+	</analytic>
+	<monogr>
+		<title level="j">Trends Amplif</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page">375249</biblScope>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b23">
+	<analytic>
+		<title level="a" type="main">A site-selection strategy based on polarity sensitivity for cochlear implants: effects on spectro-temporal resolution and speech perception</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Goehring</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Archer-Boyd</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Deeks</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">G</forename><surname>Arenberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">P</forename><surname>Carlyon</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-019-00724-4</idno>
+		<idno>1007/ s10162-019-00724-4</idno>
+		<ptr target="https://doi.org/10" />
+	</analytic>
+	<monogr>
+		<title level="j">J Assoc Res Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">20</biblScope>
+			<biblScope unit="page" from="431" to="448" />
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b24">
+	<analytic>
+		<title level="a" type="main">The relation between ECAP measurements and the effect of rate on behavioral thresholds in cochlear implant users</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">M</forename><surname>Mckay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Smale</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2017.02.009</idno>
+		<idno>02. 009</idno>
+		<ptr target="https://doi.org/10.1016/j.heares.2017" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">346</biblScope>
+			<biblScope unit="page" from="62" to="70" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Effects of electrode location on estimates of neural health in humans with cochlear implants</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">C</forename><surname>Schvartz-Leyzac</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">A</forename><surname>Holden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">A</forename><surname>Zwolan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">A</forename><surname>Arts</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Firszt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename><surname>Buswinka</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">E</forename><surname>Pfingst</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-020-00749-0</idno>
+		<idno>1007/ s10162-020-00749-0</idno>
+		<ptr target="https://doi.org/10" />
+	</analytic>
+	<monogr>
+		<title level="j">J Assoc Res Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="259" to="275" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Interpreting the effect of stimulus parameters on the electrically evoked compound action potential and on neural health estimates</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Brochier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">M</forename><surname>Mckay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">P</forename><surname>Carlyon</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-020-00774-z</idno>
+		<ptr target="https://doi.org/10.1007/s10162-020-00774-z" />
+	</analytic>
+	<monogr>
+		<title level="j">J Assoc Res Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="81" to="94" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Array programming with NumPy</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">R</forename><surname>Harris</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Millman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Van Der Walt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Gommers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Virtanen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Cournapeau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Wieser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Taylor</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Berg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">J</forename><surname>Smith</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41586-020-2649-2</idno>
+		<ptr target="https://doi.org/10.1038/s41586-020-2649-2" />
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">585</biblScope>
+			<biblScope unit="page" from="357" to="362" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b28">
+	<analytic>
+		<title level="a" type="main">SciPy 1.0: fundamental algorithms for scientific computing in python</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Virtanen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Gommers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">E</forename><surname>Oliphant</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Haberland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Reddy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Cournapeau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Burovski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Peterson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Weckesser</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bright</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41592-019-0686-2</idno>
+		<ptr target="https://doi.org/10.1038/s41592-019-0686-2" />
+	</analytic>
+	<monogr>
+		<title level="j">Nat Methods</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="page" from="261" to="272" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Matplotlib: A 2D graphics environment</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Hunter</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/MCSE.2007.55</idno>
+		<ptr target="https://doi.org/10.1109/MCSE.2007.55" />
+	</analytic>
+	<monogr>
+		<title level="j">Comput Sci Eng</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="90" to="95" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Electric-acoustic stimulation with longer electrodes for potential deterioration in low-frequency hearing</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Yoshimura</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Moteki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Sy</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Si</surname></persName>
+		</author>
+		<idno type="DOI">10.1080/00016489.2020.1760351</idno>
+		<ptr target="https://doi.org/" />
+	</analytic>
+	<monogr>
+		<title level="j">Acta Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">140</biblScope>
+			<biblScope unit="page" from="624" to="630" />
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b31">
+	<analytic>
+		<title level="a" type="main">A cochlear frequency-position function for several species-29 years later</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Greenwood</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.399052</idno>
+		<ptr target="https://doi.org/10.1121/1.399052" />
+	</analytic>
+	<monogr>
+		<title level="j">J Acoust Soc Am</title>
+		<imprint>
+			<biblScope unit="volume">87</biblScope>
+			<biblScope unit="page" from="2592" to="2605" />
+			<date type="published" when="1990">1990</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Frequency map for the human cochlear spiral ganglion: implications for cochlear implants</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Stakhovskaya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Sridhar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">H</forename><surname>Bonham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A</forename><surname>Leake</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-007-0076-9</idno>
+		<idno>1007/ s10162-007-0076-9</idno>
+		<ptr target="https://doi.org/10" />
+	</analytic>
+	<monogr>
+		<title level="j">J Assoc Res Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="220" to="233" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b33">
+	<analytic>
+		<title level="a" type="main">The use of clinically measurable cochlear parameters in cochlear implant surgery as indicators for size, shape, and orientation of the scala tympani</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Schurzig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">E</forename><surname>Timm</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Majdani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lenarz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">S</forename><surname>Rau</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/AUD.0000000000000998</idno>
+		<ptr target="https://doi.org/" />
+	</analytic>
+	<monogr>
+		<title level="j">Ear Hear</title>
+		<imprint>
+			<biblScope unit="volume">42</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="1034" to="1041" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b34">
+	<analytic>
+		<title level="a" type="main">Analysis of the human auditory nerve</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Spoendlin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Schrott</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/0378-5955(89)90056-7</idno>
+		<ptr target="https://doi.org/10.1016/0378-5955" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="page" from="90056" to="90057" />
+			<date type="published" when="1989">1989</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Current distributions in cochlear stimulation</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">C</forename><surname>Black</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">M</forename><surname>Clark</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">C</forename><surname>Tong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">F</forename><surname>Patrick</surname></persName>
+		</author>
+		<idno type="DOI">10.1111/j.1749-6632.1983.tb31626.x</idno>
+		<ptr target="https://doi.org/10.1111/j.1749-6632" />
+	</analytic>
+	<monogr>
+		<title level="j">Ann. N.Y. Acad Sci</title>
+		<imprint>
+			<biblScope unit="volume">405</biblScope>
+			<biblScope unit="page" from="316" to="326" />
+			<date type="published" when="1983">1983. 1983</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Current distributions in the cat cochlea: a modelling and electrophysiological study</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>O'leary</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">C</forename><surname>Black</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">M</forename><surname>Clark</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/0378-5955(85)90044-9</idno>
+		<ptr target="https://doi.org/10.1016/0378-5955" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="90044" to="90049" />
+			<date type="published" when="1985">1985</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b37">
+	<monogr>
+		<title level="m" type="main">Neue Signalverarbeitungs-und Stimulationsstrategien für Cochlea Implantate</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mitterbacher</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="2004">2004</date>
+		</imprint>
+		<respStmt>
+			<orgName>Technische Universität Wien</orgName>
+		</respStmt>
+	</monogr>
+	<note type="report_type">Ph.D. dissertation</note>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Stimulus level effects on neural excitation and eCAP amplitude</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">A</forename><surname>Westen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dmt</forename><surname>Dekker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Briaire</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jhm</forename><surname>Frijns</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2011.05.014</idno>
+		<ptr target="https://doi.org/10.1016/j.heares.2011.05.014" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">280</biblScope>
+			<biblScope unit="page" from="166" to="176" />
+			<date type="published" when="2011">2011</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b39">
+	<analytic>
+		<title level="a" type="main">A phenomenological model reproducing temporal response characteristics of an electrically stimulated auditory nerve fiber</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Takanen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">U</forename><surname>Seeber</surname></persName>
+		</author>
+		<idno type="DOI">10.1177/23312165221117079</idno>
+		<idno>1177/ 23312 16522 11170 79</idno>
+		<ptr target="https://doi.org/10" />
+	</analytic>
+	<monogr>
+		<title level="j">Trends Hear</title>
+		<imprint>
+			<biblScope unit="volume">26</biblScope>
+			<biblScope unit="page">23312165221117079</biblScope>
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b40">
+	<monogr>
+		<title level="m" type="main">Recherches Quantitatives sur l&apos;Excitation Electrique des Nerfs Traitée comme une Polarization</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Lapicque</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1907">1907</date>
+		</imprint>
+	</monogr>
+	<note>Quantitative investigations of electrical nerve excitation treated as polarization</note>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b41">
+	<analytic>
+		<title/>
+	</analytic>
+	<monogr>
+		<title level="j">J Physiol Pathol Gen</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="620" to="635" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b42">
+	<analytic>
+		<title level="a" type="main">A phenomenological model of the electrically stimulated auditory nerve fiber: temporal and biphasic response properties</title>
+		<author>
+			<persName><forename type="first">Cdf</forename><surname>Horne</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename><surname>Sumner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">U</forename><surname>Seeber</surname></persName>
+		</author>
+		<idno type="DOI">10.3389/fncom.2016.00008</idno>
+		<ptr target="https://doi.org/10.3389/fncom.2016.00008" />
+	</analytic>
+	<monogr>
+		<title level="j">Front Comput Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="issue">8</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Site of cochlear stimulation and its effect on electrically evoked compound action potentials using the MED-EL standard electrode array</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Brill</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Müller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Hagen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Möltner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Brockmeier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Stark</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Helbig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Maurer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Zahnert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Zierhofer</surname></persName>
+		</author>
+		<idno type="DOI">10.1186/1475-925X-8-40</idno>
+		<ptr target="https://doi.org/10.1186/1475-925X-8-40" />
+	</analytic>
+	<monogr>
+		<title level="j">Biomed Eng Online</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page">40</biblScope>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Across-species comparisons of psychophysical detection thresholds for electrical stimulation of the cochlea II. Strength-duration functions for single, biphasic pulses</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">L</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">W</forename><surname>Smith</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">E</forename><surname>Pfingst</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0378-5955(99)00072-6</idno>
+		<ptr target="https://doi.org/10.1016/S0378-5955" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">135</biblScope>
+			<biblScope unit="issue">1-2</biblScope>
+			<biblScope unit="page" from="72" to="76" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Electrically evoked auditory brainstem response in peripherally myelin-deficient mice</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Abbas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">G</forename><surname>Assouline</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/0378-5955(95)00105-D</idno>
+		<ptr target="https://doi.org/10.1016/0378-5955" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">88</biblScope>
+			<biblScope unit="page">105</biblScope>
+			<date type="published" when="1995">1995</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Selective microstimulation of central nervous system neurons</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">C</forename><surname>Mcintyre</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">M</forename><surname>Grill</surname></persName>
+		</author>
+		<idno type="DOI">10.1114/1.262</idno>
+		<ptr target="https://doi.org/10.1114/1.262" />
+	</analytic>
+	<monogr>
+		<title level="j">Ann Biomed Eng</title>
+		<imprint>
+			<biblScope unit="volume">28</biblScope>
+			<biblScope unit="page" from="219" to="233" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Single-fibre and whole-nerve responses to clicks as a function of sound intensity in the guinea pig</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Versnel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Schoonhoven</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><forename type="middle">F</forename><surname>Prijs</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/0378-5955(92)90111-Y</idno>
+		<ptr target="https://doi.org/10.1016/0378-5955" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">59</biblScope>
+			<biblScope unit="page">90111</biblScope>
+			<date type="published" when="1992">1992</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b48">
+	<analytic>
+		<title level="a" type="main">Unravelling the temporal properties of human eCAPs through an iterative deconvolution model</title>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Dong</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Briaire</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Biesheuvel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">C</forename><surname>Stronks</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jhm</forename><surname>Frijns</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2020.108037</idno>
+		<ptr target="https://doi.org/10.1016/j.heares.2020.108037" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">395</biblScope>
+			<biblScope unit="page">108037</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Forward-masked spatial tuning curves in cochlear implant users</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">A</forename><surname>Nelson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">S</forename><surname>Donaldson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Kreft</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.2836786</idno>
+		<ptr target="https://doi.org/10.1121/1.2836786" />
+	</analytic>
+	<monogr>
+		<title level="j">J Acoust Soc Am</title>
+		<imprint>
+			<biblScope unit="volume">123</biblScope>
+			<biblScope unit="issue">3</biblScope>
+			<biblScope unit="page" from="1522" to="1543" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Fine-grain recordings of the electrically evoked compound action potential amplitude growth function in cochlear implant recipients</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Gärtner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lenarz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Büchner</surname></persName>
+		</author>
+		<idno type="DOI">10.1186/s12938-018-0588-z</idno>
+		<ptr target="https://doi.org/10.1186/s12938-018-0588-z" />
+	</analytic>
+	<monogr>
+		<title level="j">Biomed Eng Online</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="issue">17</biblScope>
+			<biblScope unit="page">140</biblScope>
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b51">
+	<analytic>
+		<title level="a" type="main">The relationship between EAP and EABR thresholds and levels used to program the Nucleus 24 speech processor: data from adults</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename><surname>Brown</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">L</forename><surname>Hughes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Luk</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Abbas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Wolaver</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gervais</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/00003446-200004000-00009</idno>
+		<idno>1097/ 00003 446-20000 4000-00009</idno>
+		<ptr target="https://doi.org/10" />
+	</analytic>
+	<monogr>
+		<title level="j">Ear Hear</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="page" from="151" to="163" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Recording and analysis of electrically evoked compound action potentials (ECAPs) with MED-EL cochlear implants and different artifact reduction strategies in Matlab</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Bahmer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">O</forename><surname>Peter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">U</forename><surname>Baumann</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.jneumeth.2010.06.008</idno>
+		<idno>06. 008</idno>
+		<ptr target="https://doi.org/10.1016/j.jneumeth" />
+	</analytic>
+	<monogr>
+		<title level="j">J Neurosci Methods</title>
+		<imprint>
+			<biblScope unit="volume">191</biblScope>
+			<biblScope unit="page" from="66" to="74" />
+			<date type="published" when="2010">2010. 2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Normative findings of electrically evoked compound action potential measurements using the neural response telemetry of the Nucleus CI24M cochlear implant system</title>
+		<author>
+			<persName><forename type="first">Cafarelli</forename><surname>Dees</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Dillier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Lai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">K</forename></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Von</forename><surname>Wallenberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Van Dijk</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Akdas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Aksit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Batman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Beynon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Burdo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename></persName>
+		</author>
+		<idno type="DOI">10.1159/000083366</idno>
+		<ptr target="https://doi.org/10.1159/00008" />
+	</analytic>
+	<monogr>
+		<title level="j">Audiol Neurootol</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page">3366</biblScope>
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Human cochlear histopathology reflects clinical signatures of primary neural degeneration</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">E</forename><surname>Sagers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">D</forename><surname>Landegger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Worthington</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Nadol</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">M</forename><surname>Stankovic</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/s41598-017-04899-9</idno>
+		<idno>1038/ s41598-017-04899-9</idno>
+		<ptr target="https://doi.org/10" />
+	</analytic>
+	<monogr>
+		<title level="j">Sci Rep</title>
+		<imprint>
+			<biblScope unit="volume">7</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page">4884</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b55">
+	<analytic>
+		<title level="a" type="main">An algorithm for least-square estimation of nonlinear parameters</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">W</forename><surname>Marquardt</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Soc Ind Appl Math</title>
+		<imprint>
+			<biblScope unit="volume">2</biblScope>
+			<biblScope unit="page" from="431" to="441" />
+			<date type="published" when="1963">1963</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Electrically evoked compound action potentials are different depending on the site of cochlear stimulation</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Van De Heyning</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">L</forename><surname>Arauz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Atlas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">D</forename><surname>Baumgartner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Caversaccio</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Chester-Browne</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Estienne</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Gavilan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Godey</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Gstöttner</surname></persName>
+		</author>
+		<idno type="DOI">10.1080/14670100.2016.1240427</idno>
+		<ptr target="https://doi.org/" />
+	</analytic>
+	<monogr>
+		<title level="j">Cochlear Implants Int</title>
+		<imprint>
+			<biblScope unit="volume">17</biblScope>
+			<biblScope unit="page">27</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Evaluating and comparing behavioural and electrophysiological estimates of neural health in cochlear implant users</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Brochier</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Guérit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Deeks</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Garcia</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bance</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">P</forename><surname>Carlyon</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-020-00773-0</idno>
+		<idno>1007/ s10162-020-00773-0</idno>
+		<ptr target="https://doi.org/10" />
+	</analytic>
+	<monogr>
+		<title level="j">J Assoc Res Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="67" to="80" />
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b58">
+	<analytic>
+		<title level="a" type="main">Influence of the recording electrode on the ECAP threshold using a novel fine-grain recording paradigm</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Gärtner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Büchner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Lenarz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Strah</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Schwarz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Spitzer</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Conference on Implantable Auditory Prostheses</title>
+		<meeting><address><addrLine>Lake Tahoe</addrLine></address></meeting>
+		<imprint>
+			<date type="published" when="2015-07">2015. July 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b59">
+	<analytic>
+		<title level="a" type="main">Temporary neurotrophin treatment prevents deafness-induced auditory nerve degeneration and preserves function</title>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ramekers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Versnel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">B</forename><surname>Strahl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sfl</forename><surname>Klis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Grolman</surname></persName>
+		</author>
+		<idno type="DOI">10.1523/JNEUROSCI.0096-15.2015</idno>
+		<ptr target="https://doi.org/10.1523/JNEUROSCI.0096-15" />
+	</analytic>
+	<monogr>
+		<title level="j">J Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">35</biblScope>
+			<biblScope unit="issue">36</biblScope>
+			<biblScope unit="page" from="12331" to="12345" />
+			<date type="published" when="2015">2015. 2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b60">
+	<analytic>
+		<title level="a" type="main">Neurotrophin gene therapy in deafened ears with cochlear implants: long-term effects on nerve survival and functional measures</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">E</forename><surname>Pfingst</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">J</forename><surname>Colesa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">L</forename><surname>Swiderski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">P</forename><surname>Hughes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">B</forename><surname>Strahl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Sinan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Raphael</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-017-0633-9</idno>
+		<ptr target="https://doi.org/10.1007/s10162-017-0633-9" />
+	</analytic>
+	<monogr>
+		<title level="j">J Assoc Res Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">6</biblScope>
+			<biblScope unit="page" from="731" to="750" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b61">
+	<analytic>
+		<title level="a" type="main">BDNF outperforms TrkB agonist 7,8,3&apos;-THF in preserving the auditory nerve in deafened guinea pigs</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">A</forename><surname>Vink</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">C</forename><surname>Van Dorp</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Hgxm</forename><surname>Thomeer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Versnel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ramekers</surname></persName>
+		</author>
+		<idno type="DOI">10.3390/brainsci10110787</idno>
+		<ptr target="https://doi.org/10.3390/brain" />
+	</analytic>
+	<monogr>
+		<title level="j">Brain Sciences</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="issue">11</biblScope>
+			<biblScope unit="page">110787</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b62">
+	<analytic>
+		<title level="a" type="main">Assessing the relationship between the electrically evoked compound action potential and speech recognition abilities in bilateral cochlear implant recipients</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">C</forename><surname>Schvartz-Leyzac</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">E</forename><surname>Pfingst</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/AUD.0000000000000606</idno>
+		<idno>1097/ AUD. 00000 00000 000606</idno>
+		<ptr target="https://doi.org/10" />
+	</analytic>
+	<monogr>
+		<title level="j">Ear Hear</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<biblScope unit="page" from="344" to="358" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b63">
+	<analytic>
+		<title level="a" type="main">A broadly applicable method for characterizing the slope of the electrically evoked compound action potential amplitude growth function</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Skidmore</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ramekers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">J</forename><surname>Colesa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">C</forename><surname>Schvartz-Leyzac</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">E</forename><surname>Pfingst</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>He</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/AUD.0000000000001084</idno>
+		<ptr target="https://doi.org/" />
+	</analytic>
+	<monogr>
+		<title level="j">Ear Hear</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="issue">1</biblScope>
+			<biblScope unit="page" from="150" to="164" />
+			<date type="published" when="2022">2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b64">
+	<analytic>
+		<title level="a" type="main">Analysis of monophasic and biphasic electrical stimulation of nerve</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">T</forename><surname>Rubinstein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Mino</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Abbas</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/10.951508</idno>
+		<ptr target="https://doi.org/10.1109/10.951508" />
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans Biomed Eng</title>
+		<imprint>
+			<biblScope unit="volume">48</biblScope>
+			<biblScope unit="page" from="1065" to="1070" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b65">
+	<analytic>
+		<title level="a" type="main">A computer simulation of conduction in demyelinated nerve fibres</title>
+		<author>
+			<persName><forename type="first">Z</forename><forename type="middle">J</forename><surname>Koles</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Rasminsky</surname></persName>
+		</author>
+		<idno type="DOI">10.1113/jphysiol.1972.sp010036</idno>
+		<idno>1972. sp010 036</idno>
+		<ptr target="https://doi.org/10.1113/jphysiol" />
+	</analytic>
+	<monogr>
+		<title level="j">J Physiol</title>
+		<imprint>
+			<biblScope unit="volume">227</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="351" to="364" />
+			<date type="published" when="1972">1972</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b66">
+	<analytic>
+		<title level="a" type="main">Spiral ganglion cell morphology in guinea pigs after deafening and neurotrophic treatment</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">C</forename><surname>Van Loon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ramekers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Mjh</forename><surname>Agterberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Jcmj</forename><surname>De Groot</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Grolman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Sfl</forename><surname>Klis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Versnel</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2013.01.013</idno>
+		<ptr target="https://doi.org/10.1016/j.heares.2013.01.013" />
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">298</biblScope>
+			<biblScope unit="page" from="17" to="26" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b67">
+	<analytic>
+		<title level="a" type="main">Fluctuation phenomena in nerve membrane</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">A</forename><surname>Verveen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">E</forename><surname>Derksen</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/PROC.1968.6443</idno>
+		<ptr target="https://doi.org/10.1109/PROC.1968.6443" />
+	</analytic>
+	<monogr>
+		<title level="j">Proc IEEE</title>
+		<imprint>
+			<biblScope unit="volume">56</biblScope>
+			<biblScope unit="page" from="906" to="916" />
+			<date type="published" when="1968">1968</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Channel noise in neurons</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>White</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">T</forename><surname>Rubinstein</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">R</forename><surname>Kay</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0166-2236(99)01521-0</idno>
+		<ptr target="https://doi.org/10.1016/S0166-2236" />
+	</analytic>
+	<monogr>
+		<title level="j">Trends Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="page" from="1521" to="1521" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b69">
+	<analytic>
+		<title level="a" type="main">Phenomenological modelling of electrically stimulated auditory nerve fibers: a review</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Takanen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">C</forename><surname>Bruce</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">U</forename><surname>Seeber</surname></persName>
+		</author>
+		<idno type="DOI">10.1080/0954898X.2016.1219412</idno>
+		<idno>1080/ 09548 98X. 2016. 12194 12</idno>
+		<ptr target="https://doi.org/10" />
+	</analytic>
+	<monogr>
+		<title level="j">Network Comp Neural</title>
+		<imprint>
+			<biblScope unit="volume">27</biblScope>
+			<biblScope unit="page" from="157" to="185" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b70">
+	<analytic>
+		<title level="a" type="main">A model of electrically stimulated auditory nerve fiber responses with peripheral and central sites of spike generation</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">N</forename><surname>Joshi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Dau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Epp</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-016-0608-2</idno>
+		<ptr target="https://doi.org/10.1007/s10162-016-0608-2" />
+	</analytic>
+	<monogr>
+		<title level="j">J Assoc Res Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="issue">2</biblScope>
+			<biblScope unit="page" from="323" to="342" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b71">
+	<analytic>
+		<title level="a" type="main">Examining the electro-neural interface of cochlear implant users using psychophysics, CT scans, and speech understanding</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename><surname>Long</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">A</forename><surname>Holden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">H</forename><surname>Mcclelland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">S</forename><surname>Parkinson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Shelton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">C</forename><surname>Kelsall</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><forename type="middle">M</forename><surname>Smith</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-013-0437-5</idno>
+		<idno>1007/ s10162-013-0437-5</idno>
+		<ptr target="https://doi.org/10" />
+	</analytic>
+	<monogr>
+		<title level="j">J Assoc Res Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="293" to="304" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

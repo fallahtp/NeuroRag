@@ -1,0 +1,1286 @@
+
+
+===== PAGE 1 =====
+ORIGINAL RESEARCH
+published: 17 June 2022
+doi: 10.3389/fncom.2022.889992
+Frontiers in Computational Neuroscience | www.frontiersi n.org 1 June 2022 | Volume 16 | Article 889992
+Edited by:
+Andreas Bahmer,
+University Hospital Frankfurt, Germany
+Reviewed by:
+Peter Cariani,
+Boston University, United States
+Yoojin Chung,
+Decibel Therapeutics, Inc.,
+United States
+*Correspondence:
+Raymond L. Goldsworthy
+raymond.goldsworthy@med.usc.edu
+Received: 04 March 2022
+Accepted: 25 May 2022
+Published: 17 June 2022
+Citation:
+Goldsworthy RL (2022) Computational
+Modeling of Synchrony in the Auditory
+Nerve in Response to Acoustic and
+Electric Stimulation.
+Front. Comput. Neurosci. 16:889992.
+doi: 10.3389/fncom.2022.889992
+Computational Modeling of
+Synchrony in the Auditory Nerve in
+Response to Acoustic and Electric
+Stimulation
+Raymond L. Goldsworthy *
+Auditory Research Center, Caruso Department of Otolaryngo logy, Keck School of Medicine, University of Southern Calif ornia,
+Los Angeles, CA, United States
+Cochlear implants are medical devices that provide hearing to nearly one million people
+around the world. Outcomes are impressive with most recipie nts learning to understand
+speech through this new way of hearing. Music perception and speech reception
+in noise, however, are notably poor. These aspects of hearin g critically depend on
+sensitivity to pitch, whether the musical pitch of an instru ment or the vocal pitch of
+speech. The present article examines cues for pitch percept ion in the auditory nerve
+based on computational models. Modeled neural synchrony fo r pure and complex
+tones is examined for three different electric stimulation strategies including Continuous
+Interleaved Sampling (CIS), High-Fidelity CIS (HDCIS), an d Peak-Derived Timing (PDT).
+Computational modeling of current spread and neuronal resp onse are used to predict
+neural activity to electric and acoustic stimulation. It is shown that CIS does not provide
+neural synchrony to the frequency of pure tones nor to the fun damental component
+of complex tones. The newer HDCIS and PDT strategies restore synchrony to both
+the frequency of pure tones and to the fundamental component of complex tones.
+Current spread reduces spatial speciﬁcity of excitation as well as the temporal ﬁdelity
+of neural synchrony, but modeled neural excitation restore s precision of these cues.
+Overall, modeled neural excitation to electric stimulatio n that incorporates temporal ﬁne
+structure (e.g., HDCIS and PDT) indicates neural synchrony comparable to th at provided
+by acoustic stimulation. Discussion considers the importa nce of stimulation rate and
+long-term rehabilitation to provide temporal cues for pitc h perception.
+Keywords: auditory neuroscience, cochlear implants, pitch perception, synchrony, auditory nerve
+INTRODUCTION
+Hearing is remarkable. People with the best sensitivity to mu sical pitch can discriminate tones
+that are less than a tenth of a percent apart. Those with the best sensitivity can hear sounds
+move in the environment by less than a degree. This precision re quires perception of timing
+diﬀerences across ears on the order of tens of microseconds (
+Tillein et al., 2011; Brughera et al.,
+2013). Timing is essential to the auditory system. Special physiolo gical mechanisms have evolved
+to encode timing of sounds with high ﬁdelity ( Joris et al., 2004; Joris and Yin, 2007; Golding and
+Oertel, 2012; Bahmer and Gupta, 2018). Auditory nerve ﬁbers respond synchronously to incoming
+
+===== PAGE 2 =====
+Goldsworthy Synchrony in the Auditory Nerve
+sounds for frequencies up to two thousand cycles per second,
+arguably with useful timing cues up to ten thousand cycles
+per second (
+Verschooten et al., 2019 ). Despite the many
+evolutionary developments required for precise coding of tim ing
+in the auditory system, and despite strong arguments for the
+importance of temporal ﬁne structure for music and speech
+perception (
+Lorenzi et al., 2006 ), timing cues are largely
+discarded by sound processing for cochlear implants. This
+article describes results from computational modeling of cochlear
+implant stimulation followed by current spread and neuronal
+excitation. Results inform how neural synchrony is discarde d
+by common stimulation strategies, and how synchrony can be
+restored by strategies that encode temporal ﬁne structure of
+incoming sound into electrical stimulation.
+Cochlear implants are remarkable. People who lose their
+hearing can hear again through an electrode array surgicall y
+implanted in their cochlea (
+Svirsky, 2017 ). Nearly a million
+people can hear because of cochlear implants. The quality of
+hearing is impressive with most recipients able to understand
+spoken speech in quiet without relying on lip-reading or other
+visual cues (
+Niparko et al., 2010 ). Music appreciation and
+speech reception in noise, however, tend to be poor ( Looi
+et al., 2012 ). The fact that hearing with cochlear implants is
+not as good as normal is not surprising. Cochlear implants
+are limited in their ability to stimulate diﬀerent regions of the
+auditory nerve (
+Middlebrooks and Snyder, 2007 ). The auditory
+nerve is comprised of ∼ 30–40 thousand nerve ﬁbers while
+cochlear implants use at most 22 stimulating electrodes ( Loizou,
+1999; Liberman et al., 2016 ). Furthermore, electrical current
+broadly spreads in the cochlea degrading the spatial speciﬁcit y
+of stimulation (Landsberger et al., 2012).
+This limit on spatial speciﬁcity is in sharp contrast to
+the capacity of cochlear implants to stimulate with temporal
+precision. Most cochlear implants control stimulation timing
+with microsecond precision (
+Shannon, 1992 ). This exquisite
+temporal precision, however, is poorly used by conventional
+sound processing. The most common sound processing for
+cochlear implants, Advanced Combinatorial Encoders (ACE),
+used on Cochlear Corporation devices, discards temporal
+ﬁne structure in favor of encoding slowly varying envelope
+oscillations up to 300 cycles per second, even though there isclear
+evidence that timing information is important at least up to 2 –
+4 thousand cycles per second (
+Dynes and Delgutte, 1992; Oertel
+et al., 2000; Joris et al., 2004; Verschooten et al., 2019 ).
+There are historical reasons why ACE became commonly
+used today. Early sound processing for cochlear implants
+included simultaneous analog stimulation and strategies b ased
+on speech feature extraction (
+Loizou, 1999). Simultaneous analog
+stimulation caused interference between electrodes that w as
+diﬃcult to control and that produced unwanted ﬂuctuations
+in loudness (
+Wilson and Dorman, 2008, 2018 ). Strategies built
+on speech feature extraction suﬀered from a diﬀerent problem.
+Those strategies were limited by challenges of estimating
+speech features—fundamental and formant frequencies—in
+noisy environments. Consequently, the forerunner of the AC E
+strategy, known as Spectral Peak (SPEAK), broke through as
+a widely successful strategy based on amplitude modulation
+of pulsatile stimulation. By encoding spectral maxima direct ly,
+these stimulation strategies reliably conveyed essential speech
+information. This approach has consequently been referred to a s
+speech processing rather than sound processing since it is quit e
+eﬀective for speech but less so for music.
+Attempts have been made over recent decades to preserve
+this eﬀective encoding of speech features provided by strategi es
+like SPEAK and ACE while enhancing temporal information
+important for perception of pitch and melody in music. Peak-
+Derived Timing (PDT) triggers pulse timings based on the
+temporal ﬁne structure of sound (
+van Hoesel and Tyler, 2003; van
+Hoesel, 2007; V andali and van Hoesel, 2011 ). With PDT , sound
+is separated into overlapping frequency bands as done for ACE,
+but rather than discarding temporal ﬁne structure, PDT trigg ers
+pulse timings based on local peaks in the ﬁltered signal of each
+processing channel. A similar strategy was developed for MED-
+EL cochlear implants referred to as Fine Structure Processin g
+(FSP), which schedules pulse timings on zero crossing ratherthan
+peaks, but the same principal applies. Further, while PDT applied
+the stimulus-derived timing for every electrode, FSP origi nally
+only applied the ﬁne structure processing to the most apical
+electrode corresponding to bandpass ﬁltering center frequen cies
+up to 250 Hz (
+Riss et al., 2014 ). V ariations of FSP have since
+been developed that use higher stimulation rates and present
+ﬁne structure to the four most apical electrodes correspondin g
+to bandpass ﬁlter center frequencies up to 950 Hz (FS4:
+Riss et al.,
+2014, 2016).
+Results with such temporal encoding strategies have been
+mixed. Studies of PDT found little to no beneﬁt on either
+pitch perception or spatial hearing (
+van Hoesel and Tyler, 2003;
+van Hoesel, 2007; V andali and van Hoesel, 2011 ). Early reports
+for FSP found small but signiﬁcant beneﬁts on pitch without
+detriment to speech (
+Riss et al., 2014, 2016 ). More promising,
+recent studies suggest that beneﬁts for pitch perception emerg e
+from experience with the newly encoded information, with
+continued beneﬁts after extended experience (
+Riss et al., 2016 ).
+There are many challenges to determining whether new strategies
+achieve the desired outcome of better encoding of temporal
+cues for pitch. Experience may be needed to fully learn to
+use these cues. Since long-term rehabilitation may be neede d
+to learn how to use these cues, tools are needed to better
+characterize how well these cues are encoded for diﬀerent
+stimulation strategies. Computational models of current spr ead
+and neural excitation can explicitly characterize cues avai lable in
+the auditory nerve in response to cochlear implant stimulatio n.
+Careful characterization of these cues clariﬁes the extent t hat
+pitch perception of cochlear implant users is limited by the
+availability of these cues rather than by the brain’s abilit y to learn
+to use them.
+This article considers computational neural modeling of
+spatial and temporal cues in the auditory-nerve response for pitch
+perception. Cochlear implants can transmit spatial excitation
+cues with more deeply inserted electrodes evoking lower pitch es
+(
+Shannon, 1983; Landsberger and Galvin, 2011 ). Cochlear
+implants also convey temporal cues with higher stimulation or
+modulation rates providing higher pitches (
+Tong et al., 1982;
+Zeng, 2002 ). There is considerable debate regarding optimal
+Frontiers in Computational Neuroscience | www.frontiersi n.org 2 June 2022 | Volume 16 | Article 889992
+
+===== PAGE 3 =====
+Goldsworthy Synchrony in the Auditory Nerve
+use of spatial and temporal cues for pitch perception for both
+acoustic and electric hearing (
+Eddington et al., 1978; Loeb, 2005;
+Cedolin and Delgutte, 2010; Kong and Carlyon, 2010; Oxenham
+et al., 2011; Miyazono and Moore, 2013; Marimuthu et al., 2016;
+Verschooten et al., 2019
+).
+While it is unclear to what extent spatial and temporal
+cues contribute to pitch, the resulting resolution in normal
+hearing allows listeners to discriminate frequency diﬀeren ces
+<1% for a wide range of conditions (
+Moore et al., 2008; Micheyl
+et al., 2012 ). The best cochlear implant users despite having at
+most 22 stimulating electrodes, and despite discarding tempo ral
+ﬁne structure, can distinguish pure tones based on frequency
+diﬀerences of about 1–5% from 500 to 2,000 Hz depending
+on frequency allocation of clinical processing (
+Goldsworthy
+et al., 2013; Goldsworthy, 2015 ). Pitch perception for complex
+tones, however, is comparably worse with cochlear implant use rs
+typically only able to discriminate diﬀerences in fundamenta l
+frequency of 5 to 20% in the ecologically essential range of 1 10–
+440 Hz (Goldsworthy et al., 2013; Goldsworthy, 2015 ). While it
+is diﬃcult to characterize contributions of spatial and tempo ral
+cues for complex pitch (Carlyon and Deeks, 2002; Oxenham et al.,
+2004, 2011 ), work has clariﬁed the extent that these cues are
+present and distributed in the auditory-nerve response ( Cariani
+and Delgutte, 1996a; Plack and Oxenham, 2005 ).
+For complex tones with fundamental frequencies in the range
+of human voices (100 to 300 Hz), cochlear implant ﬁltering does
+not provide tonotopically resolved harmonic structure (
+Swanson
+et al., 2019 ). Consequently, implant users rely on temporal
+cues for discriminating complex tones in this range. Temporal
+cues for pitch become less eﬀective with increasing rates with
+marked deterioration of resolution between 200 and 300 Hz.
+This leads many cochlear implant users to express frustration
+with melody recognition above middle C ( ∼ 262 Hz) (
+Looi et al.,
+2012). It has been shown that discrimination improves for
+fundamental frequencies higher than 300 Hz, likely because of
+better access to place cues to make up for the impoverished rate
+cues (
+Goldsworthy, 2015; Swanson et al., 2019 ).
+In the present article, the spatial and temporal cues
+associated with the frequency of pure tones and the fundament al
+frequency of complex tones is characterized in acoustic hear ing
+using a computational model of the auditory periphery.
+This computational model has been rigorously validated on
+physiological recordings and behavioral measures (
+Zhang et al.,
+2001; Zilany et al., 2009, 2014 ). The same analyses are
+then performed to characterize the spatial and temporal cues
+available in cochlear implant stimulation followed by curren t
+spread and a point process model of neural excitation (
+Litvak
+et al., 2007; Goldwyn et al., 2012 ). Three cochlear implant
+stimulation strategies are examined including Continuous
+Interleaved Sampling (CIS), High-Deﬁnition CIS (HDCIS), an d
+Peak-Derived Timing (PDT). These strategies were selected as
+representative of conventional stimulation that discards temporal
+ﬁne structure (CIS) and newer strategies that actively encod e
+acoustic temporal ﬁne structure into electrical stimulatio n
+(HDCIS and PDT). Finally, an analysis of how stimulation rat e
+aﬀects neural synchrony is conducted to characterize information
+loss for devices that cannot stimulate with high pulse rates. The
+results inform the extent that acoustic temporal ﬁne structu re of
+incoming sound is transmitted into neural excitation.
+MATERIALS AND METHODS
+Overview
+Computational models were used to compare neural synchrony
+for acoustic and electric stimulation. Neural synchrony wa s
+quantiﬁed as vector strength. For acoustic stimulation, au ditory-
+nerve ﬁbers were simulated based on a computational model of
+the auditory periphery that has been validated with extensive
+physiological data (
+Zilany et al., 2014 ). For electric stimulation,
+cochlear implant stimulation was based on emulations of thre e
+stimulation strategies that diﬀer in how temporal features
+of incoming sounds are encoded. The three strategies were
+Continuous Interleaved Sampling (CIS), High-Deﬁnition CIS
+(HDCIS), and Peak-Derived Timing (PDT). These strategies
+were probed using pure and complex tones. Output electrical
+stimulation patterns were processed through a model of curren t
+spread followed by a point process model of neuronal excitation
+(
+Litvak et al., 2007; Goldwyn et al., 2012 ).
+Stimuli
+Stimuli were pure and complex tones generated in MATLAB R⃝
+as 30 ms tones. Pure tones were generated as sinusoids in sine
+phase. Complex tones were generated by summing sinusoids
+in sine phase. Integer harmonic components were included
+from the fundamental to the highest harmonic <10,000 cycles
+per second (Hz). Harmonic components were summed with
+spectral attenuation of − 6 dB per octave as typically occurs for
+complex sounds in nature (
+McDermott and Oxenham, 2008). All
+stimuli were calibrated to an input level of 65 dB sound pressur e
+level (SPL) for the phenomenological auditory-nerve model a nd
+to have a peak value of one for cochlear implant processing.
+Computational Modeling of Auditory-Nerve
+Response to Acoustic and Electric
+Stimulation
+Phenomenological Auditory-Nerve Model
+Auditory-nerve activity was modeled using a phenomenologica l
+model of auditory processing that has been developed across
+multiple institutions (
+Zilany et al., 2014 ). This computational
+model includes aspects of the auditory periphery including a
+middle-ear ﬁlter, a feed-forward control-path, adaptive ﬁlte ring
+to emulate cochlear mechanics, inner hair-cell transducti on
+kinematics followed by a synapse model and discharge generator.
+Thus, it models multiple aspects of auditory physiology and
+has been validated with a wide range of physiological data
+as well as behavioral data from humans. While the model
+captures diverse aspects of the auditory periphery, it is
+referred to here as an auditory-nerve model since the focus
+is on the auditory-nerve response to acoustic stimuli. In
+this article, it will be referred to as the phenomenological
+auditory-nerve model to distinguish it from the point process
+neuron model used in cochlear implant simulations. The
+phenomenological auditory-nerve model was implemented
+with 256 ﬁbers with logarithmically spaced characteristic
+Frontiers in Computational Neuroscience | www.frontiersi n.org 3 June 2022 | Volume 16 | Article 889992
+
+===== PAGE 4 =====
+Goldsworthy Synchrony in the Auditory Nerve
+frequencies from 125 to 8,000 Hz. The input level for all
+stimuli was speciﬁed as 65 dB SPL. The species parameter
+was set to human, which uses basilar-membrane tuning
+based on (
+Shera et al., 2002 ). The inner and outer hair-
+cell scaling factor was speciﬁed to model normal hearing.
+All three available ﬁber types (low, medium, and high levels
+of spontaneous discharge) were examined but signiﬁcant
+diﬀerences were not observed related to neural synchrony
+between ﬁber types.
+Cochlear Implant Processing
+Cochlear implant stimulation was generated using emulation s
+of CIS, HDCIS, and PDT. The ﬁrst stage of processing for
+all emulations was to process stimuli through a bank of
+twenty-two ﬁlters with logarithmically spaced center frequ encies
+from 125 to 8,000 Hz. Filters were second order with inﬁnite
+impulse response with 3-dB crossover points geometrically
+positioned between center frequencies. For CIS, ﬁlter outputs
+were converted to temporal envelopes using Hilbert transforms .
+Temporal envelopes were then used to modulate 90 kHz pulsatile
+stimulation ( ∼ 4,091 pulses per second per channel). For
+HDCIS, ﬁlter outputs were half-wave rectiﬁed and these recti ﬁed
+signals were used as high-deﬁnition temporal envelopes. Thes e
+temporal envelopes were then used to modulate 90 kHz pulsatile
+stimulation. For PDT , a peak-detection algorithm was used to
+ﬁnd local maxima in ﬁltered outputs and a single pulse was
+scheduled for the corresponding electrode at that instance. All
+electrical pulses were modeled as biphasic with 25 µs phase
+durations and an 8-µs interphase gap.
+Current Spread
+A model was used to characterize the extent that current
+spread degrades temporal cues for pitch perception. It is well-
+known that the spatial cues for pitch are degraded by current
+spread, but it is poorly understood to what extent interaction s
+of nearby electrodes leads to smearing of temporal cues. If
+nearby electrodes encode distinct temporal cues, and if curr ent
+spreads from these electrodes to the same neural region, then
+the synchrony of neural response would be degraded. Current
+spread was modeled using an inverse law and assuming the
+electrode array was linear and parallel to modeled nerve ﬁbers .
+Stimulation was designed for 22 electrodes with electrodesspaced
+0.75 millimeters apart. The distance between electrodes to t he
+closest neuron was 1 millimeter. The voltage at a neuron was
+calculated as the sum of 22 voltage sources modiﬁed based on
+the inverse law for voltage attenuation. Rationale for using simple
+models of electrode geometry and summation of electric ﬁelds
+have been described elsewhere (
+Litvak et al., 2007).
+Neural Excitation
+The modeled voltage source after current spread was used to
+drive a point process model of neuronal excitation as developed
+and described by
+Goldwyn et al. (2012) . This point process
+model of individual neurons provides a compact and accurate
+description of neuronal responses to electric stimulation. T he
+model consists of a cascade of linear and non-linear stages
+associated with biophysical mechanisms of neuronal dynamic s.
+The details of the model are described in
+Goldwyn et al.
+(2012); but brieﬂy, each processing stage is associated with
+biophysical mechanisms of neuronal dynamics. A semi-analytical
+procedure determines parameters based on statistics of single
+ﬁber responses to electrical stimulation, including thresh old,
+relative spread, jitter, and chronaxie. Refractory and summa tion
+eﬀects are accounted for that inﬂuence the responses of audito ry
+nerve ﬁbers to high-rate pulsatile stimulation. For the prese nt
+study, the electrical current after current spread was norma lized
+to an input level of 1 milliampere. For each neural location,
+neurons were modeled having thresholds from 0.1 to 0.8
+milliamperes with increments of 0.05 milliamperes. All other
+model parameters for the point process model were as described
+by
+Goldwyn et al. (2012).
+Synchrony Quantiﬁed as Vector Strength
+The study objective was to characterize synchrony to freque ncy
+and fundamental frequency in the auditory nerve for acousti c
+and electric stimulation. For modeled auditory-nerve respo nse,
+computed using either the phenomenological or point-process
+models, vector strength was calculated based on spike timings
+(
+Goldberg and Brown, 1968; van Hemmen, 2013 ):
+VSAN =
+⏐
+⏐
+⏐
+⏐
+⏐
+1
+N
+N∑
+i= 1
+ej2πfti
+⏐
+⏐
+⏐
+⏐
+⏐
+Where N is the number of action potentials, f is the frequency
+(or fundamental frequency) of interest, and ti is the time of
+event. In the present study, a corresponding vector strength f or
+cochlear implant stimulation was needed to compare synchrony
+at the level of the auditory nerve with synchrony in electric al
+stimulation patterns (both before and after current spread).
+Electrical stimulation is conveyed by cochlear implants wit h
+biphasic pulses with cathodic phase durations typically 25 µs in
+duration followed by symmetric anodic phases to balance charge.
+The total charge per phase was used to control the probability of
+neural spiking in the auditory nerve. As such, a modiﬁed versi on
+of vector strength was used to account for the probability of
+spiking based on charge delivered:
+VSCI =
+⏐
+⏐
+⏐∑N
+i= 1 qi ∗ ej2πfti
+⏐
+⏐
+⏐
+∑N
+i= 1 qi
+Where qi is the normalized charge per phase of each biphasic
+pulse. This metric of vector strength falls between 0 and 1 and
+corresponds to the original deﬁnition but with events weight ed
+by the probability of spiking approximated by the charge per
+phase delivered for each stimulating pulse.
+Analysis of Interspike Intervals
+As has been described in the literature, electric stimulati on
+produces a high degree of synchronous ﬁring of auditory-
+nerve ﬁbers (
+Hong and Rubinstein, 2006; Hughes et al., 2013 ).
+Pulse trains with abrupt stimulus onsets can produce hyper-
+synchronization to the ﬁrst pulse followed by refractorines s and
+potentially hyper-synchronization not to the next pulse in a
+Frontiers in Computational Neuroscience | www.frontiersi n.org 4 June 2022 | Volume 16 | Article 889992
+
+===== PAGE 5 =====
+Goldsworthy Synchrony in the Auditory Nerve
+sequence but to alternating pulses in the sequence. This putat ive
+response to pulse trains with abrupt onsets has been shown in
+computational models as well as measures of the electrically
+evoked compound action potential. Hyper-synchronization to
+alternating pulses would not be detected by vector strength
+since only the relative phase of the stimulus cycle is conside red.
+Consequently, interspike intervals were analyzed. Interspik e
+interval distributions were calculated based on 100 iterat ions of
+a 500 Hz input tone that was 100 ms in duration. Current level
+per pulse was chosen so that the stimuli evoked ∼ 100 spikes
+per second.
+Vector Strength Across Frequencies and
+Across Fundamental Frequencies
+Analyses were conducted to compare vector strength of modeled
+auditory-nerve activity for acoustic and electric stimula tion for
+pure tones for semitone-spaced frequencies from 125 to 8,000 Hz
+and for complex tones for semitone-spaced fundamental
+frequencies from 55 to 1,760 Hz (corresponding to musical not es
+from A1 to A6). Response properties were characterized for a
+representative frequency or fundamental frequency, and vec tor
+strength was calculated for all frequencies and fundamenta l
+frequencies. Interpretation of results focus on informatio n
+present in electric stimulation and how synchrony is aﬀected b y
+current spread and neural response.
+Effect of Stimulation Rate on Neural
+Response
+The analyses described in the previous sections were conduct ed
+with modeled stimulation rate of 90,000 pulses per second
+(pps), which is possible with state-of-the-art cochlear implan ts.
+However, the most common implants in use today only support
+stimulation rates of 14,400 pps, which must be distributed acr oss
+electrodes. Typically, electrode selection is used to distr ibute
+stimulation across 6–8 electrodes per stimulation cycle div iding
+to 1,800 pps per electrode. Further, there are many legacy
+implants that only support slower stimulation. The N22 implant
+from Cochlear Corporation can only stimulate at ∼ 3,500
+pps (the exact rate depends on the stimulus conﬁguration).
+Even with an aggressive selection of only ﬁve electrodes per
+stimulation cycle, the resulting electrode stimulation ra te would
+only be 700 pps per electrode. To conclude this article, the
+eﬀects of reduced stimulation rate on modeled neural response
+is examined.
+Front-end spectral ﬁltering was implemented using the
+same bank of 22 band-pass ﬁlters described in previous
+sections. Temporal envelopes including temporal ﬁne structur e
+were derived as used for HDCIS, but channel selection was
+implemented using an emulation of Advanced Combinatorial
+Encoders (ACE). This combination of high-deﬁnition tempora l
+envelopes with electrode selection is referred to here as hig h-
+deﬁnition ACE (HD-ACE). Channel selection was speciﬁed to
+be increasingly aggressive to counteract decreases in stim ulation
+rate. Eight active electrodes were used for the 90,000 pps
+stimulation rate, six for the 14,400 pps stimulation rate, and four
+for the 3,500 pps stimulation rate. Current spread was modeled as
+in previous sections. Neural response was modeled for neurons
+having ﬁber locations from 0 to 30 millimeters in 0.1-millime ter
+increments with the electrode array parallel and 1 millimete r
+away. The most basal electrode was modeled as perpendicular
+to the 0-millimeter neural location. As in previous sections,
+neuron thresholds between 0.1 and 0.8 millivolts in 0.1-mill ivolt
+increments were modeled.
+RESUL TS
+Modeled Neural Response to Acoustic
+Stimulation
+Figure 1 shows auditory-nerve activity when driven by acoustic
+stimulation as modeled by the phenomenological model of
+auditory processing (
+Zilany et al., 2014 ). The upper subpanels
+of Figure 1 show auditory-nerve activity and response metrics
+for a 500 Hz pure tone. It has been shown in the literature that
+the auditory nerve responds with well-deﬁned tonotopy and
+with synchronous phase-locked spiking to acoustic frequency
+for frequencies at least as high as 2 to 4 kHz (
+Dynes and
+Delgutte, 1992 ), though noting arguments and evidence for
+phase-locked ﬁring as high as 10 kHz ( Verschooten et al., 2019 ).
+The modeled activity accounts for tonotopy and synchrony witha
+clearly deﬁned tonotopic response centered on the characteris tic
+frequency of the tone. The response exhibits a high degree of
+synchronous excitation periodically every 2 ms. The periodic
+excitation travels from base to apex capturing the establishe d
+behavior of the cochlear traveling wave. The calculated met ric of
+synchrony shows that vector strength to the 500 Hz frequency is
+high with a maximum of 0.88.
+The lower subpanels of Figure 1 show modeled auditory-
+nerve activity and response metrics for a complex tone with a
+fundamental frequency of 220 Hz. In terms of spatial excitati on
+cues, there are well-deﬁned spatially resolved peaks in the
+excitation pattern for the fundamental and roughly for the ﬁr st
+8–10 harmonics. Above the tenth harmonic, the excitation pea ks
+are not well-deﬁned in terms of tonotopic response. Importantly,
+the synchrony of the response is also well-deﬁned with spatially
+resolved peaks in the patterning of vector strength. Synchron y
+near the fundamental is high reaching a maximum of 0.90
+near the fundamental. At that point, synchrony ﬂuctuates in
+between harmonic components. For ﬁbers having a characteristic
+frequency near a harmonic, the ﬁber response is not synchronous
+to the fundamental; instead, response phase-locks to the temporal
+ﬁne structure of the dominant harmonic (
+Delgutte and Kiang,
+1984; Sachs et al., 2002; Kumaresan et al., 2013 ). In between
+harmonic components, two or more components interact to
+produce strong oscillations at the fundamental frequency. Th is
+alternating pattern of synchrony to the fundamental has been
+referred to as a ﬂuctuation proﬁle and has been hypothesized
+as important for pitch (
+Carney et al., 2015; Carney, 2018 ).
+For ﬁbers with characteristic frequencies above 2 kHz, as ﬁl ters
+broaden allowing more harmonic components to interact, the
+periodicity of the fundamental dominates the temporal response,
+and the vector strength increases with a maximum of 0.97 in
+this region.
+Frontiers in Computational Neuroscience | www.frontiersi n.org 5 June 2022 | Volume 16 | Article 889992
+
+===== PAGE 6 =====
+Goldsworthy Synchrony in the Auditory Nerve
+FIGURE 1 | Modeled auditory-nerve response to acoustic stimulation f or pure and complex tones. Left panels show spectrogram repr esentations of average ﬁber
+ﬁring rate for 256 ﬁbers logarithmically spaced between 125 an d 8,000 Hz. Middle panels show spatial excitation cues as ﬁrin g rate averaged across time. Right
+panels show temporal cues as vector strength to the input ton e frequency of fundamental frequency.
+Modeled Neural Response to Electric
+Stimulation
+Figure 2 shows modeled neural activity for three cycles of a
+500 Hz pure tone for the CIS, HDCIS, and PDT stimulation
+strategies implemented with a stimulating pulse rate of 90,00 0
+pps. This ﬁgure clariﬁes how diﬀerent stimulation strategies
+encode temporal cues of pure tones into electric stimulation
+and how neural excitation is predicted to respond. For this
+ﬁgure, only a single electrode was modeled for stimulation. The
+driving stimulus is represented in the upper subpanels as a
+sinusoid. For CIS, a relatively slow temporal envelope is deri ved
+using a Hilbert transform then used to modulate constant-
+rate pulsatile stimulation. Importantly, the pulse rate used f or
+CIS is independent of the incoming tonal frequency and thus
+does not convey temporal cues for pitch associated with the
+incoming sound. For HDCIS, the envelope that is derived and
+used to modulate pulsatile stimulation is a half-wave rectiﬁ ed
+version of the ﬁltered acoustic waveform, which does contai n
+temporal ﬁne structure associated with the frequency of the
+incoming sound. The electric stimulation represented in the
+middle subpanels clearly indicates the encoding of this cycl e-
+by-cycle amplitude modulation of pulsatile stimulation. The
+PDT strategy does not derive envelopes but instead schedules
+pulsatile activity based on peak detection implemented on
+the ﬁltered acoustic waveform. This approach is like the ﬁne
+structure processing used on MED-EL devices, but the latter
+based on zero crossings rather than peak detection. In either
+case, the electric stimulation clearly conveys the periodic ity of
+the incoming acoustic frequency as a singular electric pulse for
+each cycle.
+The lower panels of Figure 2 show the modeled neural
+response for neurons with thresholds having a range of 0.1–
+0.8 milliamperes (with 0.1 milliampere increments) for 201 ﬁbe r
+locations. The ﬁber locations, or neural positions, are given
+relative to a location of 0 millimeters corresponding to the closest
+neuron to the stimulating electrode, but with the stimulati ng
+electrode 1 millimeter away from that closest neuron. With th is
+range of thresholds and neural locations, the modeled neura l
+activity shows a range of responses. For CIS, the stochastic nature
+of the point process model, coupled with the range of modeled
+thresholds, causes spike timings to quickly desynchronize a fter
+having a strong onset response. For HDCIS, the range of modeled
+thresholds and spatial locations provides a clear synchrony of
+spiking both the pulse rate and acoustic periodicity but noting
+that no modeled neurons responded to the last stimulating pulse
+of the stimulus. For PDT , the precise temporal pattern of the
+electric stimulus produces synchronous behavior in the mode led
+neural elements.
+Interspike Intervals in Response to Electric
+Stimulation
+Figure 3 shows ﬁrst and all-order interspike intervals for
+modeled auditory-nerve responses described in the previous
+section. The CIS strategy produces a high-rate pulse train,
+the rate of which is independent of the frequency of the
+acoustic input, the neural response does not have interspike
+Frontiers in Computational Neuroscience | www.frontiersi n.org 6 June 2022 | Volume 16 | Article 889992
+
+===== PAGE 7 =====
+Goldsworthy Synchrony in the Auditory Nerve
+FIGURE 2 | Modeled auditory-nerve response to electric stimulation f or three cycles of a 500 Hz pure tone as encoded by three differ ent cochlear implant stimulation
+strategies. For CIS, a relatively slow envelope extraction p rocedure discards incoming temporal ﬁne structure, and the d erived envelope is used to modulate
+constant-rate pulsatile stimulation. For HDCIS, the envelo pe is “high-deﬁnition” in that it is a rectiﬁed version of the ﬁlt ered input signal and thus retains the temporal
+ﬁne structure. For PDT , individual electric pulses are trigg ered based on the temporal maxima of the ﬁltered input signal. The lower subpanels show modeled neural
+response to stimulation with the neural position indicatin g the relative position of the modeled neural elements with a value of 0 millimeters indicating a neuron closest
+to the electrode array, which is modeled as parallel to the ne rve ﬁber and 1 millimeter away.
+intervals representative of the 500 Hz periodicity of the input
+acoustic tone. Instead, the CIS strategy produces interspike
+interval distributions qualitatively like high-rate dist ributions
+recorded from cat auditory-nerve ﬁbers (
+Miller et al., 2008 ) and
+as previously modeled by Goldwyn et al. (2012) . In contrast,
+both HDCIS and PDT produced interspike intervals with
+clear histogram periodicities at the desired 2 ms periodicity of
+the input acoustic tonal frequency. The roll-oﬀ of histogram
+interval counts for the ﬁrst-order statistics and ﬂattened
+interval counts for the all-order interval counts agrees wi th the
+recordings made in cat auditory nerve ﬁbers by
+Mckinney and
+Delgutte (1999) . These modeling results suggest that HDCIS
+and PDT convey temporal cues for pitch beyond what is
+characterized by vector strength. These results are importa nt
+because cochlear implant stimulation can sometimes introdu ce
+unwanted timing distribution of neural events. Speciﬁcally ,
+abrupt pulsatile stimulation may lead to hyper-synchronizati on
+to an initial pulse with recovery and synchrony to odd pulses.
+Such artifactual response properties would not diminish vecto r
+strength but would aﬀect interspike intervals. The results he re
+suggest that such artifactual hyper-synchronization to alternating
+stimulation cycles is not occurring and that the interspike
+intervals produced by HDCIS and FSP strategies is comparable to
+that observed with acoustic stimulation (
+Mckinney and Delgutte,
+1999).
+Comparison of Cochlear Implant
+Stimulation Strategies for Pure T ones
+Figure 4 shows cochlear implant stimulation and derived metrics
+for a representative 500 Hz pure tone. The tonotopic aspect
+of the stimulus is well-deﬁned with the strongest response
+seen in the ﬁlter channel with center frequency of 500 Hz.
+The encoding of the acoustic temporal ﬁne structure of the
+tone—the cycle-by-cycle periodicity—is strikingly diﬀeren t with
+CIS compared to HDCIS and PDT. Speciﬁcally, CIS discards
+acoustic temporal ﬁne structure and stimulates using constant -
+rate pulsatile stimulation, with the pulse rate independent of the
+incoming sound. Consequently, synchrony quantiﬁed as vect or
+strength between the stimulation pattern and the tone frequen cy
+is near zero. This result is not surprising since it is known th at
+CIS discards acoustic temporal ﬁne structure and only encode s
+envelope modulations (
+Svirsky, 2017 ). In contrast, HDCIS and
+PDT have markedly improved synchrony to the input tone
+frequency, HDCIS has a vector strength of 0.79 at the maximal ly
+excited ﬁlter, while PDT has a vector strength of 0.98 at its
+maximally excited ﬁlter.
+The derived metrics of spatial and temporal cues illustrate
+the eﬀects of modeled current spread and neural excitation.
+Current spread, naturally, spreads the spatial response reduci ng
+the relative power of the maximally excited ﬁlter. Interesti ngly,
+the compressive nature of modeled neural excitation increas es
+Frontiers in Computational Neuroscience | www.frontiersi n.org 7 June 2022 | Volume 16 | Article 889992
+
+===== PAGE 8 =====
+Goldsworthy Synchrony in the Auditory Nerve
+FIGURE 3 | First and all-order interspike intervals for modeled audit ory-nerve responses to electric stimulation depicted in Figure 2. Interspike interval distributions
+estimated from 10,000 interspike intervals with the pulse r ates as indicated. Current level per pulse was chosen so that the stimuli evoked ∼ 100 spikes per second.
+the relative power of the maximally excited ﬁlter. This eﬀect
+is likely caused by low-level ﬁlters not producing suﬃcient
+electrical stimulation to reach threshold of modeled neuron s.
+The synchrony of response is also aﬀected by modeled current
+spread and neural excitation. Since cochlear implant sound
+processing used here incorporates recursive ﬁltering with phas e-
+delay characteristics comparable to traveling wave mechani cs of
+the cochlea, the energy proﬁle for each cycle peaks ﬁrst in high -
+frequency ﬁlters with notable elongation near the peak reson ant
+ﬁlter ( i.e., the spectral maximum). This temporal spreading of
+ﬁne structure results in peak energy occurring ﬁrst in high-
+frequency channels with maximal temporal spreading near the
+ﬁlter with highest spectral output. Consequently, current spr ead
+results in temporal ﬁne structure of one ﬁltering channel to
+diminish the temporal precision of adjacent channels. This is
+observed in the marked reduction of synchrony following current
+spread. However, for HDCIS and PDT , vector strength is higher
+after modeling the neural response using the point process model
+with variable thresholds. This recovery of synchrony is lik ely
+driven by the synchronization of modeled spiking to charge
+accumulation on a cycle-by-cycle basis with rest suﬃcient pe riod
+in between periods of the encoded temporal ﬁne structure.
+Comparison of Cochlear Implant
+Stimulation Strategies for Complex T ones
+Figure 5 presents a representative analysis of the spatial
+and temporal cues associated with complex tones. For this
+representative analysis, a harmonic complex with fundamental
+frequency of 220 Hz is processed through the three stimulatio n
+strategies. The spatial response to the harmonic tone is
+nearly identical for the three strategies, with the response
+quantiﬁed as the proportion of charge delivered to each
+electrode. Note that proportional charge is normalized here,
+clinical implementation of PDT will likely require higher cha rge
+on low-frequency channels since lower pulse rates require
+more charge per pulse to obtain audibility thresholds and
+comfortable listening levels (
+Goldsworthy and Shannon, 2014;
+Bissmeyer et al., 2020; Goldsworthy et al., 2021, 2022 ). For all
+three stimulation strategies, the fundamental frequency c learly
+produces a resolved peak in the spatial pattern, which occurs in
+the stimulation pattern as well as after modeling current sprea d
+and neural excitation. Compared to the spatial cues available
+in acoustic hearing (see Figure 1), the spatial cues available in
+electric hearing are poorly represented beyond the fundamenta l
+frequency. The modeled neural response to acoustic input of
+Figure 1 depicts 8–10 harmonics that produce spatially resolved
+excitation, which is in general agreement with the physiologi cal
+and psychophysical literature (
+Plack and Oxenham, 2005 ). In
+contrast, with only 22 logarithmically spaced ﬁlters, only t he
+fundamental and ﬁrst harmonic produced spatially resolved
+harmonics, the latter being substantially degraded by curr ent
+spread but noting that the modeled neural response enhances the
+response.
+The temporal cues associated with the fundamental frequency
+of complex tones strikingly diﬀer for CIS compared to HDCIS
+and PDT. For all three stimulation strategies, temporal cues
+Frontiers in Computational Neuroscience | www.frontiersi n.org 8 June 2022 | Volume 16 | Article 889992
+
+===== PAGE 9 =====
+Goldsworthy Synchrony in the Auditory Nerve
+FIGURE 4 | Cochlear implant stimulation, neural response, and derive d metrics of spatial and temporal cues for a 500 Hz pure tone. F or the electrodogram
+representations of the left panels, the electric potential was normalized to a peak of 1 millivolt as indicated by the col or bar and only the anodic phase of stimulation is
+depicted. The neural responses were calculated for neuron t hresholds from 0.1 to 0.8 in 0.1 microamperes steps and the cu rrent level of the electrical stimulus after
+current spread was speciﬁed to produce ∼ 100 spikes per second.
+quantiﬁed as vector strength of synchrony between the elect ric
+stimulus and modeled neural excitation with the incoming
+acoustic stimulus is particularly high for high-frequency s pectral
+regions where unresolved harmonics dominate and produce
+strong temporal periodicity. However, the stimulation strat egies
+diﬀer in the temporal response associated with the fundamental .
+Speciﬁcally, temporal cues associated with the fundamental
+frequency of the stimulus are not available in the low-frequ ency
+spectral region for the CIS strategy but are clearly present and
+markedly high for both HDCIS and PDT.
+Synchrony Across Frequencies for Pure
+and Complex T ones
+Figure 6 shows synchrony quantiﬁed as vector strength for
+modeled auditory nerve ﬁbers for acoustic and electric
+stimulation. The upper and lower subpanels show synchrony
+in response to pure and complex tones, respectively. In each
+subpanel, the acoustic neural response is the vector strength
+based on the phenomenological auditory-nerve model. The
+diﬀerent columns of subpanels show the synchrony of the electric
+stimulus before and after current spread and neural modeling
+with the point process model.
+For pure tones, modeled acoustic neural response captures
+the diminishing of neural synchrony that occurs in normal
+hearing for frequencies above 2–4 kHz. The CIS stimulation
+strategy simply does not convey temporal ﬁne structure, which
+is a known design ﬂaw. The HDCIS and PDT strategies
+both provide a high level of synchrony in the stimulation
+pattern, which is degraded by current spread, but mostly
+restored by the point process model of neural excitation.
+Neural synchrony does not diminish near 2 kHz for electrical
+stimulation, which agrees with physiological data suggestin g
+that neural synchrony is higher for electric than for acoust ic
+stimulation since electric stimulation bypasses the sluggi sh
+synaptic mechanisms of transduction (
+Dynes and Delgutte,
+1992). The vector strength of response for electric stimulation
+does diminish above 4 kHz, which is driven by the electric
+pulses not being perfect impulses but having ﬁnite durations
+(i.e., the total pulse width of about 60 µs is a signiﬁcant
+portion of the tonal period). The most relevant ﬁnding is
+that the synchrony of modeled neural response to pure tones
+is comparably high for HDCIS and PDT when compared
+to synchrony observed in acoustic hearing. The observed
+synchrony in the modeled neural response is consistently higher
+than that observed in modeled acoustic hearing for the PDT
+stimulation strategy.
+The modeled neural response for acoustic stimulation is
+similar for complex tones as for pure tones. As depicted
+in Figure 1, the vector strength for complex tones has two
+distinct regions with high levels of synchrony: one associa ted
+with the fundamental component and one associated with the
+high-frequency spectral regions of unresolved harmonics. T he
+Frontiers in Computational Neuroscience | www.frontiersi n.org 9 June 2022 | Volume 16 | Article 889992
+
+===== PAGE 10 =====
+Goldsworthy Synchrony in the Auditory Nerve
+FIGURE 5 | As Figure 4 but for complex tones with fundamental frequency of 220 Hz.
+maximum vector strength across ﬁbers is shown for complex
+tones as a summary statistic. For the model of auditory-nerv e
+response to acoustic stimulation, synchrony to the fundamen tal
+follows the same behavior as a pure tone. Synchrony is
+relatively high for the three stimulation strategies. For C IS,
+since synchrony is not provided for the fundamental, the
+observed synchrony derives from the high-frequency spectra l
+region of unresolved harmonics. As can be seen in Figure 3, the
+temporal periodicity of stimulation in high-frequency chann els
+are in phase and thus are not degraded by current spread.
+Modeled neural excitation increases vector strength since t he
+point process neurons tend to respond during the same phase of
+the charge accumulation. Observed synchrony was higher yet for
+HDCIS and PDT with both being enhanced by modeled neural
+response. While parameterization of the computational model
+will aﬀect results, neural excitation to electric stimulati on clearly
+provides temporal cues with comparable neural synchrony in
+acoustic hearing.
+Effect of Stimulation Rate on Neural
+Response
+Figure 7 shows the modeled neural response for HD-ACE
+implemented for the three stimulation rates for pure and complex
+tones. Only the ﬁrst 20 millimeters of the ﬁber locations are
+shown since the modeled 22-electrode array only extends to
+be perpendicular to the 16-millimeter location. The cycle-by -
+cycle temporal ﬁne structure for both pure and complex tones
+are conveyed by the stimulation strategy but with noticeabl e
+reduction in the amount of ﬁne-structure detail that is encod ed.
+These modeling results clarify the eﬀect of stimulation rate
+on encoding temporal ﬁne structure into neural activity. Whi le
+some degree of synchrony is maintained despite the reduction in
+stimulation rate, there is clearly a loss of detail in the res ponse of
+the auditory nerve. Psychophysically, a previous study has shown
+that cochlear implant users are sensitive to small ﬂuctuation s in
+charge density that occur associated with this loss of detai l in the
+temporal ﬁne structure (
+Goldsworthy et al., 2022).
+DISCUSSION
+Neural synchrony to incoming stimulation is exceptionally
+high in the auditory system. The auditory nerve ﬁres with
+synchrony to incoming sounds for frequencies up to two and
+arguably as high as 10 thousand cycles per second (
+Dynes
+and Delgutte, 1992; Chung et al., 2014, 2019; Verschooten
+et al., 2019
+). This remarkable synchrony was examined here by
+comparing computational models of auditory-nerve response to
+acoustic and electric stimulation. It was shown that synchr ony to
+sound of the most common stimulation strategies for cochlea r
+implants (ACE and CIS) is completely discarded for pure tones
+and substantially degraded for complex tones, speciﬁcally tha t
+the temporal ﬁne structure of the fundamental frequency is
+discarded. In contrast, modeling results indicate that sti mulation
+strategies that explicitly encode temporal ﬁne structure (HDC IS
+and PDT) provide comparable levels of neural synchrony to
+Frontiers in Computational Neuroscience | www.frontiersi n.org 10 June 2022 | Volume 16 | Article 889992
+
+===== PAGE 11 =====
+Goldsworthy Synchrony in the Auditory Nerve
+FIGURE 6 | Synchrony of neural response to the frequency of pure tones a nd fundamental frequency of complex tones for acoustic and e lectric stimulation.
+sound as produced in acoustic hearing. Modeled current spread
+reduced spatial and temporal cues for pitch perception, but the
+point process model of neuronal response increased both spatial
+speciﬁcity and neural synchrony. Discussion focuses on how
+computational modeling could be used to yield better encodin g
+of temporal cues for cochlear implants.
+The present article compares modeled neural synchrony for
+diﬀerent cochlear implant stimulation strategies with synch rony
+observed in acoustic hearing. The ACE and CIS strategies are
+commonly used with cochlear implants, but it is well-known
+that these strategies discard temporal ﬁne structure of soun d.
+The extent, however, that computational modeling indicates t hat
+HDCIS and PDT encode temporal ﬁne structure of incoming
+sound into synchronous neural activity is enticing. Of cour se,
+aspects of modeling such as the extent of current spread and
+the distribution of neural parameters will aﬀect modeling resu lts,
+and this ﬂexible capacity will allow models to be tuned to
+physiological data collected in the future. Since HDCIS enco des
+aspects of temporal ﬁne structure into stimulation, and does n ot
+explicitly remove that information using smoothed envelopes ,
+some extent of neural synchrony will be transmitted. Simila rly,
+stimulation strategies that trigger stimulation pulses bas ed on
+temporal ﬁne structure such as PDT , FSP , and FS4 will produce
+varying degrees of neural synchrony (
+van Hoesel, 2007; V andali
+and van Hoesel, 2011; Riss et al., 2014, 2016 ). The present
+article does not attempt to exhaustively describe synchrony for
+all strategies, but to clearly describe synchrony for common
+stimulation strategies.
+The modeling results presented here incorporate current
+spread and a point process model or neuronal response.
+Synchrony was degraded by current spread because the front-
+end ﬁltering included phase delay like that produced by traveli ng
+wave mechanics of the cochlea. If linear phase ﬁltering were
+instead used for the front-end ﬁltering—as often used for
+cochlear implant signal processing—then stimulation timing
+features would be coherent and current spread would cause less
+smearing of temporal information. However, it is not presentl y
+known the extent that modeling traveling wave mechanics is
+important for conveying temporal ﬁne structure cues (
+Loeb
+et al., 1983; Loeb, 2005; McGinley et al., 2012 ). Computational
+modeling can be used to clarify the tradeoﬀs between emulatin g
+traveling wave mechanics and minimizing the smearing of
+temporal cues for pitch perception (
+Cohen, 2009; Karg et al.,
+2013; Seeber and Bruce, 2016; van Gendt et al., 2016 ).
+There is a rich body of literature associated with temporal
+cues for pitch perception in the auditory-nerve response
+with strong arguments for diﬀerent metrics to quantify the
+strength of these cues (
+Meddis and Hewitt, 1992; Cariani and
+Delgutte, 1996a,b; Cedolin and Delgutte, 2010; Hartmann
+et al., 2019
+). Vector strength was made the focal point
+Frontiers in Computational Neuroscience | www.frontiersi n.org 11 June 2022 | Volume 16 | Article 889992
+
+===== PAGE 12 =====
+Goldsworthy Synchrony in the Auditory Nerve
+FIGURE 7 | Modeled neural response to electrode stimulation for pure a nd complex tones for high-deﬁnition emulations of the Advanc ed Combinatorial Encoders
+stimulation strategy. The images show modeled ﬁber location vs. time for ﬁve cycles of a 500 Hz pure tone (left panels) and ﬁve cycles of a 220 Hz complex tone (right
+panels). The color bar indicates the average ﬁring rate of the neural response. pps, pulses per second.
+of the present article as a starting point for comparing
+the temporal response properties of the auditory nerve to
+acoustic and electric stimulation because it is a straightf orward
+metric of synchrony that has been used in basic studies
+of physiology (
+van Hemmen, 2013 ). Further, interval
+histograms were examined and the periodicity information
+present in the neural response to electrical stimulation
+was comparable to that observed for acoustic stimulation
+(
+Mckinney and Delgutte, 1999 ). Future work should consider
+other metrics of synchrony as predictors of behavioral pitch
+resolution as results are better characterized for diﬀerent
+stimulation strategies.
+The extent that encoding synchrony into sound processing
+for cochlear implants will improve music and speech perception
+for recipients is unknown. The results of the present study sho w
+that synchrony is poorly encoded by conventional ACE and CIS
+strategies, but that synchrony can be restored using stimul ation
+based on physiology that actively encodes the temporal ﬁne
+structure of incoming sound. Behavioral results for strate gies
+that attempt to encode temporal ﬁne structure ( e.g., HDCIS, FSP ,
+PDT) have yielded promising, but mixed results (
+van Hoesel
+and Tyler, 2003; van Hoesel, 2007; V andali and van Hoesel,
+2011
+). The most promising results for such strategies suggest
+that prolonged rehabilitation is needed to make use of newly
+encoded timing cues, which suggests long-term recovery and
+rehabilitation of neural circuits tuned to synchronous act ivity
+(
+Kral and Tillein, 2006; Kral and Lenarz, 2015; Riss et al.,
+2016). Musical sound quality was shown to be better with FSP
+compared to HDCIS particularly for bass frequency perception
+(
+Roy et al., 2015 ). New strategies designed to encode temporal
+ﬁne structure should be evaluated with prolonged periods of
+experience. Further, optimization of new strategies could ben eﬁt
+by modeling how synchrony to sound can be restored ﬁrst at the
+level of the stimulation pattern but ultimately at the level o f the
+auditory nerve.
+DATA AVAILABILITY STATEMENT
+The modeling code and results supporting the conclusions of
+this article will be made available by the authors, without un due
+reservation.
+AUTHOR CONTRIBUTIONS
+The author conﬁrms being the sole contributor of this work an d
+has approved it for publication.
+FUNDING
+This research was supported by a grant from the National
+Institute on Deafness and Other Communication Disorders
+(NIDCD) of the National Institutes of Health: R01 DC018701.
+The funding organization had no role in the design and conduc t
+of the study; in the collection, analysis, and interpretatio n of the
+data; or in the decision to submit the article for publication ; or in
+the preparation, review, or approval of the article.
+Frontiers in Computational Neuroscience | www.frontiersi n.org 12 June 2022 | Volume 16 | Article 889992
+
+===== PAGE 13 =====
+Goldsworthy Synchrony in the Auditory Nerve
+REFERENCES
+Bahmer, A., and Gupta, D. S. (2018). Role of oscillations in audito ry temporal
+processing: a general model for temporal processing of sensory informati on in
+the brain? Front. Neurosci. 12, 793. doi: 10.3389/fnins.2018.00793
+Bissmeyer, S. R. S., Hossain, S., and Goldsworthy, R. L. (2020). P erceptual learning
+of pitch provided by cochlear implant stimulation rate.PLoS ONE 15, e0242842.
+doi: 10.1371/journal.pone.0242842
+Brughera, A., Dunai, L., and Hartmann, W. M. (2013). Human interaural time
+diﬀerence thresholds for sine tones: the high-frequency limit. J. Acoust. Soc.
+Am. 133, 2839–2855. doi: 10.1121/1.4795778
+Cariani, P. A., and Delgutte, B. (1996a). Neural correlates of the pi tch of
+complex tones. I. Pitch and pitch salience. J. Neurophysiol. 76, 1698–1716.
+doi: 10.1152/jn.1996.76.3.1698
+Cariani, P. A., and Delgutte, B. (1996b). Neural correlates of the pi tch of complex
+tones. II. Pitch shift, pitch ambiguity, phase invariance, pitch circularity, rate
+pitch, and the dominance region for pitch. J. Neurophysiol. 76, 1717–1734.
+doi: 10.1152/jn.1996.76.3.1717
+Carlyon, R. P., and Deeks, J. M. (2002). Limitations on rate discri mination. J.
+Acoust. Soc. Am. 112, 1009–1025. doi: 10.1121/1.1496766
+Carney, L. H. (2018). Supra-threshold hearing and ﬂuctuation proﬁles:
+implications for sensorineural and hidden hearing loss. J. Assoc. Res.
+Otolaryngol. 19, 331–352. doi: 10.1007/s10162-018-0669-5
+Carney, L. H., Li, T., and McDonough, J. M. (2015). Speech coding in the
+brain: representation of vowel formants by midbrain neurons tuned to s ound
+ﬂuctuations. ENeuro 2, 1–12. doi: 10.1523/ENEURO.0004-15.2015
+Cedolin, L., and Delgutte, B. (2010). Spatiotemporal representation of the pitch of
+harmonic complex tones in the auditory nerve. J. Neurosci. 30, 12712–12724.
+doi: 10.1523/JNEUROSCI.6365-09.2010
+Chung, Y., Buechel, B. D., Sunwoo, W., Wagner, J. D., and Delgut te, B. (2019).
+Neural ITD sensitivity and temporal coding with cochlear implants in an
+animal model of early-onset deafness. J. Assoc. Res. Otolaryngol. 20, 37–56.
+doi: 10.1007/s10162-018-00708-w
+Chung, Y., Hancock, K. E., Nam, S.-I., and Delgutte, B. (2014). Coding of electric
+pulse trains presented through cochlear implants in the auditory midbrain
+of awake rabbit: comparison with anesthetized preparations. J. Neurosci. 34,
+218–231. doi: 10.1523/JNEUROSCI.2084-13.2014
+Cohen, L. T. (2009). Practical model description of peripheral neural excitation
+in cochlear implant recipients: 4. Model development at low pulse rates:
+General model and application to individuals. Hear. Res. 248, 15–30.
+doi: 10.1016/j.heares.2008.11.008
+Delgutte, B., and Kiang, N. Y. (1984). Speech coding in the audi tory
+nerve: V. vowels in background noise. J. Acoust. Soc. Am. 75, 908–918.
+doi: 10.1121/1.390537
+Dynes, S. B. C., and Delgutte, B. (1992). Phase-locking of audi tory-nerve
+discharges to sinusoidal electric stimulation of the cochlea.Hear. Res. 58, 79–90.
+doi: 10.1016/0378-5955(92)90011-B
+Eddington, D. K., Dobelle, W. H., Brackmann, D. E., Mladejovsky, M. G., and
+Parkin, J. (1978). Place and periodicity pitch by stimulation of multi ple scala
+tympani electrodes in deaf volunteers. Trans. Am. Soc. Artif. Intern. Organs 24,
+1–5. doi: 10.1177/00034894780870S602
+Goldberg, J. M., and Brown, P. B. (1968). Functional organizat ion of the
+dog superior olivary complex: an anatomical and electrophysiological
+study. J. Neurophysiol. 31, 639–656. doi: 10.1152/jn.1968.
+31.4.639
+Golding, N. L., and Oertel, D. (2012). Synaptic integration in dendrites: exceptional
+need for speed. J. Physiol. 590, 5563–5569. doi: 10.1113/jphysiol.2012.229328
+Goldsworthy, R. L. (2015). Correlations between pitch and phoneme per ception
+in cochlear implant users and their normal hearing peers. J. Assoc. Res.
+Otolaryngol. 16, 797–809. doi: 10.1007/s10162-015-0541-9
+Goldsworthy, R. L., Bissmeyer, S. R. S., and Camarena, A. (2022). A dvantages
+of pulse rate compared to modulation frequency for temporal pitch
+perception in cochlear implant users. J. Assoc. Res. Otolaryngol. 23, 137–150.
+doi: 10.1007/s10162-021-00828-w
+Goldsworthy, R. L., Camarena, A., and Bissmeyer, S. R. S. (2021). P itch perception
+is more robust to interference and better resolved when provided by puls e rate
+than by modulation frequency of cochlear implant stimulation. Hear. Res. 409,
+108319. doi: 10.1016/j.heares.2021.108319
+Goldsworthy, R. L., Delhorne, L. A., Braida, L. D., and Reed, C. M. ( 2013).
+Psychoacoustic and phoneme identiﬁcation measures in cochlear-
+implant and normal-hearing listeners. Trends Amplif. 17, 27–44.
+doi: 10.1177/1084713813477244
+Goldsworthy, R. L., and Shannon, R. V. (2014). Training improves co chlear
+implant rate discrimination on a psychophysical task. J. Acoust. Soc. Am. 135,
+334–341. doi: 10.1121/1.4835735
+Goldwyn, J. H., Rubinstein, J. T., and Shea-Brown, E. (2012). A po int process
+framework for modeling electrical stimulation of the auditory nerve. J.
+Neurophysiol. 108, 1430–1452. doi: 10.1152/jn.00095.2012
+Hartmann, W. M., Cariani, P. A., and Colburn, H. S. (2019). Noise edg e
+pitch and models of pitch perception. J. Acoust. Soc. Am. 145, 1993–2008.
+doi: 10.1121/1.5093546
+Hong, R. S., and Rubinstein, J. T. (2006). Conditioning pulse tra ins in
+cochlear implants: eﬀects on loudness growth. Otol. Neurotol. 27, 50–56.
+doi: 10.1097/01.mao.0000187045.73791.db
+Hughes, M. L., Castioni, E. E., Goehring, J. L., and Baudhuin, J. L. (2013). Temporal
+response properties of the auditory nerve: data from human cochlear-impla nt
+recipients. Hear. Res. 285, 46–57. doi: 10.1016/j.heares.2012.01.010
+Joris, P., and Yin, T. C. T. (2007). A matter of time: internal delay s in
+binaural processing. Trends Neurosci. 30, 70–78. doi: 10.1016/j.tins.2006.
+12.004
+Joris, P. X., Schreiner, C. E., and Rees, A. (2004). Neural processi ng of amplitude-
+modulated sounds. Physiol. Rev. 84, 541–577. doi: 10.1152/physrev.00029.2003
+Karg, S. A., Lackner, C., and Hemmert, W. (2013). Temporal interactio n in
+electrical hearing elucidates auditory nerve dynamics in humans. Hear. Res.
+299, 10–18. doi: 10.1016/j.heares.2013.01.015
+Kong, Y.-Y., and Carlyon, R. P. (2010). Temporal pitch perception at h igh rates in
+cochlear implants. J. Acoust. Soc. Am. 127, 3114–3123. doi: 10.1121/1.3372713
+Kral, A., and Lenarz, T. (2015). How the brain learns to listen: deafne ss and the
+bionic ear. E-Neuroforum 6, 21–28. doi: 10.1007/s13295-015-0004-0
+Kral, A., and Tillein, J. (2006). Brain plasticity under cochlear implan t stimulation.
+Adv. Otorhinolaryngol. 64, 89–108. doi: 10.1159/000094647
+Kumaresan, R., Peddinti, V. K., and Cariani, P. (2013). Synchron y capture
+ﬁlterbank: auditory-inspired signal processing for tracking indi vidual
+frequency components in speech. J. Acoust. Soc. Am. 133, 4290–4310.
+doi: 10.1121/1.4802653
+Landsberger, D. M., and Galvin, J. J. (2011). Discrimination be tween sequential
+and simultaneous virtual channels with electrical hearing. J. Acoust. Soc. Am.
+130, 1559–1566. doi: 10.1121/1.3613938
+Landsberger, D. M., Padilla, M., and Srinivasan, A. G. (2012). R educing current
+spread using current focusing in cochlear implant users. Hear. Res. 284, 16–24.
+doi: 10.1016/j.heares.2011.12.009
+Liberman, M. C., Epstein, M. J., Cleveland, S. S., Wang, H., and Mais on, S. F.
+(2016). Toward a diﬀerential diagnosis of hidden hearing loss in humans. PLoS
+ONE 11, e0162726. doi: 10.1371/journal.pone.0162726
+Litvak, L. M., Spahr, A. J., and Emadi, G. (2007). Loudness growt h observed under
+partially tripolar stimulation: model and data from cochlear implant listene rs.
+J. Acoust. Soc. Am. 122, 967–981. doi: 10.1121/1.2749414
+Loeb, G. E. (2005). Are cochlear implant patients suﬀering from percept ual
+dissonance? Ear Hear. 26, 435–450. doi: 10.1097/01.aud.0000179688.87621.48
+Loeb, G. E., White, M. W., and Merzenich, M. M. (1983). Spatial c ross-correlation.
+Biol. Cybern. 47, 149–163. doi: 10.1007/BF00337005
+Loizou, P. C. (1999). Introduction to cochlear implants. IEEE Eng. Med. Biol. Mag.
+18, 32–42. doi: 10.1109/51.740962
+Looi, V., Gfeller, K. E., and Driscoll, V. D. (2012). Music appreciati on and
+training for cochlear implant recipients: a review. Semin. Hear. 33, 307–334.
+doi: 10.1055/s-0032-1329222
+Lorenzi, C., Gilbert, G., Carn, H., Garnier, S., and Moore, B. C. J. (2 006).
+Speech perception problems of the hearing impaired reﬂect inability to use
+temporal ﬁne structure. Proc. Natl. Acad. Sci. U. S. A. 103, 18866–18869.
+doi: 10.1073/pnas.0607364103
+Marimuthu, V., Swanson, B. A., and Mannell, R. (2016). Cochlear impla nt rate
+pitch and melody perception as a function of place and number of electrod es.
+Trends Hear. 20, 1–20. doi: 10.1177/2331216516643085
+McDermott, J. H., and Oxenham, A. J. (2008). Music perception,
+pitch, and the auditory system. Curr. Opin. Neurobiol. 18, 452–463.
+doi: 10.1016/j.conb.2008.09.005
+Frontiers in Computational Neuroscience | www.frontiersi n.org 13 June 2022 | Volume 16 | Article 889992
+
+===== PAGE 14 =====
+Goldsworthy Synchrony in the Auditory Nerve
+McGinley, M. J., Charles Liberman, M., Bal, R. M., and Oertel, D. (2012 ).
+Generating synchrony from the asynchronous: compensation for coc hlear
+traveling wave delays by the dendrites of individual brainstem ne urons. J.
+Neurosci. 32, 9301–9311. doi: 10.1523/JNEUROSCI.0272-12.2012
+Mckinney, M. F., and Delgutte, B. (1999). A possible neurophysiolo gical basis
+of the octave enlargement eﬀect. J. Acoust. Soc. Am. 106, 2679–2692.
+doi: 10.1121/1.428098
+Meddis, R., and Hewitt, M. J. (1992). Modeling the identiﬁcati on of concurrent
+vowels with diﬀerent fundamental frequencies. J. Acoust. Soc. Am. 91, 233–245.
+doi: 10.1121/1.402767
+Micheyl, C., Xiao, L., and Oxenham, A. J. (2012). Characterizing the dependence of
+pure-tone frequency diﬀerence limens on frequency, duration, and lev el. Hear.
+Res. 292, 1–13. doi: 10.1016/j.heares.2012.07.004
+Middlebrooks, J. C., and Snyder, R. L. (2007). Auditory prosthesi s with
+a penetrating nerve array. J. Assoc. Res. Otolaryngol. 8, 258–279.
+doi: 10.1007/s10162-007-0070-2
+Miller, C. A., Hu, N., Zhang, F., Robinson, B. K., and Abbas, P. J. (2008).
+Changes across time in the temporal responses of auditory nerve ﬁbers
+stimulated by electric pulse trains. J. Assoc. Res. Otolaryngol. 9, 122–137.
+doi: 10.1007/s10162-007-0108-5
+Miyazono, H., and Moore, B. C. J. (2013). Implications for pitch mech anisms of
+perceptual learning of fundamental frequency discrimination: eﬀects of spectral
+region and phase. Acoust. Sci. Technol. 34, 404–412. doi: 10.1250/ast.34.404
+Moore, B. C. J., Tyler, L. K., and Marslen-Wilson, W. (2008). Intro duction. The
+perception of speech: from sound to meaning. Philos. Trans. R. Soc. Lond. B.
+Biol. Sci. 363, 917–921. doi: 10.1098/rstb.2007.2195
+Niparko, J. K., Tobey, E. A., Thal, D. J., Eisenberg, L. S., Wang, N. Y., Quittner, A.
+L., et al. (2010). Spoken language development in children following co chlear
+implantation. JAMA 303, 1498–1506. doi: 10.1001/jama.2010.451
+Oertel, D., Bal, R., Gardner, S. M., Smith, P. H., and Joris, P. X. (2000 ). Detection
+of synchrony in the activity of auditory nerve ﬁbers by octopus c ells of the
+mammalian cochlear nucleus. Proc. Natl. Acad. Sci. U. S. A. 97, 11773–11779.
+doi: 10.1073/pnas.97.22.11773
+Oxenham, A. J., Bernstein, J. G. W., and Penagos, H. (2004). Correc t tonotopic
+representation is necessary for complex pitch perception. Proc. Natl. Acad. Sci.
+U. S. A. 101, 1421–1425. doi: 10.1073/pnas.0306958101
+Oxenham, A. J., Micheyl, C., Keebler, M. V., Loper, A., and Santure tte, S. (2011).
+Pitch perception beyond the traditional existence region of pitc h. Proc. Natl.
+Acad. Sci. U. S. A. 108, 7629–7634. doi: 10.1073/pnas.1015291108
+Plack, C., and Oxenham, A. J. (2005). “Pitch: neural coding and pe rception, ”
+in Pitch: Neural Coding and Perception, Vol . 24, eds C. J. Plack, R. R.
+Fay, A. J. Oxenham, and A. N. Popper (New York, NY: Springer-Verlag),
+doi: 10.1007/0-387-28958-5
+Riss, D., Hamzavi, J. S., Blineder, M., Flak, S., Baumgartner, W. D ., Kaider,
+A., et al. (2016). Eﬀects of stimulation rate with the FS4 and HDCIS
+coding strategies in cochlear implant recipients. Otol. Neurotol. 37, 882–888.
+doi: 10.1097/MAO.0000000000001107
+Riss, D., Hamzavi, J. S., Blineder, M., Honeder, C., Ehrenreich, I ., Kaider,
+A., et al. (2014). FS4, FS4-p, and FSP: a 4-month crossover study
+of 3 ﬁne structure sound-coding strategies. Ear Hear. 35, e272–e281.
+doi: 10.1097/AUD.0000000000000063
+Roy, A. T., Carver, C., Jiradejvong, P., and Limb, C. J. (2015).Musical sound quality
+in cochlear implant users: a comparison in bass frequency perception be tween
+ﬁne structure processing and high-deﬁnition continuous interlea ved sampling
+strategies. Ear Hear. 36, 582–590. doi: 10.1097/AUD.0000000000000170
+Sachs, M. B., Bruce, I. C., Miller, R. L., and Young, E. D. (2002). biological basis of
+hearing-aid design. Ann. Biomed. Eng. 30, 157–168. doi: 10.1114/1.1458592
+Seeber, B. U., and Bruce, I. C. (2016). The history and future of neural modeling for
+cochlear implants. Network 27, 53–66. doi: 10.1080/0954898X.2016.1223365
+Shannon, R. V. (1983). Multichannel electrical stimulation of th e auditory
+nerve in man. I. Basic psychophysics. Hear. Res. 11, 157–189.
+doi: 10.1016/0378-5955(83)90077-1
+Shannon, R. V. (1992). Temporal modulation transfer functions in pa tients with
+cochlear implants. J. Acoust. Soc.Am. 91, 2156–2164. doi: 10.1121/1.403807
+Shera, C. A., Guinan, J. J., and Oxenham, A. J. (2002). Revised e stimates of human
+cochlear tuning from otoacoustic and behavioral measurements. Proc. Natl.
+Acad. Sci. U. S. A. 99, 3318–3323. doi: 10.1073/pnas.032675099
+Svirsky, M. (2017). Cochlear implants and electronic hearing. Phys. Today 70,
+53–58. doi: 10.1063/PT.3.3661
+Swanson, B. A., Marimuthu, V. M. R., and Mannell, R. H. (2019). Place and
+temporal cues in cochlear implant pitch and melody perception. Front.
+Neurosci. 13, 1–18. doi: 10.3389/fnins.2019.01266
+Tillein, J., Hubka, P., and Kral, A. (2011). Sensitivity to interau ral
+time diﬀerences with binaural implants: is it in the brain? Cochlear
+Implants Int. 12(Suppl. 1), S44–S50. doi: 10.1179/146701011X13001035
+753344
+Tong, Y. C., Clark, G. M., Blamey, P. J., Busby, P. A., and Dowell, R. C . (1982).
+Psychophysical studies for two multiple-channel cochlear implant pat ients. J.
+Acoust. Soc. Am. 71, 153–160. doi: 10.1121/1.387342
+van Gendt, M. J., Briaire, J. J., Kalkman, R. K., and Frijns, J. H. M. ( 2016). A fast,
+stochastic, and adaptive model of auditory nerve responses to coc hlear implant
+stimulation. Hear. Res. 341, 130–143. doi: 10.1016/j.heares.2016.08.011
+van Hemmen, J. L. (2013). Vector strength after Goldberg, Brown, an d von
+Mises: biological and mathematical perspectives. Biol. Cybern. 107, 385–396.
+doi: 10.1007/s00422-013-0561-7
+van Hoesel, R. J. M. (2007). Sensitivity to binaural timing in bila teral cochlear
+implant users. J. Acoust. Soc. Am. 121, 2192–2206. doi: 10.1121/1.2537300
+van Hoesel, R. J. M., and Tyler, R. S. (2003). Speech perception, loca lization,
+and lateralization with bilateral cochlear implants. J. Acoust. Soc. Am. 113,
+1617–1630. doi: 10.1121/1.1539520
+V andali, A. E., and van Hoesel, R. J. M. (2011). Development of a tempora l
+fundamental frequency coding strategy for cochlear implants. J. Acoust. Soc.
+Am. 129, 4023–4036. doi: 10.1121/1.3573988
+Verschooten, E., Shamma, S., Oxenham, A. J., Moore, B. C. J., Joris , P.
+X., Heinz, M. G., et al. (2019). The upper frequency limit for the
+use of phase locking to code temporal ﬁne structure in humans: a
+compilation of viewpoints. Hear. Res. 377, 109–121. doi: 10.1016/j.heares.2019.
+03.011
+Wilson, B. S., and Dorman, M. F. (2008). Cochlear implants: a remarkable past and
+a brilliant future. Hear. Res. 242, 3–21. doi: 10.1016/j.heares.2008.06.005
+Wilson, B. S., and Dorman, M. F. (2018). A brief history of the
+cochlear implant and related treatments. Neuromodulation 1197–1207.
+doi: 10.1016/B978-0-12-805353-9.00099-1
+Zeng, F.-G. (2002). Temporal pitch in electric hearing. Hearing Research, 174(1–2),
+101–106. doi: 10.1016/S0378-5955(02)00644-5
+Zhang, X., Heinz, M. G., Bruce, I. C., and Carney, L. H. (2001). A
+phenomenological model for the responses of auditory-nerve ﬁbers: I.
+Nonlinear tuning with compression and suppression. J. Acoust. Soc. Am. 109,
+648–670. doi: 10.1121/1.1336503
+Zilany, M. S. A., Bruce, I. C., and Carney, L. H. (2014). Updated paramet ers and
+expanded simulation options for a model of the auditory periphery. J. Acoust.
+Soc. Am. 135, 283–286. doi: 10.1121/1.4837815
+Zilany, M. S. A., Bruce, I. C., Nelson, P. C., and Carney, L. H. (2009 ). A
+phenomenological model of the synapse between the inner hair cell a nd
+auditory nerve: long-term adaptation with power-law dynamics. J. Acoust. Soc.
+Am. 126, 2390–2412. doi: 10.1121/1.3238250
+Conﬂict of Interest: The author declares that the research was conducted in the
+absence of any commercial or ﬁnancial relationships that could be c onstrued as a
+potential conﬂict of interest.
+Publisher’s Note: All claims expressed in this article are solely those of the authors
+and do not necessarily represent those of their aﬃliated organizat ions, or those of
+the publisher, the editors and the reviewers. Any product that may b e evaluated in
+this article, or claim that may be made by its manufacturer, is not gua ranteed or
+endorsed by the publisher.
+Copyright © 2022 Goldsworthy. This is an open-access article dist ributed under the
+terms of the Creative Commons Attribution License (CC BY). T he use, distribution
+or reproduction in other forums is permitted, provided the or iginal author(s) and
+the copyright owner(s) are credited and that the original pub lication in this journal
+is cited, in accordance with accepted academic practice. No use, distribution or
+reproduction is permitted which does not comply with these t erms.
+Frontiers in Computational Neuroscience | www.frontiersi n.org 14 June 2022 | Volume 16 | Article 889992

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Insights Into Electrophysiological Metrics of Cochlear Health in Cochlear Implant Users Using a Computational Model</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2024-01-26">26 January 2024</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct status="extracted">
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Marko</forename><surname>Takanen</surname></persName>
+							<email>marko.takanen@medel.com</email>
+							<idno type="ORCID">0000-0002-0420-3580</idno>
+							<affiliation key="aff0">
+								<note type="raw_affiliation"><label>1</label> MED-EL Medical Electronics, Research and Development , Fürstenweg 77a , 6020 Innsbruck , Austria</note>
+								<orgName type="department">MED-EL Medical Electronics, Research and Development</orgName>
+								<address>
+									<addrLine>Fürstenweg 77a</addrLine>
+									<postCode>6020</postCode>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Stefan</forename><surname>Strahl</surname></persName>
+							<idno type="ORCID">0000-0002-7770-6146</idno>
+							<affiliation key="aff0">
+								<note type="raw_affiliation"><label>1</label> MED-EL Medical Electronics, Research and Development , Fürstenweg 77a , 6020 Innsbruck , Austria</note>
+								<orgName type="department">MED-EL Medical Electronics, Research and Development</orgName>
+								<address>
+									<addrLine>Fürstenweg 77a</addrLine>
+									<postCode>6020</postCode>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Konrad</forename><surname>Schwarz</surname></persName>
+							<idno type="ORCID">0000-0001-5814-9519</idno>
+							<affiliation key="aff0">
+								<note type="raw_affiliation"><label>1</label> MED-EL Medical Electronics, Research and Development , Fürstenweg 77a , 6020 Innsbruck , Austria</note>
+								<orgName type="department">MED-EL Medical Electronics, Research and Development</orgName>
+								<address>
+									<addrLine>Fürstenweg 77a</addrLine>
+									<postCode>6020</postCode>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Insights Into Electrophysiological Metrics of Cochlear Health in Cochlear Implant Users Using a Computational Model</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2024-01-26">26 January 2024</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">AA5620936E6D4101C11DB7EB3B195E2B</idno>
+					<idno type="DOI">10.1007/s10162-023-00924-z</idno>
+					<note type="submission">Received: 16 January 2023 / Accepted: 18 December 2023 /</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.9.0" ident="GROBID" when="2026-06-07T12:16+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">0.9.0</label>
+					<label type="parameters">startPage=0, endPage=2, consolidateCitations=0, consolidateHeader=0, consolidateFunders=0, includeRawAffiliations=true, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=null, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>Auditory modeling</term>
+					<term>Cochlear implants</term>
+					<term>eCAP</term>
+					<term>Inter-phase gap</term>
+					<term>Neural survival</term>
+					<term>Electrode position</term>
+				</keywords>
+			</textClass>
+			<abstract>
+				<p>Purpose The hearing outcomes of cochlear implant users depend on the functional status of the electrode-neuron interface inside the cochlea. This can be assessed by measuring electrically evoked compound action potentials (eCAPs). Variations in cochlear neural health and survival are reflected in eCAP-based metrics. The difficulty in translating promising results from animal studies into clinical use has raised questions about to what degree eCAP-based metrics are influenced by nonneural factors. Here, we addressed these questions using a computational model. Methods A 2-D computational model was designed to simulate how electrical signals from the stimulating electrode reach the auditory nerve fibers distributed along the cochlea, evoking action potentials that can be recorded as compound responses at the recording electrodes. Effects of physiologically relevant variations in neural survival and in electrode-neuron and stimulating-recording electrode distances on eCAP amplitude growth functions (AGFs) were investigated. Results In line with existing literature, the predicted eCAP AGF slopes and the inter-phase gap (IPG) effects depended on the neural survival, but only when the IPG effect was calculated as the difference between the slopes of the two AGFs expressed in linear input-output scale. As expected, shallower eCAP AGF slopes were obtained for increased stimulating-recording electrode distance and larger eCAP thresholds for greater electrode-neuron distance. These non-neural factors had also minor interference on the predicted IPG effect. Conclusions The model predictions demonstrate previously found dependencies of eCAP metrics on neural survival and non-neural aspects. The present findings confirm data from animal studies and provide insights into applying described metrics in clinical practice.</p>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+	</text>
+</TEI>

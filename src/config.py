@@ -51,12 +51,16 @@ class Settings:
     # --- Paths -------------------------------------------------------
     base_dir: Path = BASE_DIR
     data_dir: Path = BASE_DIR / "data"
-    raw_dir: Path = BASE_DIR / "data" / "raw"
-    processed_dir: Path = BASE_DIR / "data" / "processed"
-    interim_dir: Path = BASE_DIR / "data" / "interim"
+    # Corpus + index locations are env-overridable so a separate sample corpus
+    # (for the public demo) can be built without touching a private corpus.
+    raw_dir: Path = _env_path("NEURORAG_RAW_DIR", BASE_DIR / "data" / "raw")
+    processed_dir: Path = _env_path("NEURORAG_PROCESSED_DIR", BASE_DIR / "data" / "processed")
+    interim_dir: Path = _env_path("NEURORAG_INTERIM_DIR", BASE_DIR / "data" / "interim")
     storage_dir: Path = BASE_DIR / "storage"
-    v1_index_dir: Path = BASE_DIR / "storage" / "faiss_index"
-    v2_index_dir: Path = BASE_DIR / "storage" / "faiss_index_v2_structured"
+    v1_index_dir: Path = _env_path("NEURORAG_V1_INDEX_DIR", BASE_DIR / "storage" / "faiss_index")
+    v2_index_dir: Path = _env_path(
+        "NEURORAG_V2_INDEX_DIR", BASE_DIR / "storage" / "faiss_index_v2_structured"
+    )
 
     # --- Models ------------------------------------------------------
     embedding_model: str = _env_str(

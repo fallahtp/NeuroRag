@@ -6,8 +6,13 @@ import re
 
 from langchain_core.documents import Document
 
+import sys
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # src/
+from config import settings
+
 BASE_DIR = Path(__file__).resolve().parents[3]
-JSON_DIR = BASE_DIR / "data" / "interim" / "structured_json"
+JSON_DIR = settings.interim_dir / "structured_json"
 
 SKIP_SECTION_TYPES = {
     "references",

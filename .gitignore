@@ -13,11 +13,13 @@ __pycache__/
 # editor files
 .vscode/
 
-# all project data
-data/
+# all project data (private corpus stays ignored; public demo sample is committed)
+data/*
+!data/sample/
 
-# vector indexes (FAISS and Qdrant backends)
-storage/
+# vector indexes (private indexes stay ignored; public demo sample is committed)
+storage/*
+!storage/sample/
 
 # logs
 *.log

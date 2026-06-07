@@ -16,9 +16,10 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # src/
 from load_structured_documents import load_structured_documents
 from vector_store import build_dense_index
+from config import settings
 
 BASE_DIR = Path(__file__).resolve().parents[3]
-INDEX_DIR = BASE_DIR / "storage" / "faiss_index_v2_structured"
+INDEX_DIR = settings.v2_index_dir
 
 CHUNK_SIZE = 900
 CHUNK_OVERLAP = 120

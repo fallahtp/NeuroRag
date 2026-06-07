@@ -1,0 +1,1807 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Effects of Degrees of Degeneration on the Electrical Excitation of Human Spiral Ganglion Neurons Based on a High-Resolution Computer Model</title>
+				<funder>
+					<orgName type="full">Deutsche Forschungsgemeinschaft (DFG, German Research</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2022-07-06">06 July 2022</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct status="extracted">
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Albert</forename><forename type="middle">M</forename><surname>Croner</surname></persName>
+							<email>albert.croner@tum.de</email>
+							<affiliation key="aff3">
+								<note type="raw_affiliation"><label>1</label> Department of Electrical and Computer Engineering , Technical University of Munich , Munich , Germany,</note>
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">Technical University of Munich</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff4">
+								<note type="raw_affiliation"><label>2</label> Munich Institute of Biomedical Engineering , Technical University of Munich , Garching , Germany,</note>
+								<orgName type="institution" key="instit1">Munich Institute of Biomedical Engineering</orgName>
+								<orgName type="institution" key="instit2">Technical University of Munich</orgName>
+								<address>
+									<settlement>Garching</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Amirreza</forename><surname>Heshmat</surname></persName>
+							<affiliation key="aff5">
+								<note type="raw_affiliation"><label>3</label> Laboratory for Inner Ear Biology , Medical University of Innsbruck , Innsbruck , Austria</note>
+								<orgName type="laboratory">Laboratory for Inner Ear Biology</orgName>
+								<orgName type="institution">Medical University of Innsbruck</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Anneliese</forename><surname>Schrott-Fischer</surname></persName>
+							<affiliation key="aff5">
+								<note type="raw_affiliation"><label>3</label> Laboratory for Inner Ear Biology , Medical University of Innsbruck , Innsbruck , Austria</note>
+								<orgName type="laboratory">Laboratory for Inner Ear Biology</orgName>
+								<orgName type="institution">Medical University of Innsbruck</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Rudolf</forename><surname>Glueckert</surname></persName>
+							<affiliation key="aff5">
+								<note type="raw_affiliation"><label>3</label> Laboratory for Inner Ear Biology , Medical University of Innsbruck , Innsbruck , Austria</note>
+								<orgName type="laboratory">Laboratory for Inner Ear Biology</orgName>
+								<orgName type="institution">Medical University of Innsbruck</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Werner</forename><surname>Hemmert</surname></persName>
+							<affiliation key="aff3">
+								<note type="raw_affiliation"><label>1</label> Department of Electrical and Computer Engineering , Technical University of Munich , Munich , Germany,</note>
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">Technical University of Munich</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff4">
+								<note type="raw_affiliation"><label>2</label> Munich Institute of Biomedical Engineering , Technical University of Munich , Garching , Germany,</note>
+								<orgName type="institution" key="instit1">Munich Institute of Biomedical Engineering</orgName>
+								<orgName type="institution" key="instit2">Technical University of Munich</orgName>
+								<address>
+									<settlement>Garching</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Siwei</forename><surname>Bai</surname></persName>
+							<affiliation key="aff3">
+								<note type="raw_affiliation"><label>1</label> Department of Electrical and Computer Engineering , Technical University of Munich , Munich , Germany,</note>
+								<orgName type="department">Department of Electrical and Computer Engineering</orgName>
+								<orgName type="institution">Technical University of Munich</orgName>
+								<address>
+									<settlement>Munich</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff4">
+								<note type="raw_affiliation"><label>2</label> Munich Institute of Biomedical Engineering , Technical University of Munich , Garching , Germany,</note>
+								<orgName type="institution" key="instit1">Munich Institute of Biomedical Engineering</orgName>
+								<orgName type="institution" key="instit2">Technical University of Munich</orgName>
+								<address>
+									<settlement>Garching</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<note type="raw_affiliation">Shanghai Jiao Tong University , China</note>
+								<orgName type="institution">Shanghai Jiao Tong University</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<note type="raw_affiliation">Shanghai Jiao Tong University , China Paul Avan ,</note>
+								<orgName type="department">Paul Avan</orgName>
+								<orgName type="institution">Shanghai Jiao Tong University</orgName>
+								<address>
+									<country key="CN">China</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<note type="raw_affiliation">Institut de l&apos;Audition , Institut Pasteur , France</note>
+								<orgName type="department">Institut de l&apos;Audition</orgName>
+								<orgName type="institution">Institut Pasteur</orgName>
+								<address>
+									<country key="FR">France</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Effects of Degrees of Degeneration on the Electrical Excitation of Human Spiral Ganglion Neurons Based on a High-Resolution Computer Model</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2022-07-06">06 July 2022</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">E4316B39783D8933EEE4A335DC5853D2</idno>
+					<idno type="DOI">10.3389/fnins.2022.914876</idno>
+					<note type="submission">This article was submitted to Neural Technology, a section of the journal Frontiers in Neuroscience Received: 07 April 2022 Accepted: 13 June 2022</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.9.0" ident="GROBID" when="2026-06-07T12:16+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">0.9.0</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=0, consolidateFunders=0, includeRawAffiliations=true, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>cochlear implant</term>
+					<term>computational model</term>
+					<term>human</term>
+					<term>spiral ganglion neurons</term>
+					<term>neural degeneration</term>
+					<term>ectopic activation</term>
+					<term>personalized model</term>
+					<term>deep insertion</term>
+				</keywords>
+			</textClass>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>After hearing loss retrograde degeneration of spiral ganglion neurons (SGNs) has been described. Studies modeling the effects of degeneration mostly omitted peripheral processes (dendrites). Recent experimental observations indicated that degenerating SGNs manifested also a reduced diameter of their dendrites. We simulated populations of 400 SGNs inside a high resolution cochlear model with a cochlear implant, based on µCT scans of a human temporal bone. Cochlear implant stimuli were delivered as biphasic pulses in a monopolar configuration. Three SGN situations were simulated, based on our previous measurements of human SGN dendrites: (A) SGNs with intact dendrites (before degeneration), (B) degenerating SGNs, dendrites with a smaller diameter but original length, (C) degenerating SGNs, dendrites omitted. SGN fibers were mapped to characteristic frequency, and place pitch was estimated from excitation profiles. Results from degenerating SGNs (B, C) were similar. Most action potentials were initiated in the somatic area for all cases (A, B, C), except for areas near stimulating electrodes in the apex with intact SGNs (A), where action potentials were initiated in the distal dendrite. In most cases, degenerating SGNs had lower thresholds than intact SGNs (A) (down to -2 dB). Excitation profiles showed increased ectopic activation, i.e., activation of unintended neuronal regions, as well as similar neuronal regions excited by different apical electrodes, for degenerating SGNs (B, C). The estimated pitch showed cases of pitch reversals in apical electrodes for intact SGNs (A), as well as mostly identical pitches evoked by the four most apical electrodes for degenerating SGNs (B, C). In conclusion, neuronal excitation profiles to electrical stimulation exhibited similar traits in both ways of modeling SGN degeneration. Models showed degeneration of dendrites caused increased ectopic activation, as well as similar excitation profiles and pitch evoked by different apical electrodes. Therefore, insertion of electrodes beyond approximately 450 • may not provide any benefit if SGN dendrites are degenerated.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="1.">INTRODUCTION</head><p>In normal hearing humans, a sound consisting of a single frequency will excite neurons in a limited and specific area within the cochlea, with high frequencies exciting neurons more in the base, and low frequencies exciting neurons more in the apex <ref type="bibr" target="#b53">(von Békésy, 1960)</ref>. This tonotopic arrangement of the cochlea is also exploited for cochlear implants (CIs), where multiple electrodes are placed in the cochlea at different positions. The coding strategy of the CI converts sound which is recorded by a microphone behind the ear into stimulation currents delivered to individual electrodes, which in turn stimulate distinct neuron populations <ref type="bibr" target="#b32">(Loizou, 1999;</ref><ref type="bibr" target="#b56">Wilson, 2008)</ref>. Overall, CIs are able to restore speech understanding in otherwise profoundly hearing impaired patients to a surprisingly high degree, which makes them the most successful neuroimplants today. However, the extent to which hearing fidelity is restored in CI patients still differs, with hearing performance varying strongly between individual subjects <ref type="bibr" target="#b5">(Blamey et al., 1996;</ref><ref type="bibr" target="#b26">Holden et al., 2013)</ref>. There are multiple possible reasons contributing to this variance in performance. One such reason may be that every human has an individual cochlea, i.e., when two inner ears are implanted with the same CI, differing cochlear geometries may lead to differences in electric current flow. This is especially relevant as electric stimulation impedes the precision of neural excitation compared to acoustic, i.e., with electric stimulation it is not possible to perfectly exploit the tonotopic arrangement of the cochlea. Imperfect exploitation of the tonotopic map manifests as e.g., a low number of independent frequency channels in CI stimulation <ref type="bibr" target="#b10">(Croghan et al., 2017)</ref>, or stimulation of unintended neuronal regions (e.g., "cross-turn" stimulation, <ref type="bibr" target="#b27">Kalkman et al., 2014;</ref><ref type="bibr">"tip-shifts, " Nelson et al., 2008)</ref>. Another reason may lie within the spiral ganglion neurons (SGNs) responsible for the transmission of sound information, which may degenerate or die <ref type="bibr" target="#b19">(Glueckert et al., 2005)</ref> and thereby affect the auditory information transmitted to the brain.</p><p>In order to estimate how cochlear geometry and state of SGNs, i.e., their morphology, influence the performance of CI subjects in experiments, it would be necessary to measure both cochlear geometry and SGN morphology. The former can be measured to a limited degree in living patients, e.g., using CT <ref type="bibr" target="#b40">(Nogueira et al., 2016)</ref>. However, measurements in living patients, especially of implanted cochleae, will only yield rough measures such as the height and diameter of the cochlea. Higher resolution can only be measured post-mortem, e.g., using slice preparations or µCT scans. Therefore, as cochlear measurements in living patients are severely limited, several volume conduction models of human cochleae were developed over the years. Cochlea models employed to simulate CI stimulation started out as manually created geometries, e.g., a model of an unrolled tube <ref type="bibr" target="#b13">(Finley et al., 1990)</ref>, or of a coiled, tapering tube <ref type="bibr" target="#b15">(Frijns et al., 2001;</ref><ref type="bibr" target="#b23">Hanekom, 2001)</ref>, including basic structures such as cochlear scalae. Those manually created geometries were later employed to generate "personalized" models, i.e., by fitting the model geometries to measurements of actual human cochleae, such as height, diameter, or post-mortem mid-modiolar crosssections <ref type="bibr" target="#b27">(Kalkman et al., 2014;</ref><ref type="bibr" target="#b35">Malherbe et al., 2016;</ref><ref type="bibr" target="#b40">Nogueira et al., 2016)</ref>. Those models, while including some degree of personalization, were still based on simple geometries. A more recent development is the creation of models based on highdefinition µCT scans of post-mortem human cochleae, including segmentation of individual structures. As creating such detailed models is especially labor intensive, there exist only a small number of those to date. Nevertheless, they offer the advantage of including fine details of structures present in physical cochleae, which influence the current spread in the cochlea under CI stimulation <ref type="bibr" target="#b2">(Bai et al., 2019;</ref><ref type="bibr" target="#b43">Potrusil et al., 2020)</ref>.</p><p>Cochlear volume conduction models allow for examination of current spread within the cochlea, but do not give information about whether the actual neurons in the auditory nerve are excited. Therefore, they are generally combined with multi-compartment neuron models, representing type I SGNs. However, SGNs may manifest different morphologies which need to be taken into account, especially in profoundly hearing impaired subjects who are candidates for a CI implantation. One hearing-loss-induced change in SGN morphology is the retrograde degeneration of peripheral neuronal processes, caused by deafferentiation to inner hair cells. Such neural degeneration has been observed in both animals <ref type="bibr" target="#b3">(Bichler et al., 1983;</ref><ref type="bibr">Spoendlin, 1984;</ref><ref type="bibr" target="#b57">Wise et al., 2017)</ref> and humans <ref type="bibr" target="#b38">(Nadol, 1990;</ref><ref type="bibr" target="#b19">Glueckert et al., 2005;</ref><ref type="bibr" target="#b31">Linthicum and Fayad, 2009;</ref><ref type="bibr" target="#b44">Rask-Andersen et al., 2010)</ref>. Neural degeneration has, therefore, been incorporated in several models, in most cases by modeling neuron populations with both an intact peripheral process and a completely missing peripheral process <ref type="bibr" target="#b45">(Rattay et al., 2001</ref><ref type="bibr" target="#b46">(Rattay et al., , 2013;;</ref><ref type="bibr" target="#b7">Briaire and Frijns, 2006;</ref><ref type="bibr" target="#b49">Smit et al., 2008</ref><ref type="bibr" target="#b50">Smit et al., , 2010;;</ref><ref type="bibr" target="#b51">Snel-Bongers et al., 2013;</ref><ref type="bibr" target="#b27">Kalkman et al., 2014;</ref><ref type="bibr" target="#b34">Malherbe et al., 2015;</ref><ref type="bibr" target="#b43">Potrusil et al., 2020)</ref>. Intact and missing peripheral processes are the extremes of neural degeneration of the auditory nerve, excluding the actual death of SGNs. It is, however, not clear how the degenerative process proceeds in between those two extremes, especially for humans. A possible intermediate degenerative state is the shrinking of peripheral processes' diameter, as described by <ref type="bibr" target="#b24">Heshmat et al. (2020)</ref>.</p><p>In this study, we present a detailed model of the human inner ear, consisting of a high resolution finite element (FE) volume conduction model of a human cochlea and a population of modeled type I SGNs. The FE cochlea model was based on µCT scans of an implanted human cochlea and included reconstructed nerve fiber paths <ref type="bibr" target="#b2">(Bai et al., 2019)</ref>. Neuron populations were based on the multi-compartment model from <ref type="bibr" target="#b46">Rattay et al. (2013)</ref> and modeled 400 auditory nerve fibers (ANFs) spread out along the tonotopic axis. With the modeled neuron population, differences in excitation behavior based on different degenerative stages were investigated, including an intermediate stage with thin peripheral processes. In this study, the peripheral process of a modeled ANF is denoted as "dendrite" and the central process as "axon."</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.">METHODS</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.1.">Reconstruction of the Cochlea Model</head><p>The FE cochlea model with an implanted electrode array was reconstructed from a set of µCT scans of a human cadaveric temporal bone. The implanted cochlea model was then placed in a human head model at the petrous part of the left temporal bone, which was necessary to correctly place the CI ground electrode. This resulted in a FE model with 21,937,778 volumetric mesh elements, shown in Figure <ref type="figure" target="#fig_0">1</ref>. The trajectories of 400 ANFs spanning from the base to the apex of the cochlea were reconstructed based on the FE mesh of the auditory nerve. The lengths of the reconstructed neuron paths ranged from 5.5 to 8.2 mm. Neuron paths are illustrated in Traversal of electrode arrays into the scala vestibuli is regularly observed in implanted cochleae, with arrays either partially or entirely located in scala vestibuli (e.g., approximately 25% of cochleae, <ref type="bibr" target="#b54">Wardrop et al., 2005</ref>; approximately 5% of cochleae, <ref type="bibr" target="#b41">O'Connell et al., 2016;</ref><ref type="bibr" target="#b47">Risi, 2018)</ref>. The presence of scala traversal may, however, be a limitation of the model. It is yet to be studied whether the traversal would influence modeling outcomes.</p><p>Electrode contact pairs were numbered with the most basal electrode pair as "electrode 1, " and the most apical electrode pair as "electrode 12." The CI stimulation scheme in this study was monopolar: the current-controlled stimulus was delivered from a single electrode, with the ground electrode placed extracochlearly on the left temporal bone of the skull. Electrode-neuron distance, i.e., the shortest distance from an electrode to either the beginning of a neuron path or to the nearest point along a neuron path, ranged from approximately 0.5 mm to 1 mm, as depicted in Figure <ref type="figure" target="#fig_2">3</ref>. For the purpose of calculating electrodeneuron distance, the coordinate of an electrode was determined as the center point between the two electrode contacts of a pair. Finally, the electric potentials on all points along the ANF paths were extracted from the FE simulation.</p><p>A detailed description of the reconstruction and electrical properties of the FE model, as well as the reconstruction of neuron trajectories, can be found in <ref type="bibr" target="#b2">Bai et al. (2019)</ref>. Electrode dimensions and the conductivity values of the FE model can also be found in Supplementary Table <ref type="table">S1</ref>, available in the online version of this article.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.2.">Multi-Compartment Neuron Model</head><p>A multi-compartment model adapted from <ref type="bibr" target="#b46">Rattay et al. (2013</ref><ref type="bibr" target="#b45">Rattay et al. ( , 2001) )</ref> was implemented. Our ANF model followed the description in the original publication except for the morphology of dendrites and axons. Simulations were run with a population of 400 ANFs. Population simulation was done by simulating FIGURE 2 | A rendered image of the 3D cochlea model and the neurons with 1.5-mm-long dendrites. The cochlear canal, as well as the implanted electrode, was cut to provide a better view of the neurons. The "out-of-focus" neurons in the image sit in front of the cut-plane. Note that the diameter of the fibers (and the somata) is amplified for visualization purposes, i.e., they are not to scale.</p><p>the multi-compartment neuron model with extracellular electric potential values obtained from the FE model at the 400 previously reconstructed neuronal paths.</p><p>The model from <ref type="bibr" target="#b46">Rattay et al. (2013)</ref> was originally designed with a 1 µm dendrite diameter and a 2 µm axon diameter. However, histograms from our recent measurements on dendrite diameter exhibited a unimodal distribution for normal hearing cases with a maximum at 2 µm diameter, and a bimodal distribution for patients with hearing loss, peaking at 0.5 and 2 µm diameters <ref type="bibr" target="#b24">(Heshmat et al., 2020)</ref>. Therefore, we used a dendrite diameter of 2 µm in our model to represent "intact" dendrites. Based on the ratio of diameter axon diameter dendrite = 2 in <ref type="bibr" target="#b46">Rattay et al. (2013)</ref>, the axon in our model was, thus, implemented with a diameter of 4 µm; this also lies around the upper limit of type I SGN axon diameters observed <ref type="bibr" target="#b0">(Arnesen and Osen, 1978;</ref><ref type="bibr" target="#b38">Nadol, 1990;</ref><ref type="bibr" target="#b38">Nadol et al., 1990)</ref>. In addition to "intact, " nondegenerated dendrites, we also modeled two further degenerative states. Based on the measurements with hearing-loss cases, a "partially degenerated" dendrite was modeled with a diameter of 0.5 µm, and a "completely degenerated" dendrite was modeled by omitting the entire dendrite, modeling the neurons with only soma and axon. In both degenerated cases, the axon diameter was kept identical to the "intact" case, with a diameter of 4 µm. <ref type="formula">Heshmat et al. (2020)</ref>also included measurements on myelin thickness in dendrites (peaking at 0.6 µm for normal hearing, and at 0.6 µm and 0.15 µm for hearing loss), which were implemented in our model as well, with "intact" dendrites having a myelin thickness of 0.6 µm, and "partially degenerated" dendrites a myelin thickness of 0.15 µm.</p><p>Regarding dendrite length, we implemented two versions, as in <ref type="bibr" target="#b45">Rattay et al. (2001)</ref>: one with a dendrite length of 2.3 mm, and the other with a dendrite length of 1.5 mm, to account for shorter dendrites in the middle turn of the cochlea and longer dendrites in the base and apex <ref type="bibr" target="#b43">(Potrusil et al., 2020)</ref>. In a single simulation run, dendrite lengths were kept uniform for all 400 neurons, whereas the axon lengths were adapted by adding or removing node-internode pairs so that all fibers ended with an internode at the end of their reconstructed paths. Intact ANFs started with their peripheral terminal (first dendritic compartment) at the beginning of the reconstructed paths, i.e., in the spiral lamina attached at the level of inner hair cells. As described above, three degenerative states were implemented for the neuron population: "intact" dendrites, "partially degenerated" dendrites with narrower diameter, and "completely degenerated" dendrites with the entire dendrite removed. Hence, we have the following six combinations, also illustrated in Figure <ref type="figure" target="#fig_3">4</ref>:</p><p>• FD 2.3 : Full (intact) Dendrite. 2.3 mm dendrite length and 2 µm dendrite diameter.</p><p>• TD 2.3 : Thin Dendrite. 2.3 mm dendrite length and 0.5 µm dendrite diameter.</p><p>• ND 2.3 : No Dendrite. Soma, as well as the axon, positioned at the same location as FD 2.3 and TD 2.3 , therefore, the first neuronal compartment (soma) offset by 2.3 mm from the beginning of the path.</p><p>• FD 1.5 : Full (intact) Dendrite. 1.5 mm dendrite length and 2 µm dendrite diameter.</p><p>• TD 1.5 : Thin Dendrite. 1.5 mm dendrite length and 0.5 µm dendrite diameter.</p><p>• ND 1.5 : No Dendrite. Soma, as well as the axon, positioned at the same location as FD 1.5 and TD 1.5 , therefore, the first neuronal compartment (soma) offset by 1.5 mm from the beginning of the path.</p><p>Parameters of the multi-compartment neuron model can be found in Supplementary Table <ref type="table">S1</ref>, available in the online version of this article.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="2.3.">Processing</head><p>Neuron models were implemented in Python 3.5, using the Brian2 package <ref type="bibr" target="#b21">(Goodman and Brette, 2009)</ref>, and simulations were conducted on a computing cluster in parallel using the Thorns package <ref type="bibr" target="#b48">(Rudnicki, 2022)</ref>. Differential equations were solved using an exponential Euler method with a 1 µs timestep. The current stimulus used for neuronal stimulation was a single biphasic (cathodic-first) pulse with 40 µs/phase. For each of the six simulated degenerative states and 12 stimulation electrodes, the minimum current necessary to elicit an action potential (AP) in at least a single fiber, i.e., threshold, and all 400 fibers was determined. The range spanned between those two current values would then define the electric dynamic range (EDR). Afterward, each degenerative state and stimulation electrode was simulated with 80 current stimuli linearly spaced along within the EDR. For all simulations, voltage traces were saved and subsequently evaluated to determine the AP initiation site for all amplitudes. Initial results were the "excitation profiles, " which show when ANFs were excited, i.e., generated an AP, for a neuron population within its entire EDR. To compare excitation profile shapes of different degenerative states, the difference of individual fiber thresholds in dB was computed, using Equation <ref type="formula" target="#formula_0">1</ref>,</p><formula xml:id="formula_0">20 • log 10 thr a,i thr b,i (<label>1</label></formula><formula xml:id="formula_1">)</formula><p>where thr is the threshold of an individual fiber, a and b denote the degenerative state, i.e., FD or TD for a, and ND for b, and i denotes the individual fiber, numbered from 1 to 400.</p><p>To represent characteristic frequencies (CF) of individual fibers, ANFs were mapped to frequencies using the Greenwood frequency map <ref type="bibr" target="#b22">(Greenwood, 1990)</ref>. For mapping purposes, relevant fiber coordinates were the positions of peripheral tips of the fibers, i.e., the starting point of the peripheral terminals. Fiber tip coordinates were transformed into 1-dimensional coordinates, i.e., describing only the distance along the fiber tip trajectory, with the most basal fiber (fiber 1) denoting the starting point. 1-dimensional fiber coordinates were then divided by total cochlear length (i.e., distance from the most basal to the most apical fiber along the fiber tip trajectory) and used as x for the Greenwood equation (Equation <ref type="formula" target="#formula_2">2</ref>). Note that in the original equation Greenwood defined x as the fraction of cochlear length with x = 1 at the basal end. As this is inverted to our definition, it was necessary to replace x in the original equation with (1 -x), resulting in Equation <ref type="formula" target="#formula_2">2</ref>.</p><formula xml:id="formula_2">CF = 165.4 Hz • (10 2.1•(1-x) -0.88)<label>(2)</label></formula><p>In addition, <ref type="bibr" target="#b30">Laneau et al. (2004)</ref> observed that a model predicting place pitch based on the centroid of the excited cochlear area fits well with the results from their pitch ranking experiments on CI subjects. Therefore, we employed excitation profiles to reconstruct an approximation of "perceived" place pitch, based on the centroid of excited fibers and the Greenwood frequency map. The centroids were computed as the mean of 1-dimensional fiber tip coordinates of only the excited fibers, for any individual stimulation current. An illustration describing centroid reconstruction and corresponding pitch is displayed in Figure <ref type="figure" target="#fig_4">5</ref>. Note that it was not distinguished whether there was a gap in excited fibers (i.e., due to ectopic activation, e.g., Figure <ref type="figure" target="#fig_4">5</ref>, electrode 5), which could potentially lead to a perception of two separate pitches instead of one. The reconstructed pitch was then further evaluated by computing the difference in pitch between adjacent electrodes, for four selected percentages (5%, 10%, 15%, and 20%) of EDR. Pitch difference was calculated in octaves, i.e., log 2 F a F b , with F a being the pitch of the more apical electrode, and F b being the pitch of the more basal electrode.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.">RESULTS</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.">Neural Excitation</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.1.">Absolute Threshold</head><p>Absolute threshold refers to the lower limit of the EDR, i.e., the minimum current necessary to elicit an AP in at least one ANF in a simulated population. In Supplementary Figure <ref type="figure" target="#fig_0">S1</ref>, the voltage traces of selected ANFs at and just below the absolute threshold have been included. Absolute thresholds, as shown in Figure <ref type="figure" target="#fig_5">6</ref>, ranged from approximately -12 dB re 1 mA (= 0.25 mA) to approximately -4 dB re 1 mA (= 0.63 mA). In general, dendritic degeneration lead to a slight reduction in the absolute threshold, which was unexpected. Compared to FD, absolute thresholds for TD and ND were reduced in base and apex for 2.3 mm dendrites, and over most of the cochlear length for 1.5 mm dendrites. Within individual stimulation electrodes, absolute thresholds of TD and ND were within approximately 2 dB difference compared to their FD counterpart, and within 1 dB difference when compared with each other. TD absolute thresholds were slightly below ND absolute thresholds in most cases.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.2.">Excitation Profile</head><p>Excitation profiles depict the stimulation amplitude at which each fiber was activated and include the location of initial "effective" excitation within each fiber. Hereby, the "effective" excitation refers to the excitation that produces an afferent AP. For example, if a neuron is first excited in its dendrite, but before the AP propagates to the axon, it is excited independently in the axon as well, then the initial "effective" excitation is determined to originate from the axon. Excitation profiles for 2.3 mm dendrites are shown in Figure <ref type="figure" target="#fig_6">7</ref>, and for 1.5 mm dendrites in Figure <ref type="figure" target="#fig_7">8</ref>. Ectopic activation was observed in the excitation profiles. Here, ectopic activation is defined as independent activation of regions distant to stimulating electrodes; for example in Figure <ref type="figure" target="#fig_6">7</ref> TD 2.3 activation from electrode 7 at approximately 150 Hz and 2 kHz, as well as electrode 9 at approximately 30 Hz and 2 kHz.</p><p>For FD 2.3 (Figure <ref type="figure" target="#fig_6">7</ref>), it could be observed that AP initiation sites were mostly proximal to the soma, except for regions close to the electrodes, where AP initiation happened in the distal region of the dendrite, especially for middle and apical stimulation electrodes, but less so for basal stimulation electrodes. This may indicate that stimulation of neurons in the basal turn might be affected less by degeneration, as APs initiated in the somatic area are less likely to be influenced by changes in dendrite morphology. Ectopic activation could be observed especially for stimulation in the middle of the cochlea. Regarding TD 2.3 and ND 2.3 , visual inspection showed very similar stimulation patterns between each other. The activation initiated in the distal region of the dendrites in the case of FD 2.3 was largely missing in both degenerated cases, in spite of that dendrites were still present with TD 2.3 . The most striking difference between the two degenerated cases is that for TD 2.3 , most APs initiated just before the soma, while for ND 2.3 , most APs initiated in the soma. Excitation profiles for individual apical electrodes (electrodes 9 and upward) showed very similar patterns among each other, both for TD 2.3 and ND 2.3 . Ectopic activation was very prominent for both TD 2.3 and ND 2.3 , especially in the middle and apex, where in most cases individual fiber thresholds were lower for ectopic activation than for fibers near the stimulation electrodes (e.g., electrode 7, activation at approximately 150 Hz). In summary, degeneration of 2.3 mm dendrites increased ectopic activation, caused less to no stimulation in the distal region of the dendrite, and reduced differences between apical stimulation electrodes.</p><p>In contrast to 2.3 mm dendrites, 1.5 mm dendrites (Figure <ref type="figure" target="#fig_7">8</ref>) had the vast majority of APs initiated proximal to the soma, even for FD 1.5 , and more APs initiated in the axon for stimuli at high amplitudes. FD 1.5 showed some initiations in the distal region of dendrites in the apex, but far less than FD 2.3 . Overall, differences among FD 1.5 , TD 1.5 , and ND 1.5 were small, except for the few distal dendrite activations in FD 1.5 . Ectopic activation was only prominent in the apex for all degenerative states (e.g., electrode 11, activation at approximately 1 kHz). Similar to TD 2.3 and ND 2.3 , excitation profiles for TD 1.5 and ND 1.5 showed little difference between individual apical electrodes.</p><p>For ND, most APs were initiated in the soma. On closer inspection, the vast majority of APs initiated in the soma (approximately 93%) showed indistinguishable AP peak timings and highly similar potential values (average difference at approximately 0.01 mV) to corresponding postsomatic compartments, i.e., APs initiated simultaneously in both the soma and the postsomatic compartment (not shown). Simultaneous AP initiation in both the soma and postsomatic compartment may indicate an excitation that originated from the axon hillock or axon initial segment, the interfaces between soma and axon.</p><p>Considering results from short dendrites to be more accurate in the middle of the cochlea, and results from long dendrites to be more accurate in the base and apex, the largest impact of degeneration may be in the apex, causing prominent ectopic activation and a small difference in areas stimulated by different electrodes. Ectopic activation in the base and middle of the cochlea was mostly cross-turn activation, i.e., activation at ±360 • to the electrode.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.1.3.">Individual Threshold Differences</head><p>Based on the excitation profiles, differences in individual fiber thresholds between degenerative states were computed, comparing how similar FD and TD were to ND. Differences (dB) are displayed in Figure <ref type="figure" target="#fig_8">9</ref>. In all cases, ND was more similar to TD than to FD; the TD vs. ND difference median was on average at approximately -0.5 dB, with interquartile ranges of 1-2 dB. With 2.3 mm dendrites, electrodes in the middle showed outliers down to approximately -4 dB for TD 2.3 vs ND 2.3 . FD 2.3 vs. ND 2.3 showed the largest differences, with difference medians from approximately -3 to 0 dB, and interquartile ranges of approximately 3 to 7 dB. FD 1.5 vs. ND 1.5 differences were larger than TD 1.5 vs. ND 1.5 , but not as pronounced as for 2.3 mm dendrites. In general, differences between degenerative states of 1.5 mm dendrites were smaller than differences between degenerative states of 2.3 mm dendrites, and differences between TD and ND were much smaller than differences between FD and ND.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.">Pitch</head><p>Pitch was reconstructed based on the centroid of excited area and the Greenwood frequency map (see also Figure <ref type="figure" target="#fig_4">5</ref>).</p><p>Reconstructed pitch for all electrodes and degenerative states along each corresponding EDR is displayed in Figure <ref type="figure" target="#fig_9">10</ref>. At larger stimulus amplitudes (greater than approximately 20% EDR), pitch of apical electrodes largely overlapped. This partly applied to middle electrodes as well, especially for long dendrites. Below approximately 20% EDR, however, pitch for different electrodes differed depending on degenerative state and dendrite length, as detailed below. Note that for higher percentages of EDR, reconstructed pitch would automatically converge to approximately 1,700 Hz, corresponding to the middle of the cochlea. For example, with 50% of ANFs excited, the average excited position would always result within the innermost 50% of fibers (i.e., ANF 101 to ANF 300, for 400 ANFs), therefore the centroid of the excitation would correspond to a CF between approximately 400 Hz and 6 kHz. Consequently, with 100% of ANFs excited, the average excited position would always be at the middle of the cochlear length, corresponding to approximately 1700 Hz.</p><p>For FD, the pitch at the absolute threshold was mostly well spaced for all electrodes, with pitch usually evoked close to stimulating electrodes. With increasing stimulus, at approximately 10% EDR for FD 2.3 and 5% for FD 1.5 , the pitch of apical stimulation electrodes increasingly overlapped. In contrast, for both TD and ND there were overlapping pitches even at the absolute threshold. There, for TD 2.3 and ND 2.3 , electrodes 9-12 evoked pitch at approximately 30-40 Hz, which increased to approximately 80 Hz at 5% EDR. Note that the Greenwood frequency map with parameters suggested for humans starts at approximately 20 Hz <ref type="bibr" target="#b22">(Greenwood, 1990)</ref>. Evoked pitches of middle electrodes (5-8) were not close to any of the middle electrodes but instead offset toward either the apex (electrodes 6-8) or the base (electrode 5). For TD 1.5 and ND 1.5 , all electrodes 9-12 evoked pitch at approximately 190 Hz (between electrodes 9 and 10) at the absolute threshold. No pitch was evoked close to electrodes 4, 7, 8, 9, 11, and 12 at the absolute threshold, with no pitch evoked close to electrodes 11 and 12 even with increased stimulus. The pitch evoked by basal stimulating electrodes was similar to FD pitch for all TD and ND. Yet another interesting observation was a few cases of pitch reversals, i.e., an apical electrode generating a higher pitch than a more basal electrode. Pitch reversals were seen with some apical electrodes at specific ranges of EDR, e.g., electrode 12 generated higher pitches than electrodes 9-11 for FD 2.3 at approximately 10-25% of EDR.</p><p>With increased stimulation amplitude, abrupt changes in reconstructed pitch were often observed, especially for apical electrodes. This can generally be attributed to ectopic activation, where a new group of neurons is excited and thereby changes the overall pitch (e.g., TD 2.3 electrode 7). In real CIs, however, this might cause a second, parallel pitch perception instead of a shift in pitch. In addition, while we investigated stimulation by individual, independent electrodes, in implanted CIs sounds will likely activate more than a single electrode, therefore a perceived pitch would be the outcome of a combination of multiple activated electrodes.</p><p>In summary, FD showed mostly independent and tonotopic frequency channels for different electrodes, especially near the absolute threshold, but TD and ND both lead to the unification of several frequency channels, especially for apical electrodes. TD and ND showed similar pitch values compared to each other. In some cases, pitch reversals were observed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="3.2.1.">Pitch Difference</head><p>Pitch difference, depicted in Figure <ref type="figure" target="#fig_10">11</ref>, was mostly in the 0 to -1 octave range. All configurations showed almost no differences for apical electrodes when averaged over the four selected percentages. However, note that for FD this was the case because of pitch reversals occurring, and differences in individual EDR   percentages were mostly non-zero. In contrast, TD and ND showed almost no differences in the apex not only for the averaged values but for most of the individual EDR percentages as well, indicating similar pitches evoked by different apical electrodes over an extended current range. This was especially prominent for TD 2.3 and ND 2.3 , where differences were close to zero octaves for electrodes 8-12. TD 1.5 and ND 1.5 differences were close to zero octaves only for electrodes 10-12. Differences for TD 2.3 were similar to differences for ND 2.3 , and differences for TD 1.5 were similar to differences for ND 1.5 .</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head n="4.">DISCUSSION</head><p>The present study investigated CI excitation of ANFs with different degrees of degeneration, based on morphological measurements on human SGN dendrites and a high resolution FE model of a human cochlea. Recent measurements indicated that intact human SGN dendrites possess a diameter of approximately 2.0 µm and that degeneration of SGNs may also manifest in a reduced diameter of approximately 0.5 µm <ref type="bibr" target="#b24">(Heshmat et al., 2020)</ref>. The cochlea FE model was based on µCT scans of a human cochlea and, therefore, generated a highly personalized model, including fine details of cochlear structures down to the porous structure of the modiolar bone <ref type="bibr" target="#b2">(Bai et al., 2019)</ref>. The cochlea model was implanted with a MED-EL Standard electrode array consisting of 12 electrode pairs and stimulated in a monopolar configuration with biphasic pulses. Potential distributions were obtained from the FE model and used as a stimulus for a large population of Hodgkin-Huxleybased biophysical multi-compartment neuron models adapted to represent human ANFs <ref type="bibr" target="#b46">(Rattay et al., 2013)</ref>, spread out along the entire cochlea. Primary simulation results consisted of detailed excitation profiles covering both cochlear length and electric dynamic range for all 12 electrodes of the implant.</p><p>Studies modeling retrograde degeneration of ANFs commonly modeled degeneration by removing either the entire dendrite or peripheral parts of it <ref type="bibr" target="#b45">(Rattay et al., 2001</ref><ref type="bibr" target="#b46">(Rattay et al., , 2013;;</ref><ref type="bibr" target="#b7">Briaire and Frijns, 2006;</ref><ref type="bibr" target="#b49">Smit et al., 2008</ref><ref type="bibr" target="#b50">Smit et al., , 2010;;</ref><ref type="bibr" target="#b51">Snel-Bongers et al., 2013;</ref><ref type="bibr" target="#b27">Kalkman et al., 2014;</ref><ref type="bibr" target="#b34">Malherbe et al., 2015;</ref><ref type="bibr" target="#b43">Potrusil et al., 2020)</ref>. This study included an "intermediate" degenerative state as well, a thin dendrite with only a 0.5 µm diameter, based on measurements from <ref type="bibr" target="#b24">Heshmat et al. (2020)</ref>. A shrinkage of dendrite diameter in the process of degeneration was also observed by <ref type="bibr" target="#b57">Wise et al. (2017)</ref> in guinea pigs, though only manifesting in reduced diameter of the axoplasma, but not the surrounding myelin sheath. Differences between myelin sheath measurements may be due to examinations performed on different species, with Heshmat et al. measuring humans and Wise et al. measuring guinea pigs. Our study modeled axon and myelin sheath diameter according to <ref type="bibr" target="#b24">Heshmat et al. (2020)</ref>. In addition, we modeled homogeneous degeneration in the entire cochlea. This is likely not the case in real implanted cochleae, where there may be heterogeneous degeneration. For example, assuming that hearing loss correlates with degeneration of ANFs since age-related hearing loss generally is more pronounced in high frequencies <ref type="bibr" target="#b6">(Brant and Fozard, 1990;</ref><ref type="bibr" target="#b55">Wiley et al., 2008)</ref>, it could be concluded that basal ANFs are more likely to degenerate than apical ANFs, at least for most aged implanted subjects. Nevertheless, investigation of different degeneration patterns in the cochlea was beyond the scope of this study. Surprisingly, results were largely identical between thin dendrite and no dendrite states, especially in contrast to intact dendrite state, for all investigated parameters, including absolute and individual thresholds, excitation profiles, and reconstructed pitches. This may be attributed to the diameter of 0.5 µm being already very close to failing to be able to transmit APs through the soma when modeled as a deterministic model (&lt;0.4 µm, <ref type="bibr" target="#b24">Heshmat et al., 2020)</ref>, leading to a largely "inactive" dendrite in terms of neuronal excitation. As the diameter of 0.5 µm was picked to represent one of two peaks in a quantity distribution, with the other peak being 2 µm, representing "intact" dendrites, simulating an additional diameter other than the two values would be arbitrary. Therefore, it may be concluded that simulation of ANF degeneration by only removal of dendrites is sufficiently accurate. An important constraint to this conclusion, however, is that other cochleae and stimulation configurations (i.e., monopolar vs. multipolar, alternate pulse shape) may show larger amounts of excitation in the distal part of the dendrite for TD than observed in our investigation, where we considered only monopolar biphasic stimulation. Therefore, multipolar stimulation might increase the difference between TD and ND, making the simulation of intermediate degenerative states necessary.</p><p>Absolute thresholds for individual electrodes were defined as the current necessary to excite at least a single ANF of a population. Intuitively, one would expect that with increasing degeneration absolute thresholds would increase as well, as the nearest part of an ANF to stimulating electrodes in lateral electrode arrays is generally the peripheral terminal <ref type="bibr" target="#b52">(Stakhovskaya et al., 2007;</ref><ref type="bibr" target="#b37">Mistrík et al., 2017)</ref>. Therefore, degeneration would increase the electrode-neuron distance, which is often attributed proportionality to the perceptual threshold <ref type="bibr" target="#b42">(Pfingst and Xu, 2004;</ref><ref type="bibr" target="#b20">Goldwyn et al., 2010;</ref><ref type="bibr" target="#b33">Long et al., 2014;</ref><ref type="bibr" target="#b4">Bierer et al., 2015)</ref>. In this study, however, not only an absolute threshold increase with degeneration was observed, but also an absolute threshold decrease. This appears counterintuitive only at first glance, however, when inspecting AP initiation sites, it could be observed that the absolute threshold was reduced with increased degeneration whenever fibers were initially excited proximal to the soma for FD. This could be explained using the intracellular resistance R a of the dendrite: if the dendrite is reduced in diameter or removed, dendritic R a is increased. More specifically, from FD to TD resistance would increase by a factor of 16 (approximately 1.6 M for 10 µm length of dendrite with 2.0 µm diameter, and approximately 25.5 M for 10 µm length of dendrite with 0.5 µm diameter), and for ND resistance would essentially increase to ∞ (R a = resisitivity•length radius 2 •π</p><p>). Such an increase in dendritic intracellular resistance would lead to less or no outward current flow from the soma toward the dendrite, therefore facilitating the charging of cell membranes in the somatic area when compared to a neuron with a thicker dendrite. Therefore, whenever APs at the absolute threshold were initiated in or at the soma for FD, this effect would manifest in a reduction of the absolute threshold for TD and ND. Conversely, this did not apply in all cases, however. For absolute thresholds where APs originally initiated in the distal end of the dendrite, absolute thresholds tended to increase with degeneration. However, there were exceptions where thresholds would still decrease, e.g., electrode 11 as shown in Figure <ref type="figure" target="#fig_6">7</ref>, where ectopic activation initiated at the soma for low currents already and compensated for threshold increase of ANFs near the electrode. Threshold differences between degenerated states TD and ND were small, with ND mostly displaying slightly higher absolute thresholds. This could be attributed to APs in ND being mostly initiated at the interface between soma and axon, which appears to be less "optimal" than AP initiation directly before the soma.</p><p>While excitation of ANFs in natural hearing originates from inner hair cells, and therefore, excites ANFs at their peripheral terminal, excitation of ANFs under CI stimulation has been shown to happen at several distinct sites along the fibers <ref type="bibr" target="#b36">(Miller et al., 2003)</ref>. Suggested initial excitation sites are peripheral terminal, dendrite, and axon in general <ref type="bibr" target="#b45">(Rattay et al., 2001;</ref><ref type="bibr" target="#b7">Briaire and Frijns, 2006;</ref><ref type="bibr" target="#b27">Kalkman et al., 2014;</ref><ref type="bibr" target="#b43">Potrusil et al., 2020)</ref>, as well as areas proximal to somata <ref type="bibr" target="#b8">(Cartee, 2006;</ref><ref type="bibr" target="#b9">Cartee et al., 2006)</ref>. In general, APs in our model were initiated at one of three "preferred" sites: the distal end of the dendrite, compartments directly peripheral to the soma, or the interface between soma and axon. Only for very large stimuli (&gt;10 dB re absolute threshold) extended initiation in midst of the axon was observed, where stimulation may very well be above maximum loudness levels acceptable for CI subjects (dynamic ranges of patients with CI are on average at approximately 10 dB for low pulse rates <ref type="bibr" target="#b28">Kreft et al., 2004;</ref><ref type="bibr" target="#b58">Zhou et al., 2012)</ref>.</p><p>Our results showed AP initiation in the distal end of the dendrite happened only in areas near stimulation electrodes, and for the most part only in the apex and when dendrites were intact (FD), given that short dendrites hardly had any AP initiation in the distal end of dendrites for electrodes in the middle of the cochlea. Overall, initiations in the distal part of the dendrite and the axon were the minority, especially for degenerated dendrites (TD and ND). Therefore, most APs initiated in the somatic area, either directly before the soma (TD) or at the interface between soma and axon (ND). In terms of excitation profile shape, differences were the smallest between TD and ND. Except when TD was initiated in the distal end of the dendrite, the same currents generally excited the same neurons for both TD and ND. Initial excitation in the distal end of the dendrite for TD happened only in a minuscule number of neurons in the middle of the cochlea and in no case at the absolute threshold.</p><p>Ectopic stimulation, including cross-turn stimulation, is both seen in modeling studies <ref type="bibr" target="#b15">(Frijns et al., 2001;</ref><ref type="bibr" target="#b23">Hanekom, 2001;</ref><ref type="bibr" target="#b7">Briaire and Frijns, 2006;</ref><ref type="bibr" target="#b27">Kalkman et al., 2014)</ref> and discussed or suspected in patient studies <ref type="bibr" target="#b16">(Frijns et al., 2002;</ref><ref type="bibr" target="#b1">Arnoldner et al., 2008;</ref><ref type="bibr" target="#b14">Finley et al., 2008)</ref>. Our results showed prominent ectopic activation in the excitation profiles, especially for degenerated dendrites and apical regions. Most importantly, for apical stimulation electrodes and degenerated dendrites, the same neuronal regions were excited preferentially, essentially independent of the stimulation electrode and likely generating an identical pitch perception. Ectopic activation manifested as both cross-turn activation (e.g., Figure <ref type="figure" target="#fig_6">7</ref> electrode 5), and noncross-turn activation, i.e., neurons activated at an offset position to the stimulation electrode, but not at a distance of an entire turn (e.g., Figure <ref type="figure" target="#fig_8">7 electrode 9</ref>). The existence of ectopic activation of less than 360 • to the electrode position is less intuitive than cross-turn activation but has been mentioned in literature before, e.g., being suspected as the underlying cause for "tip-shifts" in forward masking spatial tuning curves with CI patients by <ref type="bibr" target="#b39">Nelson et al. (2008)</ref>. In summary, ectopic activation especially occurred for degenerated ANFs, mainly impacting stimulation in the apex. Stimulation in the base and middle of the cochlea showed less ectopic activation for degenerated dendrites than in the apex, assuming longer (2.3 mm) dendrites in the base and apex and shorter (1.5 mm) dendrites in the middle of the cochlea. This was likely due to most APs initiating near the soma with FD in the basal and middle turns. In contrast, with FD most activation in the apex happened at the peripheral terminal for ANFs near the stimulation electrodes, which was absent with degenerated neurons.</p><p>Excitation profiles give a good overview of the way the ANF population is excited, but given that the purpose of a CI is to elicit sound perception, such profiles are still abstract. In order to approximate the perception of the simulated results, stimulated neurons were mapped to place pitch using the centroid of the excited area <ref type="bibr" target="#b30">(Laneau et al., 2004</ref>) and Greenwood's frequency map <ref type="bibr" target="#b22">(Greenwood, 1990)</ref>. Frequency mapping was performed for the entire EDR. However, not the entire EDR is relevant, but only the interval between perceptual threshold and maximum comfortable loudness of CI patients. Maximum comfortable loudness was arbitrarily estimated to correspond to 4 mm of neurons excited along together with the organ of Corti by <ref type="bibr" target="#b7">Briaire and Frijns (2006)</ref>. With an average Organ of Corti length of approximately 33 mm <ref type="bibr" target="#b52">(Stakhovskaya et al., 2007)</ref>, this would correspond to approximately 10% of fibers excited. For this reason, the reconstructed pitch was only inspected in detail for low percentages of EDR, up to approximately 20% of EDR. Results showed that for FD, individual stimulation electrodes generated individual pitches for low percentages of EDR, albeit less so for apical electrodes. With degenerated dendrites, however, pitches obtained for apical stimulation electrodes (especially electrode 9 upwards) were very similar, which essentially meant that different electrodes evoked the same pitch perception. With electrode 9 positioned at 450 • insertion into the cochlea, it indicates that insertion of cochlear electrode arrays deeper than approximately 450 • may not provide any benefit when ANFs are degenerated. A similar observation was drawn from the model of <ref type="bibr" target="#b27">Kalkman et al. (2014)</ref>, where electrodes beyond approximately 540 • insertion stimulated nearly identical regions in the cochlea when ANFs were degenerated. Increased pitch confusion in the apex, i.e., the inability to correctly rank electrodes according to their pitch, was also observed in patient studies with deeply inserted electrodes <ref type="bibr" target="#b11">(Deman et al., 2004;</ref><ref type="bibr" target="#b17">Gani et al., 2007;</ref><ref type="bibr" target="#b29">Landsberger et al., 2014)</ref>. For example, <ref type="bibr">Deman et al.</ref> observed that for CIs with electrode insertion depth between 471 and 662 • about half of their subjects had similar pitch percepts for apical stimulation electrodes in pitch ranking experiments. Consequently, based on our results that degenerated ANFs lead to highly similar pitches in the apex, increased pitch confusion for deeply inserted apical electrodes could be an indicator of the neural health of apical neurons. In addition to similar reconstructed pitches for apical electrodes, our results showed pitch reversals in some cases. Pitch reversals are defined as pitch elicited from a more apically located electrode being perceived as higher than pitch elicited from a more basally located electrode, despite more apical positions corresponding to lower frequencies on the tonotopic map of the cochlea. Pitch reversals have been occasionally observed in psychophysical experiments as well, e.g., <ref type="bibr" target="#b12">Fielden et al. (2015)</ref>.</p><p>In conclusion, "intermediate" degenerative states of ANF dendrites in our model generally showed very similar effects to completely degenerated ANF dendrites. The largest impact of degeneration is expected in the apex, where different electrodes stimulate the same neurons for degenerated ANFs. Therefore, a deep insertion of electrode arrays into the cochlea may not provide any benefits for patients with degenerated ANFs. However, the impact of degeneration for electrodes up to approximately 450 • insertion angle may be small. Nevertheless, it is important to note that this observation is based on monopolar biphasic stimulation of a single human cochlea. Multipolar stimulation is expected to be more heavily impacted by neural degeneration <ref type="bibr" target="#b20">(Goldwyn et al., 2010;</ref><ref type="bibr" target="#b59">Zhu et al., 2012;</ref><ref type="bibr" target="#b33">Long et al., 2014;</ref><ref type="bibr" target="#b18">George et al., 2015;</ref><ref type="bibr" target="#b25">Heshmat et al., 2021)</ref>, and different pulse-shapes are believed to preferentially stimulate different parts of an ANF <ref type="bibr" target="#b45">(Rattay et al., 2001)</ref>, which may increase the impact of degeneration and induce more differences between TD and ND. In addition, given that performance of patients with CI often varies between individuals, we can not make any judgment on how well the subject on whose temporal bone our cochlea model was based would have performed with a CI. However, we are currently working on building an extended set of FE models based on additional high-definition scans of human temporal bones. Therefore, the current investigation into specific SGN morphologies presents a starting point for highly personalized models which take into consideration the influence of fine details of cochlear structures. This will be expanded in future studies building on the current work, including not only additional cochleae but also investigations into further stimulation configurations and SGN morphologies. Therefore, using a larger number of high resolution cochlea models, we will investigate possible diagnostic methods for neural health in CI subjects, and whether the impact of degeneration on CI stimulation can be estimated based on preoperative measurements (e.g., cochlea shape from CT scans), possibly aiding in the selection of CI electrode design and insertion depth.</p><p>Foundation)-Projektnummer 415658392, the Austrian Science Fund (FWF) Grant No. l4147-B, and within the project "Modeling the electrical stimulation of the human cochlear nerve based on segmented high-resolution micro-computer tomography scans" under the D-A-CH program.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>FIGURE 1 |</head><label>1</label><figDesc>FIGURE 1 | Left: A dissected view of the FE mesh of the whole head model. The blue arrow indicates the location of the cochlea. Right: A zoomed-in view of the cochlea (and the nerve), indicated by the blue arrow in the left image.</figDesc><graphic coords="3,56.64,69.40,481.92,257.28" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 .</head><label>2</label><figDesc>The complete FE model was subsequently imported into COMSOL Multiphysics (COMSOL AB, Sweden) for calculating the electric potential V in a volume conduction model. The CI electrode array was modeled representing a MED-EL (Innsbruck, Austria) Standard electrode, which comprises 12 pairs of electrode contacts (≡ 12 electrodes), and was based on the geometry of a dummy electrode array physically inserted into the temporal bone sample. The MED-EL Standard electrode is considered a lateral wall electrode array. Note that the electrode array inserted into our preserved cadaveric temporal bone punctured the basilar membrane at approximately 270 • into the cochlea, thereby traversing from the scala tympani into the scala vestibuli. As consequence, the modeled electrode array was situated in the scala vestibuli from electrode 6 upwards.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>FIGURE 3 |</head><label>3</label><figDesc>FIGURE 3 | Electrode-neuron distance for each of the twelve electrodes in the model. The distance is displayed both as distance to the closest point along the beginning of the reconstructed neuron paths (≡ modeled peripheral terminals), and as distance to the closest point along the entire length of all reconstructed neuron paths (≡ modeled ANFs).</figDesc><graphic coords="5,54.00,69.36,226.80,166.32" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>FIGURE 4 |</head><label>4</label><figDesc>FIGURE 4 | Schematic representation of an ANF for different degenerative states and dendrite lengths, depicted up to soma (not to scale). Degenerative state is indicated by name [FD, Full (intact) Dendrite; TD, Thin Dendrite; ND, No Dendrite] and dendrite length is indicated by the subscript.</figDesc><graphic coords="6,127.64,69.91,340.08,293.76" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>FIGURE 5 |</head><label>5</label><figDesc>FIGURE 5 | Excited fibers and corresponding centroids, exemplary for FD 2.3 electrode 9 (left) and electrode 5 (right). Electrode 9 features a decrease and subsequent increase of pitch corresponding to the centroids with increasing stimulation amplitude. Electrode 5 features ectopic activation. For purpose of better visualization, we included here only a selective number of stimulation amplitudes. The electrode position is mapped to its nearest fiber, indicated by a black triangle. The left ordinate shows the frequency map, right ordinate the position of ANFs along the spiral lamina (SL).</figDesc><graphic coords="7,56.64,69.59,481.92,226.08" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><head>FIGURE 6 |</head><label>6</label><figDesc>FIGURE 6 | Thresholds for individual stimulation electrodes and degenerative states, 2.3 mm dendrite on top, 1.5 mm dendrite on bottom.</figDesc><graphic coords="8,50.00,69.35,235.20,304.32" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>FIGURE 7 |</head><label>7</label><figDesc>FIGURE 7 | Excitation profiles for 2.3 mm dendrites. Greenwood frequency mapping performed for all 400 fibers, marked on the left ordinate. Fiber position along spiral lamina marked on the right ordinate. AP initiation site is color-coded, soma marked with black color. Stimulation electrodes labeled on the left. Electrode position is mapped to its nearest fiber and indicated by gray triangles, blue arrows mark fibers at ±360 • to the stimulation electrodes.</figDesc><graphic coords="9,61.64,69.47,472.08,595.20" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>FIGURE 8 |</head><label>8</label><figDesc>FIGURE 8 | Excitation profiles for 1.5 mm dendrites. Greenwood frequency mapping performed for all 400 fibers, marked on the left ordinate. Fiber position along spiral lamina marked on the right ordinate. AP initiation site is color-coded, soma marked with black color. Stimulation electrodes labeled on the right. Electrode position is mapped to its nearest fiber and indicated by gray triangles, blue arrows mark fibers at ±360 • to the stimulation electrodes.</figDesc><graphic coords="10,63.14,69.47,469.44,595.20" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><head>FIGURE 9 |</head><label>9</label><figDesc>FIGURE 9 | Difference of individual ANF thresholds between ND and other degenerative states, computed as in Equation 1. Boxplots show medians, lower and upper quartiles, whiskers (encompassing values contained in quartiles ± 1.5 times the interquartile range), and outliers.</figDesc><graphic coords="11,127.64,69.51,340.08,332.16" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>FIGURE 10 |</head><label>10</label><figDesc>FIGURE 10 | The reconstructed pitch along % of EDR. Pitch reconstruction was based on the centroid of the excited area and the Greenwood map. Basal, middle, and apical electrode stimulations are marked by color, and individual electrodes are marked by line style. Electrode position, corresponding to the pitch of its nearest fiber, is marked with triangles.</figDesc><graphic coords="12,56.64,69.88,481.92,490.80" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_10"><head>FIGURE 11 |</head><label>11</label><figDesc>FIGURE 11 | Reconstructed pitch difference between neighboring electrodes. Differences displayed for 5, 10, 15, and 20% of EDR, as well as the average of the four differences. Electrode pair refers to which electrodes were used to compute the difference.</figDesc><graphic coords="13,56.64,69.20,481.92,516.48" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_11"><graphic coords="4,56.64,69.43,481.92,360.24" type="bitmap" /></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_0"><p>Frontiers in Neuroscience | www.frontiersin.org</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_1"><p>July 2022 | Volume 16 | Article 914876</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>ACKNOWLEDGMENTS</head><p>The authors would like to thank <rs type="person">Dr. Frank Böhnke</rs> for providing the original µCT scans of the cadaveric temporal bone, <rs type="person">Dr. Jörg Encke</rs> for his contribution to the ANF path reconstruction algorithms, and <rs type="person">Carmen Casta ñeda Gonzales</rs> for her helpful comments on the manuscript.</p></div>
+			</div>
+			<div type="funding">
+<div><head>FUNDING</head><p>This project was funded by the <rs type="funder">Deutsche Forschungsgemeinschaft (DFG, German Research</rs></p></div>
+			</div>
+			<listOrg type="funding">
+			</listOrg>
+
+			<div type="availability">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>DATA AVAILABILITY STATEMENT</head><p>The datasets presented in this study can be found in online repositories. The names of the repository/repositories and accession number(s) can be found below: <ref type="url" target="https://gin.g-node.org/Croner/dendritic_sgn_degeneration">https://gin.g-node.org/  Croner/dendritic_sgn_degeneration</ref>.</p></div>
+			</div>
+
+
+			<div type="conflict">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Conflict of Interest:</head><p>The authors declare that the research was conducted in the absence of any commercial or financial relationships that could be construed as a potential conflict of interest.</p></div>
+			</div>
+
+
+			<div type="contribution">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>AUTHOR CONTRIBUTIONS</head><p>AC conducted the simulations and contributed to study design, ANF cable model implementation, data analysis, visualization, and manuscript writing. AH contributed to study design, SGN morphology measurements, and manuscript revision. AS-F contributed to study design, SGN morphology measurements, funding acquisition, and supervision. RG contributed to SGN morphology measurements and manuscript revision. WH contributed to study design, data analysis, manuscript revision, funding acquisition, and supervision. SB contributed to study design, FE model reconstruction, ANF path reconstruction, manuscript revision, and supervision. All authors contributed to the article and approved the submitted version.</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>SUPPLEMENTARY MATERIAL</head><p>The Supplementary Material for this article can be found online at: <ref type="url" target="https://www.frontiersin.org/articles/10.3389/fnins.2022.914876/full#supplementary-material">https://www.frontiersin.org/articles/10.3389/fnins.  2022.914876/full#supplementary-material</ref> Publisher's Note: All claims expressed in this article are solely those of the authors and do not necessarily represent those of their affiliated organizations, or those of the publisher, the editors and the reviewers. Any product that may be evaluated in this article, or claim that may be made by its manufacturer, is not guaranteed or endorsed by the publisher.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct status="extracted" xml:id="b0">
+	<analytic>
+		<title level="a" type="main">The cochlear nerve in the cat: topography, cochleotopy, and fiber spectrum</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">R</forename><surname>Arnesen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">K</forename><surname>Osen</surname></persName>
+		</author>
+		<idno type="DOI">10.1002/cne.901780405</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Compar. Neurol</title>
+		<imprint>
+			<biblScope unit="volume">178</biblScope>
+			<biblScope unit="page" from="661" to="678" />
+			<date type="published" when="1978">1978</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b1">
+	<analytic>
+		<title level="a" type="main">The intensity-pitch relation revisited: monopolar versus bipolar cochlear stimulation</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Arnoldner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Riss</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kaider</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Mair</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wagenblast</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W.-D</forename><surname>Baumgartner</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/MLG.0b013e3181799715</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Laryngoscope</title>
+		<imprint>
+			<biblScope unit="volume">118</biblScope>
+			<biblScope unit="page" from="1630" to="1636" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Electrical stimulation in the human cochlea: a computational study based on high-resolution micro-ct scans</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Bai</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Encke</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Obando-Leitón</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Weiβ</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Schäfer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Eberharter</surname></persName>
+		</author>
+		<idno type="DOI">10.3389/fnins.2019.01312</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Front. Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="page">1312</biblScope>
+			<date type="published" when="2019">2019</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Degeneration of cochlear neurons after amikacin intoxication in the rat</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Bichler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Spoendlin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Rauchegger</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/BF00453725</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Arch. Otorhinolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">237</biblScope>
+			<biblScope unit="page" from="201" to="208" />
+			<date type="published" when="1983">1983</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Comparison of signal and gap-detection thresholds for focused and broad cochlear implant electrode configurations</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Bierer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Deeks</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">J</forename><surname>Billig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">P</forename><surname>Carlyon</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-015-0507-y</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Assoc. Res. Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="273" to="284" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b5">
+	<analytic>
+		<title level="a" type="main">Factors affecting auditory performance of postlinguistically deaf adults using cochlear implants</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Blamey</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Arndt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Bergeron</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Bredberg</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Brimacombe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Facer</surname></persName>
+		</author>
+		<idno type="DOI">10.1159/000259212</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Audiol. Neurootol</title>
+		<imprint>
+			<biblScope unit="volume">1</biblScope>
+			<biblScope unit="page" from="293" to="306" />
+			<date type="published" when="1996">1996</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b6">
+	<analytic>
+		<title level="a" type="main">Age changes in pure-tone hearing thresholds in a longitudinal study of normal human aging</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">J</forename><surname>Brant</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">L</forename><surname>Fozard</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.399731</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">88</biblScope>
+			<biblScope unit="page" from="813" to="820" />
+			<date type="published" when="1990">1990</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b7">
+	<analytic>
+		<title level="a" type="main">The consequences of neural degeneration regarding optimal cochlear implant position in scala tympani: a model approach</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Briaire</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Frijns</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2006.01.015</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">214</biblScope>
+			<biblScope unit="page" from="17" to="27" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Spiral ganglion cell site of excitation II: numerical model analysis</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">A</forename><surname>Cartee</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2006.02.011</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">215</biblScope>
+			<biblScope unit="page" from="22" to="30" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Spiral ganglion cell site of excitation I: comparison of scala tympani and intrameatal electrode responses</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">A</forename><surname>Cartee</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Van Den Honert</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2006.02.012</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">215</biblScope>
+			<biblScope unit="page" from="10" to="21" />
+			<date type="published" when="2006">2006</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Re-examining the relationship between number of cochlear implant channels and maximal speech intelligibility</title>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">B H</forename><surname>Croghan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">I</forename><surname>Duran</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Z</forename><forename type="middle">M</forename><surname>Smith</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.5016044</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. of Am</title>
+		<imprint>
+			<biblScope unit="volume">142</biblScope>
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b11">
+	<analytic>
+		<title level="a" type="main">Pitch estimation of a deeply inserted cochlear implant electrode</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">R</forename><surname>Deman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Van Dijk</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F.-E</forename><surname>Offeciers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Govaerts</surname></persName>
+		</author>
+		<idno type="DOI">10.1080/14992020400050046</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Int. J. Audiol</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="page" from="363" to="368" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b12">
+	<analytic>
+		<title level="a" type="main">The perception of complex pitch in cochlear implants: a comparison of monopolar and tripolar stimulation</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Fielden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Kluk</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Boyle</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">M</forename><surname>Mckay</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.4931910</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">138</biblScope>
+			<biblScope unit="page" from="2524" to="2536" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b13">
+	<monogr>
+		<title level="m" type="main">Models of neural responsiveness to electrical stimulation</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Finley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Wilson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>White</surname></persName>
+		</author>
+		<editor>J. M. Miller and F. A. Spelman</editor>
+		<imprint>
+			<date type="published" when="1990">1990</date>
+			<publisher>Springer</publisher>
+			<pubPlace>New York, NY</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Role of electrode placement as a contributor to variability in cochlear implant outcomes</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">C</forename><surname>Finley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">A</forename><surname>Holden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">K</forename><surname>Holden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">R</forename><surname>Whiting</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">A</forename><surname>Chole</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">J</forename><surname>Neely</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/MAO.0b013e318184f492</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Otol. Neurotol</title>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="page" from="920" to="928" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b15">
+	<analytic>
+		<title level="a" type="main">The importance of human cochlear anatomy for the results of modiolus-hugging multichannel cochlear implants</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H</forename><surname>Frijns</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Briaire</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Grote</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/00129492-200105000-00012</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Otol. Neurotol</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="340" to="349" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Initial evaluation of the Clarion CII cochlear implant: speech perception and neural response imaging</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H M</forename><surname>Frijns</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Briaire</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A P M</forename><surname>De Laat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Grote</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/00003446-200206000-00003</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Ear. Hear</title>
+		<imprint>
+			<biblScope unit="volume">23</biblScope>
+			<biblScope unit="page" from="184" to="197" />
+			<date type="published" when="2002">2002</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Implications of deep electrode insertion on cochlear implant fitting</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Gani</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Valentini</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Sigrist</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M.-I</forename><surname>Kós</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Boëx</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-006-0065-4</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Assoc. Res. Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="69" to="83" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Evaluation of focused multipolar stimulation for cochlear implants in long-term deafened cats</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">S</forename><surname>George</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">K</forename><surname>Wise</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Fallon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">K</forename><surname>Shepherd</surname></persName>
+		</author>
+		<idno type="DOI">10.1088/1741-2560/12/3/036003</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Neural Eng</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page">36003</biblScope>
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b19">
+	<analytic>
+		<title level="a" type="main">The human spiral ganglion: New insights into ultrastructure, survival rate and implications for cochlear implants</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Glueckert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Pfaller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kinnefors</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Rask-Andersen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Schrott-Fischer</surname></persName>
+		</author>
+		<idno type="DOI">10.1159/000086000</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Audiol. Neurotol</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page" from="258" to="273" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Modeling the electrodeneuron interface of cochlear implants: effects of neural survival, electrode placement, and the partial tripolar configuration</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H</forename><surname>Goldwyn</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">M</forename><surname>Bierer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Bierer</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2010.05.005</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">268</biblScope>
+			<biblScope unit="page" from="93" to="104" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b21">
+	<analytic>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">F M</forename><surname>Goodman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Brette</surname></persName>
+		</author>
+		<idno type="DOI">10.3389/neuro.01.026.2009</idno>
+	</analytic>
+	<monogr>
+		<title level="m">The brian simulator</title>
+		<imprint>
+			<date type="published" when="2009">2009. 2009</date>
+			<biblScope unit="volume">3</biblScope>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b22">
+	<analytic>
+		<title level="a" type="main">A cochlear frequency-position function for several species-29 years later</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Greenwood</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.399052</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">87</biblScope>
+			<biblScope unit="page" from="2592" to="2605" />
+			<date type="published" when="1990">1990</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Three-dimensional spiraling finite element model of the electrically stimulated cochlea</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Hanekom</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/00003446-200108000-00005</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Ear. Hear</title>
+		<imprint>
+			<biblScope unit="volume">22</biblScope>
+			<biblScope unit="page" from="300" to="315" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Dendritic degeneration of human auditory nerve fibers and its impact on the spiking pattern under regular conditions and during cochlear implant stimulation</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Heshmat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sajedi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Johnson Chacko</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Schrott-Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+		<idno type="DOI">10.3389/fnins.2020.599868</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Front. Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page">1182</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Polarity sensitivity of human auditory nerve fibers based on pulse shape, cochlear implant stimulation strategy and array</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Heshmat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sajedi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Schrott-Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+		<idno type="DOI">10.3389/fnins.2021.751599</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Front. Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page">751599</biblScope>
+			<date type="published" when="2021">2021</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Factors affecting open-set word recognition in adults with cochlear implants</title>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">K</forename><surname>Holden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">C</forename><surname>Finley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Firszt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">A</forename><surname>Holden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Brenner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">G</forename><surname>Potts</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/AUD.0b013e3182741aa7</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Ear. Hear</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="342" to="360" />
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b27">
+	<analytic>
+		<title level="a" type="main">Place pitch versus electrode location in a realistic computational model of the implanted human cochlea</title>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">K</forename><surname>Kalkman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Briaire</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M T</forename><surname>Dekker</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H M</forename><surname>Frijns</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2014.06.003</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">315</biblScope>
+			<biblScope unit="page" from="10" to="24" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Effects of pulse rate on threshold and dynamic range in Clarion cochlear-implant users (L)</title>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">A</forename><surname>Kreft</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">S</forename><surname>Donaldson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">A</forename><surname>Nelson</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.1701895</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">115</biblScope>
+			<biblScope unit="page" from="1885" to="1888" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b29">
+	<analytic>
+		<title level="a" type="main">Perceptual changes in place of stimulation with long cochlear implant electrode arrays</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Landsberger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Mertens</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">K</forename><surname>Punte</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Van De Heyning</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.4862875</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">135</biblScope>
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Relative contributions of temporal and place pitch cues to fundamental frequency discrimination in cochlear implantees</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Laneau</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wouters</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Moonen</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.1823311</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">116</biblScope>
+			<biblScope unit="page" from="3606" to="3619" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Spiral ganglion cell loss is unrelated to segmental cochlear sensory system degeneration in humans</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Linthicum</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Fayad</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/MAO.0b013e31819a8827</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Otol. Neurotol</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="418" to="422" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b32">
+	<analytic>
+		<title level="a" type="main">Introduction to cochlear implants</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Loizou</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/51.740962</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Eng. Med. Biol. Mag</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="32" to="42" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Examining the electro-neural interface of cochlear implant users using psychophysics, CT scans, and speech understanding</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename><surname>Long</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">A</forename><surname>Holden</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">H</forename><surname>Mcclelland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">S</forename><surname>Parkinson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Shelton</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">C</forename><surname>Kelsall</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-013-0437-5</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Assoc. Res. Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">15</biblScope>
+			<biblScope unit="page" from="293" to="304" />
+			<date type="published" when="2014">2014</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b34">
+	<analytic>
+		<title level="a" type="main">The effect of the resistive properties of bone on neural excitation and electric fields in cochlear implant models</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">K</forename><surname>Malherbe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Hanekom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Hanekom</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2015.06.003</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">327</biblScope>
+			<biblScope unit="page" from="126" to="135" />
+			<date type="published" when="2015">2015</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b35">
+	<analytic>
+		<title level="a" type="main">Constructing a threedimensional electrical model of a living cochlear implant user&apos;s cochlea</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">K</forename><surname>Malherbe</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Hanekom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Hanekom</surname></persName>
+		</author>
+		<idno type="DOI">10.1002/cnm.2751</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Int. J. Numer. Method Biomed. Eng</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<biblScope unit="page">2751</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b36">
+	<analytic>
+		<title level="a" type="main">Electrode configuration influences action potential initiation site and ensemble stochastic response properties</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Abbas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">V</forename><surname>Nourski</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">K</forename><surname>Robinson</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0378-5955(02)00739-6</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">175</biblScope>
+			<biblScope unit="page" from="200" to="214" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Challenging aspects of contemporary cochlear implant electrode array design</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Mistrík</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Jolly</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Sieber</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Hochmair</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.wjorl.2017.12.007</idno>
+	</analytic>
+	<monogr>
+		<title level="j">World J. Otorhinolaryngol. Head Neck Surg</title>
+		<imprint>
+			<biblScope unit="volume">03</biblScope>
+			<biblScope unit="page" from="192" to="199" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Degeneration of cochlear neurons as seen in the spiral ganglion of man</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Nadol</surname></persName>
+		</author>
+		<idno type="DOI">10.1177/000348949009900505</idno>
+		<idno>doi: 10.1177/000348949009900505</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Ann. Otol. Rhinol. Laryngol</title>
+		<editor>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Burgess</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">B</forename><forename type="middle">J</forename><surname>Reisser</surname></persName>
+		</editor>
+		<editor>
+			<persName><forename type="first">C</forename></persName>
+		</editor>
+		<imprint>
+			<biblScope unit="volume">49</biblScope>
+			<biblScope unit="page" from="340" to="348" />
+			<date type="published" when="1990">1990. 1990</date>
+		</imprint>
+	</monogr>
+	<note>Morphometric analysis of normal human spiral ganglion cells Hear. Res.</note>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Forward-masked spatial tuning curves in cochlear implant users</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">A</forename><surname>Nelson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">S</forename><surname>Donaldson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Kreft</surname></persName>
+		</author>
+		<idno type="DOI">10.1121/1.2836786</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Acoust. Soc. Am</title>
+		<imprint>
+			<biblScope unit="volume">123</biblScope>
+			<biblScope unit="page" from="1522" to="1543" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b40">
+	<analytic>
+		<title level="a" type="main">Validation of a cochlear implant patient-specific model of the voltage distribution in a clinical setting</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Nogueira</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Schurzig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Büchner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">T</forename><surname>Penninger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Würfel</surname></persName>
+		</author>
+		<idno type="DOI">10.3389/fbioe.2016.00084</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Front. Bioeng. Biotechnol</title>
+		<imprint>
+			<biblScope unit="volume">4</biblScope>
+			<biblScope unit="page">84</biblScope>
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Electrode location and angular insertion depth are predictors of audiologic outcomes in cochlear implantation</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">P</forename><surname>O'connell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Cakir</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Hunter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">O</forename><surname>Francis</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H</forename><surname>Noble</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">F</forename><surname>Labadie</surname></persName>
+		</author>
+		<idno type="DOI">10.1097/MAO.0000000000001125</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Otol. Neurotol</title>
+		<imprint>
+			<biblScope unit="volume">37</biblScope>
+			<biblScope unit="page" from="1016" to="1023" />
+			<date type="published" when="2016">2016</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Across-site variation in detection thresholds and maximum comfortable loudness levels for cochlear implants</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">E</forename><surname>Pfingst</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Xu</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-003-3051-0</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Assoc. Res. Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page" from="11" to="24" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Finite element analysis and three-dimensional reconstruction of tonotopically aligned human auditory fiber pathways: a computational environment for modeling electrical stimulation by a cochlear implant based on micro-ct</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Potrusil</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Heshmat</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Sajedi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wenger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Johnson Chacko</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Glueckert</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2020.108001</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">393</biblScope>
+			<biblScope unit="page">108001</biblScope>
+			<date type="published" when="2020">2020</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Ganglion cell and &apos;dendrite&apos; populations in electric acoustic stimulation ears</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Rask-Andersen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Linthicum</surname></persName>
+		</author>
+		<idno type="DOI">10.1159/000262593</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Adv. Otorhinolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">67</biblScope>
+			<biblScope unit="page" from="14" to="27" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b45">
+	<analytic>
+		<title level="a" type="main">A model of the electrically excited human cochlear neuron i. contribution of neural substructures to the generation and propagation of spikes</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Lutter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Felix</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0378-5955(00)00256-2</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">153</biblScope>
+			<biblScope unit="page" from="43" to="63" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Impact of morphometry, myelinization and synaptic current strength on spike conduction in human and cat spiral ganglion neurons</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Potrusil</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wenger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">K</forename><surname>Wise</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Glueckert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Schrott-Fischer</surname></persName>
+		</author>
+		<idno type="DOI">10.1371/journal.pone.0079256</idno>
+	</analytic>
+	<monogr>
+		<title level="j">PLoS ONE</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page">79256</biblScope>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Considerations and rationale for cochlear implant electrode design -past, present and future</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Risi</surname></persName>
+		</author>
+		<idno type="DOI">10.5152/iao.2018.6372</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Int. Adv. Otol</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page" from="382" to="391" />
+			<date type="published" when="2018">2018</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b48">
+	<monogr>
+		<title level="m" type="main">Thorns</title>
+		<author>
+			<persName><forename type="first">M</forename><surname>Rudnicki</surname></persName>
+		</author>
+		<ptr target="https://github.com/mrkrd/thorns" />
+		<imprint>
+			<date type="published" when="2022-03-25">2022. March 25, 2022</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Predicting action potential characteristics of human auditory nerve fibres through modification of the Hodgkin-Huxley equations : research article. South Afr</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">E</forename><surname>Smit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Hanekom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Hanekom</surname></persName>
+		</author>
+		<idno type="DOI">10.10520/EJC96819</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Sci</title>
+		<imprint>
+			<biblScope unit="volume">104</biblScope>
+			<biblScope unit="page" from="284" to="292" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Threshold predictions of different pulse shapes using a human auditory nerve fibre model containing persistent sodium and slow potassium currents</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">E</forename><surname>Smit</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Hanekom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Van Wieringen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wouters</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Hanekom</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2010.08.004</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">269</biblScope>
+			<biblScope unit="page" from="12" to="22" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Threshold levels of dual electrode stimulation in cochlear implants</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Snel-Bongers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">J</forename><surname>Briaire</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">H</forename><surname>Van Der Veen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">K</forename><surname>Kalkman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">H M</forename><surname>Frijns</surname></persName>
+		</author>
+		<idno type="DOI">10.1177/00034894840930S415</idno>
+		<idno>doi: 10.1177/00034894840930S415</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Ann. Otol. Rhinol. Laryngol</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="issue">4</biblScope>
+			<biblScope unit="page" from="76" to="82" />
+			<date type="published" when="1984">2013. 1984</date>
+		</imprint>
+	</monogr>
+	<note>Factors inducing retrograde degeneration of the cochlear nerve J. Assoc. Res. Otolaryngol. _suppl</note>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Frequency map for the human cochlear spiral ganglion: implications for cochlear implants</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Stakhovskaya</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Sridhar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">H</forename><surname>Bonham</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A</forename><surname>Leake</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-007-0076-9</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Assoc. Res. Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="220" to="233" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b53">
+	<monogr>
+		<title level="m" type="main">Experiments in Hearing</title>
+		<author>
+			<persName><forename type="first">G</forename><surname>Von Békésy</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1960">1960</date>
+			<publisher>McGraw-Hill</publisher>
+			<pubPlace>New York, NY</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b54">
+	<analytic>
+		<title level="a" type="main">A temporal bone study of insertion trauma and intracochlear position of cochlear implant electrodes. I: comparison of nucleus banded and nucleus contour TM electrodes</title>
+		<author>
+			<persName><forename type="first">P</forename><surname>Wardrop</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Whinney</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">J</forename><surname>Rebscher</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">T</forename><surname>Roland</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">W</forename><surname>Luxford</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A</forename><surname>Leake</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2004.11.006</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">203</biblScope>
+			<biblScope unit="page" from="54" to="67" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Changes in hearing thresholds over 10 years in older adults</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">L</forename><surname>Wiley</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Chappell</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Carmichael</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">M</forename><surname>Nondahl</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">J</forename><surname>Cruickshanks</surname></persName>
+		</author>
+		<idno type="DOI">10.3766/jaaa.19.4.2</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Am. Acad. Audiol</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page">371</biblScope>
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b56">
+	<analytic>
+		<title level="a" type="main">Cochlear implants: current designs and future possibilities</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">S</forename><surname>Wilson</surname></persName>
+		</author>
+		<idno type="DOI">10.1682/JRRD.2007.10.0173</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Rehabil. Res. Dev</title>
+		<imprint>
+			<biblScope unit="volume">45</biblScope>
+			<biblScope unit="page" from="695" to="730" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Structural and ultrastructural changes to Type I spiral ganglion neurons and schwann cells in the deafened guinea pig cochlea</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">K</forename><surname>Wise</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Pujol</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">G</forename><surname>Landry</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Fallon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">K</forename><surname>Shepherd</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-017-0631-y</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J. Assoc. Res. Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="751" to="769" />
+			<date type="published" when="2017">2017</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b58">
+	<analytic>
+		<title level="a" type="main">Characteristics of detection thresholds and maximum comfortable loudness levels as a function of pulse rate in human cochlear implant users</title>
+		<author>
+			<persName><forename type="first">N</forename><surname>Zhou</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><surname>Xu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">E</forename><surname>Pfingst</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2011.12.008</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">284</biblScope>
+			<biblScope unit="page" from="25" to="32" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b59">
+	<analytic>
+		<title level="a" type="main">Cochlear implant spatial selectivity with monopolar, bipolar and tripolar stimulation</title>
+		<author>
+			<persName><forename type="first">Z</forename><surname>Zhu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Q</forename><surname>Tang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F.-G</forename><surname>Zeng</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Guan</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Ye</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2011.11.005</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear. Res</title>
+		<imprint>
+			<biblScope unit="volume">283</biblScope>
+			<biblScope unit="page" from="45" to="58" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

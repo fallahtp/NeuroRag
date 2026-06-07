@@ -1,10 +1,16 @@
+import sys
 from pathlib import Path
 import re
+
 import pandas as pd
 
-BASE_DIR = Path(__file__).resolve().parents[3]
-RAW_DIR = BASE_DIR / "data" / "raw"
-OUT_FILE = BASE_DIR / "data" / "interim" / "paper_metadata.csv"
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # src/
+from config import settings  # noqa: E402
+
+# Paths come from config so a separate sample corpus can be built via
+# NEURORAG_RAW_DIR / NEURORAG_INTERIM_DIR without touching a private corpus.
+RAW_DIR = settings.raw_dir
+OUT_FILE = settings.interim_dir / "paper_metadata.csv"
 
 
 def parse_filename_metadata(stem: str) -> tuple[str, str]:
@@ -21,15 +27,19 @@ def parse_filename_metadata(stem: str) -> tuple[str, str]:
     return year, first_author
 
 
-def build_metadata(raw_dir: Path = RAW_DIR, base_dir: Path = BASE_DIR) -> pd.DataFrame:
-    """Scan ``raw_dir`` for PDFs and return a metadata DataFrame."""
+def build_metadata(raw_dir: Path = RAW_DIR) -> pd.DataFrame:
+    """Scan ``raw_dir`` for PDFs and return a metadata DataFrame.
+
+    ``relative_path`` is stored relative to ``raw_dir`` so the processed-text
+    lookup in load_documents.py works regardless of where the corpus lives.
+    """
     records = []
     for pdf in raw_dir.rglob("*.pdf"):
         year, first_author = parse_filename_metadata(pdf.stem)
         records.append(
             {
                 "filename": pdf.name,
-                "relative_path": str(pdf.relative_to(base_dir)),
+                "relative_path": str(pdf.relative_to(raw_dir)),
                 "year": year,
                 "first_author": first_author,
                 "category": pdf.parent.name,

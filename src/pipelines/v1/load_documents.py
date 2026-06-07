@@ -1,10 +1,16 @@
+import sys
 from pathlib import Path
+
 import pandas as pd
 from langchain_core.documents import Document
 
-BASE_DIR = Path(__file__).resolve().parents[3]
-METADATA_FILE = BASE_DIR / "data" / "interim" / "paper_metadata.csv"
-PROCESSED_DIR = BASE_DIR / "data" / "processed"
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # src/
+from config import settings  # noqa: E402
+
+# Paths come from config so a separate sample corpus can be built via
+# NEURORAG_PROCESSED_DIR / NEURORAG_INTERIM_DIR.
+METADATA_FILE = settings.interim_dir / "paper_metadata.csv"
+PROCESSED_DIR = settings.processed_dir
 
 
 def load_metadata(metadata_file: Path) -> pd.DataFrame:
@@ -17,11 +23,9 @@ def load_metadata(metadata_file: Path) -> pd.DataFrame:
 
 
 def resolve_text_path(relative_pdf_path: str) -> Path:
-    p = Path(relative_pdf_path)
-    parts = p.parts
-    if len(parts) >= 2 and parts[0] == "data" and parts[1] == "raw":
-        p = Path(*parts[2:])
-    return PROCESSED_DIR / p.with_suffix(".txt")
+    # relative_pdf_path is relative to the raw corpus dir (see create_metadata),
+    # mirroring the layout extract_pdfs.py writes under the processed dir.
+    return PROCESSED_DIR / Path(relative_pdf_path).with_suffix(".txt")
 
 
 def make_document(row: pd.Series) -> Document | None:

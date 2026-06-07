@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Computational Modeling of Synchrony in the Auditory Nerve in Response to Acoustic and Electric Stimulation</title>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2022-06-17">17 June 2022</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct status="extracted">
+					<analytic>
+						<author role="corresp">
+							<persName><forename type="first">Raymond</forename><forename type="middle">L</forename><surname>Goldsworthy</surname></persName>
+							<email>raymond.goldsworthy@med.usc.edu</email>
+						</author>
+						<author>
+							<affiliation key="aff0">
+								<note type="raw_affiliation">University Hospital Frankfurt , Germany</note>
+								<orgName type="institution">University Hospital</orgName>
+								<address>
+									<settlement>Frankfurt</settlement>
+									<country key="DE">Germany</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff1">
+								<note type="raw_affiliation">Boston University , United States Yoojin Chung, Decibel Therapeutics, Inc. , United States Auditory Research Center ,</note>
+								<orgName type="department">Yoojin Chung, Decibel Therapeutics, Inc</orgName>
+								<orgName type="laboratory">Auditory Research Center</orgName>
+								<orgName type="institution">Boston University</orgName>
+								<address>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff2">
+								<note type="raw_affiliation">Caruso Department of Otolaryngology , Keck School of Medicine , University of Southern California , Los Angeles , CA , United States</note>
+								<orgName type="department" key="dep1">Caruso Department of Otolaryngology</orgName>
+								<orgName type="department" key="dep2">Keck School of Medicine</orgName>
+								<orgName type="institution">University of Southern California</orgName>
+								<address>
+									<settlement>Los Angeles</settlement>
+									<region>CA</region>
+									<country key="US">United States</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Computational Modeling of Synchrony in the Auditory Nerve in Response to Acoustic and Electric Stimulation</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2022-06-17">17 June 2022</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">9FF17D95D97993371B200F10C60E5C98</idno>
+					<idno type="DOI">10.3389/fncom.2022.889992</idno>
+					<note type="submission">Received: 04 March 2022 Accepted: 25 May 2022</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.9.0" ident="GROBID" when="2026-06-07T12:16+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">0.9.0</label>
+					<label type="parameters">startPage=0, endPage=2, consolidateCitations=0, consolidateHeader=0, consolidateFunders=0, includeRawAffiliations=true, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=null, flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<textClass>
+				<keywords>
+					<term>auditory neuroscience</term>
+					<term>cochlear implants</term>
+					<term>pitch perception</term>
+					<term>synchrony</term>
+					<term>auditory nerve</term>
+				</keywords>
+			</textClass>
+			<abstract>
+				<p>Cochlear implants are medical devices that provide hearing to nearly one million people around the world. Outcomes are impressive with most recipients learning to understand speech through this new way of hearing. Music perception and speech reception in noise, however, are notably poor. These aspects of hearing critically depend on sensitivity to pitch, whether the musical pitch of an instrument or the vocal pitch of speech. The present article examines cues for pitch perception in the auditory nerve based on computational models. Modeled neural synchrony for pure and complex tones is examined for three different electric stimulation strategies including Continuous Interleaved Sampling (CIS), High-Fidelity CIS (HDCIS), and Peak-Derived Timing (PDT). Computational modeling of current spread and neuronal response are used to predict neural activity to electric and acoustic stimulation. It is shown that CIS does not provide neural synchrony to the frequency of pure tones nor to the fundamental component of complex tones. The newer HDCIS and PDT strategies restore synchrony to both the frequency of pure tones and to the fundamental component of complex tones. Current spread reduces spatial specificity of excitation as well as the temporal fidelity of neural synchrony, but modeled neural excitation restores precision of these cues. Overall, modeled neural excitation to electric stimulation that incorporates temporal fine structure (e.g., HDCIS and PDT) indicates neural synchrony comparable to that provided by acoustic stimulation. Discussion considers the importance of stimulation rate and long-term rehabilitation to provide temporal cues for pitch perception.</p>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+	</text>
+</TEI>

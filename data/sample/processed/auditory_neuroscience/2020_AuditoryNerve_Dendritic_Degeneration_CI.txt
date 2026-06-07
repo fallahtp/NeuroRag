@@ -1,0 +1,1248 @@
+
+
+===== PAGE 1 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 1
+ORIGINAL RESEARCH
+published: 19 November 2020
+doi: 10.3389/fnins.2020.599868
+Edited by:
+Hari S. Sharma,
+Uppsala University, Sweden
+Reviewed by:
+Robert Shepherd,
+The University of Melbourne, Australia
+Aritra Kundu,
+The University of Texas at Austin,
+United States
+*Correspondence:
+Natalie Fischer
+Natalie.Fischer@i-med.ac.at
+†These authors have contributed
+equally to this work
+Specialty section:
+This article was submitted to
+Neural Technology,
+a section of the journal
+Frontiers in Neuroscience
+Received: 09 September 2020
+Accepted: 22 October 2020
+Published: 19 November 2020
+Citation:
+Heshmat A, Sajedi S, Johnson
+Chacko L, Fischer N,
+Schrott-Fischer A and Rattay F (2020)
+Dendritic Degeneration of Human
+Auditory Nerve Fibers and Its Impact
+on the Spiking Pattern Under Regular
+Conditions and During Cochlear
+Implant Stimulation.
+Front. Neurosci. 14:599868.
+doi: 10.3389/fnins.2020.599868
+Dendritic Degeneration of Human
+Auditory Nerve Fibers and Its Impact
+on the Spiking Pattern Under Regular
+Conditions and During Cochlear
+Implant Stimulation
+Amirreza Heshmat 1,2†, Sogand Sajedi 1†, Lejo Johnson Chacko 2, Natalie Fischer 2*,
+Anneliese Schrott-Fischer 2 and Frank Rattay 1
+1 Faculty of Mathematics and Geoinformation, Institute for Analysis and Scientiﬁc Computing, Vienna University
+of Technology, Vienna, Austria,2 Laboratory for Inner Ear Biology, Department of Otorhinolaryngology, Medical University
+of Innsbruck, Innsbruck, Austria
+Due to limitations of human in vivo studies, detailed computational models enable
+understanding the neural signaling in the degenerated auditory system and cochlear
+implants (CIs). Four human cochleae were used to quantify hearing levels depending
+on dendritic changes in diameter and myelination thickness from type I of the auditory
+nerve ﬁbers (ANFs). Type I neurons transmit the auditory information as spiking pattern
+from the inner hair cells (IHCs) to the cochlear nucleus. The impact of dendrite
+diameter and degree of myelination on neural signal transmission was simulated for (1)
+synaptic excitation via IHCs and (2) stimulation from CI electrodes. An accurate three-
+dimensional human cochlear geometry, along with 30 auditory pathways, mimicked the
+CI environment. The excitation properties of electrical potential distribution induced by
+two CI were analyzed. Main ﬁndings: (1) The unimodal distribution of control dendrite
+diameters becomes multimodal for hearing loss cases; a group of thin dendrites with
+diameters between 0.3 and 1 µm with a peak at 0.5 µm appeared. (2) Postsynaptic
+currents from IHCs excite such thin dendrites easier and earlier than under control
+conditions. However, this advantage is lost as their conduction velocity decreases
+proportionally with the diameter and causes increased spike latency and jitter in
+soma and axon. Firing probability reduces through the soma passage due to the low
+intracellular current ﬂow in thin dendrites during spiking. (3) Compared with dendrite
+diameter, variations in myelin thickness have a small impact on spiking performance. (4)
+Contrary to synaptic excitation, CIs cause several spike initiation sites in dendrite, soma
+region, and axon; moreover, ﬁber excitability reduces with ﬁber diameter. In a few cases,
+where weak stimuli elicit spikes of a target neuron (TN) in the axon, dendrite diameter
+reduction has no effect. However, in many cases, a spike in a TN is ﬁrst initiated in the
+Frontiers in Neuroscience | www.frontiersin.org 1 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 2 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 2
+Heshmat et al. Degenerated Human Auditory Nerve
+dendrite, and consequently, dendrite degeneration demands an increase in threshold
+currents. (5) Threshold currents of a TN and co-stimulation of degenerated ANFs in
+other frequency regions depend on the electrode position, including its distance to the
+outer wall, the cochlear turn, and the three-dimensional pathway of the TN.
+Keywords: auditory nerve, degeneration, dendrite, cochlear implant, computational model, electrical stimulation,
+spike conductance, G-ratio
+INTRODUCTION
+According to World Health Organization [WHO] (2020), nearly
+466 million people worldwide have impairing hearing loss
+caused by hereditary, aging, disease, and injury. Hearing loss
+or deafness has several impacts on people’s daily life. One of
+the critical impacts of hearing loss is a lack of communication
+skills in the society. The ear is a vulnerable organ where
+sophisticated strategies were developed during evolution to
+transfer sound into neural signals (Figure 1) with high precision
+concerning frequency and loudness (Von Békésy and Wever,
+1960; Mark and Rattay, 1990; Humes et al., 2010). In most
+cases, deﬁcits in hearing performance are caused by a disturbed
+spiking pattern transmitted from the cochlea to the brain’s
+processing centers. Sensory hair cells in the cochlea convert
+sound into neural signals conducted along the auditory nerve
+ﬁbers (ANFs) by two types of spiral ganglion neurons. The
+vast majority (about 95%) of spiral ganglion neurons are
+bipolar type I cells that connect inner hair cells (IHCs) via
+myelinated dendrites, large somata, and myelinated axons with
+the cochlear nuclei in the brain stem (Ota and Kimura, 1980).
+The myelination is essential for rapid action potential (AP)
+conduction along the ANF (Rattay et al., 2013). In contrast,
+smaller unmyelinated type II cells transmit APs from the outer
+hair cells (Spoendlin, 1985).
+The somata of type I cells in humans are unmyelinated,
+whereas in non-primate mammals, they are densely myelinated
+(Thomsen, 1967; Spoendlin, 1972; Ota and Kimura, 1980;
+Arnold, 1987; Spoendlin and Schrott, 1989; Xing et al., 2012).
+Electrophysiological modeling studies demonstrate that reducing
+the number of membrane sheets covering the soma increases
+both the somatic membrane capacitance and conductance, which
+leads to a delay for the AP passing the soma (Rattay, 2000;
+Rattay et al., 2001). Depending on soma diameter and the number
+of sheets of covering glia cells, an AP needs about 200 µs
+longer (human vs. cat of regular type I cells) to pass the soma
+(Rattay et al., 2013). Particularly, the dendrite diameter plays an
+additional role when the neural signal has to cross the soma. The
+synaptic excitation might be easier for thinner ﬁbers, yet their
+small inner-axonal current has to load the large soma capacitance.
+According to the simulations presented in section “Impact of
+DD and MT on Synaptic Threshold Current and AP Arrival
+Time in the Axon, ” it is expected that a minimum dendrite
+diameter of about 0.5 µm is necessary for a safe AP conduction
+Abbreviations: ANF , auditory nerve ﬁber; AP , action potential; CI, cochlear
+implant; DD, dendrite diameter; eCAP , evoked compound action potential;
+IHC, inner hair cell; MT, myelination thickness; STD, standard deviation; V e,
+extracellular potential.
+from the dendrite across the soma into the axon of a typical
+human type I cell.
+Decoding the auditory information and its possible quality is
+based on the ﬁring pattern delivered by the entity of type I cells
+(Miller and Sachs, 1983; Shamma, 1985; Rattay and Lutter, 1997).
+Their comprehensive innervation of all tonotopically organized
+cochlear regions is needed for perfect hearing. Moreover, small
+variations in type I ﬁber diameters with a common degree of
+myelination are ideal for precise spike arrival times in the next
+neural processing unit, the cochlear nucleus. Spoendlin published
+a narrow range of ﬁber diameters in children against a broader
+spectrum in adults. The group reported an enormous increase
+of percentage for the ﬁbers smaller than 1 µm in hearing deﬁcit
+specimens, suggesting that in terms of neural health, not only the
+number of ﬁbers but also a normal range of diameters is one of
+the key elements for excellent hearing performance (Spoendlin
+and Schrott, 1989). In addition, several other components, such
+as stria vascularis, endocochlear potential, and hair cells, are
+essential for normal hearing (Keithley, 2020).
+A cochlear implant (CI) is a medical device to help
+people with severe hearing impairment. Sophisticated strategies
+were developed to stimulate populations of ANFs externally
+via currents from an electrode array. One of the important
+parameters which inﬂuence the CI performance is auditory nerve
+condition. In a study by Blamey et al. (2012), CI recipients
+experienced a wide variety of performance, even with the same
+hearing loss levels. Shepherd and coworkers (Shepherd and Javel,
+1997; Sly et al., 2007) reported a signiﬁcant decrease in neural
+responses for degenerated ANFs compared with healthy cases
+suggesting that the condition of the auditory nerve could be a
+factor for extracellular stimulation outcomes. There is no reliable
+technique to estimate the outcomes of the CI in recipients before
+surgery because of many unknown factors that are involved.
+However, clinical studies showed that factors such as duration
+and age at onset of severe to profound hearing loss, age at
+implantation, etiology, using hearing aids, duration of moderate
+hearing loss, ANF degeneration, and residual hearing measures
+have some impact on CI performances (Gantz et al., 1993;
+Summerﬁeld and Marshall, 1995; Waltzman et al., 1995; Albu and
+Babighian, 1997; Rubinstein et al., 1999; Friedland et al., 2003;
+Gomaa et al., 2003; Blamey et al., 2012; Lazard et al., 2012).
+Although the degeneration pattern of IHCs and ANFs is not
+completely understood yet, it is related to the nature of the
+cochlear insult, the duration, and level of hearing loss. As an
+example, in a human cochlea with severe degeneration, Nadol
+reported more ﬁbers in the proximity of Rosenthal’s canal than in
+the habenula perforate, suggesting the shortening of the dendrites
+Frontiers in Neuroscience | www.frontiersin.org 2 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 3 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 3
+Heshmat et al. Degenerated Human Auditory Nerve
+FIGURE 1 | From acoustical to neural signal. (A) Ear anatomy; the acoustic signal enters the pinna, travels through the ear canal, and vibrates the eardrum. These
+vibrations are transferred by bony structures at the oval window to the ﬂuid system in the cochlea, where they cause a local frequency mapping (tonotopical
+principle: each frequency has its place of resonance). (B) The ﬂuid compartments scala tympani (ST), scala vestibuli (SV), and scala media (SM) coil up the bony
+modiolus (M). A spiral channel (Rosenthal’s canal, RC) within M resides somata of auditory nerve ﬁbers that act as data lines between the hair cells in the organ of
+Corti (star) and higher processing centers in the brain. (C) 3D view of 30 differently colored ﬁbers from the basal (black), middle (green), and apical (red) cochlea turns
+together with the scala tympani. An electrode array (gray circles) of a 12-channel cochlear implant (light blue; used for our simulations) is inserted in ST.
+in case of severe and profound degenerations. In addition, the
+number of axons was essentially higher than dendrites, and the
+number of somata was reduced to 10% of the normal range
+(Nadol, 1977). In case of age-related degenerations, some clinical
+studies of human temporal bones reported about 1000 to 1800
+somata loss per decade that may contribute to reduction of
+hearing-in-noise performance (Otte et al., 1978; Makary et al.,
+2011). In cases of cochlear damage as a result of noise or
+drug exposure, some studies showed that while the loss of IHC
+occurred within a few days, the loss of dendrite and soma
+occurred within a few weeks and years, respectively (Liberman
+and Kiang, 1978; Hinojosa et al., 2001; Wu et al., 2019). A recent
+study reported up to 80% loss of connections between IHCs and
+ANFs for over 60-year-old human temporal bones, whereas only
+10% of IHC degenerated (Wu et al., 2019). Many histological data
+of humans demonstrate that ANF degeneration mainly aﬀects
+the dendrites (Nadol, 1990; Schuknecht, 1993). However, to our
+knowledge, no histological data are available on the dendritic
+degeneration in terms of diameter and myelination thickness
+based on the audiogram evaluations in humans. Our objective is
+to answer the question that how the degree and type of such ANF
+degeneration disturb the hearing eﬃciency with or without a CI.
+This study investigated the ANF condition in terms of
+the three degeneration indicators: dendrite diameter (DD),
+myelination thickness (MT), and G-ratio (the ratio of the inner
+to the outer diameter of a myelinated ﬁber). Image data of
+four human cochleae at diﬀerent ages with diﬀerent hearing
+levels were used for a semi-automatic calculation of DD and
+MT of the same sample population in comparable regions in
+all specimens. Based on these data, a computer simulation was
+conducted for an electrical circuit model of an auditory neuron
+(Rattay et al., 2001). In the ﬁrst simulation part, the model
+was used to mimic the synaptic excitation of the IHC. For a
+more realistic investigation, a noise channel was applied to the
+model to study the eﬀect of dendritic degeneration on spike
+conduction. We showed that extremely thin ﬁbers appeared in
+intense hearing loss cases, and they cause a reduction in spiking
+patterns and an increase in the delay of spike arrival times. In the
+second part of computer simulations, extracellular stimulation
+was evaluated for 30 three-dimensional ANF pathways from
+micro-CT recordings (Potrusil et al., 2020), assuming diﬀerent
+levels of dendritic degeneration concerning DD and MT. The
+threshold proﬁles of the investigated ANFs for 10 electrode
+positions of a lateral versus a perimodiolar CI system were
+analyzed. We show that the spiking performance varies with the
+degeneration status of the neurons.
+MATERIALS AND METHODS
+Preparation and Fixation
+In this study, four individual human inner ears, one normal
+case (control) and three hearing loss cases (S1, S2, and S3)
+with hearing impairment diﬀering in three cochlear regions
+Frontiers in Neuroscience | www.frontiersin.org 3 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 4 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 4
+Heshmat et al. Degenerated Human Auditory Nerve
+based on the audiogram evaluations ( Table 1 ), were used
+following ethical guidelines according to the Division of Clinical
+and Functional Anatomy of the Innsbruck Medical University
+(McHanwell et al., 2008; Riederer et al., 2012). Preﬁxation was
+done with the Karnovsky solution within 1–3 h after death by
+perilymphatic perfusion through the round and oval windows.
+During the autopsy, the temporal bones were removed and ﬁxed
+by immersion and repeated perilymphatic perfusion. After post-
+ﬁxation with 1.5% osmium tetroxide (OsO 4) for 90 min and
+washing of the specimen, the excess bone around the cochlea
+was removed using a Bien Air CE 0120 driller until only a thin
+bony shell surrounded the cochlea. The temporal bones were
+dehydrated with 70% ethanol and embedded without removing
+the bony shell. Then the block-surface method (Spoendlin and
+Schrott, 1987) was used. A mid-modiolar cut was performed
+with a circular saw, and then small disks of the cochlear half-
+turns were dissected and divided into segments. The lamina
+was re-embedded, and tangential histological sections of the
+whole segment were evaluated by counting the cross-sectioned
+myelinated nerve ﬁbers. The histological sections were done
+as near as possible to the organ of Corti. The number of
+myelinated nerve ﬁbers was evaluated by counting the cross-
+sectioned ﬁbers between osseous spiral lamina and organ of Corti
+of each segment.
+Evaluation of Hearing
+Pure-tone audiograms were performed with a standard
+audiometer in a sound-attenuated room. Thresholds were
+measured between 0.125 and 8 kHz. The audiogram performed
+before death was used. The durations between the last audiogram
+and death were 1, 5, 10, and 15 months for S3, S1, control,
+and S2, respectively. Pure-tone averages were calculated for
+the low (0.125–0.5 kHz), mid (1–2 kHz), and high (4–8 kHz)
+frequencies. The degree of hearing loss was determined using
+the WHO criteria (25 dB or better, no impairment; 26–40 dB,
+slight impairment; 41–60 dB, moderate impairment; 61–80 dB,
+severe impairment; 81 dB or greater, profound impairment
+including deafness) (World Health Organization [WHO],
+1991). The frequency ranges of 0.125–0.5, 1–2, and 4–8 kHz
+were assigned to the apical, middle, and basal regions of the
+cochlea, respectively.
+Imaging, Data Processing, and Statistics
+Based on the block-surface method (Spoendlin and Schrott,
+1987), it is feasible to assess the cochlea quantitatively at a
+light and electron microscopic level within the osseous spiral
+lamina and the cochlear nerve. ANFs of all specimens were
+divided into equal and comparable segmented regions, from
+basal to apical. Sections were digitized using a Zeiss Axio
+Imager.M2 equipped with a Zeiss Axiocam 512. Full-resolution
+images were acquired with a Plan Apochromat 63 × 1.4 lens
+and used to evaluate DD, MT, and G-ratio of the ANFs. Data
+processing was done with ImageJ as well as MATLAB (version
+R2018b)1, using a toolbox (Zaimi et al., 2016) for semi-automatic
+segmentation to investigate the dendrite of the ANFs. For a
+systematic comparison, an equal number of ANFs were counted
+in all three regions.
+Statistical analyses were conducted using MATLAB and
+Python programming language (version 2.7) 2. All data shown in
+Table 1were collected based on the degree of hearing loss at three
+regions of the basal, middle, and apical with 450, 520, and 150
+ﬁber numbers, respectively. The data were compared with the
+healthy specimen as control. The Kruskal–Wallis test was used
+to determine if there were signiﬁcant diﬀerences between groups
+in each region, separately. Pairwise Conover test was applied to
+compare the medians of all groups.
+Computational Model and Simulations
+Auditory nerve excitation was simulated by Rattay’s multi-
+compartment model described in Rattay et al. (2001). More
+details about the geometry and kinetics of the model can be found
+in Potrusil et al. (2020). However, the geometrical parameters of
+the dendrites with internode lengths of 250 µm (except for the
+last internode) and 2.5- µm-long nodes of Ranvier were applied
+to the model to simulate the ANFs according to the 30 three-
+dimensional pathways and soma positions. Simulations were
+performed in two parts using MATLAB. In the ﬁrst part, a 100-
+µs monophasic pulse was applied for intracellular stimulation
+to mimic “natural” ANF ﬁring via synaptic excitation from an
+IHC. Our pulse is essentially shorter than the 280-µs rise time of
+postsynaptic currents observed in rat experiments but with peak
+values of 400 pA (Grant et al., 2010); such recorded currents at
+the IHC ribbon synapse are about 15 times stronger than the
+threshold current (Rattay et al., 2013), and they generate the
+AP within ∼100 µs (Rattay and Danner, 2014). To simulate
+the latency variations, a noise channel was added, quantiﬁed
+by the parameter knoise = 0.05 µA mS −1/2 (Rattay et al.,
+2001). This approach assumes that every compartment’s noisy
+current component is related to the number of sodium ion
+1https://mathworks.com
+2https://www.python.org
+TABLE 1 | Specimen details on hearing deﬁcits as provided by the Innsbruck Medical University, Department of Otorhinolaryngology, Laboratory for Inner Ear Biology.
+Specimen ID Audiogram
+basal (dB)
+Hearing-loss
+level (basal)
+Audiogram
+middle (dB)
+Hearing-loss
+level (middle)
+Audiogram
+apical (dB)
+Hearing-loss
+level (apical)
+Age (years) Audiogram
+before death
+(months)
+Control 17 Normal 7 Normal 11 Normal 47 10
+S1 97 Profound 66 Severe 42 Moderate 67 5
+S2 57 Moderate 28 Slight 17 Normal 63 15
+S3 57 Moderate 20 Normal 20 Normal 80 1
+Frontiers in Neuroscience | www.frontiersin.org 4 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 5 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 5
+Heshmat et al. Degenerated Human Auditory Nerve
+channels in the cell membrane. A biphasic (cathodic ﬁrst) and
+a monophasic (cathodic) pulse of 100 µs per phase were applied
+to investigate the threshold proﬁle for extracellular stimulation
+in a cochlear implant environment. In this case, an anatomically
+detailed ﬁnite element model of a human cochlea along with
+30 reconstructed tonotopically organized auditory pathways of
+type I auditory nerve bundles from our previous work (Potrusil
+et al., 2020) was implemented in COMSOL Multiphysics (version
+5.5)3. In addition, two diﬀerent electrode arrays, a lateral and a
+perimodiolar CI system, were modeled and added to our cochlea
+model to evaluate the excitation proﬁles of the ANFs. Both CI
+models are designed according to manufacturer data of a deep-
+insertion array of FLEX SOFT, MED-EL, Innsbruck, Austria (12
+electrodes; most basal EL1, most apical EL12) and a perimodiolar
+located array of CI24RE Contour Advance, Cochlear, Sydney,
+Australia (24 electrodes; most basal CA1, most apical CA22).
+Figure 2 shows the top views of both electrode arrays inserted
+into the specimen’s scala tympani. For better understanding, the
+basal nerve pathways and electrode positions are added to the
+ﬁgure. Table 2 represents the measured angles from the round
+window with respect to the modiolus axis for 10 investigated
+3https://www.comsol.com
+electrodes (ﬁve from each CI array system), as well as the ﬁber
+with the closest distance from its dendritic terminal to the center
+of the electrode named target neuron (TN).
+RESUL TS
+Variations in Dendrite Diameter and
+Myelination Thickness
+Figure 3 displays histograms for DD and MT for each hearing
+loss case compared with the control in the three cochlear regions
+basal, middle, and apical. In addition, the ﬁt kernel distribution
+was used for better comprehension. The unimodal control data
+spread from about 1.3 and 0.35 µm to 3.5 and 1.2 µm with peaks
+occurring at about 2 and 0.6 µm for DD and MT, respectively, in
+all three regions. The MT values are clustered on the right side of
+the histogram, demonstrating a right-skewed form.
+In the basal turn ( Figure 3A), in S1 (Profound impairment),
+DD spreads from 0.3 to 3.5µm with peaks at about 0.4, 1, 1.5, and
+2 µm showing a multimodal distribution whereas MT spreads
+from about 0.1 to 1.1 µm with peaks occurring at about 0.1,
+0.3, and 0.55 µm. Both parameters are wider, and more spread
+out in the S1 case, indicating more variety. S2 and S3 (Moderate
+FIGURE 2 | 3D model of scala tympani including 12 electrodes of a lateral CI (left) and 22 electrodes of a perimodiolar CI (that is close to the center, right) as well
+as the 14 pathways of ANFs in the basal turn. The dendrites, soma positions, and axons of the nerve pathways are represented with colored solid lines, yellow
+spheres, and colored dashed lines, respectively. For the sake of clarity, all electrode positions are shown as blue spheres although in calculations each active
+electrode is a hemisphere. The axis of modiolus is marked as red sphere.
+TABLE 2 | Angles of the investigated electrodes and the corresponding target neurons (TN) measured from the round window with respect to modiolus axis.
+Lateral electrode array Electrode
+angle ( ◦)
+Perimodiolar
+electrode
+array
+Electrode
+angle ( ◦)
+TN TN angle ( ◦)
+EL1 10 CA2 15 Basal14 28
+EL3 69 CA6 73 Basal11 79
+EL5 143 CA11 153 Basal7 137
+EL8 295 CA19 317 Basal1 298
+EL9 343 CA20 332 Middle9 327
+Frontiers in Neuroscience | www.frontiersin.org 5 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 6 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 6
+Heshmat et al. Degenerated Human Auditory Nerve
+FIGURE 3 | Histograms and ﬁt kernel distributions (dashed lines) for DD and MT of the ANFs for control and one specimen with determined hearing loss level,
+calculated in the basal turn (A), middle turn (B), and apical turn (C).
+impairment) represent similar trends with spreading from about
+0.4 and 0.15 µm to 3.5 and 1.1 µm for DD and MT, respectively.
+DD distributions display a multimodal form with peaks at about
+0.5, 1.5, and 2 µm, whereas MT represents a bimodal behavior
+with peaks at about 0.2 and 0.55 µm for both cases.
+In the middle turn ( Figure 3B), in S1 (Severe impairment),
+DD expands from 0.3 to 3.5 µm with peaks at about 0.4, 1.3, and
+2 µm representing a multimodal distribution behavior, whereas
+MT spreads from about 0.1 to 1.1 µm with similar peaks as the
+profound case of the basal turn. In S2 (Slight impairment) case,
+Frontiers in Neuroscience | www.frontiersin.org 6 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 7 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 7
+Heshmat et al. Degenerated Human Auditory Nerve
+DD expands from about 1 to 3.5 µm, and MT has the same
+distribution as the control.
+Figure 3C demonstrates the apical turn; S1 (Moderate
+impairment) shows the data spreading from about 0.4 and
+0.15 µm to 3.5 and 1.1µm in DD and MT, respectively. The peaks
+arise in about 0.5, 1.5, and 2 µm in DD, and 0.5 µm in MT.
+Figure 4 represents the scatter plot with the best-ﬁt linear
+regression of the G-ratio and MT against DD in all three regions
+between the control and a hearing loss case. In the basal turn,
+the G-ratio shows a weak linear relationship with DD in all
+cases, whereas MT and DD have a strong linear relationship
+with r2 = 0.83, 0.63, and 0.64 for S1 (Profound impairment),
+S2, and S3 (Moderate impairment), respectively, and a weak
+relationship (r2 = 0.22) for the control ( Figure 4A). In addition,
+there was a signiﬁcant diﬀerence in DD and MT ( p < 0.001)
+in all three hearing loss cases versus the control. However, the
+FIGURE 4 | Scatter plot for the G-ratio and MT against DD of the ANFs for control and one specimen with determined hearing loss level, calculated in the basal turn
+(A), middle turn (B), and apical turn (C). The best-ﬁt linear regression to each scatterplot is included.
+Frontiers in Neuroscience | www.frontiersin.org 7 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 8 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 8
+Heshmat et al. Degenerated Human Auditory Nerve
+same signiﬁcant diﬀerence in G-ratio was found only between the
+control and the profound case.
+In the middle turn, the G-ratios in all three cases, as well as
+the MT in control and the slight case, show a weakly positive
+linear relationship with DD. On the other hand, MT and DD
+have a strongly positive linear relationship ( r2 = 0.73) in the
+severe case ( Figure 4B). Moreover, the signiﬁcant diﬀerence in
+all three parameters ( p < 0.001) was found between the control
+and the severe case.
+In the apical turn, a weakly positive linear relationship was
+found for G-ratio and MT with DD in both cases (Figure 4C). In
+addition, a signiﬁcant diﬀerence (p < 0.001) was only observed in
+DD and MT between the control and the moderate case.
+Impact of DD and MT on Synaptic
+Threshold Current and AP Arrival Time in
+the Axon
+Our ﬁrst computer experiments concentrate on the impact of
+DD and MT on the excitation and the arrival time of the AP
+at the soma for physiological hearing in contrast to stimulation
+with a cochlear implant. Synaptic IHC excitation and spike
+conduction along the ANF were simulated by a 100- µs pulse
+of 300 pA injected into the ﬁrst compartment ( Figure 5A ).
+Thin ﬁbers need weak postsynaptic currents to generate a spike,
+and consequently, a ﬁxed stimulus amplitude causes earlier AP
+peaks for smaller DD. Comparing green APs depicting ﬁrst
+compartment excitations, the vertical dashed line demonstrates
+earliest AP peak for the thinnest diameter in Figure 5A . In
+contrast to this advantage for thin ﬁbers, the AP conduction
+velocity of myelinated ﬁbers is proportional to ﬁber diameter.
+Tiny ﬁbers lose any temporal beneﬁt of AP generation during
+slow AP conduction (nine black lines for six nodes of Ranvier
+and three non-myelinated presomatic compartments) before
+AP arrives at soma (red line, Figure 5A ). The impact of DD
+on the AP conductance time to the soma is rather small for
+dendrites of the control group in contrast to the ﬁrst part of all
+presented multimodal histograms (Figures 3, 5B). The threshold
+current for AP initiation is inverse to DD ( Figure 5C) because
+small myelinated ﬁbers need small intra-cellular current ﬂow for
+AP conductance (Rattay, 1990). However, the high capacitance
+of the soma cannot be loaded with such a small intracellular
+current delivered by DD < 0.4 µm, although there is support
+from a non-myelinated presomatic region. This presomatic
+region, represented by three compartments and marked by the
+arrowhead in the lowest graph of Figure 5A , ampliﬁes the
+intracellular current ﬂow but causes an additional AP delay at
+soma that increases when DD is reduced (compare the middle
+and lower graph of Figure 5A ). In conclusion, as the ﬁber
+diameter decreases, the AP needs more time to pass the soma,
+but in our deterministic model, AP conduction into the axon is
+not feasible for ﬁbers with DD less than 0.4 µm.
+To estimate the probability of spike conductance as functions
+of DD and G-ratio, ion current ﬂuctuations were included in all
+active membrane compartments, and 20 runs were performed
+with an amplitude of 300 pA for all cases. Although the
+probability of spike arrival in the axon is 100% for DD larger than
+1 µm, it reduces by decreasing DD (Figure 5D).
+Loss of APs was also investigated for weak stimulation,
+namely, at the threshold and 1.2 times threshold ( Figure 6). The
+normal (standard) ﬁber (2 µm) shows a sharply synchronized
+spiking pattern with a reduced delay for the higher amplitude.
+Increasing the amplitude causes a decrease in jitter and delay.
+The case of DD = 0.5 µm demonstrates that synchronization
+becomes higher, and the delay becomes shorter when the G-ratio
+is reduced (increasing of MT). For the higher G-ratio, only 30–
+45% of spikes can pass the soma. The case DD = 0.3µm generates
+no AP for G-ratio higher than 0.55 (simulated but not shown).
+However, by shortening the internodal lengths to half of its
+standard length (250 µm), the AP is generated in the dendrite
+even with the standard G-ratio of 0.625, yet the small intracellular
+current is unable to load the soma capacitance enough to initiate
+a spike in the soma.
+The next experiments show the expected AP delays in the
+soma as a function of DD ( Figure 7A ) and according to the
+DD histograms of Figure 3 (Figures 7B–E ). The largest delay
+and jitter values occur for very thin ﬁbers found in extreme
+hearing loss cases ( Table 3 ). For the thickest group of ﬁbers
+(DD > 3 µm), the mean delay and jitter values are smallest
+compared with the other ﬁber groups. The successful spike
+conduction of thicker ﬁbers is based on a high density of sodium
+channels in the nodes of Ranvier and an adequate number of
+insolating myelination sheets covering the internodes which limit
+the transmembrane currents.
+Extracellular Stimulation
+For ANF basal7 (in the position 137 ◦), synaptic excitation
+of a monophasic anodic pulse and extracellular stimulation
+of a monophasic cathodic pulse from EL5 (143 ◦) and its
+corresponding perimodiolar electrode CA11 (153 ◦) were
+compared ( Figure 8 ). In contrast to synaptic excitation,
+where the AP is initiated in the ﬁrst compartment, it is more
+complicated to understand the AP generation and propagation
+during extracellular stimulation. Depending on the cell geometry,
+cochlear region, electrode position, and pulse intensity, there are
+several sites along the ﬁber where spikes can be generated and,
+moreover, excitation is possible both with cathodic (negative) and
+anodic (positive) pulses. An indicator for possible spike initiation
+sites is the membrane voltage proﬁle along the ANF under
+subthreshold conditions, e.g., the full blue line in Figures 8B,C,
+which has its maximum within diﬀerent parts of dendrite for
+both DD = 2 µm (left) and DD = 0.5 µm (middle). As mentioned
+before, thinner ﬁbers are easier to excite with intracellular
+stimuli, but the opposite, known as reversed recruitment order
+(Blair and Erlanger, 1933), is seen for extracellular stimulation
+(compare values of threshold currents in Figures 7A–C).
+To investigate the impact of the neural pathway on the
+threshold proﬁles, ﬁve electrodes from each CI array system were
+selected ( Table 2 and Figure 2 ). A ﬁxed potential of 1 V was
+applied at the surface of the active electrode, and the extracellular
+voltage ( Ve) distribution along the interested pathways was
+calculated with our ﬁnite element model. Figure 9 shows the
+electrode distances (upper panel) and the inverse relationship
+Frontiers in Neuroscience | www.frontiersin.org 8 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 9 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 9
+Heshmat et al. Degenerated Human Auditory Nerve
+FIGURE 5 | Intracellular ANF stimulation simulating synaptic excitation. (A) Excitation and AP conduction along the ANF (300 pA, 100 µs). AP is initiated in the ﬁrst
+compartment (green; note the quicker excitation when DD is reduced marked by dashed vertical line; presomatic compartments are marked with arrowhead for
+DD = 0.5 µm and show slow conduction velocity for thin ﬁbers). Conducted APs are shown for all active compartments with a vertical shift indicating the
+compartment’s location. The arrival time of the AP in the soma (red) increases when DD decreases. Axon’s conduction velocity (marked by blue line at AP peaks)
+outmatches all dendritic cases as a consequence of the larger axon diameter (4 µm). (B) Membrane voltage in the soma for varied DD demonstrates increased
+latency when DD is reduced; no AP for DD = 0.3 µm. (C) Synaptic threshold current for AP conduction as a function of DD (red) and linear ﬁt (black dashed line).
+(D) Probability of spike conduction across the soma as a function of G-ratio for various DD. In panels A–C, G-ratio = 0.625 (mean value of the control).
+(A) and (B) were calculated without noise, (C,D) with the stochastic model that included current ﬂuctuations in the active membrane.
+of Ve (lower panel) along the ﬁber of ﬁve TNs in blue and
+red, which were stimulated with perimodiolar and lateral CI
+systems, respectively.
+The threshold proﬁles for the selected electrodes are shown
+in Figure 10 for biphasic (cathodic ﬁrst) stimulation with
+100 µs per phase. Applying the threshold current of the
+closest TN (ANF 28 ◦), the basal electrodes (EL1 and CA2)
+stimulated only one of the 30 investigated ﬁbers. There was
+no co-stimulated ANF in this region. The threshold is the
+same for the three investigated DD (2, 0.5 µm, and without
+dendrite) because the AP is initiated in this case at the axon.
+Contrarily, the second investigated basal electrode from the
+lateral array (EL3) stimulated another group of ﬁbers before the
+TN basal11 (79 ◦) in the case of DD = 0.5 µm and without
+Frontiers in Neuroscience | www.frontiersin.org 9 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 10 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 10
+Heshmat et al. Degenerated Human Auditory Nerve
+FIGURE 6 | ANF responses at dendrite (ﬁrst compartment), soma, and axon (last compartment) are marked with D, S, and A, respectively. (A) Later APs and larger
+jitters for synaptic stimuli at threshold (Ith) versus (B) more synchronized responses for synaptic stimuli at I0 = 1.2 × threshold are represented for G-ratios = 0.625
+and 0.5. While the arrows start at the stimuli onset, the delays represent the time when the membrane voltage reaches 0 mV (shown with gray dashed horizontal
+lines). Recording point A of simulations corresponds with the axonal terminal from the micro-CT sample (Potrusil et al., 2020).
+dendrite, whereas the corresponding perimodiolar electrode
+(CA6) stimulates only the TN.
+For the middle electrodes EL5 and CA11, co-stimulation
+of ANFs depends on dendrite condition and CI system: EL5
+stimulated another group of ﬁbers before TN basal7 (137 ◦) in the
+case of DD = 2 µm, but no co-stimulation when DD = 0.5 µm
+and two co-stimulated neurons under the assumption that
+ANFs are without dendrites. For each level of degeneration,
+we assumed that all 30 ANFs had the same dendrite, soma,
+and axon diameter and, subsequently, diﬀerent co-stimulated
+neurons might appear when only the DD parameter is changed.
+For instance, basal6 is a co-stimulated neuron in the case of
+lateral electrode EL5 when DD is 2 µm. However, this ANF does
+not appear in the next level of degeneration (DD = 0.5 µm)
+because its electrode voltage threshold is essentially larger
+than the threshold of TN, basal7 ( Figure 10 , upper and
+middle panels).
+In the upper-middle turn, we compared active electrodes EL8,
+EL9, with CA19, CA20, respectively. The stimulation of ANFs of
+this region becomes less selective mostly for the lateral electrode
+Frontiers in Neuroscience | www.frontiersin.org 10 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 11 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 11
+Heshmat et al. Degenerated Human Auditory Nerve
+FIGURE 7 | Spike pattern comparison between control and hearing loss cases in three cochlear regions. (A) Delay (mean values) as a function of DD (20 runs per
+DD). (B–E) Spiking patterns of the investigated specimens (S1 vs. control) based on the number of counted ﬁbers in different cochlear regions, basal, middle, and
+apical stimulated with 300 pA. The horizontal and vertical green lines in panel B represent the membrane voltage value at 0 mV and the corresponding time (delay)
+at soma after the stimulus onset, respectively. The color code in panel (B) applies to (C–E). Recording point at axonal terminal. The x-axis of the right panel in panel
+E applies to all spike pattern graphs.
+Frontiers in Neuroscience | www.frontiersin.org 11 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 12 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 12
+Heshmat et al. Degenerated Human Auditory Nerve
+TABLE 3 | Mean delay ± STD (jitter) for the counted ﬁbers in each specimen.
+DD (µm) Mean delay ± STD (ms)
+Control (basal) Profound (basal) Severe (middle) Moderate (apical)
+0.3 ≤ DD < 1.3 – 1.816 ± 0.405 1.800 ± 0.387 1.664 ± 0.257
+1.3 ≤ DD ≤ 2 1.248 ± 0.032 1.279 ± 0.044 1.284 ± 0.043 1.270 ± 0.045
+2 < DD ≤ 3 1.197 ± 0.014 1.191 ± 0.016 1.201 ± 0.013 1.192 ± 0.015
+DD > 3 1.159 ± 0.006 1.162 ± 0.010 1.163 ± 0.007 1.157 ± 0.006
+For the calculation, an intracellular stimulus of 300 pA and various run numbers, based on each ﬁber group quantity, are chosen.
+FIGURE 8 | Membrane voltage along ANF basal7 (143◦, G-ratio = 0.625) as a response of intra- and extracellular stimulation. (A) Membrane voltage for DD = 2 vs.
+0.5 µm at pulse offset (0.1 ms) and 1 ms after intracellular stimulus onset with a pulse amplitude at threshold (Ith) and 1.2 × threshold. Right panel: AP propagation
+along the ANF with DD = 2 µm at threshold. Each line shows the membrane voltage at a ﬁxed time. The green and red lines represent the times corresponding to
+stimulus offset and the ﬁrst achievement of the AP peak, respectively. (B) Same conﬁguration for extracellular stimulation of lateral electrode EL5 and (C)
+perimodiolar electrode CA11. Vertical dashed pink, cyan, and green lines represent the positions of the dendritic terminal, soma, and axonal terminal, respectively.
+Arrowheads indicate the ﬁring start at presoma.
+Frontiers in Neuroscience | www.frontiersin.org 12 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 13 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 13
+Heshmat et al. Degenerated Human Auditory Nerve
+FIGURE 9 | Fiber distance to the stimulating electrode (upper panel) and extracellular voltage Ve (lower panel) versus length of the ﬁbers. Blue and red curves for the
+perimodiolar and lateral electrodes, respectively. (A) EL1 and CA2, TN: basal14; (B) EL3 and CA6, TN: basal11; (C) EL5 and CA11, TN: basal7; (D) EL8 and CA19,
+TN: basal1; and (E) EL9 and CA20, TN: middle9. Ve is inversely related to the distance to the electrode. Black circles indicate soma positions, 1 V was applied to the
+surface of the active electrode.
+system when dendrite degeneration increases (Figure 10, middle
+and lower panels). With increasing dendrite degeneration level,
+higher thresholds are needed to activate the TN, leading to
+disruption of the electrode selectivity and cochlea tonotopic
+function in this region.
+Table 4 shows threshold values, spike initiation sites,
+and co-stimulated ANFs. The values increase with increasing
+degeneration level of the TN, resulting in stimulating more
+neurons in the neighborhood, particularly in the case of the
+lateral electrode system. The mean values of standard deviation
+(STD) for threshold variations of the investigated electrodes
+during dendritic degeneration of each TN were 0.22 V for lateral
+electrode array and 0.07 V for perimodiolar array. Moreover,
+the perimodiolar array requires a lower threshold than the
+lateral electrode system in most cases, which is in line with
+ﬁndings in clinical studies (Cohen et al., 2001; Long et al., 2014;
+Lee et al., 2019).
+DISCUSSION
+Only a small number of human subject studies were performed
+on the morphometry of degenerated ANFs. Analysis of
+the signaling of the human ANFs is of great interest to
+pathophysiology and a better understanding of CI stimulation.
+In the ﬁrst part of this study, four human cochleae with normal
+hearing and diﬀerent hearing loss levels were investigated,
+and their ANFs were evaluated concerning diameters and
+myelin thickness of their dendrites. The extracted morphometric
+data were used as input in a multi-compartment model to
+compare neural signal conduction in normal and degenerated
+TNs for synaptic excitation from IHCs. In addition, two CI
+systems were added to our ﬁnite element model to investigate
+the impact of dendrite degeneration on signaling during
+extracellular stimulation.
+Variation in Dendrite Diameter
+Unimodal distribution in dendritic ANF diameters of
+mammalian species such as cat, guinea pig, and monkey
+was reported (Gacek and Rasmussen, 1961; Arnesen and Osen,
+1978; Friede, 1984; Gleich and Wilson, 1993). Similar to animals,
+Spoendlin and Schrott reported unimodal diameter distribution
+for humans with normal hearing (Spoendlin and Schrott, 1989).
+The group has reported the same range of diameter for three
+cochlear regions, basal, middle, and apical. They suggested this
+similarity results from the almost similar dendritic length of
+human ANFs in all three regions compared with other species.
+The current study shows a unimodal distribution in normal
+hearing specimen versus multimodal distribution for hearing
+loss cases (Figure 3). Our reported diameter range for the normal
+hearing case is in agreement with our recent study in all three
+cochlear regions (Potrusil et al., 2020).
+Appearance of Small Fibers in Hearing
+Loss Specimens and Consequences
+A massive number of ﬁbers with DD < 1 µm was found
+in subjects with high levels of hearing loss and poor speech
+discriminations (Spoendlin and Schrott, 1989). We found similar
+ﬁber ranges in our hearing loss cases and extremely thin ﬁbers
+(smaller than 0.5 µm) in severe and profound cases. Dendrite
+diameter variation leads to changed spike conduction velocity
+that may aﬀect speech discrimination (Rattay and Motz, 1987;
+Rattay et al., 2013). According to our modeling study, the
+spike conductance of such thin dendrites with G-ratio = 0.6
+(about mean value of G-ratio) resulted in loss of signals and
+thus in a signiﬁcantly reduced axonal spiking probability, e.g.,
+10% (DD = 0.4 µm, Figure 5D ); jitter and spike latencies
+increase versus control up to 0.4 and 1 ms, respectively
+(Figure 7 and Table 3 ). Such high delays in spike patterns
+(see Figures 7B vs. C ) are expected to aﬀect the temporal
+ﬁne structure in the neural pattern of the cochlear nerve and,
+Frontiers in Neuroscience | www.frontiersin.org 13 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 14 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 14
+Heshmat et al. Degenerated Human Auditory Nerve
+FIGURE 10 | Excitation thresholds of TNs and co-stimulated ANFs along the ﬁber angles calculated for 10 electrodes. The electrode thresholds for three DD of 2,
+0.5, and 0 µm (without dendrite) is demonstrated in the upper, middle, and lower panel, respectively. Note that all investigated ANFs are considered with the same
+dendrite, soma, and axon diameters at each level of calculation. Vertical dashed lines indicate the angle of electrodes, ﬁlled symbols TN, unﬁlled co-stimulated
+neurons (blue for perimodiolar, red for lateral CI system).
+consequently, auditory perception (Rattay and Lutter, 1997).
+These extended latencies and jitters, calculated for intracellular
+stimulation to mimic the synaptic excitation, aﬀect also the neural
+status between the ears and by larger variations in interaural
+time diﬀerences they contribute to poor sound localization
+and speech discrimination, especially in a noisy environment
+Frontiers in Neuroscience | www.frontiersin.org 14 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 15 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 15
+Heshmat et al. Degenerated Human Auditory Nerve
+TABLE 4 | Thresholds of TNs and the co-stimulated neurons for 10 investigated electrodes for the lateral and perimodiolar electrode array systems.
+Electrode array TN Threshold (V) AP location TN Co-stimulated neuron Threshold (V) AP location co-stimulated
+DD = 2 µm
+EL1 Basal14 0.44 Central – – –
+EL3 Basal11 0.36 Dendrite – – –
+EL5 Basal7 0.52 Dendrite Basal8 0.42 –
+EL8 Basal1 0.49 Dendrite – – –
+EL9 Middle9 0.38 Dendrite – – –
+DD = 0.5 µm
+EL1 Basal14 0.44 Central – – –
+EL3 Basal11 1.04 Dendrite Basal14/basal10 0.76/1.02 Central/central
+EL5 Basal7 0.8 Dendrite – – –
+EL8 Basal1 0.77 Presoma – – –
+EL9 Middle9 0.6 Central Middle7/middle3/middle8/middle5 0.56/0.59/0.59/0.6 Presoma/central/presoma/postsoma
+Without dendrite
+EL1 Basal14 0.44 Central – – –
+EL3 Basal11 1.18 Central Basal14 0.76 Central
+EL5 Basal7 1 Soma Basal9/basal8 0.92/0.98 Central/central
+EL8 Basal1 1.08 Soma Middle9/middle4/middle7 0.93/1.04/1.05 Central/central/soma
+EL9 Middle9 0.58 Central Middle7 0.56 Soma
+DD = 2 µm
+CA2 Basal14 0.44 Central – – –
+CA6 Basal11 0.46 Dendrite – – –
+CA11 Basal7 0.35 Presoma – – –
+CA19 Basal1 0.34 Dendrite – – –
+CA20 Middle9 0.37 Central – – –
+DD = 0.5 µm
+CA2 Basal14 0.44 Central – – –
+CA6 Basal11 0.58 Presoma – – –
+CA11 Basal7 0.5 Presoma – – –
+CA19 Basal1 0.44 Dendrite Middle9 0.42 Central
+CA20 Middle9 0.34 Central – – –
+Without dendrite
+CA2 Basal14 0.44 Central – – –
+CA6 Basal11 0.63 Central – – –
+CA11 Basal7 0.65 Central – – –
+CA19 Basal1 0.59 Soma Middle9/middle7 0.41/0.56 Central/central
+CA20 Middle9 0.33 Central – – –
+(Zwislocki and Feldman, 1956; Rosen, 1992; Saberi and Perrott,
+1999; Bernstein and Trahiotis, 2015).
+Degeneration Level Affects Cochlear
+Implant Outcomes
+Techniques such as electrocochleography, polarity sensitivity,
+electrically evoked compound action potential (eCAP), and eCAP
+responses to changing interphase gap are used to evaluate the
+residual neural health (Santarelli et al., 2008; Garadat et al.,
+2012; Long et al., 2014; Pﬁngst et al., 2015; Hughes et al., 2018;
+Shearer et al., 2018; He et al., 2020). A recent study on lateral
+and perimodiolar CI systems reported a lower eCAP threshold
+in the apical region (Lee et al., 2019). Although their ﬁndings are
+in agreement with some studies (Cohen et al., 2001; Parkinson
+et al., 2002), others found the opposite result for the apical region
+(Polak et al., 2004; Brill et al., 2009; Van de Heyning et al., 2016).
+Table 4 demonstrates that both higher and lower thresholds
+in the apical turn are possible, but the correlation depends on
+the cochlear geometry, electrode position, neural status, and
+degeneration level of the ANFs.
+In a study of 10 cats, better localized neural excitation
+for electrodes close to the modiolus compared with the
+lateral wall was reported (Shepherd et al., 1993). Similar
+investigations were performed for human subjects that suggest
+lower threshold, better localization of the nerve stimulations,
+broader dynamic range, and less channel interactions are
+possible for electrode array systems close to modiolus compared
+with those close to the lateral wall of scala tympani (Cohen
+et al., 2001; Donaldson et al., 2001; Tykocinski et al., 2001;
+Saunders et al., 2002; Hughes and Abbas, 2006; Lee et al.,
+2019). In agreement, we showed lower thresholds for the
+TNs in most investigated electrodes located close to modiolus
+compared with the lateral array ( Table 4 ). According to
+Frontiers in Neuroscience | www.frontiersin.org 15 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 16 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 16
+Heshmat et al. Degenerated Human Auditory Nerve
+our ﬁndings, insigniﬁcant channel interaction (concerning the
+tonotopic principle) occurred for lateral CI and no interaction
+for perimodiolar array in case of ﬁbers with DD = 2 µm
+(Figure 10 , upper panel), whereas with severe levels of
+degenerations, a lateral CI shows poorer focal stimulation
+eﬃciency compared with a perimodiolar CI ( Figure 10, middle
+and lower panels).
+Clinical Implications
+In studies related to cochlear insults such as noise and drug
+exposure, it was reported that soma and axonal degeneration
+were less and slower than the loss of IHCs and dendrites
+(Johnsson, 1974; Johnsson and Hawkins, 1976; Hinojosa et al.,
+2001). On the other hand, in a series of histological studies
+by Spoendlin and Schrott (1988; 1989; 1990), they found that
+the number of dendrites highly correlated with the number of
+somata in hearing loss as well as normal-hearing specimens.
+These ﬁndings suggest that simply excluding the dendrite is no
+general rule, and the type of degeneration is highly dependent on
+the origin of the impairment. However, recent valuable models in
+computational studies mostly eliminate the dendrite to simulate
+the degeneration of ANFs (Briaire and Frijns, 2006; Snel-Bongers
+et al., 2013; Kalkman et al., 2014). Our study may shed more
+light on the impact of ANF degeneration on neural signaling,
+demonstrating that more realistic models should be considered
+for improving CI performance.
+Modeling Details and Limitations
+The goal of our study was to ﬁnd trends in the excitability of
+human ANFs when their dendrites are degenerated. Limitations
+of this study were a small number of available human
+cochleae, missing geometric parameters such as internode
+lengths, positions, and surfaces of nodes of Ranvier, lengths of
+pre-somatic sections, as well as complete individual data sets for
+every ANF concerning the connected soma and axon. Due to lack
+of these data, for all ANFs, we simply assumed constant values for
+the length of the non-myelinated presomatic section (100 µm),
+and the diameters of the spherical soma (20 µm) and the axon
+(4 µm) independent of the degree of degeneration. However, in a
+previous study, a quite constant diameter ratio of 2 was found for
+healthy subjects for (axon diameter)/(dendrite diameter) in the
+whole cochlea (Rattay et al., 2013). The vagueness on these post-
+dendritic data aﬀects predictions such as “Is a spike elicited in the
+dendrite, soma, or axon?”
+Other points of interest were the choice of the membrane
+model and the estimate of spiking probability. Biophysically
+based neuronal membrane models typically follow the pioneers
+Hodgkin and Huxley to quantify the ionic transmembrane
+currents via gating probabilities (Rattay et al., 2003). This method
+uses deterministic probabilities, which means running a model
+several times under the same conditions always produces exactly
+the same results. As spikes simulated with this method will not
+create any jitter seen in experiments, we added a noise term
+which can be interpreted as current ﬂuctuations in the ANF
+(Hochmair-Desoyer et al., 1984; Rattay, 2000). Although other
+models for human ANF membranes are published, a review
+(Bachmaier et al., 2019) and some tests showed that our modiﬁed
+Hodgkin–Huxley model replicates many features known from
+experiments (Motz and Rattay, 1986; Rattay et al., 2013; Rattay
+and Danner, 2014). However, features not included in this
+simple membrane model are, e.g., accommodation eﬀects during
+repetitive stimulation (Boulet et al., 2016) or the impact of Ih
+currents, which inﬂuence excitation during hyperpolarization
+phases (Hossain et al., 2005; Negm and Bruce, 2014).
+Despite the mentioned shortcomings, combining the ﬁnite
+element approach with our compartment model is in good
+quantitative agreement with experimental CI data. Our calculated
+threshold current range for the active electrode was from
+40 to 300 µA depending on the electrode array system and
+level of degeneration. This range is in agreement with clinical
+data from Kawano et al. (1998); van den Honert and Kelsall
+(2007), and Long et al. (2014). In addition, the intracochlear
+potential decrement along a CI array of our standard conductivity
+parameters was in line with clinical data from Tang et al. (2011)
+and Kalkman et al. (2014).
+DATA AVAILABILITY STATEMENT
+The original contributions presented in the study are included
+in the article/supplementary material, further inquiries can be
+directed to the corresponding author.
+ETHICS STATEMENT
+The studies involving human participants were reviewed and
+approved by the Division of Clinical and Functional Anatomy of
+the Innsbruck Medical University. Written informed consent for
+participation was not required for this study in accordance with
+the national legislation and the institutional requirements.
+AUTHOR CONTRIBUTIONS
+AH and SS contributed to the conception, design of the
+study, design of FE model and computational model, data
+analysis, visualization, and manuscript writing and editing. LJC
+contributed to imaging data collection and clinical preparation.
+NF contributed to image acquisition, imaging data collection,
+and clinical preparation. AS-F contributed to design clinical
+experiments, clinical preparation, funding acquisition, and
+supervision. FR contributed to the conception, design of the
+study, data analysis, article writing and revising, as well as
+supervision. All authors contributed to the article and approved
+the submitted version.
+FUNDING
+This work was supported by Austrian Science Fund (FWF) Grant
+Nos. I4147-B and 29650, the funding programs of the “Autonome
+Provinz Bozen S¸dtirol” (CUP number: B26J16000420003), and
+the “K-regio project eVITA ” (electrical Vestibular Implant Tirol
+Austria) sponsored by EFRE (www.efre.gv.at).
+Frontiers in Neuroscience | www.frontiersin.org 16 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 17 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 17
+Heshmat et al. Degenerated Human Auditory Nerve
+REFERENCES
+Albu, S., and Babighian, G. (1997). Predictive factors in cochlear implants. Acta
+Otorhinolaryngol. Belg. 51:11.
+Arnesen, A. R., and Osen, K. K. (1978). The cochlear nerve in the cat: topography,
+cochleotopy, and ﬁber spectrum. J. Comp. Neurol. 178, 661–678. doi: 10.1002/
+cne.901780405
+Arnold, W. (1987). Myelination of the human spiral ganglion. Acta Otolaryngol.
+104, 76–84. doi: 10.3109/00016488709124979
+Bachmaier, R., Encke, J., Obando-Leitón, M., Hemmert, W., and Bai, S. (2019).
+Comparison of multi-compartment cable models of human auditory nerve
+ﬁbers. Front. Neurosci. 13:1173. doi: 10.3389/fnins.2019.01173
+Bernstein, L. R., and Trahiotis, C. (2015). Converging measures of binaural
+detection yield estimates of precision of coding of interaural temporal
+disparities. J. Acoust. Soc. Am. 138, EL474–EL479.
+Blair, E. A., and Erlanger, J. (1933). A comparison of the characteristics of axons
+through their individual electrical responses. Am. J. Physiol. Content 106,
+524–564. doi: 10.1152/ajplegacy.1933.106.3.524
+Blamey, P., Artieres, F., Ba¸ skent, D., Bergeron, F., Beynon, A., Burke, E., et al.
+(2012). Factors aﬀecting auditory performance of postlinguistically deaf adults
+using cochlear implants: an update with 2251 patients. Audiol. Neurotol. 18,
+36–47. doi: 10.1159/000343189
+Boulet, J., White, M., and Bruce, I. C. (2016). Temporal considerations for
+stimulating spiral ganglion neurons with cochlear implants. J. Assoc. Res.
+Otolaryngol. 17, 1–17. doi: 10.1007/s10162-015-0545-5
+Briaire, J. J., and Frijns, J. H. M. (2006). The consequences of neural degeneration
+regarding optimal cochlear implant position in scala tympani: a model
+approach. Hear. Res. 214, 17–27. doi: 10.1016/j.heares.2006.01.015
+Brill, S., M¸ller, J., Hagen, R., Möltner, A., Brockmeier, S.-J., Stark, T., et al. (2009).
+Site of cochlear stimulation and its eﬀect on electrically evoked compound
+action potentials using the MED-EL standard electrode array. Biomed. Eng.
+8:40. doi: 10.1186/1475-925x-8-40
+Cohen, L. T., Saunders, E., and Clark, G. M. (2001). Psychophysics of a prototype
+peri-modiolar cochlear implant electrode array. Hear. Res. 155, 63–81. doi:
+10.1016/s0378-5955(01)00248-9
+Donaldson, G. S., Peters, M. D., Ellis, M. R., Friedman, B. J., Levine, S. C., and
+Rimell, F. L. (2001). Eﬀects of the clarion electrode positioning system on
+auditory thresholds and comfortable loudness levels in pediatric patients with
+cochlear implants. Arch. Otolaryngol. Neck Surg. 127, 956–960. doi: 10.1001/
+archotol.127.8.956
+Friede, R. L. (1984). Cochlear axon calibres are adjusted to characteristic
+frequencies. J. Neurol. Sci. 66, 193–200. doi: 10.1016/0022-510x(84)90007-8
+Friedland, D. R., Venick, H. S., and Niparko, J. K. (2003). Choice of ear
+for cochlear implantation: the eﬀect of history and residual hearing on
+predicted postoperative performance. Otol. Neurotol. 24, 582–589. doi: 10.
+1097/00129492-200307000-00009
+Gacek, R. R., and Rasmussen, G. L. (1961). Fiber analysis of the statoacoustic
+nerve of guinea pig, cat, and monkey. Anat. Rec. 139, 455–463. doi: 10.1002/
+ar.1091390402
+Gantz, B. J., Abbas, P. J., Tyler, R. S., Woodworth, G. G., and Knutson, J. F.
+(1993). Multivariate predictors of audiological success with multichannel
+cochlear implants. Ann. Otol. Rhinol. Laryngol. 102, 909–916. doi: 10.1177/
+000348949310201201
+Garadat, S. N., Zwolan, T. A., and Pﬁngst, B. E. (2012). Across-site patterns of
+modulation detection: relation to speech recognition. J. Acoust. Soc. Am. 131,
+4030–4041. doi: 10.1121/1.3701879
+Gleich, O., and Wilson, S. (1993). The diameters of guinea pig auditory nerve
+ﬁbres: distribution and correlation with spontaneous rate. Hear. Res. 71, 69–79.
+doi: 10.1016/0378-5955(93)90022-s
+Gomaa, N. A., Rubinstein, J. T., Lowder, M. W., Tyler, R. S., and Gantz, B. J. (2003).
+Residual speech perception and cochlear implant performance in postlingually
+deafened adults. Ear Hear. 24, 539–544. doi: 10.1097/01.aud.0000100208.
+26628.2d
+Grant, L., Yi, E., and Glowatzki, E. (2010). Two modes of release shape the
+postsynaptic response at the inner hair cell ribbon synapse. J. Neurosci. 30,
+4210–4220. doi: 10.1523/jneurosci.4439-09.2010
+He, S., Xu, L., Skidmore, J., Chao, X., Jeng, F.-C., Wang, R., et al. (2020). The eﬀect
+of interphase gap on neural response of the electrically-stimulated cochlear
+nerve in children with cochlear nerve deﬁciency and children with normal-sized
+cochlear nerves. Ear Hear. 41:918. doi: 10.1097/aud.0000000000000815
+Hinojosa, R., Nelson, E. G., Lerner, S. A., Redleaf, M. I., and Schramm, D. R. (2001).
+Aminoglycoside ototoxicity: a human temporal bone study. Laryngoscope 111,
+1797–1805. doi: 10.1097/00005537-200110000-00025
+Hochmair-Desoyer, I. J., Hochmair, E. S., Motz, H., and Rattay, F. (1984). A model
+for the electrostimulation of the nervus acusticus. Neuroscience 13, 553–562.
+doi: 10.1016/0306-4522(84)90248-3
+Hossain, W. A., Antic, S. D., Y ang, Y., Rasband, M. N., and Morest, D. K.
+(2005). Where is the spike generator of the cochlear nerve? Voltage-gated
+sodium channels in the mouse cochlea.J. Neurosci. 25, 6857–6868. doi: 10.1523/
+jneurosci.0123-05.2005
+Hughes, M. L., and Abbas, P. J. (2006). Electrophysiologic channel interaction,
+electrode pitch ranking, and behavioral threshold in straight versus
+perimodiolar cochlear implant electrode arrays. J. Acoust. Soc. Am. 119,
+1538–1547. doi: 10.1121/1.2164969
+Hughes, M. L., Choi, S., and Glickman, E. (2018). What can stimulus polarity
+and interphase gap tell us about auditory nerve function in cochlear-implant
+recipients? Hear. Res. 359, 50–63. doi: 10.1016/j.heares.2017.12.015
+Humes, L. E., Kewley-Port, D., Fogerty, D., and Kinney, D. (2010).
+Measures of hearing threshold and temporal processing across the
+adult lifespan. Hear. Res. 264, 30–40. doi: 10.1016/j.heares.2009.
+09.010
+Johnsson, L.-G. (1974). Sequence of degeneration of Corti’s organ and its ﬁrst-
+order neurons. Ann. Otol. Rhinol. Laryngol. 83, 294–303. doi: 10.1177/
+000348947408300303
+Johnsson, L.-G., and Hawkins, J. E. Jr. (1976). Degeneration patterns in human
+ears exposed to noise. Ann. Otol. Rhinol. Laryngol. 85, 725–739. doi: 10.1177/
+000348947608500603
+Kalkman, R. K., Briaire, J. J., Dekker, D. M. T., and Frijns, J. H. M. (2014).
+Place pitch versus electrode location in a realistic computational model of the
+implanted human cochlea. Hear. Res. 315, 10–24. doi: 10.1016/j.heares.2014.06.
+003
+Kawano, A., Seldon, H. L., Clark, G. M., Ramsden, R. T., and Raine, C. H.
+(1998). Intracochlear factors contributing to psychophysical percepts following
+cochlear implantation. Acta Otolaryngol. 118, 313–326. doi: 10.1080/
+00016489850183386
+Keithley, E. M. (2020). Pathology and mechanisms of cochlear aging. J. Neurosci.
+Res. 98, 1674–1684. doi: 10.1002/jnr.24439
+Lazard, D. S., Vincent, C., Venail, F., Van de Heyning, P., Truy, E., Sterkers,
+O., et al. (2012). Pre-, per-and postoperative factors aﬀecting performance of
+postlinguistically deaf adults using cochlear implants: a new conceptual model
+over time. PLoS One 7:e48739. doi: 10.1371/journal.pone.0048739
+Lee, J. Y., Hong, S. H., Moon, I. J., Kim, E. Y., Baek, E., Seol, H. Y., et al. (2019).
+Eﬀect of cochlear implant electrode array design on electrophysiological and
+psychophysical measures: lateral wall versus perimodiolar types.J. Audiol. Otol.
+23:145. doi: 10.7874/jao.2019.00164
+Liberman, M. C., and Kiang, N. Y. (1978). Acoustic trauma in cats: cochlear
+pathology and auditory-nerve activity. Acta Otolaryngol. Suppl. 358, 1–63.
+Long, C. J., Holden, T. A., McClelland, G. H., Parkinson, W. S., Shelton, C.,
+Kelsall, D. C., et al. (2014). Examining the electro-neural interface of cochlear
+implant users using psychophysics, CT scans, and speech understanding.
+JARO J. Assoc. Res. Otolaryngol. 15, 293–304. doi: 10.1007/s10162-013-
+0437-5
+Makary, C. A., Shin, J., Kujawa, S. G., Liberman, M. C., and Merchant, S. N. (2011).
+Age-related primary cochlear neuronal degeneration in human temporal
+bones. J. Assoc. Res. Otolaryngol. 12, 711–717. doi: 10.1007/s10162-011-
+0283-2
+Mark, H. E., and Rattay, F. (1990). Frequency discrimination of single-, double-,
+and triple-cycle sinusoidal acoustic signals. J. Acoust. Soc. Am. 88, 560–563.
+doi: 10.1121/1.399883
+McHanwell, S., Brenner, E., Chirculescu, A. R. M., Drukker, J., van Mameren, H.,
+Mazzotti, G., et al. (2008). The legal and ethical framework governing body
+donation in europe - a review of current practice and recommendations for
+good practice. Eur. J. Anat. 12, 1–21.
+Miller, M. I., and Sachs, M. B. (1983). Representation of stop consonants in the
+discharge patterns of auditory-nerve ﬁbers. J. Acoust. Soc. Am . 74, 502–517.
+doi: 10.1121/1.389816
+Frontiers in Neuroscience | www.frontiersin.org 17 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 18 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 18
+Heshmat et al. Degenerated Human Auditory Nerve
+Motz, H., and Rattay, F. (1986). A study of the application of the Hodgkin-Huxley
+and the Frankenhaeuser-Huxley model for electrostimulation of the acoustic
+nerve. Neuroscience 18, 699–712. doi: 10.1016/0306-4522(86)90064-3
+Nadol, J. B. Jr. (1977). Electron microscopic observations in a case of long-standing
+profound sensorineural deafness. Ann. Otol. Rhinol. Laryngol. 86, 507–517.
+doi: 10.1177/000348947708600411
+Nadol, J. B. Jr. (1990). Degeneration of cochlear neurons as seen in the spiral
+ganglion of man. Hear. Res. 49, 141–154. doi: 10.1016/0378-5955(90)90101-t
+Negm, M. H., and Bruce, I. C. (2014). The eﬀects of HCN and KLT ion channels on
+adaptation and refractoriness in a stochastic auditory nerve model. IEEE Trans.
+Biomed. Eng. 61, 2749–2759. doi: 10.1109/tbme.2014.2327055
+Ota, C. Y., and Kimura, R. S. (1980). Ultrastructural study of the human spiral
+ganglion. Acta Otolaryngol. 89, 53–62. doi: 10.3109/00016488009127108
+Otte, J., Schuknecht, H. F., and Kerr, A. G. (1978). Ganglion cell populations
+in normal and pathological human cochleae. Implications for cochlear
+implantation. Laryngoscope 88, 1231–1246.
+Parkinson, A. J., Arcaroli, J., Staller, S. J., Arndt, P. L., Cosgriﬀ, A., and Ebinger, K.
+(2002). The Nucleus
+R⃝
+24 ContourTM cochlear implant system: adult clinical
+trial results. Ear Hear. 23, 41S–48S.
+Pﬁngst, B. E., Zhou, N., Colesa, D. J., Watts, M. M., Strahl, S. B., Garadat, S. N.,
+et al. (2015). Importance of cochlear health for implant function. Hear. Res.
+322, 77–88.
+Polak, M., Hodges, A. V., King, J. E., and Balkany, T. J. (2004). Further prospective
+ﬁndings with compound action potentials from Nucleus 24 cochlear implants.
+Hear. Res. 188, 104–116. doi: 10.1016/s0378-5955(03)00309-5
+Potrusil, T., Heshmat, A., Sajedi, S., Wenger, C., Chacko, L. J., Glueckert, R.,
+et al. (2020). Finite element analysis and three-dimensional reconstruction
+of tonotopically aligned human auditory ﬁber pathways: a computational
+environment for modeling electrical stimulation by a cochlear implant based
+on micro-CT. Hear. Res. 393:108001. doi: 10.1016/j.heares.2020.108001
+Rattay, F. (1990). Electrical Nerve Stimulation: Theory, Experiments, and
+Applications. New York, NY: Springer.
+Rattay, F. (2000). Basics of hearing theory and noise in cochlear implants. Chaos
+Solitons Fractals 11, 1875–1884. doi: 10.1016/S0960-0779(99)00124-1
+Rattay, F., and Danner, S. M. (2014). Peak I of the human auditory brainstem
+response results from the somatic regions of type I spiral ganglion cells:
+evidence from computer modeling.Hear. Res. 315, 67–79. doi: 10.1016/j.heares.
+2014.07.001
+Rattay, F., Greenberg, R. J., and Resatz, S. (2003). “Neuron modeling, ” inHandbook
+of Neuroprosthetic Methods, eds W. E. Finn and P. G. LoPresti (Boca Raton, FL:
+CRC), 39–71.
+Rattay, F., and Lutter, P. (1997). Speech sound representation in the auditory nerve:
+computer simulation studies on inner ear mechanisms. ZAMM Zeitschrift
+Angew. Math. Mech. 77, 935–943. doi: 10.1002/zamm.19970771212
+Rattay, F., Lutter, P., and Felix, H. (2001). A model of the electrically excited human
+cochlear neuron I. Contribution of neural substructures to the generation and
+propagation of spikes. Hear. Res. 153, 43–63. doi: 10.1016/S0378-5955(00)
+00256-2
+Rattay, F., and Motz, H. (1987). Simulation of the response of a multichannel nerve
+array to pulse shapes produced by single-channel electrostimulation.Perception
+16, 769–776. doi: 10.1068/p160769
+Rattay, F., Potrusil, T., Wenger, C., Wise, A. K., Glueckert, R., and Schrott-Fischer,
+A. (2013). Impact of morphometry, myelinization and synaptic current strength
+on spike conduction in human and cat spiral ganglion neurons. PLoS One
+8:e79256. doi: 10.1371/journal.pone.0079256
+Riederer, B. M., Bolt, S., Brenner, E., Bueno-López, J. L., Circulescu, A. R. M.,
+Davies, D. C., et al. (2012). The legal and ethical framework governing Body
+Donation in Europe - 1st update on current practice. Eur. J. Anat. 16, 1–21.
+doi: 10.1017/cbo9781139195652.004
+Rosen, S. (1992). Temporal information in speech: acoustic, auditory and linguistic
+aspects. Philos. Trans. R. Soc. Lond. Ser. B Biol. Sci. 336, 367–373. doi: 10.1098/
+rstb.1992.0070
+Rubinstein, J. T., Parkinson, W. S., Tyler, R. S., and Gantz, B. J. (1999). Residual
+speech recognition and cochlear implant performance: eﬀects of implantation
+criteria. Am. J. Otol. 20, 445–452.
+Saberi, K., and Perrott, D. R. (1999). Cognitive restoration of reversed speech.
+Nature 398:760. doi: 10.1038/19652
+Santarelli, R., Cama, E., Scimemi, P., Dal Monte, E., Genovese, E., and Arslan,
+E. (2008). Audiological and electrocochleography ﬁndings in hearing-impaired
+children with connexin 26 mutations and otoacoustic emissions. Eur. Arch.
+Otorhinolaryngol. 265, 43–51. doi: 10.1007/s00405-007-0412-z
+Saunders, E., Cohen, L., Aschendorﬀ, A., Shapiro, W., Knight, M., Stecker, M., et al.
+(2002). Threshold, comfortable level and impedance changes as a function of
+electrode-modiolar distance. Ear Hear. 23, 28S–40S.
+Schuknecht, H. F. (1993). Pathology of the Ear , 2nd Edn, Philadelphia: Lea and
+Febiger, 191–253.
+Shamma, S. A. (1985). Speech processing in the auditory system
+I: the representation of speech sounds in the responses of the
+auditory nerve. J. Acoust. Soc. Am. 78, 1612–1621. doi: 10.1121/1.
+392799
+Shearer, A. E., Tejani, V. D., Brown, C. J., Abbas, P. J., Hansen, M. R., Gantz, B. J.,
+et al. (2018). In vivo electrocochleography in hybrid cochlear implant users
+implicates TMPRSS3 in spiral ganglion function. Sci. Rep. 8, 1–9.
+Shepherd, R. K., Hatsushika, S., and Clark, G. M. (1993). Electrical
+stimulation of the auditory nerve: the eﬀect of electrode position on
+neural excitation. Hear. Res. 66, 108–120. doi: 10.1016/0378-5955(93)
+90265-3
+Shepherd, R. K., and Javel, E. (1997). Electrical stimulation of the auditory nerve.
+I. Correlation of physiological responses with cochlear status. Hear. Res. 108,
+112–144. doi: 10.1016/s0378-5955(97)00046-4
+Sly, D. J., Heﬀer, L. F., White, M. W., Shepherd, R. K., Birch, M. G. J., Minter,
+R. L., et al. (2007). Deafness alters auditory nerve ﬁbre responses to cochlear
+implant stimulation. Eur. J. Neurosci. 26, 510–522. doi: 10.1111/j.1460-9568.
+2007.05678.x
+Snel-Bongers, J., Briaire, J. J., van der Veen, E. H., Kalkman, R. K., and Frijns,
+J. H. M. (2013). Threshold levels of dual electrode stimulation in cochlear
+implants. J. Assoc. Res. Otolaryngol. 14, 781–790. doi: 10.1007/s10162-013-
+0395-y
+Spoendlin, H. (1972). Innervation densities of the cochlea. Acta Otolaryngol. 73,
+235–248. doi: 10.3109/00016487209138937
+Spoendlin, H. (1985). Anatomy of cochlear innervation. Am. J. Otolaryngol. 6,
+453–467. doi: 10.1016/s0196-0709(85)80026-0
+Spoendlin, H., and Schrott, A. (1987). The block surface method for
+evaluation of human inner ears. Acta Otolaryngol. 104, 25–36. doi: 10.3109/
+00016488709124973
+Spoendlin, H., and Schrott, A. (1988). The spiral ganglion and the innervation
+of the human organ of corti. Acta Otolaryngol. 105, 403–410. doi: 10.3109/
+00016488809119493
+Spoendlin, H., and Schrott, A. (1989). Analysis of the human auditory nerve.Hear.
+Res. 43, 25–38. doi: 10.1016/0378-5955(89)90056-7
+Spoendlin, H., and Schrott, A. (1990). Quantitative evaluation of the human
+cochlear nerve. Acta Otolaryngol. 109, 61–70. doi: 10.3109/00016488909138358
+Summerﬁeld, A. Q., and Marshall, D. H. (1995). Preoperative predictors of
+outcomes from cochlear implantation in adults: performance and quality of life.
+Ann. Otol. Rhinol. Laryngol. Suppl. 166:105.
+Tang, Q., Benítez, R., and Zeng, F. G. (2011). Spatial channel interactions in
+cochlear implants. J. Neural Eng. 8:046029. doi: 10.1088/1741-2560/8/4/046029
+Thomsen, E. (1967). The ultrastructuhe of the spiralganglion in the
+guinea pig. Acta Otolaryngol. 63, 442–448. doi: 10.3109/0001648670912
+3621
+Tykocinski, M., Saunders, E., Cohen, L. T., Treaba, C., Briggs, R. J. S., Gibson, P.,
+et al. (2001). The contour electrode array: safety study and initial patient trials of
+a new perimodiolar design. Otol. Neurotol. 22, 33–41. doi: 10.1097/00129492-
+200101000-00007
+Van de Heyning, P., Arauz, S. L., Atlas, M., Baumgartner, W.-D., Caversaccio,
+M., Chester-Browne, R., et al. (2016). Electrically evoked compound action
+potentials are diﬀerent depending on the site of cochlear stimulation.
+Cochlear Implants Int. 17, 251–262. doi: 10.1080/14670100.2016.
+1240427
+van den Honert, C., and Kelsall, D. C. (2007). Focused intracochlear electric
+stimulation with phased array channels. J. Acoust. Soc. Am. 121, 3703–3716.
+doi: 10.1121/1.2722047
+Von Békésy, G., and Wever, E. G. (1960). Experiments in Hearing . New York, NY:
+McGraw-Hill.
+Frontiers in Neuroscience | www.frontiersin.org 18 November 2020 | Volume 14 | Article 599868
+
+===== PAGE 19 =====
+fnins-14-599868 November 13, 2020 Time: 14:25 # 19
+Heshmat et al. Degenerated Human Auditory Nerve
+Waltzman, S., Cohen, N., and Shapiro, W. (1995). “Eﬀects of cochlear implantation
+on the young deaf child, ” in Cochlear Implants in Children , Vol. 50, (Basel:
+Karger Publishers), 125–128. doi: 10.1159/000424447
+World Health Organization [WHO] (2020). Deafness and Hearing Loss [WWW
+Document]. Geneva: WHO.
+World Health Organization [WHO] (1991). Report of the Informal Working
+Group on Prevention of Deafness and Hearing Impairment Programme Planning.
+Geneva: WHO, 18–21.
+Wu, P. Z., Liberman, L. D., Bennett, K., De Gruttola, V., O’Malley, J. T., and
+Liberman, M. C. (2019). Primary neural degeneration in the human cochlea:
+evidence for hidden hearing loss in the aging ear. Neuroscience 407, 8–20.
+doi: 10.1016/j.neuroscience.2018.07.053
+Xing, Y., Samuvel, D. J., Stevens, S. M., Dubno, J. R., Schulte, B. A., and Lang,
+H. (2012). Age-related changes of myelin basic protein in mouse and human
+auditory nerve. PLoS One 7:e34500. doi: 10.1371/journal.pone.0034500
+Zaimi, A., Duval, T., Gasecka, A., Côté, D., Stikov, N., and Cohen-Adad, J.
+(2016). AxonSeg: open source software for axon and myelin segmentation
+and morphometric analysis. Front. Neuroinform. 10:37. doi: 10.3389/fninf.2016.
+00037
+Zwislocki, J., and Feldman, R. S. (1956). Just noticeable diﬀerences in dichotic
+phase. J. Acoust. Soc. Am. 28, 860–864. doi: 10.1121/1.1908495
+Conﬂict of Interest: The authors declare that the research was conducted in the
+absence of any commercial or ﬁnancial relationships that could be construed as a
+potential conﬂict of interest.
+Copyright © 2020 Heshmat, Sajedi, Johnson Chacko, Fischer, Schrott-Fischer
+and Rattay. This is an open-access article distributed under the terms of
+the Creative Commons Attribution License (CC BY). The use, distribution
+or reproduction in other forums is permitted, provided the original author(s)
+and the copyright owner(s) are credited and that the original publication
+in this journal is cited, in accordance with accepted academic practice. No
+use, distribution or reproduction is permitted which does not comply with
+these terms.
+Frontiers in Neuroscience | www.frontiersin.org 19 November 2020 | Volume 14 | Article 599868

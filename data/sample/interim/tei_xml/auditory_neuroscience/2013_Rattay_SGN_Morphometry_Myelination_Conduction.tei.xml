@@ -1,0 +1,1840 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:space="preserve" xmlns="http://www.tei-c.org/ns/1.0" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://www.tei-c.org/ns/1.0 https://raw.githubusercontent.com/kermitt2/grobid/master/grobid-home/schemas/xsd/Grobid.xsd"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+	<teiHeader xml:lang="en">
+		<fileDesc>
+			<titleStmt>
+				<title level="a" type="main">Impact of Morphometry, Myelinization and Synaptic Current Strength on Spike Conduction in Human and Cat Spiral Ganglion Neurons</title>
+				<funder ref="#_XYXxVpJ">
+					<orgName type="full">NH&amp;MRC</orgName>
+				</funder>
+				<funder ref="#_N7T3S3h">
+					<orgName type="full">Austrian Science Fund</orgName>
+				</funder>
+			</titleStmt>
+			<publicationStmt>
+				<publisher/>
+				<availability  status="unknown">
+					<licence/>
+				</availability>
+				<date type="published" when="2013-11-08">November 8, 2013</date>
+			</publicationStmt>
+			<sourceDesc>
+				<biblStruct status="extracted">
+					<analytic>
+						<author>
+							<persName><forename type="first">Frank</forename><surname>Rattay</surname></persName>
+							<affiliation key="aff0">
+								<note type="raw_affiliation"><label>1</label> Institute for Analysis and Scientific Computing , Vienna University of Technology , Vienna , Austria,</note>
+								<orgName type="department">Institute for Analysis and Scientific Computing</orgName>
+								<orgName type="institution">Vienna University of Technology</orgName>
+								<address>
+									<settlement>Vienna</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Thomas</forename><surname>Potrusil</surname></persName>
+							<affiliation key="aff1">
+								<note type="raw_affiliation"><label>2</label> Department of Otorhinolaryngology , Innsbruck Medical University , Innsbruck , Austria,</note>
+								<orgName type="department">Department of Otorhinolaryngology</orgName>
+								<orgName type="institution">Innsbruck Medical University</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff2">
+								<note type="raw_affiliation"><label>3</label> Faculty of Informatics , Vienna University of Technology , Vienna , Austria,</note>
+								<orgName type="department">Faculty of Informatics</orgName>
+								<orgName type="institution">Vienna University of Technology</orgName>
+								<address>
+									<settlement>Vienna</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Cornelia</forename><surname>Wenger</surname></persName>
+							<affiliation key="aff3">
+								<note type="raw_affiliation"><label>4</label> Institute of Biophysics and Biomedical Engeneering , Faculty of Science , University of Lisbon , Lisbon , Portugal,</note>
+								<orgName type="department" key="dep1">Institute of Biophysics and Biomedical Engeneering</orgName>
+								<orgName type="department" key="dep2">Faculty of Science</orgName>
+								<orgName type="institution">University of Lisbon</orgName>
+								<address>
+									<settlement>Lisbon</settlement>
+									<country key="PT">Portugal</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Andrew</forename><forename type="middle">K</forename><surname>Wise</surname></persName>
+							<affiliation key="aff4">
+								<note type="raw_affiliation"><label>5</label> The Bionics Institute , East Melbourne , Australia,</note>
+								<orgName type="institution">The Bionics Institute</orgName>
+								<address>
+									<settlement>East Melbourne</settlement>
+									<country key="AU">Australia</country>
+								</address>
+							</affiliation>
+						</author>
+						<author role="corresp">
+							<persName><forename type="first">Rudolf</forename><surname>Glueckert</surname></persName>
+							<email>rudolf.glueckert@i-med.ac.at</email>
+							<affiliation key="aff1">
+								<note type="raw_affiliation"><label>2</label> Department of Otorhinolaryngology , Innsbruck Medical University , Innsbruck , Austria,</note>
+								<orgName type="department">Department of Otorhinolaryngology</orgName>
+								<orgName type="institution">Innsbruck Medical University</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+							<affiliation key="aff5">
+								<note type="raw_affiliation"><label>6</label> University Clinics Innsbruck , Tiroler Landeskrankenanstalten , Innsbruck , Austria</note>
+								<orgName type="institution" key="instit1">University Clinics Innsbruck</orgName>
+								<orgName type="institution" key="instit2">Tiroler Landeskrankenanstalten</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<persName><forename type="first">Anneliese</forename><surname>Schrott-Fischer</surname></persName>
+							<affiliation key="aff1">
+								<note type="raw_affiliation"><label>2</label> Department of Otorhinolaryngology , Innsbruck Medical University , Innsbruck , Austria,</note>
+								<orgName type="department">Department of Otorhinolaryngology</orgName>
+								<orgName type="institution">Innsbruck Medical University</orgName>
+								<address>
+									<settlement>Innsbruck</settlement>
+									<country key="AT">Austria</country>
+								</address>
+							</affiliation>
+						</author>
+						<author>
+							<affiliation key="aff6">
+								<note type="raw_affiliation">Georgia State University , United States of America</note>
+								<orgName type="institution">Georgia State University</orgName>
+								<address>
+									<country key="US">United States of America</country>
+								</address>
+							</affiliation>
+						</author>
+						<title level="a" type="main">Impact of Morphometry, Myelinization and Synaptic Current Strength on Spike Conduction in Human and Cat Spiral Ganglion Neurons</title>
+					</analytic>
+					<monogr>
+						<imprint>
+							<date type="published" when="2013-11-08">November 8, 2013</date>
+						</imprint>
+					</monogr>
+					<idno type="MD5">D7A166221B9D3403EB23D3C9DA74AC96</idno>
+					<idno type="DOI">10.1371/journal.pone.0079256</idno>
+					<note type="submission">Received November 9, 2012; Accepted September 20, 2013;</note>
+				</biblStruct>
+			</sourceDesc>
+		</fileDesc>
+		<encodingDesc>
+			<appInfo>
+				<application version="0.9.0" ident="GROBID" when="2026-06-07T12:16+0000">
+					<desc>GROBID - A machine learning software for extracting information from scholarly documents</desc>
+					<label type="revision">0.9.0</label>
+					<label type="parameters">startPage=-1, endPage=-1, consolidateCitations=0, consolidateHeader=0, consolidateFunders=0, includeRawAffiliations=true, includeRawCitations=false, includeRawCopyrights=false, generateTeiIds=false, generateTeiCoordinates=[], flavor=null</label>
+					<ref target="https://github.com/kermitt2/grobid"/>
+				</application>
+			</appInfo>
+		</encodingDesc>
+		<profileDesc>
+			<abstract>
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>Background: Our knowledge about the neural code in the auditory nerve is based to a large extent on experiments on cats. Several anatomical differences between auditory neurons in human and cat are expected to lead to functional differences in speed and safety of spike conduction.</p><p>Methodology/Principal Findings: Confocal microscopy was used to systematically evaluate peripheral and central process diameters, commonness of myelination and morphology of spiral ganglion neurons (SGNs) along the cochlea of three human and three cats. Based on these morphometric data, model analysis reveales that spike conduction in SGNs is characterized by four phases: a postsynaptic delay, constant velocity in the peripheral process, a presomatic delay and constant velocity in the central process. The majority of SGNs are type I, connecting the inner hair cells with the brainstem. In contrast to those of humans, type I neurons of the cat are entirely myelinated. Biophysical model evaluation showed delayed and weak spikes in the human soma region as a consequence of a lack of myelin. The simulated spike conduction times are in accordance with normal interwave latencies from auditory brainstem response recordings from man and cat. Simulated 400 pA postsynaptic currents from inner hair cell ribbon synapses were 15 times above threshold. They enforced quick and synchronous spiking. Both of these properties were not present in type II cells as they receive fewer and much weaker ( , 26 pA) synaptic stimuli.</p><p>Conclusions/Significance: Wasting synaptic energy boosts spike initiation, which guarantees the rapid transmission of temporal fine structure of auditory signals. However, a lack of myelin in the soma regions of human type I neurons causes a large delay in spike conduction in comparison with cat neurons. The absent myelin, in combination with a longer peripheral process, causes quantitative differences of temporal parameters in the electrically stimulated human cochlea compared to the cat cochlea.</p></div>
+			</abstract>
+		</profileDesc>
+	</teiHeader>
+	<text xml:lang="en">
+		<body>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Introduction</head><p>The temporal characteristics of the spiking patterns of the auditory nerve are crucial in natural hearing <ref type="bibr" target="#b0">[1]</ref><ref type="bibr" target="#b1">[2]</ref><ref type="bibr" target="#b2">[3]</ref><ref type="bibr" target="#b3">[4]</ref> and in its neuroprosthetic counterpart when action potentials (APs) are initiated via cochlear implants <ref type="bibr" target="#b4">[5]</ref><ref type="bibr" target="#b5">[6]</ref><ref type="bibr" target="#b6">[7]</ref><ref type="bibr">[8]</ref>. Most of our knowledge on spike coding in the auditory nerve is based on single cell recordings in cats. As such recordings are not possible in man, findings from cats are often generalized to human due anatomical similarities. However, shorter total lengths of SGNs in cat, thinner processes, smaller cell bodies and fundamental differences in myelination are obvious reasons not to rely on a cat model when signaling in human auditory nerve is discussed as these differences between the species may lead to important differences in auditory nerve function.</p><p>In the cochlea, sensory hair cells convert sound into neural signals. These afferent signals are conducted along the auditory nerve by two types of SGNs. The vast majority of SGNs are bipolar type I cells with large cell bodies connecting inner hair cells (IHCs) with the cochlear nuclei, whereas smaller type II neurons transmit APs from the outer hair cells (OHCs) <ref type="bibr" target="#b8">[9,</ref><ref type="bibr" target="#b9">10]</ref>. Both types of cochlear neurons constitute the primary afferent input to the cochlear nucleus <ref type="bibr" target="#b10">[11,</ref><ref type="bibr" target="#b11">12]</ref> in the brainstem which represents the first central relay station in the ascending auditory pathway <ref type="bibr" target="#b12">[13]</ref>. Type II neurons are usually completely unmyelinated and have similar physiological properties in man and cat. However, standard type I cochlear neurons in humans are crucially different compared to that of other mammalians as their cell bodies as well as the pre-and post somatic segments lack myelin <ref type="bibr" target="#b13">[14]</ref><ref type="bibr" target="#b14">[15]</ref><ref type="bibr" target="#b15">[16]</ref> (Figure <ref type="figure" target="#fig_0">1A</ref>). These human differences, together with varying diameters of the peripheral-and central processes <ref type="bibr" target="#b16">[17,</ref><ref type="bibr" target="#b17">18]</ref>, which determine AP velocities, suggest a diversity in auditory signal conduction times along SGNs between man and cat.</p><p>The high conduction velocities of myelinated axons are based on the electrical properties of the internode, which is the part between two nodes of Ranvier. Assuming a conducted AP in an idealized internode (membrane capacity C = 0, membrane conductance Gm = 0) would cause the same temporal characteristics in the transmembrane voltage profile at both ends, i.e. the conducted AP is reduced in amplitude by intracellular resistance but the maxima at the beginning and end of the internode appear at the same time. This phenomenon, known as saltatory conduction <ref type="bibr" target="#b18">[19]</ref>, requires only a very small capacitance. This is reached by many circumjacent myelin layers as C is inversely proportional to the number of myelin sheets covering the cells membranes <ref type="bibr" target="#b19">[20]</ref>. A spike propagation problem may arise in SGNs when the small inneraxonal current of the thin peripheral process has to load the large capacitance of an unmyelinated soma <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b20">21]</ref>, which represents the main barrier for an AP along the neural tract.</p><p>A previously presented compartment model for cochlear neurons <ref type="bibr" target="#b6">[7]</ref> was evaluated in this study in order to analyze the impact of myelination and morphometry on temporal features of signal conduction in cat and man. Important parameters for the Excitable (active) membranes with high ion channel densities (red segments) in the peripheral terminal and in the nodes of Ranvier are needed for spike amplification. In contrast to feline cells, in man the pre-and postsomatic compartments are longer, the soma is larger and not myelinated and the peripheral as well as the central axons are longer. (B) According to Ohm's law the sum of all currents to the center of a compartment is zero. The currents are defined by extracellular potential V e , intracellular potential V i , membrane capacitance C m , membrane conductance G m and intracellular resistance R. Natural excitation by synaptic current from a hair cell ribbon synapse is simulated as current injection into the first compartment (peripheral terminal). In this case extracellular potentials V e are assumed to be zero. For nonmyelinated type II cells the same modeling approach was used with uniform ion channel densities as in the original Hodgkin-Huxley model and with constant compartment lengths in the axons. (C) The same neural pathway of a human type I cell model as used in <ref type="bibr" target="#b6">[7]</ref> is placed over a cross section of a feline cochlea demonstrating a possible position of a scala tympani electrode relative to a target cell. The length relations are the same as in the rectified versions in A. Extracellular potentials are calculated for a homogeneous infinite medium which causes spherical isopotentials, indicated by dashed lines. Note that the cat soma is much closer to the electrode than the human one. doi:10.1371/journal.pone.0079256.g001 velocity of spike conduction are the AP duration and its rise time. Different types of voltage-gated ion channels have been identified in SGN membranes based on rat and mouse data <ref type="bibr" target="#b20">[21,</ref><ref type="bibr" target="#b21">22]</ref>, some with impact on the falling part of the spike or on accommodation and refractoriness <ref type="bibr" target="#b22">[23]</ref>. However most ion channel models for non-myelinated neural membrane segments in warm blooded animals, including one of SGN type II of mouse <ref type="bibr" target="#b20">[21]</ref>, show AP durations longer than 1 ms <ref type="bibr" target="#b23">[24,</ref><ref type="bibr" target="#b24">25]</ref>. An example for shorter APs is the octopus cell in the cochlear nucleus <ref type="bibr" target="#b25">[26]</ref> whose spikes are still of double duration of a SGN.</p><p>In contrast to such membrane models, the original Hodgkin-Huxley model with a temperature fit to 27uC resulted in APs with a duration of 330 ms and a short rise time that was consistent with intracochlearly recorded SGN spikes of cats <ref type="bibr" target="#b6">[7,</ref><ref type="bibr" target="#b26">27,</ref><ref type="bibr" target="#b27">28]</ref>. In this paper we present the first modeling study that analyzes the temporal features of spike conduction along afferent SGNs of man and cat. Immunohistochemistry and confocal microscopy imaging was performed to distinguish type I and II neurons and quantify process diameters of bipolar SGNs as well as myelination in cat and human cochleae. Major differences concerning the extent of myelination, morphometric characteristics and the length of the neural path between these two species were incorporated in our SGN model. In addition, computer simulation enables the analysis of functional effects of synaptic current strengths that differ essentially between type I and II neurons <ref type="bibr" target="#b28">[29,</ref><ref type="bibr" target="#b29">30]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Materials and Methods</head></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Ethics Statement</head><p>Human temporal bones were obtained during routine autopsy at the Institute of Pathology, Innsbruck Medical University, Austria. According to the Tiroler Krankenanstaltengesetz 1 37 -Tir KAG, from Aug 14, 2013, consent is not required for the use of autopsy samples, and so informed consent requirement was waived. No individually identifiable patient data is presented in this report, and all data presented is therefore anonymous. Reevaluation from archival celloidine and plastic embedded sections emanate from previous research projects and were published by Spoendlin and others <ref type="bibr" target="#b30">[31,</ref><ref type="bibr" target="#b31">32]</ref>. All procedures for animal tissue were approved by the Royal Victorian Eye and Ear Hospital Animal Research &amp; Ethics Committee.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Specimens</head><p>The study is based on three human temporal bones from individuals aged 56 to 74 without any diagnosed ear disease or hearing loss (audiograms were not available). Human cochleae were fixed with 4% paraformaldehyde for 24 h at 4uC, subsequently decalcified in 20% ethylenediaminetetraacetic acid at pH 7.4 for 6 weeks and prepared for cryoembedding according to <ref type="bibr" target="#b32">[33]</ref>. Details are described <ref type="bibr" target="#b33">[34]</ref>. Inner ears were serially sectioned with a cryomicrotome perpendicular and radial to the modiolus at 10 mm and 35 mm respectively.</p><p>Three young adult cats (8 -10 months old, 3.5 -4.5 kg sourced from the BRC located at Royal Victorian Eye and Ear Hospital) were deeply anesthetized (sodium pentobarbitone; Nembutal; i.p., 60 mg/kg) and intracardially perfused with physiological saline (37uC) containing heparin (0.1% v/v) and sodium nitrate (0.025% v/v), followed by 10% neutral buffered formalin (NBF) at 4uC. The bullae were then removed and carefully opened to access the cochlea. Round and oval window were perforated with a microneedle and the cochleae were locally perfused with 10% NBF. Cochleae were post fixed with NBF for 1 hr at room temperature, then washed in PBS and stored in PBS (with 0.003% Sodium Azide).</p><p>Measurements of unmyelinated peripheral-and central process diameters were carried out on three male, normal hearing human subjects (49 -63 year old) without any diagnosed ear disease (audiograms not available) from archival material. Evaluation of cat process diameters are based on three inner ears from young female adult individuals, one year old, taken from archival material. Human as well as cat cochleae were fixed perilymphatically with ice-cold Karnovsky's solution and prepared using a standard celloidin embedding technique <ref type="bibr" target="#b34">[35]</ref>. Specimens were serially sectioned perpendicularly to the modiolus at 25 mm thickness and stained with hematoxylin and eosin.</p><p>In order to quantify the length of a standard bipolar SGN used in our computational model, we analyzed CT/MR data acquired during daily clinical practice of three male human individuals (aged 14 to 46 years) and three adult domestic cats (2-3 years old).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Immunohistochemistry</head><p>Staining was performed after washing the sections in phosphatebuffered saline (PBS, pH = 7.4, 665 min) followed by blocking of unspecific reactions with PBS containing 5% bovine serum albumin (BSA, Serva, Germany), 15% non-immune normal donkey serum (NDS, Chemicon-Merck, Austria) and 0.3% Triton X-100 (Sigma, Germany) for 2 h at room temperature (RT). Primary antibodies (Table <ref type="table" target="#tab_0">1</ref>) were diluted with a solution containing PBS, 1.67% BSA, 5% NDS and 0.1% Triton X-100. Cryosections were subsequently incubated for triple staining in a humid, darkened chamber at 4uC overnight followed by 1 h 15 min incubation at 37uC. After rinsing with PBS (665min) sections were incubated with secondary antibodies conjugated to Alexa Fluor TM 488 (donkey anti-rabbit, 1:1000, Invitrogen), Alexa Fluor TM 546 (donkey anti-mouse, 1:1000, Invitrogen) and Alexa Fluor TM 633 (goat anti-rat, 1:1000, Invitrogen) diluted with PBS for 2 h at RT. After rinsing the stained sections with PBS (665 min) cell nuclei were counterstained using 49,6-diamidino-2phenylindole, dihydrochloride (DAPI, 1:46000, Molecular Probes) for 35 min at RT. Sections were mounted after rinsing with PBS (665 min) using Vectashield TM mounting medium for fluorescence microscopy.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Electron microscopy</head><p>Human specimens were prepared according the block surface technique described by Spoendlin and Brunn <ref type="bibr" target="#b35">[36]</ref> and Spoendlin and Schrott <ref type="bibr" target="#b36">[37]</ref>. Subsequently, a ZeissH Libra 120 (ZeissH, Oberkochen, Germany) transmission electron microscope (University of Innsbruck, Institute of Zoology and CMBI) operating at 80 kV with 500 ms exposure time was used for examining ultrathin sections at magnification of 2006. Digital images were captured using a TRS 2048 HSC High Quality camera.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Confocal imaging and processing</head><p>Immunostained sections were imaged using a Zeiss LSM 510 Meta confocal laser-scanning microscope equipped with a 206/ 0.8 NA dry lens and a 636/1.4 NA oil immersion lens. To simultaneously detect cell nuclei, type II neurons, cell bodies and SGN myelin we used a 405 nm diode laser, a 488 nm line of an argon-krypton laser, a 543 nm and a 633 nm HeNe laser. Image capturing was performed using ZENH software (Zeiss, Jena, Germany).</p><p>To measure process diameters, three-dimensional image stacks were acquired from the celloidin embedded sections using a 636/ 1.4 NA oil immersion lens and a 488 nm argon ion laser combined with a 505 nm long-pass filter. The emitted blue-green light was used to leverage the autofluorescence of the hematoxylin and eosin stained SGNs. Pixels sizes of the 3D-stacks were selected according to the Nyquist theorem resulting in the following resolution: x = 43 nm, y = 43 nm, z = 130 nm. In order to reduce the distortion created by the microscope and increase the quality of the quantitative analysis of the 3D-stacks, a theoretical point spread function was calculated for each image channel. These point spread functions were subsequently used to deconvolute the acquired image stacks using a non-blind maximum-likelihood image restoration algorithm <ref type="bibr" target="#b37">[38]</ref> over 40 iterations.</p><p>Diameters were evaluated from the unmyelinated pre-and postsomatic segments of SGNs located in the Rosenthal's canal of the apical, middle and basal regions of the samples.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Measurement of nerve length</head><p>Each CT/MR data pair was registered using normalized mutual information method <ref type="bibr" target="#b38">[39]</ref>. Fused data was used to manually segment the brainstem and the cochlear nerve from the right and left cochlea (starting point for length measurement was defined in the middle of the cochlea at the height of the middle turn) via the internal auditory meatus to the cochlear nucleus of each individual. Visualizing the brainstem by surface rendering enabled us to determine the position of the VIII th nerve entering the brainstem (endpoint for length measurement). This enabled the calculation of the total length of cochlear nerve fibers as cochlear nuclei are located next to this entry point.</p><p>In order to calculate the lengths of the manually segmented nerves, the xyz-coordinates of the highlighted pixels at each DICOM slice were extracted using Fiji Win64bit image processing software <ref type="bibr" target="#b39">[40]</ref> using a macro to highlight a single pixel and save its respective coordinates from every image of the analyzed stack. Each line segment was considered as a vector. The sum of their lengths resulted in the total nerve length of the analyzed human and cat specimens.</p><p>Medical imaging data and acquired confocal image stacks were processed with a high-performance workstation (Z800, Hewlett-Packard, Palo Alto, CA, USA) using ImageJ v1.44 and Amira 5.4 (Mercury Computer Systems Inc., San Diego, CA, USA). 3D-data from celloidin embedded sections were processed as described previously <ref type="bibr" target="#b33">[34]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Statistical analysis</head><p>Statistical significance was determined by one-way analysis of variance followed by Bonferroni correction. Quantile-quantile plots were calculated to assess normality of data. Descriptive statistics, significance of data as well as the actual power for the sample data (significance level = 0.01) were computed with MatlabH 2011a (MathWorks, Natick, MS, USA).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Computer simulation</head><p>We used the same compartment model, suited for human and cat, as described in detail in <ref type="bibr" target="#b6">[7]</ref> but changed geometrical parameters as well as the numbers of shielding myelin layers according to new morphometric and immunohistochemical evaluations. Accordingly, each neuron was split up into compartments, either with an active membrane with original Hodgkin Huxley ion channel kinetics at 27uC, or as passive internodes (Figure <ref type="figure" target="#fig_0">1A</ref>). Transmembrane resistances r m of internodes and myelinated somas were assumed to be constant and proportional to the number N of myelin layers (r m = N*1 kOhm/cm 2 ) <ref type="bibr" target="#b6">[7]</ref>. The spiking of a target neuron was simulated by an electrical network, where the currents to the center of each compartment consist of a resistive and a capacitive current across the membrane as well as intracellular currents to the neighboring compartments (Figure <ref type="figure" target="#fig_0">1B</ref>). The temporal profile of the transmembrane voltage of each compartment was computed by solving a system of four differential equations for compartments with an active membrane and by a single differential equation for the internode. Current injection into the first compartment of the model neuron, that is the peripheral terminal, simulated the synaptic activation by a hair cell.</p><p>The standard model for a human type I SGN consisted of a myelinated somatic region with few membrane layers that separate the heavily myelinated peripheral and central processes. This structure was modeled as the following sequence of compartments: an unmyelinated distal terminal, followed by an internode and 5 node-internode combinations, a presomatic region (segmented into three compartments for computational accuracy), soma, postsomatic region, internode-node combinations of the central process and finally an unmyelinated central terminal. The standard value used for the inner diameter of the peripheral process was 1 mm. According to our morphometric findings, the central process diameter was always of double size. Soma was assumed as a sphere with 20 mm in diameter, all other parameters as in <ref type="bibr" target="#b6">[7]</ref>. The somatic region was assumed to be covered by three membrane layers. The standard model for a cat type I cell differed from the human case in relation to fewer and shorter internodes, lack of pre-and postsomatic unmyelinated segments, smaller soma diameter (15 mm) with 13 shielding myelin sheets covering the soma (Figure <ref type="figure" target="#fig_0">1A</ref>). The standard model for unmyelinated type II SGNs had the same process diameters as the myelinated ones for man and cat, but for computational accuracy more and shorter axonal compartments. For details about geometric and electrical parameters see <ref type="bibr" target="#b6">[7]</ref> methodic and basic concepts are found in <ref type="bibr" target="#b19">[20,</ref><ref type="bibr" target="#b40">41,</ref><ref type="bibr" target="#b41">42]</ref>.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Results</head><p>The first part of this work depicts the results of the immunohistochemical analysis of various geometrical parameters and the occurrence of myelination among human and cat SGNs. The collected data were subsequently incorporated in our cochlear neuron model to test their impact on spike excitation and signal conduction. Myelination and soma sizes of SGNs in cat and man</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Cat.</head><p>In cat cochleae we found that in 95.54% of neurons (Table <ref type="table" target="#tab_1">2</ref>) examined both the soma and the processes of type I SGNs (n = 3229) were surrounded by soma myelinating satellite glial cells (myelinating SGCs) within the spiral canal and myelinating Schwann cells within the osseous spiral lamina. Both types of glial cells were positive for myelin basic protein (MBP). The myelinating SGCs ensheath the entire cell body (Figure <ref type="figure" target="#fig_1">2A</ref>/ B, MBP) forming the distinct honeycomb structure in Rosenthal's canal sections where the cell bodies of the SGNs reside.</p><p>Type II cochlear neurons were identified using an antiperipherin antibody. This neuron-specific intermediate filament protein is well known to be expressed in mammalian (including human) type II SGNs <ref type="bibr" target="#b42">[43]</ref><ref type="bibr" target="#b43">[44]</ref><ref type="bibr" target="#b44">[45]</ref><ref type="bibr" target="#b45">[46]</ref><ref type="bibr" target="#b46">[47]</ref> enabling the identification of these small cochlear neurons using confocal microscopy. The middle cochlear regions showed highest density of peripherin positive type II neurons (5.53% of n = 995 analyzed neurons) followed by the apical (4.2% of n = 1000) and basal (4.05% of n = 1234 cells) regions. A total number of 147 cells (Table <ref type="table" target="#tab_1">2</ref>) were identified in cat cochleae as type II neurons, being positive for the peripherin protein (Figure <ref type="figure" target="#fig_1">2A</ref> &amp; <ref type="figure">B</ref>). This value represents 4.55% of all analyzed cat neurons. Moreover, type I and type II neurons of cats stained positive for TuJ1 protein (Figure <ref type="figure" target="#fig_1">2 A</ref>, <ref type="figure">B</ref>, <ref type="figure" target="#fig_0">TuJ1</ref>).</p><p>Four type II SGNs (2.72%, n = 147) were found to have fully myelinated cell bodies (Figure <ref type="figure" target="#fig_1">2A</ref>). However, the vast majority of peripherin protein positive type II cells (97.28%) feature unmyelinated cell bodies (Figure <ref type="figure" target="#fig_1">2B</ref>) as well as unmyelinated peripheral and central processes. One 3D-image stack of such a standard type II neuron was acquired during data analysis. The measured peripheral-and central process diameter of this neuron was d1 = 0.73 mm and d2 = 1.3 mm respectively, and was subsequently used in our computational model for further analysis.</p><p>The diameters of peripherin positive type II neurons were measured from deconvoluted 3D image stacks. Scrolling through the z-stack enabled the detection of the maximum diameter of the evaluated cell bodies, which was measured and used for statistical analysis. Type II neurons had a uniform soma diameter across all cochlear regions (Figure <ref type="figure" target="#fig_2">3A</ref>) with a maximum in the basal region (median (M) = 10.29 mm), the smallest values with the largest variance (M = 9.68 mm) in the middle turn and M = 9.92 mm in the apical region.</p><p>All three analyzed cat specimens showed the highest proportion of SGNs that are type II neurons within the middle turn region reaching 5.44% (n = 515) in specimen 1, 6.61% (n = 121) in specimen 2 and 5.29% (n = 359) in specimen 3. The smallest percentages of type II cells were identified in the apical regions of specimen 1 and 3 (3.85%, n = 182; 4.2%, n = 262) whereas the minimum appeared in the basal region of specimen 2 (3.73%, n = 322). Notable is the size distribution of type II SGNs, where the largest cell bodies were found in the high frequency region in all analyzed specimens.</p><p>The largest type I SGNs were identified in the basal regions (Figure <ref type="figure" target="#fig_2">3C</ref>) of the analyzed cat specimens with a mean soma diameter of 15.8162.03 mm (n = 537). Type I SGNs located in the middle turn reached a mean diameter of 13.7463.25 mm (n = 284). The apical regions of the investigated cat cochleae contained the smallest type I neurons with a measured mean diameter of 13.4162.29 mm (n = 427). Cell bodies of type I neurons located in the apical-and middle turn were found to be significantly smaller (p,0.01, power = 1) compared to those from the basal region. We used an average diameter of 15 mm of these types of SGNs in our computer simulations since the mean diameter of all analyzed somas was determined to be 14.5262.69 mm (n = 1248).</p><p>Human. Analyzing data from three individual human cochleae, we found that 3.65% of n = 2983 type I neurons (Table <ref type="table" target="#tab_1">2</ref>) were surrounded by myelinating SGCs strongly positive for MBP (Figure <ref type="figure" target="#fig_1">2 C</ref>, <ref type="figure">D</ref>). The acquired confocal stacks revealed that the isolating myelin layers fully wrap around the cell somas without any gaps. Furthermore, the pre-and postsomatic segments of SGNs were similarly surrounded by myelin comparable to these neuronal units of other mammalians. The white arrowheads in Figure <ref type="figure" target="#fig_1">2C</ref> highlight the MBP positive myelin layers of human type I SGNs. The merged image illustrates the myelinated cell bodies of human type I SGNs (TuJ1 positive) in contrast to the majority of unmyelinated SGNs.</p><p>The highest density of myelinated somas of n = 981 type I SGNs (4.28%) were identified in the middle turn, the minimum in the basal turns (3.25% of n = 1109 type I cells) and 3.47% of all analyzed cochlear type I neurons (n = 893) in the low frequency regions. The standard case of a human type II neuron (Figure <ref type="figure" target="#fig_1">2C</ref>) has a fully unmyelinated cell body. Confocal 3D-stacks also showed the complete absence of myelin at the peripheral and central neurite (data not shown). In contrast to type II cells of cat, human type II SGNs were not positive for TuJ1 -protein. Solely type I -SGNs are strongly positive for this neuron-specific class III beta-tubulin. A total number of 60 peripherin positive SGNs (Table <ref type="table" target="#tab_1">2</ref>) were identified representing 2.01% of all analyzed human neurons (n = 2983). The highest incidence of type II cells was found in the middle turn (2.96%), followed by apical turns (1.68%) and the high frequency basal regions (1.44%). Interestingly, two type II neurons representing 3.34% (n = 60) were found to be surrounded by myelinating SGCs (strongly MBP positive) wrapping myelin around the cell body as well as their processes. Again, the white arrow (Figure <ref type="figure" target="#fig_1">2D</ref>) depicts a type II cell body positive for the peripherin protein. The merged image illustrates this cell and its surrounding myelin (red color). Additionally, white arrow heads point to myelinated type I cell bodies (Figure <ref type="figure" target="#fig_1">2D</ref>). However, the standard type II neuron in the human inner ear completely lacks myelin. 3D image acquisition was performed on one type II cell with an unmyelinated cell body and processes. The evaluated process diameters used in our computational model are d1 = 0.65 mm and d2 = 1.4 mm. The median diameters of human type II somata from all specimens (Figure <ref type="figure" target="#fig_2">3B</ref>) were relatively constant with a maximum (M = 9.55 mm) found in the high frequency basal region, M = 9.39 mm in the middle turn and the smallest value (M = 9.13 mm) in the apical region. The calculated mean values in table 2 identifies the largest diameters of type II cells in the middle turns, a region of prime importance for speech recognition <ref type="bibr" target="#b47">[48]</ref>. However, no significant differences were found comparing type II cell soma diameters between cats and humans (p.0.05, power = 0.82).</p><p>The myelination of human SGNs was additionally assessed on electron microscopy level (Figure <ref type="figure" target="#fig_3">4A</ref>). White arrow heads depict the myelinated cell body of a type I SGN cell body and the myelinated process of a neurite. Note the continuous myelination of cell body and neurite. Figure <ref type="figure" target="#fig_3">4B</ref> shows the standard case of a large unmyelinated type I cell body (white arrows) that is covered by non-myelinating SGCs. The part of the central neurite that connects directly to the cell body totally lacks myelin. Myelination of the neurite starts here after approximately 7 mm (highlighted by the white arrow head) away from the soma.</p><p>Individual differences in incidence, myelination, soma-and neurite diameter in type II neurons are summarized as followed (data not shown). The middle turn of specimen 1 and specimen 2 contained the highest densities of type II neurons (1.96% of n = 255 and 1.46% of n = 274 analyzed cells respectively) as well as myelinated SGNs (4.71% and 5.11% respectively). In specimen 3, the maximum density of type II cells (5.41% of n = 148 evaluated neurons) and myelinated cells (5.41%) were both located within the apical regions. A surprising observation was the complete absence of type II neurons in the basal region of specimen 2 (n = 351 cochlear neurons) and its rare appearance in the basal (0.77% of n = 260 cells) and apical region (0.69% of n = 433 analyzed bipolar neurons) of specimen 1.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>SGN lengths in human and cat</head><p>In order to compute afferent spike conduction times with the cochlear neuron model, we needed the lengths of cochlear nerve processes. By analyzing clinical computer tomography data (one example is presented in Figure <ref type="figure" target="#fig_4">5A</ref>) of three human individuals (n = 6; right and left ear), we determined an average SGN length of 32.3561.45 mm. Evaluation of manually segmented right and left auditory nerves of three domestic cats (n = 6) resulted in an average length of 15.8160.39 mm, which is half the length compared to human cochlear neurons. For better comparison of spike conduction times, the lengths of type I and II cochlear neurons were assumed to be the same.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Type I process diameters of SGNs in human and cat</head><p>Peripheral and central process diameters d1 and d2 were systematically evaluated within the Rosenthal's canal of three human specimens, which is illustrated in Figure <ref type="figure" target="#fig_4">5B</ref>. The mean diameter (Table <ref type="table" target="#tab_2">3</ref>) of the peripheral processes (n = 212) was determined to be 1.3260.15 mm. The central process, which transmits the AP from the cell body to the cochlear nuclei, was measured to be 2.6560.3 mm (n = 236), which is double the size of the peripheral processes. Figure <ref type="figure" target="#fig_6">6A</ref> illustrates the measured variations for d1 and d2 for human type I neurons. Note that deviations of about 632% from the mean values for d1 and d2 were found. A closer evaluation of the different regions of the cochlea demonstrated no significant difference in process diameters comparing the basal-, middle-and apical region (Table <ref type="table" target="#tab_2">3</ref>, p.0.05, power = 1). Furthermore, each specimen was statistically analyzed according to these frequency specific regions as well as among themselves (data not shown). However, no significant differences regarding the diameters were found (p.0.05, power = 1).</p><p>Table <ref type="table" target="#tab_2">3</ref> illustrates the findings of process diameters d1 and d2 from three cat cochleae. Data is presented for SGN processes without a myelin sheet. For this purpose, the diameters of myelinated fibers were measured in a first step and recalculated using an inner/outer fiber diameter ratio d/D = 0.7. The thinner peripheral process had a mean value of 1.0260.12 mm (n = 93) whereas the mean diameter of the central process was 1.8160.19 mm. Deviations from the mean of about 630% were observed for d1 and d2 in cats (Figure <ref type="figure" target="#fig_6">6B</ref>). Analyzing the interspecies differences between d1 of human and cat as well as d2 between these two species reveal to be highly significant for both measures (p,0.001, power = 1).</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Computer simulation</head><p>In the first section, the temporal model features are evaluated with intracochlear recorded neural responses. Then, signal propagation in SGNs is shown to consist of four characteristic phases. Formulas for velocity-diameter relationships are found for the myelinated and unmyelinated axons of type I and type II cells. Systematic variations of model parameters show their impact on the total SGN signal conduction times for cat and man. In the last section consequences of strong postsynaptic IHC currents and weak postsynaptic OHC currents are analyzed.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>AP duration</head><p>In a critical model evaluation the computed AP duration was compared with experimental data. Applying the original Hodgkin Huxley dynamics at 27uC elsius for all active membranes (Figure <ref type="figure" target="#fig_7">7</ref> A,B) predicts quite short spike durations in our SGN model. But are the APs in the human and cat cochlear nerve really three times shorter than spikes of comparable thick axons in the central nervous system <ref type="bibr" target="#b23">[24,</ref><ref type="bibr" target="#b24">25,</ref><ref type="bibr" target="#b48">49,</ref><ref type="bibr" target="#b49">50]</ref>? As intracellular recordings are not available an answer to this question was found comparing simulated and recorded neural responses evoked by cochlear implant stimulation.</p><p>We simulated a cat SGN response to a cathodic 100 ms, 300 mA pulse from a spherical electrode (neural path and electrode position in the basal turn according to Figure <ref type="figure" target="#fig_0">1C</ref> and Rattay et al. <ref type="bibr" target="#b6">[7]</ref>. For this specific case, similar to natural excitation, a spike was initiated at the peripheral axon (Figure <ref type="figure" target="#fig_7">7A</ref>). The spike is conducted with some delay before crossing the soma region. In the next step the transmembrane currents of the excited cell were modeled as local current sources and the sum of their contributions was computed for the position of the recording electrode which coincided with the stimulating electrode position <ref type="bibr" target="#b41">[42]</ref>. The temporal characteristics of this voltage profile (Figure <ref type="figure" target="#fig_7">7C</ref>) are similar to an intracochlear recording (Figure <ref type="figure" target="#fig_7">7E</ref>) from Miller et al. <ref type="bibr" target="#b50">[51]</ref> (weakest cathodic stimulus in their Fig. <ref type="figure" target="#fig_0">1</ref>). The recorded  signal is broader as it represents the temporarily shifted contributions from many excited SGNs whereas the computed signal results from a single cell response (compare scale bars in Figure7 C and E). Spike conduction in the peripheral and central axon caused separate minima in the simulated extracellular voltage profile (Figure <ref type="figure" target="#fig_7">7C</ref>). The first characteristic phase, denoted as postsynaptic delay t1, is crucially influenced by the amplitude of an injected current pulse appropriate to simulate the synaptic SGN excitation by an IHC. For a 1 mm diameter myelinated peripheral process, a 100 pA square pulse caused a postsynaptic delay t1 = 133 ms for model data as illustrated in Figure <ref type="figure">8A</ref>. Using a stimulus intensity comparable to recorded synaptic currents in rat, our simulations proposed a shorter postsynaptic delay in the order of 100 ms. The  delay t1 does not include the neurotransmitter release from the hair cell and the diffusion across the synaptic cleft. In man and cat simulations demonstrated nearly the same short postsynaptic delays for type I SGNs (Figure <ref type="figure">8A</ref>, <ref type="figure">B</ref>). In contrast to the assumptions in Figure <ref type="figure">8C</ref> essentially longer postsynaptic delays are expected in type II cells. This phenomenon is analyzed below. The second and fourth phases denote the spike conduction times t2 and t4 in either the peripheral or the central process. A linear distance-time relationship is shown by each of the blue velocity vectors of the propagating APs in Figure <ref type="figure">8</ref>, demonstrating constant propagation velocities v1 and v2 in the peripheral and central axons, respectively. By evaluation of the shifted blue velocity vectors in the left graph in Figure <ref type="figure">8A</ref> we found that the AP requires 156 ms to travel 1 mm in the 1 mm thick peripheral process and almost half of this time, 75 ms, in the central axon that has double the diameter. Using the computed data of the longer central process of the human type I cell (Fig. <ref type="figure">8A</ref>, d2 = 2 mm, v2 = 13.33 mm/ms), this quite linear velocity-diameter relationship for the well wrapped myelinated fibers is fitted by</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Four phases in SGN signal transduction</head><formula xml:id="formula_0">v mm=ms ½ ~6:66 Ã d½mm ð<label>1Þ</label></formula><p>wherein the factor 6.66 has the dimension ½1=ms to match dimensional correctness.</p><p>The third phase, denoted by the presomatic delay t3, essentially depends on the axial current flow from the peripheral process required to load the somatic capacitance. Thus t3 is influenced by the size and degree of myelination at the somatic region. Reducing the soma diameter in 5 mm steps resulted in a decreased delay of 22 ms per step.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Type I SGNs</head><p>The presomatic delay of 212 ms in human (Figure <ref type="figure">8A</ref>) is shorter than previously reported by Rattay et al. <ref type="bibr" target="#b6">[7]</ref>. The reason is a reduction of surface and capacity at the soma by a factor 4/9 when the diameter is decreased from 30 mm [7] to an average value of 20 mm which is close to the average size of our morphometric data <ref type="bibr" target="#b33">[34]</ref>. The same effect occurs when the soma is further reduced to 15 mm which is the average value of cat type I cells. The higher number of myelin layers is even more influential since the somatic capacity decreases inversely with the number of covering membrane/myelin sheets. The human soma was simulated with 3 layers, and that of the cat with 13 layers. Thus the capacity of the myelinated cat soma is reduced by the factor (3/13)*(9/16) = 0.13. Further arguments for the vastly short 52 ms presomatic delay in cat (Figure <ref type="figure">8B</ref>) are given below.</p><p>Simulated spike propagation along a type I SGN is shown for man and cat in Figure <ref type="figure">8A</ref> and <ref type="figure">B</ref>. In Figure <ref type="figure">8B</ref> the vertical distances of the voltage profiles are markedly shorter since the internodes are assumed to be shorter in cat than in man, although the model fiber diameters are the same. In spite of shortening the internodal lengths, the calculated conduction velocities are almost the same in both cases. Reduction of the internodal length of the central process from 500 mm in man to 350 mm in cat causes a v2 increase ,1% from 13.33 to 13.44 mm/ms. Such small influences of the internodal length on the AP conduction velocity in compound action potential recording. The black curve is redrawn from <ref type="bibr" target="#b50">[51]</ref> (Figure <ref type="figure" target="#fig_0">1</ref>, intracochlear recording, cathodic pulse 211.1 dB rel. 1 mA). Simulated situations correspond to scala tympani stimulation in the basal turn. Electrode position and neural path as in Figure <ref type="figure" target="#fig_0">1C</ref>; homogeneous extracellular medium with extracellular resistivity of 300 Ohm.cm and other data as in <ref type="bibr" target="#b6">[7]</ref>. doi:10.1371/journal.pone.0079256.g007</p><p>Figure <ref type="figure">8</ref>. Simulated spike transduction in afferent cochlear neurons. Geometry of rectified SGNs (left, myelinated regions in gray) and transmembrane voltage profiles of the corresponding locations (right). For better comparison of phenomenological differences axon diameters and a peripheral terminal length of 10 mm are chosen to be the same in A-C. Spike initiation by a 0.5 ms pulse, 100 pA (A and B) and 500 pA for the homogeneous myelinated axons are also expected in other modeling work <ref type="bibr" target="#b51">[52]</ref>.</p><p>The velocities v1 and v2 are diameter dependent, and they are evaluated with the same equation (1) for cat and man. However, the cat peripheral process has only 3 nodes of Ranvier and evaluation of the velocity/diameter ratio is less precise in comparison to human because uniformity of signal conduction is disturbed at both ends of this short axonal segment.</p><p>Spike conduction times for several diameters and different numbers of myelin layers enwrapping the somatic region (nmsoma) are listed in the upper part of Table <ref type="table" target="#tab_3">4</ref>. Note that for the postsynaptic delay a constant value of 100 ms is assumed for all cases. The presented values of the presomatic delay t3 are computed for a soma diameter of 20 mm in man. When the number of membrane layers is increased to 11 we calculated a 0.12 ms reduction of this delay compared to the unmyelinated situation with 1 layer. Since this delay t3 is also dependent on the diameter of the soma, the rising ratio of presomatic delay has been calculated for increasing the soma diameter with 1 mm steps. For standard type I neuron with 3 membrane layers around the soma (plasma membrane of SGN and 2 membranes of SGC) increasing the diameter to 21 mm resulted in a 4.3 ms increase of t3 (compare right column in Table <ref type="table" target="#tab_3">4</ref>). These linear relations hold for human soma diameters ranging from 10 to 30 mm when the soma is connected with a peripheral myelinated process with d1 = 1 mm in diameter. Doubled diameter d1 = 2 mm causes stronger axial currents and the presomatic delay decreases from 211+4.3 ms to 125+3.2 ms for the 20 mm standard soma with 3 layers (t3 column in the upper part of Table <ref type="table" target="#tab_3">4</ref>).</p><p>The main results of Table <ref type="table" target="#tab_3">4</ref> are summarized in Figure <ref type="figure" target="#fig_10">9</ref>, demonstrating how model parameters accelerate signal conduction of type I cells. Beside the neuron's path length, axon diameter increase has the largest impact on shortening the arrival time, followed by the increase of nmsoma and the decrease of soma diameter.</p><p>Therefore the greatest advantage of fast signaling in myelinated cat SGNs (in comparison to the human case) results from the shorter auditory nerve (15.81 mm in cat vs. 32.35 mm in man), followed by a smaller presomatic delay due to myelinization and smaller soma surfaces. Another anatomical difference in typical type I SGN favors the fast signaling in cat. The pre-as well as the postsomatic region in human are unmyelinated segments whereas in cat the soma is assumed to be between two nodes of Ranvier <ref type="bibr" target="#b6">[7]</ref>, (Figure <ref type="figure" target="#fig_0">1A</ref>). Spike conductance in the rather long unmyelinated presomatic segment in human is slow and causes an additional delay which is shown in t3 (Table <ref type="table" target="#tab_3">4</ref>). This reduced velocity in unmyelinated axons explains why the 52 ms t3 delay for cat (last row in upper part of Table <ref type="table" target="#tab_3">4</ref> for d1 = 1 mm, nmsoma = 13, dsoma = 15) is much shorter as expected by extrapolation of the 166 ms t3 value for man (Table <ref type="table" target="#tab_3">4</ref>, row 4 for d1 = 1 mm, nmsoma = 11, dsoma = 20) since a reduced soma diameter of 15 mm only causes a delay reduction of 5*2.2 = 11 ms.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Type II SGNs</head><p>Spike conduction in unmyelinated fibers requires larger intracellular current flow because of missing the isolating internodal segments of myelinated axons. The lack of myelin sheets causes vastly larger capacities of the fiber resulting in essentially slower conduction velocities. Comparing myelinated and unmyelinated SGNs in cat, the greater somatic capacity in Figure <ref type="figure">8B</ref> is more than compensated by the much stronger axial current flow supplied by presomatic regions. This current increase results from the uniform active membrane of the peripheral unmyelinated process which is more efficient for loading the soma capacity compared to the contribution from sparsely distributed active nodes of Ranvier in myelinated fibers. Consequently a negligibly small presomatic delay of 18 ms is predicted by our model evaluations (Figure <ref type="figure">8C</ref>).</p><p>Still, in comparison with myelinated axons, conduction velocity is vastly slower. Spike conduction requires 456 ms and 719 ms for 1 mm in the peripheral and central process, respectively, resulting in v1 = 1.4 mm/ms and v2 = 2.19 mm/ms (blue vectors in Figure <ref type="figure">8C</ref>, bottom). Theoretical investigations demand a quadratic velocity -diameter relationship for homogeneous fibers <ref type="bibr" target="#b19">[20]</ref>.</p><p>The relationship</p><formula xml:id="formula_1">v mm=ms ½ ~1:5 Ã ffiffiffiffiffiffiffiffiffiffiffiffi d mm ½ p<label>ð2Þ</label></formula><p>with 1.5 of dimension ffiffiffiffiffiffi ffi mm p =msholds for the investigated nonmyelinated fibers (Figure <ref type="figure">8C</ref>) with a maximum deviation of 6%. This may be explained by irregularities in spike initiation at the beginning of each axonal section. Spike conduction times for the same process and soma diameters in cat and man are expected to differ only because of different process lengths (lower part of Table <ref type="table" target="#tab_3">4</ref>). Table <ref type="table" target="#tab_3">4</ref> demonstrates that the slow afferent signaling from OHCs is based on a lack of myelin and, second, on an extreme long postsynaptic delay t1. Compare also myelinated vs. unmyelinated distance time diagrams in Figure <ref type="figure" target="#fig_10">9</ref>.</p><p>As presented above, we have identified few myelinated type II cells in cat and man (Figure <ref type="figure" target="#fig_1">2 A</ref>, <ref type="figure">D</ref>). In order to quantify the effect of myelination on type II cells the respective evaluated geometrical parameters were used to model a fully myelinated, OHC innervating neuron for cat and man. In cat, the myelinated type II neurons transmit an AP about 3.7 times faster compared to the unmyelinated standard case. In man, the corresponding neuronal structure transmits the electrical signal 4.5 times faster from the hair cell to the cochlear nucleus.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Jitter and AP delay t1 are drastically reduced by high currents from ribbon synapses</head><p>The first 10 mm long compartment of our model neuron simulates the short dendritic terminal that connects a type I SGN with an IHC <ref type="bibr" target="#b5">[6,</ref><ref type="bibr" target="#b6">7,</ref><ref type="bibr" target="#b9">10]</ref>. In Figure <ref type="figure">8</ref> A,B current injection to this segment was a 100 pA, 0.5 ms pulse, which is a rather weak stimulus in comparison to currents from IHC ribbon synapses with an average amplitude I 0 of , 400 pA, 280 ms for time to peak and a decay time constant t of 370 ms as recorded in adult P20 and P60 rats (Figure <ref type="figure" target="#fig_2">3</ref> in <ref type="bibr" target="#b28">[29]</ref>). Applying stimuli of the recorded shape (Figure <ref type="figure" target="#fig_9">10A</ref>) and intensity immediately initiated spikes for the standard human type I SGN geometry (Figure <ref type="figure" target="#fig_9">10B</ref>). The fact that the spike in the first compartment almost returned to resting potential when the synaptic current reached its peak time (Figure <ref type="figure" target="#fig_9">10A</ref>,<ref type="figure">B</ref>) is a consequence of the notably strong stimulus current which exceeds the threshold (Figure <ref type="figure" target="#fig_9">10C</ref>) by a factor of at least 15. Note the increased spike amplitude of compartment 1 and even of compartment 3 in Figure <ref type="figure" target="#fig_9">10B</ref>. Synchrony in spiking is disturbed by ion current fluctuations in each active compartment with an intensity that was assumed to be proportional to the square root of the number of sodium channels involved <ref type="bibr" target="#b6">[7]</ref>. This noisy ion current approach demonstrated a small jitter for strong stimuli (Figure <ref type="figure" target="#fig_9">10D</ref>) but a large disturbance of synchrony for stimuli in the lower suprathreshold regime (Figure <ref type="figure" target="#fig_9">10E</ref>). Beside loss of spikes in the order of 20% (Figure <ref type="figure" target="#fig_9">10E</ref>) an increase of signal transduction time of about 500 ms can be expected when type I neurons would be stimulated with I 0 = 26 pA.</p><p>In contrast to type I cells, the weak stimulus current I 0 = 26 pA seems to be typical for afferents from OHCs <ref type="bibr" target="#b29">[30,</ref><ref type="bibr" target="#b52">53]</ref>. Whereas type I cells contact single IHCs, type II terminals arborize extensively among OHCs. Seven or even many more synaptic OHC contacts in a region of several hundred micrometers are assumed to be the average for a type II cell <ref type="bibr" target="#b52">[53,</ref><ref type="bibr" target="#b53">54]</ref>. Because of a lack of data we have not simulated one of the various geometries of the distal terminals of type II cells. The large length constant in the order of 1 mm as reported Weisz et al. <ref type="bibr" target="#b29">[30]</ref> supported our assumption to simulate this structure again as a single compartment and to use for a rough approach the same excitation characteristics as for the type I cell in Figure <ref type="figure" target="#fig_9">10</ref>.</p><p>Despite their greater pool of synaptic inputs, the frequency of synaptic events in type II afferents is assumed to be about one tenth of that observed in type I cells <ref type="bibr" target="#b52">[53]</ref>. The spatial distribution of synaptic contacts within the terminal causes an additional irregular delay component in t1 for the signal propagation within this segment. Three new components of t1 for type II cells should be involved in the model approach: (i) an additional delay of 428 ms corresponding to the time difference for the spike arrival times in compartment 25 according to cases D and E of Figure <ref type="figure" target="#fig_9">10</ref>, (ii) a large jitter and (iii) a further delaying component representing the increased loss of effective synaptic current as consequence of larger axial currents in unmyelinated axons (larger stimulus in Figure <ref type="figure">8C</ref> than in Figure <ref type="figure">8B</ref>). The total t1 delay can be estimated with 600-1000 ms. A t1 value of 800 ms is used in Table <ref type="table" target="#tab_3">4</ref> for all type II SGNs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Discussion</head><p>A vast majority of human SGNs (96.35%) are embedded in a continuous, honeycomb structure formed by satellite glial cells <ref type="bibr" target="#b15">[16]</ref> representing the standard case of type I cells. Thus, each unmyelinated type I cell body is encapsulated by at least one cellular layer of a satellite glial cell <ref type="bibr" target="#b13">[14]</ref> resulting in two additional membranes. This micro-anatomical peculiarity is interpreted as nmsoma = 3 for our standard cochlear type I neuron. The assumed nmsoma = 11 for the myelinated case is based on 4 and 17 (mean = 10.5) myelin layers enwrapping the cell bodies <ref type="bibr" target="#b13">[14]</ref>. This group and Arnold <ref type="bibr" target="#b54">[55]</ref> report that the myelin sheaths were observed to be compact, loose or semicompact, although the loose form was most common.</p><p>The process diameter relationship d2 = 2 * d1 precisely holds for each analyzed human specimen (n = 3) everywhere along the cochlea spiral. This relationship may also be valid for type II neurons even though the respective diameters (of only one cell) were determined to be half the size compared to type I neurons. Interestingly, the highest density of type II neurons was found within the middle turn of the analyzed specimens where the majority of phonational frequencies are situated <ref type="bibr" target="#b47">[48,</ref><ref type="bibr" target="#b55">56]</ref>. Based on morphometric data, degree of myelination and postsynaptic hair cell currents, we used a biophysical model to simulate and compare excitation profiles and spike propagation in human and feline SGNs.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Spike duration</head><p>In contrast to long lasting spikes of a SGN mouse model <ref type="bibr" target="#b20">[21]</ref> the AP duration of 1/3 ms of our model was shown to be in agreement with temporal properties of intracochlear recordings (Figure <ref type="figure" target="#fig_7">7E</ref>). Such short APs are known from peripheral nerve models for myelinated axons in frog, rat and rabbit <ref type="bibr" target="#b19">[20,</ref><ref type="bibr" target="#b56">[57]</ref><ref type="bibr" target="#b57">[58]</ref><ref type="bibr" target="#b58">[59]</ref><ref type="bibr" target="#b59">[60]</ref><ref type="bibr" target="#b60">[61]</ref>. AP durations longer than 1 ms are typical for excitable membranes in the central nervous systems <ref type="bibr" target="#b23">[24,</ref><ref type="bibr" target="#b24">25,</ref><ref type="bibr" target="#b48">49,</ref><ref type="bibr" target="#b49">50]</ref>. Shorter spikes are reported from octopus cells in the ventral cochlear nucleus <ref type="bibr" target="#b25">[26]</ref>, but the SGN spikes are even shorter. The time to peak and the duration of an AP depend on the types of ion channels, their kinetics and densities, the membrane capacitance  and other parameters. Although many relevant details are known for mammalian SGN membranes, as yet there is no accurate cable model available which matches the AP shape of type I cells. In our model we fitted temporal spike characteristics by changing two parameters of the original HH model, temperature and ion channel density. Another approach for a HH type model is to assume that channels expressed on soma are identical, but differ in density in the processes. The channel densities can be fitted to in vivo recordings <ref type="bibr" target="#b61">[62]</ref>. An appropriate short and rapidly increasing AP as simulated with our model is a key element for the quick signal conduction in the afferent part of the auditory nerve. The short spikes and the fit of the formula for axon conduction velocity of type I cells (Eq. 1) to experimental findings on peripheral myelinated axons (see below) underlines closer electrophysiological affinity of SGNs to the peripheral nerve system than to the central one.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Simulated conduction times correlate with ABR</head><p>The simulated spike conduction times for afferent signal transmission can be evaluated with auditory brainstem response (ABR) data as time difference between the peaks of wave I and wave III. Esteves et al. <ref type="bibr" target="#b62">[63]</ref> reported corresponding ABR interpeak times of 2.1360.14 ms (n = 120 ears) in normal hearing human subjects. Van den Honert and Stypulkowski <ref type="bibr" target="#b63">[64]</ref> analyzed ABR recordings of 10 normal hearing cats and reported a mean signal latency between waves I and III of 1.4160.1 ms. According to our model, the corresponding values in Table <ref type="table" target="#tab_3">4</ref> are 2.13 ms for a peripheral process diameter d1 = 1.4 mm (man) and 1.40 ms for d1 = 1 mm (cat). Whereas the cat data match almost perfectly, our systematic morphometric evaluation from human specimens rely on the d1 = 1.3 mm case which predicts a 150 ms longer conduction time of 2.28 ms.</p><p>Closer examination of the cat data (Table <ref type="table" target="#tab_2">3</ref>) shows that the systematic diameter evaluation in cat deviates from the d2/d1 = 2 relation used in Table <ref type="table" target="#tab_3">4</ref>. Reducing d2 from 2 mm to 1.8 mm demands for a 10% reduction of velocity v2 (Eq. 2) and a 10% increase of t4 according to Table <ref type="table" target="#tab_3">4</ref>, leading to an additional delay of 112 ms. A possible explanation for this discrepancy between spike conduction times and ABR interpeak times may be found with the help of Figure <ref type="figure" target="#fig_7">7</ref> where the conducted spike is recorded within the cochlea. Although the recording electrode is close to the thin peripheral process (Figure <ref type="figure" target="#fig_0">1C</ref>) the main contribution in the recorded signal appears when the spike passes the soma region (Figure <ref type="figure" target="#fig_7">7</ref>). This activity should contribute more to the peak I in ABR recordings than the excitation of the peripheral axon. ABR peak III should be generated when the spike arrives at the increased surface of excited membranes in the branching central SGN terminals causing synaptic activation in the cochlear nuclei.</p><p>Electrically evoked ABRs from cochlear implantees were analyzed recently <ref type="bibr" target="#b64">[65]</ref>. Poststimulus latencies of peak III were shorter for anodic pulses and they clustered at about 2 ms. In most of the reported cases spike initiation can be assumed within the central axon at a site close to the soma. This 2 ms delay which is similar to the interpeak time III -I recorded in healthy people <ref type="bibr" target="#b62">[63]</ref> supports a hypothesis derived from Figure <ref type="figure" target="#fig_7">7D</ref> where it is seen that the second peak exceeds the contribution of the thin peripheral process. This effect is assumed to be more pronounced in human type I cells because of the higher current flux across the active membrane in the larger presomatic compartment. Therefore, peak I in healthy people may represent the large sodium current influx when the spike enters the nonmyelinated presomatic region.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>How myelin accelerates signaling</head><p>The examples in Figure <ref type="figure">8</ref> and Table <ref type="table" target="#tab_3">4</ref> suggest two types of acceleration of signal conduction by myelin, namely at the axons and in the soma region. The values t2 and t4 in the upper and lower part of Table <ref type="table" target="#tab_3">4</ref> demonstrate the rapid conduction of myelinated fibers compared to the non-myelinated. The factor 6.66 for the linear relation between axon diameter and simulated velocity (Eq. 1) is quite close to 6.57, which is the corresponding scaling factor for small diameter myelinated axons as reported by Boyd and Kalu <ref type="bibr" target="#b65">[66]</ref>, who found an average value of 4.6 for v/D. Incorporating an inner/outer fiber diameter ratio d/D = 0.7, the equivalent scaling factor is 4.6/0.7 = 6.57.</p><p>Reduction of myelin layers and the markedly bigger diameter of the soma are the reason for a notable capacity enlargement resulting in a distinct presomatic delay for bipolar cochlear neurons in man. This delay is smallest for non-myelinated cells with a small diameter ratio of soma / peripheral process, e.g. 18 ms for type II cells (t3 in the lower part of Table <ref type="table" target="#tab_3">4</ref> and Figure <ref type="figure">8C</ref>) but increases for human type I cells to 286 ms (d1 = 1 mm, dsoma = 20 mm, nmsoma = 1; Table <ref type="table" target="#tab_3">4</ref>) and even higher delays are expected for large somata (Figure <ref type="figure" target="#fig_10">9</ref>) <ref type="bibr" target="#b6">[7]</ref>. According to observations of Spoendlin <ref type="bibr" target="#b9">[10]</ref> there is a single node of Ranvier in the vicinity of the cat soma. Biophysical modeling demonstrates the need for a considerably longer active membrane length of the presomatic segment in cases of poorly myelinated somata (Figure <ref type="figure" target="#fig_3">4B</ref>) in order to provide enough inneraxonal current to load the capacity of the cell membrane. The length of this presomatic nonmyelinated segment was not systematically determined, but it is always considerably longer than a node of Ranvier, e.g. Ota and Kimura <ref type="bibr" target="#b13">[14]</ref> measured 5-26 mm long presomatic segments in human type I cells.</p><p>Our auditory nerve model confirmed that the conduction velocity of a uniformly myelinated axon is proportional to the diameter but it is rather independent from the internodal length <ref type="bibr" target="#b51">[52]</ref>. However, signal amplitude is smaller in the internode than in the voltage amplifying node. This phenomenon is especially evident in human type I cells at the last internode before the presomatic section. In contrast to the myelinated cat soma, the weak inneraxonal current causes a remarkable presomatic delay and endangers signal propagation. Two or more cell bodies of human SGNs sometimes comprise a common insulation by glial cells. Within such a cluster a close contact of somatic cell membranes is evident. Tylstedt and Rask-Andersen <ref type="bibr" target="#b66">[67]</ref> speculate whether unique formations between such human SGCs may constitute interactive electrotonic or ephaptic transmission pathways. These may increase neural synchrony and signal acuity related to the coding of speech. This hypothesis will be tested in a forthcoming paper as well as our suggestion that clusters could also work as filters in order to suppress spontaneous spikes without acoustic signal information.</p></div>
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Synaptic hair cell currents</head><p>Another surprising fact predicted by the biophysical model can be deduced from the large stimulus of , 400 pA recently recorded from the IHC ribbon synapse <ref type="bibr" target="#b28">[29]</ref> which is in accordance with our simulations of about 15 times the threshold current of typical type I SGNs. Such strong stimuli cause an accelerated spike propagation in the peripheral terminal via increased axial current leading to an extremely short postsynaptic delay t1 of , 100 ms. Weak synaptic stimulation, e.g. 26 pA, as found in type II cells <ref type="bibr" target="#b29">[30,</ref><ref type="bibr" target="#b52">53]</ref> causes a longer delay t1 in the order of 1 ms but also a large AP jitter that disturbs synchrony of the firing SGNs. This excess of stimulus energy is obviously important for quick and precise signaling in type I cells.</p></div><figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_0"><head>Figure 1 .</head><label>1</label><figDesc>Figure 1. Compartment models for SGNs. (A) Type I cells, rectified: Myelinated segments are shown in gray. Excitable (active) membranes with high ion channel densities (red segments) in the peripheral terminal and in the nodes of Ranvier are needed for spike amplification. In contrast to feline cells, in man the pre-and postsomatic compartments are longer, the soma is larger and not myelinated and the peripheral as well as the central axons are longer. (B) According to Ohm's law the sum of all currents to the center of a compartment is zero. The currents are defined by extracellular potential V e , intracellular potential V i , membrane capacitance C m , membrane conductance G m and intracellular resistance R. Natural excitation by synaptic current from a hair cell ribbon synapse is simulated as current injection into the first compartment (peripheral terminal). In this case extracellular potentials V e are assumed to be zero. For nonmyelinated type II cells the same modeling approach was used with uniform ion channel densities as in the original Hodgkin-Huxley model and with constant compartment lengths in the axons. (C) The same neural pathway of a human type I cell model as used in [7] is placed over a cross section of a feline cochlea demonstrating a possible position of a scala tympani electrode relative to a target cell. The length relations are the same as in the rectified versions in A. Extracellular potentials are calculated for a homogeneous infinite medium which causes spherical isopotentials, indicated by dashed lines. Note that the cat soma is much closer to the electrode than the human one. doi:10.1371/journal.pone.0079256.g001</figDesc><graphic coords="2,58.05,60.78,382.51,410.91" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_1"><head>Figure 2 .</head><label>2</label><figDesc>Figure 2. Immunofluorescence of MBP, TuJ1 and peripherin in cat (A, B) and human (C, D) spiral ganglion. (A, middle turn region) shows a myelinated type II neuron in a cat inner ear. The arrow highlights the peripherin positive cell body of a type II cochlear neuron; the arrow head depicts its isolating myelin. (B, basal region) illustrates two unmyelinated type II neurons (white arrows) which were (partly) surrounded by myelin of neighboring type I neurons. Additionally, the arrow head points to a type I SGN which was fully surrounded by myelin. Note the absence of these surrounding myelin layers at the depicted type II neurons. A myelinated type I neuron (white arrow head) and an unmyelinated type II neuron (white arrow) of the human spiral ganglion are shown in (C, basal turn). D (middle turn) presents a human type II cell body surrounded by myelin (white arrow) and type I neurons surrounded by myelin (white arrow heads). Scale bars 30 mm. doi:10.1371/journal.pone.0079256.g002</figDesc><graphic coords="6,58.05,60.77,402.52,402.52" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_2"><head>Figure 3 .</head><label>3</label><figDesc>Figure 3. Box-Whisker-Plot depicting variations of type II SGN soma diameters for (A) cat and (B) man according to their specific region within the inner ear. (C) presents the evaluated diameters of type I SGN somata from the analyzed cat specimens located in the apical, middle and basal region of the cochleae. doi:10.1371/journal.pone.0079256.g003</figDesc><graphic coords="7,58.05,60.78,322.75,523.22" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_3"><head>Figure 4 .</head><label>4</label><figDesc>Figure 4. Transmission electron microscopy images of human SGNs. (A) Cell body of a putative type I SGN completely enwrapped with myelin. Additionally, the process of the SGN shows continuous myelination (white arrow heads). The standard human SGN is shown in B. White arrows highlight an unmyelinated cell body encircled by a satellite glial cell and the myelin lacking process of a SGN. The myelination of the central process starts after about 7 mm pointed by the white arrow head. Scale bar 10 mm. doi:10.1371/journal.pone.0079256.g004</figDesc><graphic coords="8,58.05,60.78,203.24,103.24" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_4"><head>Figure 5 .</head><label>5</label><figDesc>Figure 5. Visualization of SGN length measurement (A) and zprojection of a confocal image stack (B) of basal human cochlear neurons. (A) presents the volume rendered bone of an analyzed individual. The brain is illustrated in a transparent manner (blue) together with the manually segmented brainstem (white star). The starting points of the SGNs from the left and right cochleae are highlighted by the white arrows. The manually segmented Nervuli cochlearum are visualized using surface rendering (green colored). The white arrow in (B) highlights a central process connecting the cell body with the cochlear nucleus. The diameter of this neurite was measured to be 2.54 mm. Scale bar in (A) indicates 5 cm; in (B) it indicates 20 mm. doi:10.1371/journal.pone.0079256.g005</figDesc><graphic coords="8,58.05,493.17,239.43,121.10" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_5"><figDesc>Spike transduction along SGNs can be divided into four characteristic phases. (i) Spike initiation at the peripheral terminal caused by either natural synaptic activation or exogenous current injection that results in a certain delay of excitation onset (postsynaptic delay t1). (ii) Axial current flow causes AP conduction in the peripheral process with velocity v1. There is only a small deviation from a constant v1 during the passage of the first node-internode segment. (iii) A considerable delay before the generation of the somatic spike is caused by the large soma capacitance that has to be loaded via axial current flow. Note the lower and long lasting voltage profiles in the presomatic compartments of Figure 8A indicated by vertical lines. (iv) Axial current flow from the soma into the central process again causes spike conduction with a velocity of v2.</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_6"><head>Figure 6 .</head><label>6</label><figDesc>Figure 6. Box-Whisker-Plot illustrating measured peripheral-( = d1) and central ( = d2) process diameters of type I SGN for man (A, n = 3) and cat (B, n = 3) within the inner ear. doi:10.1371/journal.pone.0079256.g006</figDesc><graphic coords="9,58.05,386.53,382.90,308.75" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_7"><head>Figure 7 .</head><label>7</label><figDesc>Figure 7. Temporal profiles of transmembrane voltages and extracellular potentials of an extracellularly stimulated feline type I cell. A small ball electrode simulates the situation of monopolar cathodic stimulation with a cochlear implant for a situation shown in Figure 1C. (A) During application of the 100 ms stimulus pulse the voltage across the membrane is influenced in each compartment. For this electrode placement the threshold is reached in the peripheral terminal and therefore the SGN excitation is similar to natural signaling. The transmembrane voltage lines, shifted vertically according to their distance along the neural path, show AP conductance; myelinated compartment responses in dark gray, compartments with voltage sensitive ion channels in red. (B) The short spike duration is demonstrated with the redrawn transmembrane voltage of the presomatic compartment. (C) Simulated extracellular potential for the position of the center of the stimulating electrode. (D) Simulated recorded signal for natural synaptic excitation, modeled as current injection into the first compartment (E) Simulated (blue, copy of C) and experimentally recorded (black) intracochlear voltage profiles generated with a cochlear implant show similar temporal characteristics although the simulated single cell activity is compared with a</figDesc><graphic coords="10,58.05,60.77,223.43,481.89" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_8"><figDesc>non-myelinated case (C). Signal conduction with nearly constant velocities in the axons is indicated by the geometric construct with the broken red lines and thick blue velocity vectors. Note the attenuation of membrane voltage in the passive internodes and, most pronounced, in the presomatic region. doi:10.1371/journal.pone.0079256.g008</figDesc></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_9"><head>Figure 10 .</head><label>10</label><figDesc>Figure 10. SGN response to strong and weak synaptic stimuli. (A) Postsynaptic currents from rat experiments are characterized by amplitude, time to peak and time constant for decay. (B-E) responses of a type I SGN with parameters from Figure 8A are shown for compartments # 1, 3, 5 and 25. Reduction from a typical synaptic current amplitude (B) to threshold (C) caused an essentially longer delay. Including ion current fluctuations (noisy membrane current model, [7]) in all compartments with active channels resulted in sharply synchronized responses for strong stimulation (D) and in late responses with large jitter (E). Compartment 25 is the fifth postsomatic node of Ranvier in the central process and represents the main part of the expected jitter at the proximal axon ending. doi:10.1371/journal.pone.0079256.g010</figDesc><graphic coords="14,315.10,60.78,183.52,398.04" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_10"><head>Figure 9 .</head><label>9</label><figDesc>Figure 9. Main results of computed SGN conduction times. The diagram summarizes results from Table 4, indicating the impact of axon diameters, soma size and myelin on the arrival time under the assumption d2 = 2*d1 (central axon has doubled diameter of the peripheral process). The spike arrival time scale at the right side shows the total signal conduction time of type I cells for different axon diameters (marked by colors) for small somas (d = 20 mm, thick vectors) and large somas (d = 25 mm, thin vectors). All these cases are simulated with 3 sheets of membranes around the soma (nmsoma = 3) with the exception of the gray vectors (nmsoma = 1) which represent the slowest cases of type I cells. The fastest signal conduction in man (1.522 ms; d1 = 2 mm, dsoma = 20 mm; purple thick vector) is toped by the shorter cat type I cell (green vector). The main part of the figure shows the four phases in SGN signal transduction as distance -time diagrams. All vectors for type I cells start with the same synaptic delay of 100 ms. The lowest vector (purple, d1 = 2 mm) is shifted vertically (according to the presomatic delay) and flattened (because velocity v2 = 2*v1) when the spike arrives at the soma (black vertical arrow). All other vectors have the same characteristic shapes with individual slopes and individual shifts at soma. Note that the vertical time shift at the soma increases when axon diameter decreases. Increase of soma diameter causes an additional delay indicated by the vertical distance between corresponding thin and thick vectors. The slow AP conductance of unmyelinated type II cells (green dashed vector) is obvious: the short presomatic delay (beyond graphical resolution) cannot compensate the 800 ms lasting synaptic delay. The process diameter enlargement at the soma position (d2 = 2*d1) is not as effective as in the myelinated cases. Angles between v2 and v1 slopes (green circle arrows) point out small velocity changes (small velocity ratio v2/v1) in unmyelinated type II neurons (upper green circle) compared to type I ganglion cells (lower green circle arrows). doi:10.1371/journal.pone.0079256.g009</figDesc><graphic coords="14,58.05,60.77,239.07,306.88" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" xml:id="fig_11"><graphic coords="11,58.05,60.78,319.18,626.46" type="bitmap" /></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_0"><head>Table 1 .</head><label>1</label><figDesc>Primary antibodies for immunohistochemistry.</figDesc><table><row><cell>antibody</cell><cell>dilution</cell><cell>characteristics</cell><cell>host</cell><cell>source</cell></row><row><cell>anti-b-III-tubuline</cell><cell>1:500</cell><cell>monoclonal</cell><cell>mouse</cell><cell>Chemicon, MAB5544</cell></row><row><cell>Anti-myelin basic protein</cell><cell>1:100</cell><cell>monoclonal</cell><cell>rat</cell><cell>Sigma-Aldrich, M9434</cell></row><row><cell>anti-peripherin</cell><cell>1:2500</cell><cell>polyclonal</cell><cell>rabbit</cell><cell>Millipore, AB1530</cell></row><row><cell>49,6-diamidino-2-phenylindole, dihydrochloride</cell><cell>1:46000</cell><cell></cell><cell></cell><cell>Molecular Probes, D1306</cell></row><row><cell>doi:10.1371/journal.pone.0079256.t001</cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_1"><head>Table 2 .</head><label>2</label><figDesc>Summary of the detected myelinated and type II spiral ganglion cells.Presented are the total numbers of counted myelinated type I SGN and type II SGN somata from cat and human cochleae, their percentage as well as the evaluated soma diameters. In contrast to man, the vast majority of cell bodies analyzed from cat cochleae were found to be myelinated. doi:10.1371/journal.pone.0079256.t002</figDesc><table><row><cell></cell><cell cols="2">cat cochlea (n = 3)</cell><cell></cell><cell></cell><cell cols="2">human cochlea (n = 3)</cell><cell></cell><cell></cell></row><row><cell>cochlea region</cell><cell>n =</cell><cell>myel. cell</cell><cell>type II</cell><cell>d [mm]</cell><cell>n =</cell><cell>myel. cell</cell><cell>type II</cell><cell>d [mm]</cell></row><row><cell>basal</cell><cell>1234</cell><cell>1186</cell><cell>50</cell><cell>10.2560.91</cell><cell>1109</cell><cell>36</cell><cell>16</cell><cell>9.3660.70</cell></row><row><cell>percentage %</cell><cell></cell><cell>96.11</cell><cell>4.05</cell><cell></cell><cell></cell><cell>3.25</cell><cell>1.44</cell><cell></cell></row><row><cell>middle</cell><cell>995</cell><cell>942</cell><cell>55</cell><cell>9.7261.16</cell><cell>981</cell><cell>42</cell><cell>29</cell><cell>9.5260.86</cell></row><row><cell>percentage %</cell><cell></cell><cell>94.67</cell><cell>5.53</cell><cell></cell><cell></cell><cell>4.28</cell><cell>2.96</cell><cell></cell></row><row><cell>apical</cell><cell>1000</cell><cell>957</cell><cell>42</cell><cell>9.8260.82</cell><cell>893</cell><cell>31</cell><cell>15</cell><cell>9.1860.80</cell></row><row><cell>percentage %</cell><cell></cell><cell>95.70</cell><cell>4.20</cell><cell></cell><cell></cell><cell>3.47</cell><cell>1.68</cell><cell></cell></row><row><cell>total</cell><cell>3229</cell><cell>3085</cell><cell>147</cell><cell>9.9361.01</cell><cell>2983</cell><cell>109</cell><cell>60</cell><cell>9.3960.82</cell></row><row><cell>percentage %</cell><cell></cell><cell>95.54</cell><cell>4.55</cell><cell></cell><cell></cell><cell>3.65</cell><cell>2.01</cell><cell></cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_2"><head>Table 3 .</head><label>3</label><figDesc>Peripheral and central process diameters of type I neurons based on 3 human specimens and 3 cat specimens.</figDesc><table><row><cell>human (n = 3)</cell></row></table></figure>
+<figure xmlns="http://www.tei-c.org/ns/1.0" type="table" xml:id="tab_3"><head>Table 4 .</head><label>4</label><figDesc>Computed SGN spike conduction times with additional delay Dt per 1 mm soma diameter increase.represent peripheral and central axon diameters; nmsoma denotes the number of surrounding single membrane layers in the soma region including the preand postsomatic segments. t1, t2, t3 and t4 denote postsynaptic delay, spike conduction time in the peripheral axon, presomatic delay and spike conduction time in the central axon, respectively. t_total = t1+t2+t3+t4, Dt|dsoma+1 mm denotes the enlargement step of the presomatic delay when dsoma is 1 mm increased. doi:10.1371/journal.pone.0079256.t004</figDesc><table><row><cell cols="2">type I SGN</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>d1</cell><cell>dsoma</cell><cell>d2 [mm]</cell><cell>nmsoma</cell><cell>t1</cell><cell>t2</cell><cell>t3</cell><cell>t4</cell><cell>t_total [ms]</cell><cell>Dt|dsoma+1 mm</cell><cell></cell></row><row><cell>1</cell><cell>20</cell><cell>2</cell><cell>1</cell><cell>0.1</cell><cell>0.339</cell><cell>0.286</cell><cell>2.255</cell><cell>2.981</cell><cell>7.2 ms</cell><cell>m a n</cell></row><row><cell>1</cell><cell>20</cell><cell>2</cell><cell>3</cell><cell>0.1</cell><cell>0.339</cell><cell>0.211</cell><cell>2.255</cell><cell>2.906</cell><cell>4.3 ms</cell><cell>m a n</cell></row><row><cell>1</cell><cell>20</cell><cell>2</cell><cell>7</cell><cell>0.1</cell><cell>0.339</cell><cell>0.178</cell><cell>2.255</cell><cell>2.873</cell><cell>2.7 ms</cell><cell>m a n</cell></row><row><cell>1</cell><cell>20</cell><cell>2</cell><cell>11</cell><cell>0.1</cell><cell>0.339</cell><cell>0.166</cell><cell>2.255</cell><cell>2.861</cell><cell>2.2 ms</cell><cell>m a n</cell></row><row><cell>1.3</cell><cell>20</cell><cell>2.6</cell><cell>3</cell><cell>0.1</cell><cell>0.261</cell><cell>0.186</cell><cell>1.735</cell><cell>2.282</cell><cell>3.5 ms</cell><cell>m a n</cell></row><row><cell>1.3</cell><cell>20</cell><cell>2.6</cell><cell>11</cell><cell>0.1</cell><cell>0.261</cell><cell>0.148</cell><cell>1.735</cell><cell>2.244</cell><cell>1.5 ms</cell><cell>m a n</cell></row><row><cell>1.4</cell><cell>20</cell><cell>2.8</cell><cell>3</cell><cell>0.1</cell><cell>0.242</cell><cell>0.178</cell><cell>1.611</cell><cell>2.131</cell><cell>3.5 ms</cell><cell>m a n</cell></row><row><cell>1.5</cell><cell>20</cell><cell>3</cell><cell>3</cell><cell>0.1</cell><cell>0.226</cell><cell>0.169</cell><cell>1.504</cell><cell>1.998</cell><cell>3.4 ms</cell><cell>m a n</cell></row><row><cell>2</cell><cell>20</cell><cell>4</cell><cell>3</cell><cell>0.1</cell><cell>0.170</cell><cell>0.125</cell><cell>1.128</cell><cell>1.522</cell><cell>3.2 ms</cell><cell>m a n</cell></row><row><cell>1</cell><cell>15</cell><cell>2</cell><cell>13</cell><cell>0.1</cell><cell>0.120</cell><cell>0.052</cell><cell>1.125</cell><cell>1.397</cell><cell></cell><cell>cat</cell></row><row><cell cols="3">nonmyelinated type II SGN</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>d1</cell><cell>dsoma</cell><cell>d2 [mm]</cell><cell>nmsoma</cell><cell>t1</cell><cell>t2</cell><cell>t3</cell><cell>t4</cell><cell>t_total [ms]</cell><cell></cell><cell></cell></row><row><cell>0.73</cell><cell>10</cell><cell>1.3</cell><cell>1</cell><cell>0.8</cell><cell>0.624</cell><cell>0.043</cell><cell>8.771</cell><cell>10.238</cell><cell></cell><cell>cat</cell></row><row><cell>1</cell><cell>10</cell><cell>2</cell><cell>1</cell><cell>0.8</cell><cell>0.533</cell><cell>0.018</cell><cell>7.071</cell><cell>8.422</cell><cell></cell><cell>cat</cell></row><row><cell>0.65</cell><cell>10</cell><cell>1.4</cell><cell>1</cell><cell>0.8</cell><cell>1.869</cell><cell>0.043</cell><cell>16.903</cell><cell>19.615</cell><cell></cell><cell>man</cell></row><row><cell>1</cell><cell>10</cell><cell>2</cell><cell>1</cell><cell>0.8</cell><cell>1.507</cell><cell>0.018</cell><cell>14.142</cell><cell>16.467</cell><cell></cell><cell>man</cell></row><row><cell cols="3">myelinated type II SGN</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row><row><cell>0.73</cell><cell>10</cell><cell>1.3</cell><cell>13</cell><cell>0.8</cell><cell>0.166</cell><cell>0.035</cell><cell>1.748</cell><cell>2.749</cell><cell></cell><cell>cat</cell></row><row><cell>0.65</cell><cell>10</cell><cell>1.4</cell><cell>11</cell><cell>0.8</cell><cell>0.497</cell><cell>0.083</cell><cell>3.061</cell><cell>4.441</cell><cell></cell><cell>man</cell></row><row><cell>d1 and d2</cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell><cell></cell></row></table></figure>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_0"><p>PLOS ONE | www.plosone.org</p></note>
+			<note xmlns="http://www.tei-c.org/ns/1.0" place="foot" xml:id="foot_1"><p>November 2013 | Volume 8 | Issue 11 | e79256</p></note>
+		</body>
+		<back>
+
+			<div type="acknowledgement">
+<div><head>Acknowledgments</head><p>We kindly thank <rs type="person">Dr. Eberhard Ludewig</rs> from the <rs type="institution">European College of Veterinary Diagnostic Imaging, Leipzig, Germany</rs> for providing us with CT data from cats. Two MRI and CT data for nerve length measurements in human were downloaded here <ref type="url" target="http://www.osirix-viewer.com/datasets/">http://www.osirix-viewer.com/datasets/</ref>. One measurement is based on a clinical head CT dataset of one of the authors who gave consent for use.</p></div>
+			</div>
+			<div type="funding">
+<div><p>This work was supported by the <rs type="funder">Austrian Science Fund</rs>, Grant No. <rs type="grantNumber">21848-N13</rs>, <rs type="projectName">AK Wise</rs> was supported by the <rs type="funder">NH&amp;MRC</rs> and <rs type="grantName">NIDCD grant</rs> (<rs type="grantNumber">HHS-N-263-2007-00053-C</rs>). The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.</p></div>
+			</div>
+			<listOrg type="funding">
+				<org type="funded-project" xml:id="_N7T3S3h">
+					<idno type="grant-number">21848-N13</idno>
+					<orgName type="project" subtype="full">AK Wise</orgName>
+				</org>
+				<org type="funding" xml:id="_XYXxVpJ">
+					<idno type="grant-number">HHS-N-263-2007-00053-C</idno>
+					<orgName type="grant-name">NIDCD grant</orgName>
+				</org>
+			</listOrg>
+
+			<div type="conflict">
+<div xmlns="http://www.tei-c.org/ns/1.0"><p>The authors have declared that there are no competing interests.</p></div>
+			</div>
+
+
+			<div type="contribution">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Author Contributions</head><p>Conceived and designed the experiments: FR TP CW RG ASF. Performed the experiments: FR TP CW. Analyzed the data: FR TP CW. Wrote the paper: FR TP CW RG ASF AKW.</p></div>
+			</div>
+
+			<div type="annex">
+<div xmlns="http://www.tei-c.org/ns/1.0"><head>Significance for natural hearing and cochlear implants</head><p>The quite constant diameter ratio of 1/2 for peripheral/central processes and the similarity in distinctive myelination of human type I SGN guarantees constant spike conduction times in each frequency region of the cochlea. Taking into account the coiled symmetry of the cochlea, uniform signal conduction times are most likely for APs triggered within the basal turn as well as for signals originating from the middle portion. In the low frequency region, increasing conduction times can be expected <ref type="bibr" target="#b0">[1,</ref><ref type="bibr" target="#b1">2]</ref> due to varying lengths of the peripheral processes. However, this continuously rising time delay for signals from the apical region can be assumed to have insignificant effects due to rather constant length of SGNs responsible for frequencies of one octave. This neural architecture maintains most of the temporal information of acoustic signals and allows phase locking up to 4 kHz in the spiking patterns of higher auditory centers of the brain ([1,2]Figure <ref type="figure">4B</ref>). Contrary to natural hearing, cochlea implants initiate spikes at different sites along SGNs <ref type="bibr" target="#b4">[5]</ref><ref type="bibr" target="#b5">[6]</ref><ref type="bibr" target="#b6">[7]</ref> which depends on the degree of preservation of cochlear neurons <ref type="bibr" target="#b67">[68]</ref><ref type="bibr" target="#b68">[69]</ref><ref type="bibr" target="#b69">[70]</ref>. The resulting temporal mismatch within a population of excited cells is mainly caused by simultaneous AP initiations in peripheral and central axons. As an example, the presented biophysical model predicts the lower threshold in cat for cathodic pulses but in man for anodic ones <ref type="bibr" target="#b6">[7]</ref>, which was assumed to be the same in both species but model results have been confirmed by implantees <ref type="bibr" target="#b70">[71]</ref>. This study has shown that the differences between the cat and human SGNs, for example a considerably longer human presomatic delay, should be incorporated into auditory nerve models that rely on the data from the cat when investigating speech processing strategies for cochlea implant recipients.</p></div>			</div>
+			<div type="references">
+
+				<listBibl>
+
+<biblStruct status="extracted" xml:id="b0">
+	<analytic>
+		<title level="a" type="main">Speech sound representation in the auditory nerve: computer simulation studies on inner ear mechanisms</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Lutter</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">ZAMM</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page" from="935" to="943" />
+			<date type="published" when="1997">1997</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b1">
+	<analytic>
+		<title level="a" type="main">Speech processing in the auditory system. I: The representation of speech sounds in the responses of the auditory nerve</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">A</forename><surname>Shamma</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Acoust Soc Am</title>
+		<imprint>
+			<biblScope unit="volume">78</biblScope>
+			<biblScope unit="page" from="1612" to="1621" />
+			<date type="published" when="1985">1985</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b2">
+	<analytic>
+		<title level="a" type="main">Action currents in the auditory nerve in response to acoustical stimulation</title>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">G</forename><surname>Wever</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">W</forename><surname>Bray</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Proc Natl Acad Sci</title>
+		<imprint>
+			<biblScope unit="volume">16</biblScope>
+			<biblScope unit="page" from="344" to="350" />
+			<date type="published" when="1930">1930</date>
+			<pubPlace>U S A</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b3">
+	<analytic>
+		<title level="a" type="main">Representation of steady-state vowels in the temporal aspects of the discharge patterns of populations of auditory-nerve fibers</title>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">D</forename><surname>Young</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">B</forename><surname>Sachs</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Acoust Soc Am</title>
+		<imprint>
+			<biblScope unit="volume">66</biblScope>
+			<biblScope unit="page" from="1381" to="1403" />
+			<date type="published" when="1979">1979</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b4">
+	<analytic>
+		<title level="a" type="main">Electrical stimulation of the auditory nerve. III. Response initiation sites and temporal fine structure</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Javel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">K</forename><surname>Shepherd</surname></persName>
+		</author>
+		<idno>S0378-5955(99)00186-0</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">140</biblScope>
+			<biblScope unit="page" from="45" to="76" />
+			<date type="published" when="2000">2000</date>
+		</imprint>
+	</monogr>
+	<note>pii</note>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b5">
+	<analytic>
+		<title level="a" type="main">A model of the electrically excited human cochlear neuron. II. Influence of the three-dimensional cochlear structure on neural excitability</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">N</forename><surname>Leao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Felix</surname></persName>
+		</author>
+		<idno>64-79. S0378-5955(00)00257-4</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">153</biblScope>
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b6">
+	<analytic>
+		<title level="a" type="main">A model of the electrically excited human cochlear neuron. I. Contribution of neural substructures to the generation and propagation of spikes</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Lutter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Felix</surname></persName>
+		</author>
+		<idno>43-63. S0378-5955(00)00256-2</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">153</biblScope>
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+	<note>pii</note>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b7">
+	<analytic>
+		<title level="a" type="main">Temporal response patterns of single auditory nerve fibers elicited by periodic electrical stimuli</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Van Den Honert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">H</forename><surname>Stypulkowski</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">29</biblScope>
+			<biblScope unit="page" from="207" to="222" />
+			<date type="published" when="1987">1987</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b8">
+	<analytic>
+		<title level="a" type="main">Innervation patterns in the organ of corti of the cat</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Spoendlin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Acta Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">67</biblScope>
+			<biblScope unit="page" from="239" to="254" />
+			<date type="published" when="1969">1969</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b9">
+	<analytic>
+		<title level="a" type="main">Anatomy of cochlear innervation</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Spoendlin</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Am J Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page" from="453" to="467" />
+			<date type="published" when="1985">1985</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b10">
+	<analytic>
+		<title level="a" type="main">Course and termination of the primary afferents in the cochlear nuclei of the cat. An experimental anatomical study</title>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">K</forename><surname>Osen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Arch Ital Biol</title>
+		<imprint>
+			<biblScope unit="volume">108</biblScope>
+			<biblScope unit="page" from="21" to="51" />
+			<date type="published" when="1970">1970</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b11">
+	<monogr>
+		<title level="m" type="main">The Synaptic Organization of the Brain</title>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">D</forename><surname>Young</surname></persName>
+		</author>
+		<editor>Shepherd GM</editor>
+		<imprint>
+			<date type="published" when="1998">1998</date>
+			<publisher>Oxford Univ. Press</publisher>
+			<biblScope unit="page" from="121" to="158" />
+			<pubPlace>New York</pubPlace>
+		</imprint>
+	</monogr>
+	<note>The cochlear nucleus</note>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b12">
+	<analytic>
+		<title level="a" type="main">Pre-and postnatal development of efferent connections of the cochlear nucleus in the rat</title>
+		<author>
+			<persName><forename type="first">K</forename><surname>Kandler</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Friauf</surname></persName>
+		</author>
+		<idno type="DOI">10.1002/cne.903280202</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J Comp Neurol</title>
+		<imprint>
+			<biblScope unit="volume">328</biblScope>
+			<biblScope unit="page" from="161" to="184" />
+			<date type="published" when="1993">1993</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b13">
+	<analytic>
+		<title level="a" type="main">Ultrastructural study of the human spiral ganglion</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">Y</forename><surname>Ota</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">S</forename><surname>Kimura</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Acta Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">89</biblScope>
+			<biblScope unit="page" from="53" to="62" />
+			<date type="published" when="1980">1980</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b14">
+	<analytic>
+		<title level="a" type="main">Comparative anatomy of the cochlea and auditory nerve in mammals</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Nadol</surname><genName>Jr</genName></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">34</biblScope>
+			<biblScope unit="page" from="253" to="266" />
+			<date type="published" when="1988">1988</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b15">
+	<analytic>
+		<title level="a" type="main">Expression of myelin basic protein in the human auditory nerve -an immunohistochemical and comparative study</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bostrom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kinnefors</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Linthicum</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Rask-Andersen</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.anl.2011.04.007</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Auris Nasus Larynx</title>
+		<imprint>
+			<biblScope unit="volume">39</biblScope>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b16">
+	<analytic>
+		<title level="a" type="main">Morphometric analysis of the cochlear nerve in man</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Felix</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">L</forename><forename type="middle">G</forename><surname>Johnsson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Gleeson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">A</forename><surname>De</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Conen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Acta Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">112</biblScope>
+			<biblScope unit="page" from="284" to="287" />
+			<date type="published" when="1992">1992</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b17">
+	<analytic>
+		<title level="a" type="main">Morphometry of intracellularly labeled neurons of the auditory nerve: correlations with functional properties</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">C</forename><surname>Liberman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">E</forename><surname>Oliver</surname></persName>
+		</author>
+		<idno type="DOI">10.1002/cne.902230203</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J Comp Neurol</title>
+		<imprint>
+			<biblScope unit="volume">223</biblScope>
+			<biblScope unit="page" from="163" to="176" />
+			<date type="published" when="1984">1984</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b18">
+	<analytic>
+		<title level="a" type="main">Evidence for saltatory conduction in peripheral myelinated nerve fibres</title>
+		<author>
+			<persName><surname>Huxley Af</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Stampfli</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Physiol</title>
+		<imprint>
+			<biblScope unit="volume">108</biblScope>
+			<biblScope unit="page" from="315" to="339" />
+			<date type="published" when="1949">1949</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b19">
+	<monogr>
+		<title level="m" type="main">Electrical nerve stimulation, theory, experiments and applications</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+		<imprint>
+			<date type="published" when="1990">1990</date>
+			<publisher>Springer</publisher>
+			<biblScope unit="page">136</biblScope>
+			<pubPlace>New York</pubPlace>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b20">
+	<analytic>
+		<title level="a" type="main">Where is the spike generator of the cochlear nerve? Voltage-gated sodium channels in the mouse cochlea</title>
+		<author>
+			<persName><forename type="first">W</forename><forename type="middle">A</forename><surname>Hossain</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">D</forename><surname>Antic</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">N</forename><surname>Rasband</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">K</forename><surname>Morest</surname></persName>
+		</author>
+		<idno type="DOI">10.1523/JNEUROSCI.0123-05.2005</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">25</biblScope>
+			<biblScope unit="page" from="6857" to="6868" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b21">
+	<analytic>
+		<title level="a" type="main">Dendritic HCN channels shape excitatory postsynaptic potentials at the inner hair cell afferent synapse in the mammalian cochlea</title>
+		<author>
+			<persName><forename type="first">E</forename><surname>Yi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Roux</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Glowatzki</surname></persName>
+		</author>
+		<idno type="DOI">10.1152/jn.00506.2009</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J Neurophysiol</title>
+		<imprint>
+			<biblScope unit="volume">103</biblScope>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b22">
+	<analytic>
+		<title level="a" type="main">Effects of I(h) and I(KLT) on the response of the auditory nerve to electrical stimulation in a stochastic Hodgkin-Huxley model</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">H</forename><surname>Negm</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">C</forename><surname>Bruce</surname></persName>
+		</author>
+		<idno type="DOI">10.1109/IEMBS.2008.4650469</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Conf Proc IEEE Eng Med Biol Soc</title>
+		<imprint>
+			<biblScope unit="page" from="5539" to="5542" />
+			<date type="published" when="2008">2008. 2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b23">
+	<analytic>
+		<title level="a" type="main">Distinct contributions of Na(v)1.6 and Na(v)1.2 in action potential initiation and backpropagation</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Hu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Tian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><surname>Li</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Yang</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hou</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/nn.2359</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nat Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">12</biblScope>
+			<biblScope unit="page" from="996" to="1002" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b24">
+	<analytic>
+		<title level="a" type="main">Which elements of the mammalian central nervous system are excited by low current stimulation with microelectrodes?</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wenger</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.neurosci-ence.2010.07.032</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Neuroscience</title>
+		<imprint>
+			<biblScope unit="volume">170</biblScope>
+			<biblScope unit="issue">10</biblScope>
+			<biblScope unit="page" from="1017" to="1018" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b25">
+	<analytic>
+		<title level="a" type="main">Role of intrinsic conductances underlying responses to transients in octopus cells of the cochlear nucleus</title>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">L</forename><surname>Golding</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Ferragamo</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Oertel</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">19</biblScope>
+			<biblScope unit="page" from="2897" to="2905" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b26">
+	<analytic>
+		<title level="a" type="main">Discharge patterns of cat primary auditory fibers with electrical stimulation of the cochlea</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Hartmann</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Topp</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Klinke</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">13</biblScope>
+			<biblScope unit="page" from="90094" to="90097" />
+			<date type="published" when="1984">1984</date>
+		</imprint>
+	</monogr>
+	<note>pii</note>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b27">
+	<analytic>
+		<title level="a" type="main">A study of the application of the Hodgkin-Huxley and the Frankenhaeuser-Huxley model for electrostimulation of the acoustic nerve</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Motz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Neuroscience</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="90064" to="90067" />
+			<date type="published" when="1986">1986</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b28">
+	<analytic>
+		<title level="a" type="main">Two modes of release shape the postsynaptic response at the inner hair cell ribbon synapse</title>
+		<author>
+			<persName><forename type="first">L</forename><surname>Grant</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Yi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Glowatzki</surname></persName>
+		</author>
+		<idno type="DOI">10.1523/JNEUROSCI.4439-09.2010</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b29">
+	<analytic>
+		<title level="a" type="main">The postsynaptic function of type II cochlear afferents</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Weisz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Glowatzki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Fuchs</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/nature08487</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nature</title>
+		<imprint>
+			<biblScope unit="volume">461</biblScope>
+			<biblScope unit="page" from="1126" to="1129" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b30">
+	<analytic>
+		<title level="a" type="main">Analysis of the human auditory nerve</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Spoendlin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Schrott</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">43</biblScope>
+			<biblScope unit="page" from="90056" to="90057" />
+			<date type="published" when="1989">1989</date>
+		</imprint>
+	</monogr>
+	<note>pii</note>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b31">
+	<analytic>
+		<title level="a" type="main">Quantitative evaluation of the human cochlear nerve</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Spoendlin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Schrott</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Acta Otolaryngol Suppl</title>
+		<imprint>
+			<biblScope unit="volume">470</biblScope>
+			<biblScope unit="page" from="61" to="69" />
+			<date type="published" when="1990">1990</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b32">
+	<analytic>
+		<title level="a" type="main">A protocol for cryoembedding the adult guinea pig cochlea for fluorescence immunohistology</title>
+		<author>
+			<persName><forename type="first">B</forename><surname>Coleman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">N</forename><forename type="middle">A</forename><surname>Rickard</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">G</forename><surname>De Silva</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">K</forename><surname>Shepherd</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.jneumeth.2008.09.007</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J Neurosci Methods</title>
+		<imprint>
+			<biblScope unit="volume">176</biblScope>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b33">
+	<analytic>
+		<title level="a" type="main">Morphometric classification and spatial organization of spiral ganglion neurons in the human cochlea: consequences for single fiber response to electrical stimulation</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Potrusil</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">C</forename><surname>Wenger</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Glueckert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Schrott-Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.neuroscience.2012.03.033</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Neuroscience</title>
+		<imprint>
+			<biblScope unit="volume">214</biblScope>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b34">
+	<analytic>
+		<title/>
+		<author>
+			<persName><forename type="first">H</forename><forename type="middle">F</forename><surname>Schuknecht</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pathology of the Ear. Philadelphia: Lea and Febiger</title>
+		<imprint>
+			<date type="published" when="1993">1993</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b35">
+	<analytic>
+		<title level="a" type="main">The block-surface technique for evaluation of cochlear pathology</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Spoendlin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">P</forename><surname>Brun</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Arch Otorhinolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">208</biblScope>
+			<biblScope unit="page" from="137" to="145" />
+			<date type="published" when="1974">1974</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b36">
+	<analytic>
+		<title level="a" type="main">The block surface method for evaluation of human inner ears</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Spoendlin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Schrott</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Acta Otolaryngol Suppl</title>
+		<imprint>
+			<biblScope unit="volume">436</biblScope>
+			<biblScope unit="page" from="25" to="36" />
+			<date type="published" when="1987">1987</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b37">
+	<analytic>
+		<title level="a" type="main">Richardson-Lucy/maximum likelihood image restoration algorithm for fluorescence microscopy: further testing</title>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">J</forename><surname>Holmes</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Y</forename><forename type="middle">H</forename><surname>Liu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Appl Opt</title>
+		<imprint>
+			<biblScope unit="volume">28</biblScope>
+			<biblScope unit="page" from="4930" to="4938" />
+			<date type="published" when="1989">1989</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b38">
+	<analytic>
+		<title level="a" type="main">Clinical validation of the normalized mutual information method for registration of CT and MR images in radiotherapy of brain tumors</title>
+		<author>
+			<persName><forename type="first">T</forename><surname>Veninga</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Huisman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">W</forename><surname>Van Der Maazen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Huizenga</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Appl Clin Med Phys</title>
+		<imprint>
+			<biblScope unit="volume">5</biblScope>
+			<biblScope unit="page" from="66" to="79" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b39">
+	<analytic>
+		<title level="a" type="main">Fiji: an open-source platform for biological-image analysis</title>
+		<author>
+			<persName><forename type="first">J</forename><surname>Schindelin</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">I</forename><surname>Arganda-Carreras</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Frise</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">V</forename><surname>Kaynig</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Longair</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/nmeth.2019</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nat Methods</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="676" to="682" />
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b40">
+	<analytic>
+		<title level="a" type="main">The basic mechanism for the electrical stimulation of the nervous system</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+		<idno>335-346. S0306-4522(98)00330-3</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Neuroscience</title>
+		<imprint>
+			<biblScope unit="volume">89</biblScope>
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b41">
+	<analytic>
+		<title level="a" type="main">Central nervous system stimulation</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="m">Neuroprosthetics: Theory and Practice. K. Horch and G</title>
+		<imprint>
+			<publisher>Dhillon World Scientific Publishing</publisher>
+			<date type="published" when="2004">2004</date>
+			<biblScope unit="page" from="429" to="447" />
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b42">
+	<analytic>
+		<title level="a" type="main">Neurofilament antibodies and spiral ganglion neurons of the mammalian cochlea</title>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">M</forename><surname>Berglund</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">K</forename><surname>Ryugo</surname></persName>
+		</author>
+		<idno type="DOI">10.1002/cne.903060304</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J Comp Neurol</title>
+		<imprint>
+			<biblScope unit="volume">306</biblScope>
+			<biblScope unit="page" from="393" to="408" />
+			<date type="published" when="1991">1991</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b43">
+	<analytic>
+		<title level="a" type="main">Peripherin-like immunoreactivity in type II spiral ganglion cell body and projections</title>
+		<author>
+			<persName><forename type="first">A</forename><surname>Hafidi</surname></persName>
+		</author>
+		<idno>181-190. S0006-8993(98)00448-</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Brain Res</title>
+		<imprint>
+			<biblScope unit="volume">805</biblScope>
+			<date type="published" when="1998">1998</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b44">
+	<analytic>
+		<title level="a" type="main">Expression of intermediate filament proteins in the mature inner ear of the rat and guinea pig</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Kuijpers</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><forename type="middle">L</forename><surname>Tonnaer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">T</forename><forename type="middle">A</forename><surname>Peters</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">F</forename><forename type="middle">C</forename><surname>Ramaekers</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">52</biblScope>
+			<biblScope unit="page" from="133" to="146" />
+			<date type="published" when="1991">1991</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b45">
+	<analytic>
+		<title level="a" type="main">Expression of peripherin in the pig spiral ganglion-aspects of nerve injury and regeneration</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bostrom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Rask-Andersen</surname></persName>
+		</author>
+		<idno type="DOI">10.1080/00016480802369294</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Acta Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">129</biblScope>
+			<biblScope unit="page" from="608" to="614" />
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b46">
+	<analytic>
+		<title level="a" type="main">Expression of peripherin in human cochlea</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Liu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kinnefors</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Bostrom</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Rask-Andersen</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s00441-010-1081-6</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Cell Tissue Res</title>
+		<imprint>
+			<biblScope unit="volume">342</biblScope>
+			<biblScope unit="page" from="345" to="351" />
+			<date type="published" when="2010">2010</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b47">
+	<analytic>
+		<title level="a" type="main">Phonational frequency ranges of adults</title>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hollien</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Dew</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Philips</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Speech Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">14</biblScope>
+			<biblScope unit="page" from="755" to="760" />
+			<date type="published" when="1971">1971</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b48">
+	<analytic>
+		<title level="a" type="main">The action potential in mammalian central neurons</title>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">P</forename><surname>Bean</surname></persName>
+		</author>
+		<idno type="DOI">10.1038/nrn2148</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Nat Rev Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">8</biblScope>
+			<biblScope unit="page" from="451" to="465" />
+			<date type="published" when="2007">2007</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b49">
+	<analytic>
+		<title level="a" type="main">Action potential initiation and propagation: upstream influences on neurotransmission</title>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">J</forename><surname>Kress</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Mennerick</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.neuroscience.2008.03.021</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Neuroscience</title>
+		<imprint>
+			<biblScope unit="volume">158</biblScope>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b50">
+	<analytic>
+		<title level="a" type="main">Intracochlear and extracochlear ECAPs suggest antidromic action potentials</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">A</forename><surname>Miller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">J</forename><surname>Abbas</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">J</forename><surname>Hay-Mccutcheon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">K</forename><surname>Robinson</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">V</forename><surname>Nourski</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/j.heares.2004.07.005</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">198</biblScope>
+			<biblScope unit="page" from="75" to="86" />
+			<date type="published" when="2004">2004</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b51">
+	<analytic>
+		<title level="a" type="main">Simulations of conduction in uniform myelinated fibers. Relative sensitivity to changes in nodal and internodal parameters</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">W</forename><surname>Moore</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">W</forename><surname>Joyner</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">H</forename><surname>Brill</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">D</forename><surname>Waxman</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Najar-Joa</surname></persName>
+		</author>
+		<idno type="DOI">10.1016/S0006-3495(78)85515-5</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Biophys J</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="page" from="85515" to="85515" />
+			<date type="published" when="1978">1978</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b52">
+	<analytic>
+		<title level="a" type="main">Synaptic transfer from outer hair cells to type II afferent fibers in the rat cochlea</title>
+		<author>
+			<persName><forename type="first">C</forename><forename type="middle">J</forename><surname>Weisz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Lehar</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Hiel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">E</forename><surname>Glowatzki</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">A</forename><surname>Fuchs</surname></persName>
+		</author>
+		<idno type="DOI">10.1523/JNEUROSCI.6194-11.2012</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J Neurosci</title>
+		<imprint>
+			<biblScope unit="volume">32</biblScope>
+			<date type="published" when="2012">2012</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b53">
+	<analytic>
+		<title level="a" type="main">Afferent innervation of outer hair cells in adult cats: I. Light microscopic analysis of fibers labeled with horseradish peroxidase</title>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">D</forename><surname>Simmons</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">C</forename><surname>Liberman</surname></persName>
+		</author>
+		<idno type="DOI">10.1002/cne.902700111</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J Comp Neurol</title>
+		<imprint>
+			<biblScope unit="volume">270</biblScope>
+			<biblScope unit="page" from="132" to="144" />
+			<date type="published" when="1988">1988</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b54">
+	<analytic>
+		<title level="a" type="main">Myelination of the human spiral ganglion</title>
+		<author>
+			<persName><forename type="first">W</forename><surname>Arnold</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Acta Otolaryngol Suppl</title>
+		<imprint>
+			<biblScope unit="volume">436</biblScope>
+			<biblScope unit="page" from="76" to="84" />
+			<date type="published" when="1987">1987</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b55">
+	<analytic>
+		<title level="a" type="main">Introduction to cochlear implants</title>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">C</forename><surname>Loizou</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Eng Med Biol Mag</title>
+		<imprint>
+			<biblScope unit="volume">18</biblScope>
+			<biblScope unit="page" from="32" to="42" />
+			<date type="published" when="1999">1999</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b56">
+	<analytic>
+		<title level="a" type="main">A quantitative description of membrane currents in rabbit myelinated nerve</title>
+		<author>
+			<persName><forename type="first">S</forename><forename type="middle">Y</forename><surname>Chiu</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Ritchie</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">B</forename><surname>Rogart</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><surname>Stagg</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Physiol</title>
+		<imprint>
+			<biblScope unit="volume">292</biblScope>
+			<biblScope unit="page" from="149" to="166" />
+			<date type="published" when="1979">1979</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b57">
+	<analytic>
+		<title level="a" type="main">Modeling axon membranes for functional electrical stimulation</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">M</forename><surname>Aberham</surname></persName>
+		</author>
+		<idno type="DOI">1201-1209.10.1109/10.250575</idno>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE Trans Biomed Eng</title>
+		<imprint>
+			<biblScope unit="volume">40</biblScope>
+			<date type="published" when="1993">1993</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b58">
+	<analytic>
+		<title level="a" type="main">Mechanisms of electrical stimulation with neural prostheses</title>
+		<author>
+			<persName><forename type="first">F</forename><surname>Rattay</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">S</forename><surname>Resatz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><surname>Lutter</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Minassian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><surname>Jilge</surname></persName>
+		</author>
+		<idno type="DOI">10.1046/j.1525-1403.2003.03006.x</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Neuromodulation</title>
+		<imprint>
+			<biblScope unit="volume">6</biblScope>
+			<biblScope unit="page" from="42" to="56" />
+			<date type="published" when="2003">2003</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b59">
+	<analytic>
+		<title level="a" type="main">Na currents and action potentials in rat myelinated nerve fibres at 20 and 37 degrees C</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">R</forename><surname>Schwarz</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><surname>Eikhof</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Pflugers Arch</title>
+		<imprint>
+			<biblScope unit="volume">409</biblScope>
+			<biblScope unit="page" from="569" to="577" />
+			<date type="published" when="1987">1987</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b60">
+	<analytic>
+		<title level="a" type="main">Modeling of mammalian myelinated nerve for functional neuromuscular electrostimulation</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">D</forename><surname>Sweeney</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">T</forename><surname>Mortimer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Durnand</forename></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">IEEE 9th Annu Conf Eng Med Biol Soc</title>
+		<imprint>
+			<biblScope unit="page" from="1577" to="1578" />
+			<date type="published" when="1987">1987</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b61">
+	<analytic>
+		<title level="a" type="main">Voltage-gated ionic conductances required for action potential firing in auditory nerve fibers</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Michel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><surname>Nouvian</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Santos-Sacchi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">L</forename><surname>Puel</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Bourien</surname></persName>
+		</author>
+		<ptr target="http://www.aro.org/0B14D924-23FB-42B2-8397-371BADC53A38/FinalDownload/DownloadId-2F1E351412986B72712D0A570D7668FC/0B14D924-23FB-42B2-8397-371BADC53A38/mwm/documents/ARO2013FinalAbstractBook.pdf" />
+	</analytic>
+	<monogr>
+		<title level="m">Association for Research in Otolaryngology</title>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b62">
+	<analytic>
+		<title level="a" type="main">Brainstem evoked response audiometry in normal hearing subjects</title>
+		<author>
+			<persName><forename type="first">M</forename><forename type="middle">C</forename><surname>Esteves</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Dell</forename><forename type="middle">'</forename><surname>Aringa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">H</forename><surname>Arruda</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">G</forename><forename type="middle">V</forename><surname>Dell' Aringa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><forename type="middle">R</forename><surname>Nardi</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">C</forename></persName>
+		</author>
+		<idno>420-425.S1808-86942009000300018</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Braz J Otorhinolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">75</biblScope>
+			<date type="published" when="2009">2009</date>
+		</imprint>
+	</monogr>
+	<note>pii</note>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b63">
+	<analytic>
+		<title level="a" type="main">Characterization of the electrically evoked auditory brainstem response (ABR) in cats and humans</title>
+		<author>
+			<persName><forename type="first">C</forename><surname>Van Den Honert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">P</forename><forename type="middle">H</forename><surname>Stypulkowski</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Hear Res</title>
+		<imprint>
+			<biblScope unit="volume">21</biblScope>
+			<biblScope unit="page">90033</biblScope>
+			<date type="published" when="1986">1986</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b64">
+	<analytic>
+		<title level="a" type="main">The polarity sensitivity of the electrically stimulated human auditory nerve measured at the level of the brainstem</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">A</forename><surname>Undurraga</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">P</forename><surname>Carlyon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wouters</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Van</forename><surname>Wa</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-013-0377-0</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J Assoc Res Otolaryngol</title>
+		<imprint>
+			<date type="published" when="2013">2013</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b65">
+	<analytic>
+		<title level="a" type="main">Scaling factor relating conduction velocity and diameter for myelinated afferent nerve fibres in the cat hind limb</title>
+		<author>
+			<persName><forename type="first">I</forename><forename type="middle">A</forename><surname>Boyd</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><forename type="middle">U</forename><surname>Kalu</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Physiol</title>
+		<imprint>
+			<biblScope unit="volume">289</biblScope>
+			<biblScope unit="page" from="277" to="297" />
+			<date type="published" when="1979">1979</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b66">
+	<analytic>
+		<title level="a" type="main">A 3-D model of membrane specializations between human auditory spiral ganglion cells</title>
+		<author>
+			<persName><forename type="first">S</forename><surname>Tylstedt</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Rask-Andersen</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">J Neurocytol</title>
+		<imprint>
+			<biblScope unit="volume">30</biblScope>
+			<biblScope unit="page" from="465" to="473" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b67">
+	<analytic>
+		<title level="a" type="main">Patterns of neural degeneration in the human cochlea and auditory nerve: implications for cochlear implantation</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Nadol</surname><genName>Jr</genName></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Otolaryngol Head Neck Surg</title>
+		<imprint>
+			<biblScope unit="volume">117</biblScope>
+			<biblScope unit="page" from="220" to="228" />
+			<date type="published" when="1997">1997</date>
+		</imprint>
+	</monogr>
+	<note>S0194-5998(97)70178-5 [pii</note>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b68">
+	<analytic>
+		<title level="a" type="main">Histopathology of cochlear implants in humans</title>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">B</forename><surname>Nadol</surname><genName>Jr</genName></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">Y</forename><surname>Shiao</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">B</forename><forename type="middle">J</forename><surname>Burgess</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">R</forename><surname>Ketten</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">D</forename><forename type="middle">K</forename><surname>Eddington</surname></persName>
+		</author>
+	</analytic>
+	<monogr>
+		<title level="j">Ann Otol Rhinol Laryngol</title>
+		<imprint>
+			<biblScope unit="volume">110</biblScope>
+			<biblScope unit="page" from="883" to="891" />
+			<date type="published" when="2001">2001</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b69">
+	<analytic>
+		<title level="a" type="main">The human spiral ganglion: new insights into ultrastructure, survival rate and implications for cochlear implants</title>
+		<author>
+			<persName><forename type="first">R</forename><surname>Glueckert</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">K</forename><surname>Pfaller</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename><surname>Kinnefors</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">H</forename><surname>Rask-Andersen</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Schrott-</forename><surname>Fischer</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">A</forename></persName>
+		</author>
+		<idno type="DOI">10.1159/000086000</idno>
+	</analytic>
+	<monogr>
+		<title level="j">Audiol Neurootol</title>
+		<imprint>
+			<biblScope unit="volume">10</biblScope>
+			<biblScope unit="page" from="258" to="273" />
+			<date type="published" when="2005">2005</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+<biblStruct status="extracted" xml:id="b70">
+	<analytic>
+		<title level="a" type="main">Higher sensitivity of human auditory nerve fibers to positive electrical currents</title>
+		<author>
+			<persName><forename type="first">O</forename><surname>Macherey</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">R</forename><forename type="middle">P</forename><surname>Carlyon</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">Van</forename><surname>Wa</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><forename type="middle">M</forename><surname>Deeks</surname></persName>
+		</author>
+		<author>
+			<persName><forename type="first">J</forename><surname>Wouters</surname></persName>
+		</author>
+		<idno type="DOI">10.1007/s10162-008-0112-4</idno>
+	</analytic>
+	<monogr>
+		<title level="j">J Assoc Res Otolaryngol</title>
+		<imprint>
+			<biblScope unit="volume">9</biblScope>
+			<biblScope unit="page" from="241" to="251" />
+			<date type="published" when="2008">2008</date>
+		</imprint>
+	</monogr>
+</biblStruct>
+
+				</listBibl>
+			</div>
+		</back>
+	</text>
+</TEI>

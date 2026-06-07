@@ -1,9 +1,16 @@
+import sys
 from pathlib import Path
+
 from pypdf import PdfReader
 
-BASE_DIR = Path(__file__).resolve().parents[3]
-RAW_DIR = BASE_DIR / "data" / "raw"
-OUT_DIR = BASE_DIR / "data" / "processed"
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))  # src/
+from config import settings  # noqa: E402
+
+# Corpus + output locations come from config so a separate sample corpus can be
+# built via NEURORAG_RAW_DIR / NEURORAG_PROCESSED_DIR without touching a private
+# corpus.
+RAW_DIR = settings.raw_dir
+OUT_DIR = settings.processed_dir
 
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -21,7 +28,7 @@ for pdf_path in pdfs:
             text = page.extract_text() or ""
             parts.append(f"\n\n===== PAGE {i} =====\n{text}")
 
-        # keep relative folder structure
+        # keep relative folder structure (relative to the raw corpus dir)
         rel_path = pdf_path.relative_to(RAW_DIR).with_suffix(".txt")
         out_path = OUT_DIR / rel_path
         out_path.parent.mkdir(parents=True, exist_ok=True)
