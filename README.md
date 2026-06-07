@@ -2,10 +2,13 @@
 
 [![CI](https://github.com/fallahtp/NeuroRag/actions/workflows/ci.yml/badge.svg)](https://github.com/fallahtp/NeuroRag/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Live Demo](https://img.shields.io/badge/%F0%9F%A4%97%20Live%20Demo-NeuroRag-ffd21e)](https://huggingface.co/spaces/fallahtp/NeuroRag)
 
 **NeuroRag** is a **local Retrieval-Augmented Generation (RAG) assistant** for **neuroscience research and computational modeling**.
 
 It is designed for researchers who want to search and query their own scientific literature, notes, and technical documents **locally**, without sending files to external APIs.
+
+> 🚀 **[Try the live demo →](https://huggingface.co/spaces/fallahtp/NeuroRag)** — ask a question against a 5-paper open-access sample corpus; answered by Gemini with cited sources.
 
 > 📄 **[Read the case study →](CASE_STUDY.md)** — the problem, the approach, and the measured results.
 
@@ -29,6 +32,9 @@ v3 cross-encoder reranking adds +5pp judge fact recall and +4pp citation groundi
 ---
 
 ## Demo
+
+**🚀 Live demo:** [huggingface.co/spaces/fallahtp/NeuroRag](https://huggingface.co/spaces/fallahtp/NeuroRag)
+— try it in your browser against a small open-access sample corpus (Gemini-backed, no setup required).
 
 The Streamlit UI lets you pick a pipeline (v1 / v2 hybrid / v3 reranked), ask a
 question, and see the grounded answer alongside the retrieved source chunks and
@@ -130,7 +136,6 @@ NeuroRag has evolved from a **minimal local RAG baseline** through a **structure
 - metadata extraction is still imperfect for some older PDFs
 - year extraction can be noisy in some cases
 - scientific tables and figure captions are still lost in TEI flattening
-- no web UI yet
 - some questions remain at 0% fact recall because the right evidence isn't well represented in any current chunk (a chunking problem, not a ranking problem)
 
 ---
@@ -731,6 +736,8 @@ The most important direction is not flashy UI, but **measurable retrieval qualit
 - ✅ Central configuration module with environment-variable overrides
 - ✅ Unit-test suite and CI (ruff + pytest)
 - ✅ Optional integrations: RAGAS metrics, Qdrant backend, LangSmith tracing
+- ✅ Public sample corpus + prebuilt indexes (the demo runs on a fresh clone, no PDFs to source)
+- ✅ Live demo deployed to Hugging Face Spaces (Docker SDK, hosted Gemini backend)
 
 ### Near-term
 - Better section-aware chunking to lift the long tail of "retrieval is close but not exact" failures
@@ -741,7 +748,6 @@ The most important direction is not flashy UI, but **measurable retrieval qualit
 - Richer metadata-aware filtering (year ranges, authors, paper-level boolean filters)
 - Domain-specific prompt modes for neuroscience / NEURON workflows
 - Query reformulation for the questions where retrieval misses entirely
-- A small shareable sample corpus so the demo runs on a fresh clone without sourcing PDFs
 
 ---
 
